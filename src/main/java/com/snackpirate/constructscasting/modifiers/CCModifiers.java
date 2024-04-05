@@ -8,11 +8,9 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
 public class CCModifiers extends AbstractModifierProvider {
-	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MODID);
+	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
-
-	public static final StaticModifier<Modifier> TEST = MODIFIERS.register("test", TestModifier::new);
 	public CCModifiers(DataGenerator generator) {
 		super(generator);
 	}
