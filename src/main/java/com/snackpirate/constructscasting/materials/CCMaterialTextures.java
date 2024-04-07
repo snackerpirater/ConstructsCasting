@@ -3,7 +3,6 @@ package com.snackpirate.constructscasting.materials;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
-import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 
 public class CCMaterialTextures extends AbstractMaterialSpriteProvider {

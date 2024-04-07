@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting;
 
 import com.mojang.logging.LogUtils;
+import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -33,6 +34,7 @@ public class ConstructsCasting {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         CCModifiers.MODIFIERS.register(modEventBus);
+        CCFluids.FLUIDS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -59,5 +61,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new MaterialPartTextureGenerator(gen, event.getExistingFileHelper(), new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new CCMaterials.CCMaterialStats(gen, new CCMaterials(gen)));
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures()));
+        gen.addProvider(server, new CCFluids.CCFluidTextures(gen, MOD_ID));
+        gen.addProvider(server, new CCFluids.CCBucketModels(gen, MOD_ID));
     }
 }
