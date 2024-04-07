@@ -26,9 +26,9 @@ public class CCLang extends LanguageProvider {
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
 		String id = material.getPath();
 		add("material.constructs_casting." + id, name);
-		if (!flavour.equals(""))
+		if (!flavour.isEmpty())
 			add("material.constructs_casting." + id + ".flavor", flavour);
-		if (!desc.equals(""))
+		if (!desc.isEmpty())
 			add("material.constructs_casting." + id + ".encyclopedia", desc);
 	}
 

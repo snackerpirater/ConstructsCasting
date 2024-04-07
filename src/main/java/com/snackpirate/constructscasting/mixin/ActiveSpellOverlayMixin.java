@@ -1,10 +1,7 @@
 package com.snackpirate.constructscasting.mixin;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.gui.overlays.ActiveSpellOverlay;
-import io.redspace.ironsspellbooks.item.CastingItem;
-import io.redspace.ironsspellbooks.item.Scroll;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
@@ -19,7 +16,7 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 public class ActiveSpellOverlayMixin {
 	@Inject(method = "hasRightClickCasting", at=@At(value = "HEAD"), cancellable = true, remap = false)
 	private static void hasRightClickCasting(Item item, CallbackInfoReturnable<Boolean> cir) {
-		if (item instanceof ModifiableItem modifiable)
+		if (item instanceof ModifiableItem)
 		{
 			cir.setReturnValue(ModifierUtil.getModifierLevel(Minecraft.getInstance().player.getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.CASTING.getId()) + ModifierUtil.getModifierLevel(Minecraft.getInstance().player.getItemInHand(InteractionHand.OFF_HAND), CCModifiers.CASTING.getId())> 0);
 		}

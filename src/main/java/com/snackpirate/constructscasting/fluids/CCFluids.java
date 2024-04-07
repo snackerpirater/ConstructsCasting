@@ -4,7 +4,6 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -12,9 +11,7 @@ import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.fluid.texture.AbstractFluidTextureProvider;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
-import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.fluids.data.FluidBucketModelProvider;
-import slimeknights.tconstruct.fluids.data.FluidTextureProvider;
 
 public class CCFluids {
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ConstructsCasting.MOD_ID);

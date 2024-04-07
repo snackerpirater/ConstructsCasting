@@ -19,7 +19,6 @@ import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class CastingModifier extends Modifier implements GeneralInteractionModifierHook {
 	@Override
