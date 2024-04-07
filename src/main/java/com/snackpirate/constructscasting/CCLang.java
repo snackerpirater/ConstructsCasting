@@ -1,11 +1,13 @@
 package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
+import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 
@@ -18,10 +20,27 @@ public class CCLang extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +50 max mana per part.");
+
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows tools to cast spells on right click.");
+
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
+		addFluid(CCFluids.fireEssence, "Fire Essence");
+		addFluid(CCFluids.iceEssence, "Ice Essence");
+		addFluid(CCFluids.lightningEssence, "Lightning Essence");
+		addFluid(CCFluids.enderEssence, "Ender Essence");
+		addFluid(CCFluids.holyEssence, "Holy Essence");
+		addFluid(CCFluids.bloodEssence, "Blood Essence");
+		addFluid(CCFluids.evocationEssence, "Evocation Essence");
+		addFluid(CCFluids.natureEssence, "Nature Essence");
+
+
 		addFluid(CCFluids.liquidLightning, "Lightning");
 		addFluid(CCFluids.liquidDivinity, "Divinity");
+		addFluid(CCFluids.potatoStew, "Potato Stew");
+		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
+
+		addItem(CCItems.potatoStewBowl, "Potato Stew");
+		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting;
 
 import com.mojang.logging.LogUtils;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -31,6 +32,7 @@ public class ConstructsCasting {
         MinecraftForge.EVENT_BUS.register(this);
         CCModifiers.MODIFIERS.register(modEventBus);
         CCFluids.FLUIDS.register(modEventBus);
+        CCItems.ITEMS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
