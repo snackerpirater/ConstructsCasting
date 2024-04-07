@@ -16,15 +16,25 @@ import slimeknights.tconstruct.fluids.data.FluidBucketModelProvider;
 public class CCFluids {
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ConstructsCasting.MOD_ID);
 
-	public static final FluidObject<UnplaceableFluid> arcaneEssence = FLUIDS.register("arcane_essence").bucket().type(FluidType.Properties.create()
+	public static final FluidObject<UnplaceableFluid> arcaneEssence = FLUIDS.register("arcane_essence")
+			.bucket()
+			.type(FluidType.Properties.create()
 					.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
 					.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY))
-					.unplacable();
+			.unplacable();
 
-	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning").bucket().type(FluidType.Properties.create()
+	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning")
+			.type(FluidType.Properties.create()
 					.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
 					.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY))
-					.unplacable();
+			.unplacable();
+
+	public static final FluidObject<UnplaceableFluid> liquidDivinity = FLUIDS.register("liquid_divinity")
+			.bucket()
+			.type(FluidType.Properties.create()
+					.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+					.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY))
+			.unplacable();
 
 	public static class CCFluidTextures extends AbstractFluidTextureProvider {
 
@@ -36,6 +46,7 @@ public class CCFluids {
 		public void addTextures() {
 			texture(arcaneEssence).textures(new ResourceLocation("tconstruct:fluid/potion/"), false, false).color(0xFF79C0F3);
 			texture(liquidLightning).textures(new ResourceLocation("tconstruct:fluid/potion/"), false, false).color(0xffd7eef5);
+			texture(liquidDivinity).textures(new ResourceLocation("tconstruct:fluid/potion/"), false, false).color(0xfffce969);
 		}
 
 		@Override

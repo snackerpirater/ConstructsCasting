@@ -21,6 +21,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows tools to cast spells on right click.");
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.liquidLightning, "Lightning");
+		addFluid(CCFluids.liquidDivinity, "Divinity");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
