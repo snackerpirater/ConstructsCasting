@@ -7,7 +7,6 @@ import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
-import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 
@@ -21,8 +20,8 @@ public class CCLang extends LanguageProvider {
 	protected void addTranslations() {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +50 max mana per part.");
 
-		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows tools to cast spells on right click.");
-
+		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows the tool to cast spells on right click.");
+		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-rific!", "Grants +25 max mana.");
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
 		addFluid(CCFluids.iceEssence, "Ice Essence");
@@ -38,6 +37,7 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.liquidDivinity, "Divinity");
 		addFluid(CCFluids.potatoStew, "Potato Stew");
 		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
+		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");
 
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");

@@ -7,6 +7,7 @@ import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,6 +35,9 @@ public class ConstructsCasting {
         CCFluids.FLUIDS.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
     }
+    public static ResourceLocation id(String name) {
+        return new ResourceLocation(MOD_ID, name);
+    }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM COMMON SETUP");
@@ -44,12 +48,17 @@ public class ConstructsCasting {
     {
         DataGenerator gen = event.getGenerator();
         boolean server = event.includeServer();
-        gen.addProvider(server, new CCMaterials(gen));
-        gen.addProvider(server, new CCLang(gen, ConstructsCasting.MOD_ID, "en_us"));
+        CCMaterials mats = new CCMaterials(gen);
+        gen.addProvider(server, mats);
         gen.addProvider(server, new MaterialPartTextureGenerator(gen, event.getExistingFileHelper(), new TinkerPartSpriteProvider(), new CCMaterialTextures()));
-        gen.addProvider(server, new CCMaterials.CCMaterialStats(gen, new CCMaterials(gen)));
+        gen.addProvider(server, new CCMaterials.CCMaterialStats(gen, mats));
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures()));
+        gen.addProvider(server, new CCModifiers(gen));
+        gen.addProvider(server, new CCMaterials.CCMaterialTraits(gen, mats));
         gen.addProvider(server, new CCFluids.CCFluidTextures(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(gen, MOD_ID));
+        gen.addProvider(server, new CCFluids.CCFluidTags(gen, MOD_ID, event.getExistingFileHelper()));
+        gen.addProvider(server, new CCRecipes(gen));
+        gen.addProvider(server, new CCLang(gen, ConstructsCasting.MOD_ID, "en_us"));
     }
 }

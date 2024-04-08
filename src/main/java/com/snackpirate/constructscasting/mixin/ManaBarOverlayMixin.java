@@ -13,13 +13,13 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 @Mixin(ManaBarOverlay.class)
 public class ManaBarOverlayMixin {
-	@Inject(method="shouldShowManaBar", at=@At(value="HEAD"), cancellable = true, remap = false)
+	@Inject(method="shouldShowManaBar", at=@At(value="TAIL"), cancellable = true, remap = false)
 	private static void shouldShowManaBar(Player player, CallbackInfoReturnable<Boolean> cir) {
 		if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ModifiableItem) {
-			cir.setReturnValue(ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.CASTING.getId()) > 0);
+			cir.setReturnValue(ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.CASTING.getId()) + ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.ARCANE) > 0);
 		}
 		else if (player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ModifiableItem) {
-			cir.setReturnValue(ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.OFF_HAND), CCModifiers.CASTING.getId()) > 0);
+			cir.setReturnValue(ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.OFF_HAND), CCModifiers.CASTING.getId()) + ModifierUtil.getModifierLevel(player.getItemInHand(InteractionHand.OFF_HAND), CCModifiers.ARCANE) > 0);
 		}
 	}
 }

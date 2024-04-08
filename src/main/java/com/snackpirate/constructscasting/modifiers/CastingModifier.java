@@ -1,26 +1,24 @@
 package com.snackpirate.constructscasting.modifiers;
 
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
+import io.redspace.ironsspellbooks.api.spells.SpellData;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.player.ClientMagicData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
-
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.TinkerHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import io.redspace.ironsspellbooks.api.spells.SpellData;
-import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
-import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.player.ClientMagicData;
-
-public class CastingModifier extends Modifier implements GeneralInteractionModifierHook {
+public class CastingModifier extends NoLevelsModifier implements GeneralInteractionModifierHook {
 	@Override
 	protected void registerHooks(ModifierHookMap.Builder builder) {
 		builder.addHook(this, TinkerHooks.GENERAL_INTERACT);

@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.materials;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
+import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
@@ -9,6 +10,7 @@ import slimeknights.tconstruct.library.client.data.material.AbstractMaterialRend
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
+import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
@@ -49,6 +51,22 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		public String getName() {
 			return "Construct's Casting Material Stats";
+		}
+	}
+	public static class CCMaterialTraits extends AbstractMaterialTraitDataProvider {
+
+		public CCMaterialTraits(DataGenerator gen, AbstractMaterialDataProvider materials) {
+			super(gen, materials);
+		}
+
+		@Override
+		protected void addMaterialTraits() {
+			addDefaultTraits(arcanium, CCModifiers.ARCANE);
+		}
+
+		@Override
+		public String getName() {
+			return "Construct's Casting Material Traits";
 		}
 	}
 

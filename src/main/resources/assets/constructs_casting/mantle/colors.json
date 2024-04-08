@@ -1,0 +1,13 @@
+{
+  "modifier.constructs_casting": {
+    "__tool_abilities__": null,
+    "casting": "#54fcfc",
+
+    "__traits__": null,
+    "arcane": "#f1cdfa"
+  },
+  "material.constructs_casting": {
+    "__tier_3__": null,
+    "arcanium":"#adc6f5"
+  }
+}
