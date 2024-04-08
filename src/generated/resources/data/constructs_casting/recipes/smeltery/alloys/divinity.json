@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 90,
+      "tag": "forge:molten_gold"
+    },
+    {
+      "amount": 100,
+      "tag": "forge:molten_amethyst"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:liquid_divinity"
+  },
+  "temperature": 0
+}

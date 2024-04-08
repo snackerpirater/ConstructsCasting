@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:divine_pearl"
+  },
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:liquid_divinity"
+  },
+  "temperature": 700,
+  "time": 5
+}

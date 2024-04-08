@@ -69,7 +69,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemTags.create(IronsSpellbooks.id("inscribed_rune")))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/casting"));
 		//essence making
-		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), CCFluids.arcaneEssence.get(), 250).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), new FluidStack(CCFluids.arcaneEssence.get(), 250), 100, 5).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
 		essenceRecipe(CCFluids.fireEssence,      new FluidStack(TinkerFluids.blazingBlood   .get(),100), "fire_essence"     );
 		essenceRecipe(CCFluids.iceEssence,       new FluidStack(TinkerFluids.powderedSnow   .get(),250), "ice_essence"      );
 		essenceRecipe(CCFluids.lightningEssence, new FluidStack(CCFluids.liquidLightning    .get(),250), "lightning_essence");
@@ -91,7 +91,9 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(Items.POTATO), new FluidStack(CCFluids.potatoStew.get(), 50), 100, 8).save(consumer, ConstructsCasting.id(meltingFolder + "potato_stew"));
 		MeltingRecipeBuilder.melting(Ingredient.of(Items.POISONOUS_POTATO), new FluidStack(CCFluids.poisonousPotatoStew.get(), 50), 100, 8).save(consumer, ConstructsCasting.id(meltingFolder + "poisonous_potato_stew"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.poisonousPotatoStew.get(), 50), 100).addInput(CCFluids.potatoStew.get(), 40).addInput(TinkerFluids.venom.get(), 10).save(consumer, ConstructsCasting.id(alloyFolder + "poisonous_potato_stew"));
-
+		//divinity
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.DIVINE_PEARL.get()), new FluidStack(CCFluids.liquidDivinity.get(), 250), 700, 5).save(consumer, ConstructsCasting.id(meltingFolder + "divinity"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.liquidDivinity.get(), 250)).addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT).addInput(TinkerFluids.moltenAmethyst.getForgeTag(), FluidValues.GEM).save(consumer, ConstructsCasting.id(alloyFolder + "divinity"));
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));

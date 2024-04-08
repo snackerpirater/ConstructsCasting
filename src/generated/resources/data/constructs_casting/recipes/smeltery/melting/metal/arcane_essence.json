@@ -7,6 +7,6 @@
     "amount": 250,
     "fluid": "constructs_casting:arcane_essence"
   },
-  "temperature": 0,
-  "time": 47
+  "temperature": 100,
+  "time": 5
 }
