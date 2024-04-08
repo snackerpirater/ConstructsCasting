@@ -45,7 +45,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialStats() {
-			addMaterialStats(arcanium, new HeadMaterialStats(100, 10.0f, Tiers.DIAMOND, 2.0f), new HandleMaterialStats(1.0f, 1.0f, 1.0f, 1.0f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(arcanium, new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f), new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f), ExtraMaterialStats.DEFAULT);
 		}
 
 		@Override
