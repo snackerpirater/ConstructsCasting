@@ -18,7 +18,7 @@ public class CCLang extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
-		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +50 max mana per part.");
+		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
 
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-rific!", "Grants +25 max mana.");

@@ -30,7 +30,7 @@
   "item.constructs_casting.potato_stew": "Potato Stew",
   "item.constructs_casting.potato_stew_bucket": "Potato Stew Bucket",
   "material.constructs_casting.arcanium": "Arcanium",
-  "material.constructs_casting.arcanium.encyclopedia": "Gives the wielder +50 max mana per part.",
+  "material.constructs_casting.arcanium.encyclopedia": "Gives the wielder +25 max mana per part.",
   "material.constructs_casting.arcanium.flavor": "Yer a wizard, Harry!",
   "modifier.constructs_casting.arcane": "Arcane",
   "modifier.constructs_casting.arcane.description": "Grants +25 max mana.",
