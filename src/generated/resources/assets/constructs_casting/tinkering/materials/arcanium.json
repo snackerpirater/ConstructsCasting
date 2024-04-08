@@ -1,0 +1,52 @@
+{
+  "color": "FF0000",
+  "fallbacks": [
+    "metal"
+  ],
+  "generator": {
+    "ignoreMaterialStats": false,
+    "supportedStats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:extra",
+      "tconstruct:repair_kit"
+    ],
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "color": "FF000000",
+          "grey": 0
+        },
+        {
+          "color": "FFC8C8C8",
+          "grey": 63,
+          "path": "constructs_casting:item/materials/generator/arcanium_border"
+        },
+        {
+          "grey": 102,
+          "path": "constructs_casting:item/materials/generator/arcanium_border"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 140,
+          "path": "constructs_casting:item/materials/generator/arcanium"
+        },
+        {
+          "grey": 178,
+          "path": "constructs_casting:item/materials/generator/arcanium"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 216,
+          "path": "constructs_casting:item/materials/generator/arcanium_highlight"
+        },
+        {
+          "grey": 255,
+          "path": "constructs_casting:item/materials/generator/arcanium_highlight"
+        }
+      ]
+    }
+  },
+  "luminosity": 0
+}

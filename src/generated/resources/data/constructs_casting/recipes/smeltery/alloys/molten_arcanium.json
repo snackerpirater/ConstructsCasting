@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 1000,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 90,
+      "tag": "constructs_casting:arcanium_base"
+    }
+  ],
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_arcanium"
+  },
+  "temperature": 800
+}

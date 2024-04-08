@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "irons_spellbooks:blank_rune"
+  },
+  "cast_consumed": true,
+  "cooling_time": 94,
+  "fluid": {
+    "amount": 1000,
+    "fluid": "constructs_casting:blood_essence"
+  },
+  "result": "irons_spellbooks:blood_rune"
+}

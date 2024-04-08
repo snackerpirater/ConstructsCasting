@@ -1,0 +1,6 @@
+{
+  "parent": "forge:item/bucket_drip",
+  "flip_gas": false,
+  "fluid": "constructs_casting:arcane_essence",
+  "loader": "tconstruct:fluid_container"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:arcane_ingot"
+    },
+    {
+      "item": "irons_spellbooks:cinder_essence"
+    },
+    {
+      "item": "irons_spellbooks:arcane_ingot"
+    },
+    {
+      "tag": "irons_spellbooks:inscribed_rune"
+    },
+    {
+      "tag": "irons_spellbooks:inscribed_rune"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:casting",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/staffs"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:liquid_divinity"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:holy_essence"
+  },
+  "temperature": 700
+}

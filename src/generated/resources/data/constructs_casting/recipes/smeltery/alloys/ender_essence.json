@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 250,
+      "fluid": "tconstruct:molten_ender"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:ender_essence"
+  },
+  "temperature": 700
+}

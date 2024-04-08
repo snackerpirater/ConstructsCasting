@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:composable",
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:max_mana",
+      "each_level": 25.0,
+      "operation": "addition",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "unique": "constructs_casting.modifier.arcane"
+    }
+  ],
+  "tooltip_display": "always"
+}

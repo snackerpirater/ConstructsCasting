@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:arcane_ingot"
+  },
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_arcanium"
+  },
+  "temperature": 800,
+  "time": 30
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "minecraft:poisonous_potato"
+  },
+  "result": {
+    "amount": 50,
+    "fluid": "constructs_casting:poisonous_potato_stew"
+  },
+  "temperature": 100,
+  "time": 8
+}
