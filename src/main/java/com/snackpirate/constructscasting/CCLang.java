@@ -41,6 +41,7 @@ public class CCLang extends LanguageProvider {
 
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
+//		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

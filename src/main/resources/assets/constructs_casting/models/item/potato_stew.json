@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "minecraft:item/mushroom_stew"
+    "layer0": "constructs_casting:item/potato_stew"
   }
 }
