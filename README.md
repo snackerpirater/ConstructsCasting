@@ -1,5 +1,4 @@
 Plans for this mod:
-- Ink making
-- Spell-related upgrades for TiC Staffs
+- Spell-related upgrades for TiC Staffs (Spell power upgrades, the like)
 - Higher-tier magic-related tool materials
 - Bitumancy (Slime magic)
