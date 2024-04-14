@@ -47,7 +47,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 			}
 		}
 
-		var castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
+		String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
 
 		if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level, player, selectionOption.getCastSource(), true, castingSlot)) {
 			if (spellData.getSpell().getCastType().holdToCast()) {

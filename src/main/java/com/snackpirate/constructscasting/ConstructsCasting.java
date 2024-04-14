@@ -6,6 +6,7 @@ import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.recipe.CCRecipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +35,7 @@ public class ConstructsCasting {
         CCModifiers.MODIFIERS.register(modEventBus);
         CCFluids.FLUIDS.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
+        CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
     }
     public static ResourceLocation id(String name) {
         return new ResourceLocation(MOD_ID, name);
@@ -58,6 +60,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCFluids.CCFluidTextures(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.CCFluidTags(gen, MOD_ID, event.getExistingFileHelper()));
+        gen.addProvider(server, new CCFluids.CCFluidTags.CCFluidTooltipProvider(gen, MOD_ID));
         gen.addProvider(server, new CCRecipes(gen));
         gen.addProvider(server, new CCLang(gen, ConstructsCasting.MOD_ID, "en_us"));
     }

@@ -3,6 +3,9 @@
     "__tool_abilities__": null,
     "casting": "#54fcfc",
 
+    "__tool_upgrades__": null,
+    "mana_upgrade": "#f1cdfa",
+
     "__traits__": null,
     "arcane": "#f1cdfa"
   },

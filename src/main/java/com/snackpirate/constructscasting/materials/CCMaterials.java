@@ -19,6 +19,15 @@ import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 public class CCMaterials extends AbstractMaterialDataProvider {
 
 	public static final MaterialId arcanium = createMaterial("arcanium"); //more materials later i guess
+	public static final MaterialId fireMetal = createMaterial("fire_metal"); //more materials later i guess
+	public static final MaterialId iceMetal = createMaterial("ice_metal"); //more materials later i guess
+	public static final MaterialId fulminite = createMaterial("fulminite"); //more materials later i guess
+	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum"); //more materials later i guess
+	public static final MaterialId absolite = createMaterial("absolite"); //more materials later i guess
+	public static final MaterialId necromantite = createMaterial("necromantite"); //more materials later i guess
+	public static final MaterialId spectrine = createMaterial("spectrine"); //more materials later i guess
+	public static final MaterialId natureMetal = createMaterial("nature_metal"); //more materials later i guess
+	public static final MaterialId lovecraftium = createMaterial("lovecraftium"); //more materials later i guess
 	public CCMaterials(DataGenerator gen) {
 		super(gen);
 	}

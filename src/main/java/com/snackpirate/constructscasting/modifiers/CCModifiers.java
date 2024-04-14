@@ -18,6 +18,8 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
+
+	public static final ModifierId MANA_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
 	public CCModifiers(DataGenerator generator) {
 		super(generator);
 	}
@@ -25,6 +27,9 @@ public class CCModifiers extends AbstractModifierProvider {
 	@Override
 	protected void addModifiers() {
 		buildModifier(ARCANE).levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).uniqueFrom(ARCANE).eachLevel(25f)).build();
+		//incremental
+		buildModifier(MANA_UPGRADE).levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).uniqueFrom(MANA_UPGRADE).eachLevel(80f)).build();
+
 	}
 
 	@Override
