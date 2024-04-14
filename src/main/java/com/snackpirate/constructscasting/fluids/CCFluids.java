@@ -15,7 +15,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.mantle.datagen.MantleTags;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.fluid.texture.AbstractFluidTextureProvider;
 import slimeknights.mantle.fluid.tooltip.AbstractFluidTooltipProvider;
@@ -56,13 +55,13 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> legendaryInk = FLUIDS.register("legendary_ink").type(cool().temperature(100)).tagName("ink/legendary").bucket().unplacable();
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
-		switch (rarity) {
-			case UNCOMMON: return uncommonInk;
-			case RARE: return rareInk;
-			case EPIC: return epicInk;
-			case LEGENDARY: return legendaryInk;
-			default: return commonInk;
-		}
+		return switch (rarity) {
+			case UNCOMMON -> uncommonInk;
+			case RARE -> rareInk;
+			case EPIC -> epicInk;
+			case LEGENDARY -> legendaryInk;
+			default -> commonInk;
+		};
 	}
 	public static FluidObject<UnplaceableFluid> essence(String name) {
 		return FLUIDS.register(name)
