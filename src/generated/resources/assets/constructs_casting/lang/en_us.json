@@ -18,7 +18,7 @@
   "fluid_type.constructs_casting.potato_stew": "Potato Stew",
   "fluid_type.constructs_casting.rare_ink": "Rare Ink",
   "fluid_type.constructs_casting.uncommon_ink": "Uncommon Ink",
-  "gui.constructs_casting.bottle": "Bottles",
+  "gui.constructs_casting.fluid.bottle": "%s Bottles",
   "item.constructs_casting.arcane_essence_bucket": "Arcane Essence Bucket",
   "item.constructs_casting.blood_essence_bucket": "Blood Essence Bucket",
   "item.constructs_casting.common_ink_bucket": "Common Ink Bucket",
@@ -50,6 +50,6 @@
   "modifier.constructs_casting.casting.description": "Allows the tool to cast spells on right click.",
   "modifier.constructs_casting.casting.flavor": "Not for fish, unfortunately. ",
   "modifier.constructs_casting.mana_upgrade": "Mana Upgrade",
-  "modifier.constructs_casting.mana_upgrade.description": "Grants +50 max mana.",
+  "modifier.constructs_casting.mana_upgrade.description": "Grants +80 max mana.",
   "modifier.constructs_casting.mana_upgrade.flavor": "Mana-rific!"
 }

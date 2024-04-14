@@ -22,7 +22,8 @@ public class CCLang extends LanguageProvider {
 
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
-		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +50 max mana.");
+		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
+
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
 		addFluid(CCFluids.iceEssence, "Ice Essence");
@@ -50,7 +51,7 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
-		add("gui.constructs_casting.fluid.bottle", "Bottles");
+		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

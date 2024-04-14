@@ -18,22 +18,22 @@ import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
-	public static final MaterialId arcanium = createMaterial("arcanium"); //more materials later i guess
-	public static final MaterialId fireMetal = createMaterial("fire_metal"); //more materials later i guess
-	public static final MaterialId iceMetal = createMaterial("ice_metal"); //more materials later i guess
-	public static final MaterialId fulminite = createMaterial("fulminite"); //more materials later i guess
-	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum"); //more materials later i guess
-	public static final MaterialId absolite = createMaterial("absolite"); //more materials later i guess
-	public static final MaterialId necromantite = createMaterial("necromantite"); //more materials later i guess
-	public static final MaterialId spectrine = createMaterial("spectrine"); //more materials later i guess
-	public static final MaterialId natureMetal = createMaterial("nature_metal"); //more materials later i guess
-	public static final MaterialId lovecraftium = createMaterial("lovecraftium"); //more materials later i guess
+	public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
+	public static final MaterialId ardite = createMaterial("ardite"); //trait: infernal / fiery?
+	public static final MaterialId kryosteel = createMaterial("kryosteel"); //trait: cryonic / freezing?
+	public static final MaterialId fulminite = createMaterial("fulminite"); //trait: fulminous / chance to lightning?
+	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum"); //trait: cosmic / enderference?
+	public static final MaterialId sanctinium = createMaterial("sanctinium"); //trait: divine  / smite?
+	public static final MaterialId necromantium = createMaterial("necromantium"); //trait: sanguine / the wither bone one
+	public static final MaterialId spectrine = createMaterial("spectrine"); //trait: evocative / killager?
+	public static final MaterialId phygentum = createMaterial("phygentum"); //trait: blighted /
+	public static final MaterialId abominite = createMaterial("abominite"); //trait: lovecraftian /
 	public CCMaterials(DataGenerator gen) {
 		super(gen);
 	}
 
 	private static MaterialId createMaterial(String name) {
-		return new MaterialId(new ResourceLocation(ConstructsCasting.MOD_ID, name));
+		return new MaterialId(ConstructsCasting.id(name));
 	}
 
 	@Override

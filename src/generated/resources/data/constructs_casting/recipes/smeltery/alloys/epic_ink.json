@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 750,
+      "fluid": "constructs_casting:rare_ink"
+    },
+    {
+      "amount": 90,
+      "tag": "forge:molten_gold"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:epic_ink"
+  },
+  "temperature": 300
+}

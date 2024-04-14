@@ -1,0 +1,9 @@
+{
+  "tag": "constructs_casting:bottle_tooltip",
+  "units": [
+    {
+      "key": "gui.constructs_casting.fluid.bottle",
+      "needed": 250
+    }
+  ]
+}

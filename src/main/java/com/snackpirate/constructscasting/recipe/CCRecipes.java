@@ -124,7 +124,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.INK_UNCOMMON.get()) .setFluid(CCFluids.uncommonInk.get(),  250).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_uncommon"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.INK_RARE.get())     .setFluid(CCFluids.rareInk.get(),      250).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_rare"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.INK_EPIC.get())     .setFluid(CCFluids.epicInk.get(),      250).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_epic"));
+
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.INK_LEGENDARY.get()).setFluid(CCFluids.legendaryInk.get(), 250).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_legendary"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.uncommonInk.get(),  250), 300).addInput(new FluidStack(CCFluids.commonInk.get(),   750)).addInput(TinkerFluids.moltenCopper  .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "uncommon_ink"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.rareInk.get(),      250), 300).addInput(new FluidStack(CCFluids.uncommonInk.get(), 750)).addInput(TinkerFluids.moltenIron    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(new FluidStack(CCFluids.rareInk.get(),     750)).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.legendaryInk.get(), 250), 300).addInput(new FluidStack(CCFluids.epicInk.get(),     750)).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));
