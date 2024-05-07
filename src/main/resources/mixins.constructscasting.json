@@ -4,10 +4,12 @@
   "refmap": "constructscasting.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "UtilsMixin"
   ],
   "client": [
     "ActiveSpellOverlayMixin",
-    "ManaBarOverlayMixin"
+    "ManaBarOverlayMixin",
+    "UtilsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

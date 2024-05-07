@@ -73,6 +73,8 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 
 	@Override
 	public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
+		GeneralInteractionModifierHook.finishUsing(tool);
 		Utils.releaseUsingHelper(entity, tool.getItem().getDefaultInstance(), timeLeft);
+
 	}
 }

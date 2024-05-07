@@ -4,6 +4,8 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.spells.CCSpells;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -21,8 +23,20 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
 
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows the tool to cast spells on right click.");
+		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
+		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
+
+		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
+		addModifier(CCModifiers.FIRE_UPGRADE, "Fire Upgrade", "Hot hot hot!", "Grants +5% Fire Spell Power.");
+		addModifier(CCModifiers.ICE_UPGRADE, "Ice Upgrade", "Ice ice baby!", "Grants +5% Ice Spell Power.");
+		addModifier(CCModifiers.LIGHTNING_UPGRADE, "Lightning Upgrade", "Electrifying!", "Grants +5% Lightning Spell Power.");
+		addModifier(CCModifiers.ENDER_UPGRADE, "Ender Upgrade", "Space-y!", "Grants +5% Ender Spell Power.");
+		addModifier(CCModifiers.HOLY_UPGRADE, "Holy Upgrade", "Great heavens!", "Grants +5% Holy Spell Power.");
+		addModifier(CCModifiers.BLOOD_UPGRADE, "Blood Upgrade", "Bloody hell!", "Grants +5% Blood Spell Power.");
+		addModifier(CCModifiers.EVOCATION_UPGRADE, "Evocation Upgrade", "Hrmmm?", "Grants +5% Evocation Spell Power.");
+		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
@@ -49,6 +63,10 @@ public class CCLang extends LanguageProvider {
 
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
+
+		addItem(CCItems.wizardslimeBall, "Wizardslime Ball");
+		add("school.constructs_casting.slime", "Slime");
+		addSpell(CCSpells.SLIMEBALL_SPELL.get(), "Slimeball", "Lob a random slimeball, which applies status effects based on the type of slime.");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
@@ -73,5 +91,9 @@ public class CCLang extends LanguageProvider {
 	public void addFluid(FluidObject<?> fluid, String name) {
 		add("fluid_type.constructs_casting." + fluid.getId().getPath(), name);
 		add("item.constructs_casting." + fluid.getId().getPath() + "_bucket", name + " Bucket");
+	}
+	public void addSpell(AbstractSpell spell, String name, String guide) {
+		add("spell." + spell.getSpellId().replace(':', '.'), name);
+		add("spell." + spell.getSpellId().replace(':', '.') + ".guide", guide);
 	}
 }

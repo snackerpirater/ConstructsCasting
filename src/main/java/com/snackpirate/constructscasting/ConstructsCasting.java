@@ -1,12 +1,16 @@
 package com.snackpirate.constructscasting;
 
 import com.mojang.logging.LogUtils;
+import com.snackpirate.constructscasting.entity.CCEntities;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
+import com.snackpirate.constructscasting.spells.CCAttributes;
+import com.snackpirate.constructscasting.spells.CCSchools;
+import com.snackpirate.constructscasting.spells.CCSpells;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +40,10 @@ public class ConstructsCasting {
         CCFluids.FLUIDS.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
         CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        CCAttributes.register(modEventBus);
+        CCSchools.register(modEventBus);
+        CCEntities.register(modEventBus);
+        CCSpells.register(modEventBus);
     }
     public static ResourceLocation id(String name) {
         return new ResourceLocation(MOD_ID, name);

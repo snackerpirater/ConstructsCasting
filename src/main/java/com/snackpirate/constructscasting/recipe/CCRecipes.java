@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,6 +30,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
@@ -78,19 +80,25 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemTags.create(IronsSpellbooks.id("inscribed_rune")))
 				.addInput(ItemTags.create(IronsSpellbooks.id("inscribed_rune")))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/casting"));
+		//swiftcasting
+		ModifierRecipeBuilder.modifier(CCModifiers.SWIFTCASTING).allowCrystal().exactLevel(1).setSlots(SlotType.ABILITY, 1).setTools(TinkerTags.Items.STAFFS)
+				.addInput(ItemRegistry.MAGIC_CLOTH.get())
+				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
+				.addInput(ItemRegistry.MAGIC_CLOTH.get())
+				.addInput(Items.RABBIT_FOOT)
+				.addInput(Items.RABBIT_FOOT)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/swiftcasting"));
 		//methodize?
-		IncrementalModifierRecipeBuilder.modifier(CCModifiers.MANA_UPGRADE)
-				.setInput(ItemRegistry.MANA_RUNE.get(), 1, 16)
-				.setSlots(SlotType.UPGRADE, 1)
-				.allowCrystal()
-				.setMaxLevel(3)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/mana_upgrade_rune"));
-		ModifierRecipeBuilder.modifier(CCModifiers.MANA_UPGRADE)
-				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
-				.setSlots(SlotType.UPGRADE, 1)
-				.allowCrystal()
-				.setMaxLevel(3)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/mana_upgrade_orb"));
+		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
+		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
+		incrementalModifierRecipe(CCModifiers.FIRE_UPGRADE,      ItemRegistry.FIRE_RUNE.get(),      ItemRegistry.FIRE_UPGRADE_ORB.get(),      "fire_upgrade");
+		incrementalModifierRecipe(CCModifiers.ICE_UPGRADE,       ItemRegistry.ICE_RUNE.get(),       ItemRegistry.ICE_UPGRADE_ORB.get(),       "ice_upgrade");
+		incrementalModifierRecipe(CCModifiers.LIGHTNING_UPGRADE, ItemRegistry.LIGHTNING_RUNE.get(), ItemRegistry.LIGHTNING_UPGRADE_ORB.get(), "lightning_upgrade");
+		incrementalModifierRecipe(CCModifiers.ENDER_UPGRADE,     ItemRegistry.ENDER_RUNE.get(),     ItemRegistry.ENDER_UPGRADE_ORB.get(),     "ender_upgrade");
+		incrementalModifierRecipe(CCModifiers.HOLY_UPGRADE,      ItemRegistry.HOLY_RUNE.get(),      ItemRegistry.HOLY_UPGRADE_ORB.get(),      "holy_upgrade");
+		incrementalModifierRecipe(CCModifiers.BLOOD_UPGRADE,     ItemRegistry.BLOOD_RUNE.get(),     ItemRegistry.BLOOD_UPGRADE_ORB.get(),     "blood_upgrade");
+		incrementalModifierRecipe(CCModifiers.EVOCATION_UPGRADE, ItemRegistry.EVOCATION_RUNE.get(), ItemRegistry.EVOCATION_UPGRADE_ORB.get(), "evocation_upgrade");
+		incrementalModifierRecipe(CCModifiers.NATURE_UPGRADE,    ItemRegistry.NATURE_RUNE.get(),    ItemRegistry.NATURE_UPGRADE_ORB.get(),    "nature_upgrade");
 		//essence making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), new FluidStack(CCFluids.arcaneEssence.get(), 250), 100, 5).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
 		essenceRecipe(CCFluids.fireEssence,      new FluidStack(TinkerFluids.blazingBlood   .get(),100), "fire_essence"     );
@@ -130,11 +138,28 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.rareInk.get(),      250), 300).addInput(new FluidStack(CCFluids.uncommonInk.get(), 750)).addInput(TinkerFluids.moltenIron    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(new FluidStack(CCFluids.rareInk.get(),     750)).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.legendaryInk.get(), 250), 300).addInput(new FluidStack(CCFluids.epicInk.get(),     750)).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
+		//slime magic
+
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));
 	}
 	public static void essenceRecipe(FluidObject<?> essence, FluidStack alloyIngredient, String recipeId) {
 		AlloyRecipeBuilder.alloy(new FluidStack(essence.get(), 250), 700).addInput(CCFluids.arcaneEssence.get(), 250).addInput(alloyIngredient).save(consumer, ConstructsCasting.id(alloyFolder + recipeId));
+	}
+	public static void incrementalModifierRecipe(ModifierId modifier, ItemLike runeItem, ItemLike orbItem, String id) {
+		IncrementalModifierRecipeBuilder.modifier(modifier)
+				.setInput(runeItem, 1, 16)
+				.setSlots(SlotType.UPGRADE, 1)
+				.allowCrystal()
+				.setMaxLevel(3)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune"));
+		ModifierRecipeBuilder.modifier(modifier)
+				.addInput(orbItem)
+				.setSlots(SlotType.UPGRADE, 1)
+				.allowCrystal()
+				.setMaxLevel(3)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
+
 	}
 }
