@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.shared.TinkerCommons;
-
 public class SlimeballProjectileRenderer extends EntityRenderer<SlimeballProjectile> {
 	private final ItemRenderer itemRenderer;
 	protected SlimeballProjectileRenderer(EntityRendererProvider.Context pContext) {

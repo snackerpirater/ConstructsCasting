@@ -86,5 +86,6 @@
   "modifier.constructs_casting.swiftcasting.flavor": "Run 'n' Gun!",
   "school.constructs_casting.slime": "Slime",
   "spell.constructs_casting.slimeball": "Slimeball",
-  "spell.constructs_casting.slimeball.guide": "Lob a random slimeball, which applies status effects based on the type of slime."
+  "spell.constructs_casting.slimeball.guide": "Lob a random slimeball, which applies status effects based on the type of slime.",
+  "ui.constructs_casting.max_bounces": "%s Bounces"
 }

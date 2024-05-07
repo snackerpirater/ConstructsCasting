@@ -25,7 +25,8 @@ public class SlimeballSpell extends AbstractSpell {
 
 	@Override
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-		return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)));
+		return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
+				Component.translatable("ui.constructs_casting.max_bounces", getMaxBounces(spellLevel)));
 	}
 	public SlimeballSpell() {
 		this.manaCostPerLevel = 2;
@@ -56,7 +57,7 @@ public class SlimeballSpell extends AbstractSpell {
 
 	@Override
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-		SlimeballProjectile slimeball = new SlimeballProjectile(level, entity);
+		SlimeballProjectile slimeball = new SlimeballProjectile(level, entity, spellLevel);
 		slimeball.setPos(entity.position().add(0, entity.getEyeHeight() - slimeball.getBoundingBox().getYsize() * .5f, 0));
 		slimeball.shoot(entity.getLookAngle());
 		slimeball.setDamage(getDamage(spellLevel, entity));
@@ -66,10 +67,11 @@ public class SlimeballSpell extends AbstractSpell {
 
 	@Override
 	public int getSpellCooldown() {
-		return 20;
+		return 15;
 	}
 
-	private float getDamage(int spellLevel, LivingEntity entity) {
+	public float getDamage(int spellLevel, LivingEntity entity) {
 		return getSpellPower(spellLevel, entity) * .5f;
 	}
+	public static int getMaxBounces(int spellLevel) {return spellLevel;}
 }

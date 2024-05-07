@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.entity;
 
 import com.snackpirate.constructscasting.spells.CCSpells;
+import com.snackpirate.constructscasting.spells.SlimeballSpell;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
@@ -22,14 +23,19 @@ import java.util.Optional;
 
 public class SlimeballProjectile extends AbstractMagicProjectile {
 	private final SlimeType slimeType;
+	private int bounces;
+	private int maxBounces;
 	public SlimeballProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
+		//TODO: Wizardslime slime type, might have to create own class with slime types and their specialties? Would also allow for other types of "slime"
 		SlimeType[] slimeTypes = {SlimeType.EARTH, SlimeType.SKY, SlimeType.ICHOR, SlimeType.ENDER};
 		this.slimeType = slimeTypes[Mth.randomBetweenInclusive(this.random, 0, 3)];
-
+		this.bounces = 0;
+		this.maxBounces = 0;
 	}
-	public SlimeballProjectile(Level levelIn, Entity shooter) {
+	public SlimeballProjectile(Level levelIn, Entity shooter, int spellLevel) {
 		this(CCEntities.SLIMEBALL_PROJECTILE.get(), levelIn);
+		this.maxBounces = SlimeballSpell.getMaxBounces(spellLevel);
 		setOwner(shooter);
 	}
 
@@ -39,11 +45,12 @@ public class SlimeballProjectile extends AbstractMagicProjectile {
 	@Override
 	public void impactParticles(double v, double v1, double v2) {
 		MagicManager.spawnParticles(level, ParticleTypes.ITEM_SLIME, v, v1, v2, 5, .1, .1, .1, .25, true);
+
 	}
 
 	@Override
 	public float getSpeed() {
-		return 2.25f;
+		return 1.75f;
 	}
 
 	@Override
@@ -67,7 +74,18 @@ public class SlimeballProjectile extends AbstractMagicProjectile {
 	@Override
 	protected void onHitBlock(BlockHitResult pResult) {
 		super.onHitBlock(pResult);
-		discard();
+		if (bounces < maxBounces) {
+			switch (pResult.getDirection()) {
+				case UP, DOWN -> this.setDeltaMovement(this.getDeltaMovement().x, 0-this.getDeltaMovement().y, this.getDeltaMovement().z);
+				case EAST, WEST -> this.setDeltaMovement(0-this.getDeltaMovement().x, this.getDeltaMovement().y, this.getDeltaMovement().z);
+				case NORTH, SOUTH -> this.setDeltaMovement(this.getDeltaMovement().x, this.getDeltaMovement().y, 0-this.getDeltaMovement().z);
+			}
+			this.setDeltaMovement(this.getDeltaMovement().scale(0.8));
+			bounces++;
+		}
+		else {
+			discard();
+		}
 	}
 	public SlimeType getSlimeType() {
 		return slimeType;

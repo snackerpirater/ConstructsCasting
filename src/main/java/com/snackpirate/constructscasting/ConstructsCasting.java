@@ -27,6 +27,7 @@ import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 @Mod(ConstructsCasting.MOD_ID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ConstructsCasting {
+    //TODO: creative tab
 
     public static final String MOD_ID = "constructs_casting";
     public static final Logger LOGGER = LogUtils.getLogger();

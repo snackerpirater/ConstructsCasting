@@ -24,6 +24,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 		builder.addHook(this, TinkerHooks.GENERAL_INTERACT);
 	}
 	//copy staff code? copy staff code.
+	//TODO: Fix the bug that causes every OTHER continuous cast to cease
 	@Override
 	public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
 		if (interactionSource == InteractionSource.LEFT_CLICK) return InteractionResult.FAIL;
