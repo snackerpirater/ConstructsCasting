@@ -12,9 +12,9 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvide
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
-import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
@@ -54,7 +54,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialStats() {
-			addMaterialStats(arcanium, new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f), new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(arcanium, new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f), new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f), StatlessMaterialStats.BINDING);
 		}
 
 		@Override

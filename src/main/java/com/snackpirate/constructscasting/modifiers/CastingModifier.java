@@ -11,17 +11,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
-import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class CastingModifier extends NoLevelsModifier implements GeneralInteractionModifierHook {
 	@Override
-	protected void registerHooks(ModifierHookMap.Builder builder) {
-		builder.addHook(this, TinkerHooks.GENERAL_INTERACT);
+	protected void registerHooks(ModuleHookMap.Builder builder) {
+		builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
 	}
 	//copy staff code? copy staff code.
 	//TODO: Fix the bug that causes every OTHER continuous cast to cease
@@ -39,7 +39,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 		if (player.level.isClientSide()) {
 			if (ClientMagicData.isCasting()) {
 				return InteractionResult.CONSUME;
-			} else if (ClientMagicData.getPlayerMana() < spellData.getSpell().getManaCost(spellData.getLevel(), player)
+			} else if (ClientMagicData.getPlayerMana() < spellData.getSpell().getManaCost(spellData.getLevel())
 					|| ClientMagicData.getCooldowns().isOnCooldown(spellData.getSpell())
 					|| !ClientMagicData.getSyncedSpellData(player).isSpellLearned(spellData.getSpell())) {
 				return InteractionResult.PASS;

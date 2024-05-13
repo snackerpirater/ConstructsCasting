@@ -4,7 +4,6 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -64,9 +63,7 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
 
-		addItem(CCItems.wizardslimeBall, "Wizardslime Ball");
 		add("school.constructs_casting.slime", "Slime");
-		addSpell(CCSpells.SLIMEBALL_SPELL.get(), "Slimeball", "Lob a random slimeball, which applies status effects based on the type of slime.");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
