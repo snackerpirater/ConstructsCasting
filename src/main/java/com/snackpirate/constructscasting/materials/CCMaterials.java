@@ -3,7 +3,6 @@ package com.snackpirate.constructscasting.materials;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialRenderInfoProvider;
@@ -14,6 +13,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataPr
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
@@ -54,7 +54,16 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialStats() {
-			addMaterialStats(arcanium, new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f), new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f), StatlessMaterialStats.BINDING);
+			addMaterialStats(arcanium,
+					new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f),
+					new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f),
+					StatlessMaterialStats.BINDING,
+					StatlessMaterialStats.MAILLE,
+					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 288, 2, 2, 0.1f),
+					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 428, 6, 2, 0.1f),
+					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 400, 5, 2, 0.1f),
+					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 344, 2, 2, 0.1f),
+					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f));
 		}
 
 		@Override

@@ -41,7 +41,6 @@
   "item.constructs_casting.potato_stew_bucket": "Potato Stew Bucket",
   "item.constructs_casting.rare_ink_bucket": "Rare Ink Bucket",
   "item.constructs_casting.uncommon_ink_bucket": "Uncommon Ink Bucket",
-  "item.constructs_casting.wizardslime_ball": "Wizardslime Ball",
   "material.constructs_casting.arcanium": "Arcanium",
   "material.constructs_casting.arcanium.encyclopedia": "Gives the wielder +25 max mana per part.",
   "material.constructs_casting.arcanium.flavor": "Yer a wizard, Harry!",
@@ -84,8 +83,5 @@
   "modifier.constructs_casting.swiftcasting": "Swiftcasting",
   "modifier.constructs_casting.swiftcasting.description": "Allows the user to retain their full movement speed while casting spells.",
   "modifier.constructs_casting.swiftcasting.flavor": "Run 'n' Gun!",
-  "school.constructs_casting.slime": "Slime",
-  "spell.constructs_casting.slimeball": "Slimeball",
-  "spell.constructs_casting.slimeball.guide": "Lob a random slimeball, which applies status effects based on the type of slime.",
-  "ui.constructs_casting.max_bounces": "%s Bounces"
+  "school.constructs_casting.slime": "Slime"
 }

@@ -3,6 +3,8 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
+import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {
@@ -47,6 +50,15 @@ public class CCEvents {
 				ModifierUtil.getModifierLevel(event.getEntity().getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.SWIFTCASTING) > 0) {
 			event.getInput().leftImpulse *= 5;
 			event.getInput().forwardImpulse *= 5;
+		}
+	}
+	//if the target has the enderference effect, cancel teleportations
+	@SubscribeEvent
+	static void enderferenceAntiSpell(SpellPreCastEvent event) {
+		if (event.getEntity().hasEffect(TinkerModifiers.enderferenceEffect.get())) {
+			event.setCanceled(event.getSpellId().equals("irons_spellbooks:teleport")
+					|| event.getSpellId().equals("irons_spellbooks:blood_step")
+					|| event.getSpellId().equals("irons_spellbooks:frost_step"));
 		}
 	}
 }

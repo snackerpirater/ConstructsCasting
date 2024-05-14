@@ -17,7 +17,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 		ResourceLocation arcaniumBase = ConstructsCasting.id("item/materials/generator/arcanium");
 		ResourceLocation arcaniumBorder = ConstructsCasting.id("item/materials/generator/arcanium_border");
 		ResourceLocation arcaniumHighlight = ConstructsCasting.id("item/materials/generator/arcanium_highlight");
-		buildMaterial(CCMaterials.arcanium).meleeHarvest().ranged()
+		buildMaterial(CCMaterials.arcanium).meleeHarvest().ranged().armor().maille().repairKit()
 				.fallbacks("metal")
 				.transformer(GreyToSpriteTransformer.builderFromBlack()
 						.addTexture( 63, arcaniumBorder,    0xFFC8C8C8).addTexture(102, arcaniumBorder)
