@@ -20,8 +20,11 @@ public class CCLang extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
+		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals +10% damage per part against magic-wielding enemies.");
+		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "", "");
+		addMaterial(CCMaterials.arcaneHide, "Arcane Hide", "", "");
 
-		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately. ", "Allows the tool to cast spells on right click.");
+		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
@@ -36,6 +39,9 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.BLOOD_UPGRADE, "Blood Upgrade", "Bloody hell!", "Grants +5% Blood Spell Power.");
 		addModifier(CCModifiers.EVOCATION_UPGRADE, "Evocation Upgrade", "Hrmmm?", "Grants +5% Evocation Spell Power.");
 		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
+
+		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +3 damage against magic users.");
+		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
@@ -53,6 +59,7 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.potatoStew, "Potato Stew");
 		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
 		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");
+		addFluid(CCFluids.moltenExilite, "Molten Exilite");
 
 		addFluid(CCFluids.commonInk, "Common Ink");
 		addFluid(CCFluids.uncommonInk, "Uncommon Ink");
@@ -62,6 +69,9 @@ public class CCLang extends LanguageProvider {
 
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
+
+		addItem(CCItems.exiliteIngot, "Exilite Ingot");
+		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 
 		add("school.constructs_casting.slime", "Slime");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");

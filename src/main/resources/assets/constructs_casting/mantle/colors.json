@@ -17,10 +17,12 @@
     "cooldown_upgrade": "#dbbbcd",
 
     "__traits__": null,
-    "arcane": "#f1cdfa"
+    "arcane": "#f1cdfa",
+    "antimagic": "#5a5b5c"
   },
   "material.constructs_casting": {
     "__tier_3__": null,
-    "arcanium":"#adc6f5"
+    "arcanium":"#adc6f5",
+    "exilite": "#5a5b5c"
   }
 }

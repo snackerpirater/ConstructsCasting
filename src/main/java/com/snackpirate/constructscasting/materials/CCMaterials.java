@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpri
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
+import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
@@ -19,15 +20,11 @@ import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 public class CCMaterials extends AbstractMaterialDataProvider {
 
 	public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
-	public static final MaterialId ardite = createMaterial("ardite"); //trait: infernal / fiery?
-	public static final MaterialId kryosteel = createMaterial("kryosteel"); //trait: cryonic / freezing?
-	public static final MaterialId fulminite = createMaterial("fulminite"); //trait: fulminous / chance to lightning?
-	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum"); //trait: cosmic / enderference?
-	public static final MaterialId sanctinium = createMaterial("sanctinium"); //trait: divine  / smite?
-	public static final MaterialId necromantium = createMaterial("necromantium"); //trait: sanguine / the wither bone one
-	public static final MaterialId spectrine = createMaterial("spectrine"); //trait: evocative / killager?
-	public static final MaterialId phygentum = createMaterial("phygentum"); //trait: blighted /
-	public static final MaterialId abominite = createMaterial("abominite"); //trait: lovecraftian /
+	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
+	//armor trait: spell protection (also makes the reinforcement)
+	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
+	public static final MaterialId arcaneCloth = createMaterial("arcane_cloth"); //trait: mana regen, maille/binding only
+	public static final MaterialId arcaneHide = createMaterial("arcane_hide"); //trait: ancient hide is +1 defense slot, so let's do
 	public CCMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -39,6 +36,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	@Override
 	protected void addMaterials() {
 		addMaterial(arcanium, 3, 0, false);
+		addMaterial(exilite, 3, 0, false);
+		addMaterial(arcaneCloth, 2, 0, false);
+		addMaterial(arcaneHide, 4, 0, false);
 	}
 
 	@Override
@@ -56,14 +56,27 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialStats() {
 			addMaterialStats(arcanium,
 					new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f),
-					new HandleMaterialStats(1.05f, 1.1f, 0.95f, 0.8f),
+					new HandleMaterialStats(0.05f, 0.1f, -0.05f, -0.2f),
 					StatlessMaterialStats.BINDING,
-					StatlessMaterialStats.MAILLE,
+					//about worse than amethyst bronze
 					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 288, 2, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 428, 6, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 400, 5, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 344, 2, 2, 0.1f),
-					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f));
+					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f),
+					StatlessMaterialStats.MAILLE);
+			addMaterialStats(exilite,
+					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
+					new HandleMaterialStats(-0.05f, -0.2f, 0.2f, 1.1f),
+					StatlessMaterialStats.BINDING,
+					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 318, 2, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 458, 6, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 430, 6, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
+					StatlessMaterialStats.MAILLE);
+			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
+			addMaterialStats(arcaneHide, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
 		}
 
 		@Override
@@ -80,6 +93,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		protected void addMaterialTraits() {
 			addDefaultTraits(arcanium, CCModifiers.ARCANE);
+			addDefaultTraits(arcaneCloth, CCModifiers.ARCANE);
+			addDefaultTraits(arcaneHide, CCModifiers.ARCANE);
+			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 		}
 
 		@Override
@@ -97,6 +113,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		protected void addMaterialRenderInfo() {
 			buildRenderInfo(arcanium).color(0xFF0000);
+			buildRenderInfo(arcaneCloth).color(0xFF0000);
+			buildRenderInfo(arcaneHide).color(0xFF0000);
+			buildRenderInfo(exilite).color(0xFF0000);
 		}
 
 		@Override

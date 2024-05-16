@@ -5,8 +5,11 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -56,6 +59,7 @@ public class CCEvents {
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
 		if (event.getEntity().hasEffect(TinkerModifiers.enderferenceEffect.get())) {
+			event.getEntity().level.playSound(null, event.getEntity().blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 1.2f + Utils.random.nextFloat() * .2f);
 			event.setCanceled(event.getSpellId().equals("irons_spellbooks:teleport")
 					|| event.getSpellId().equals("irons_spellbooks:blood_step")
 					|| event.getSpellId().equals("irons_spellbooks:frost_step"));

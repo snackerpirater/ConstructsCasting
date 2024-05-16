@@ -21,6 +21,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
+	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
@@ -37,6 +38,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId EVOCATION_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "evocation_upgrade");
 	public static final ModifierId NATURE_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
 	public static final ModifierId COOLDOWN_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
+	public static final ModifierId SPELL_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "spell_protection");
 	public CCModifiers(DataGenerator generator) {
 		super(generator);
 	}
@@ -56,7 +58,6 @@ public class CCModifiers extends AbstractModifierProvider {
 
 		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).uniqueFrom(MANA_UPGRADE).eachLevel(80f)).build();
 		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.08f)).build();
-
 		buildModifier(FIRE_UPGRADE)     .addModule(spellPowerModifier(FIRE_UPGRADE,      AttributeRegistry.FIRE_SPELL_POWER     .get())).build();
 		buildModifier(ICE_UPGRADE)      .addModule(spellPowerModifier(ICE_UPGRADE,       AttributeRegistry.ICE_SPELL_POWER      .get())).build();
 		buildModifier(LIGHTNING_UPGRADE).addModule(spellPowerModifier(LIGHTNING_UPGRADE, AttributeRegistry.LIGHTNING_SPELL_POWER.get())).build();
@@ -65,6 +66,7 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(BLOOD_UPGRADE)    .addModule(spellPowerModifier(BLOOD_UPGRADE,     AttributeRegistry.BLOOD_SPELL_POWER    .get())).build();
 		buildModifier(EVOCATION_UPGRADE).addModule(spellPowerModifier(EVOCATION_UPGRADE, AttributeRegistry.EVOCATION_SPELL_POWER.get())).build();
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
+		buildModifier(SPELL_PROTECTION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_PROTECTION).eachLevel(0.10f)).build();
 
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {

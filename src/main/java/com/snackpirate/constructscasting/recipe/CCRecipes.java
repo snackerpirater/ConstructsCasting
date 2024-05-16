@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -72,6 +73,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.INGOT), 800).addInput(new FluidStack(CCFluids.arcaneEssence.get(), 4*FluidValues.BOTTLE)).addInput(FluidIngredient.of(CCFluids.CCFluidTags.ARCANIUM_BASE, FluidValues.INGOT)).save(consumer, ConstructsCasting.id(alloyFolder + "molten_arcanium"));
 		materialMeltingCasting(consumer, CCMaterials.arcanium, CCFluids.moltenArcanium, FluidValues.INGOT, materialFolder);
 		castingWithCast(consumer, CCFluids.moltenArcanium, false, FluidValues.INGOT, TinkerSmeltery.ingotCast, ItemRegistry.ARCANE_INGOT.get(), castingFolder + "arcane_ingot");
+		//exilite making
+		materialMeltingCasting(consumer, CCMaterials.exilite, CCFluids.moltenExilite, FluidValues.INGOT, materialFolder);
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteIngot.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT), 800, 30).save(consumer, ConstructsCasting.id(meltingFolder + "metal/exilite_ingot_melting"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "metal/exilite_nugget_melting"));
+		ingotCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteIngot.get(), castingFolder + "exilite_ingot");
+		nuggetCastingRecipe(consumer, CCFluids.moltenExilite, CCItems.exiliteNugget.get(), castingFolder + "exilite_nugget");
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.moltenArcanium.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer);
+
 		//casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING).allowCrystal().exactLevel(1).setSlots(SlotType.ABILITY, 1).setTools(TinkerTags.Items.STAFFS)
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
