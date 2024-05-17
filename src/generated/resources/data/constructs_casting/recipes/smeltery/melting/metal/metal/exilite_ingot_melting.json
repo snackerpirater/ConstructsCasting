@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "constructs_casting:exilite_ingot"
+  },
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_exilite"
+  },
+  "temperature": 800,
+  "time": 30
+}

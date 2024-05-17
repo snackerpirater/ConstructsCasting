@@ -2,12 +2,14 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
@@ -22,6 +24,7 @@ public class CCModifiers extends AbstractModifierProvider {
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
+	public static final StaticModifier<Modifier> SPELL_PROTECTION = MODIFIERS.register("spell_protection", SpellProtectionModifier::new);
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
@@ -38,7 +41,6 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId EVOCATION_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "evocation_upgrade");
 	public static final ModifierId NATURE_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
 	public static final ModifierId COOLDOWN_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
-	public static final ModifierId SPELL_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "spell_protection");
 	public CCModifiers(DataGenerator generator) {
 		super(generator);
 	}
@@ -66,7 +68,6 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(BLOOD_UPGRADE)    .addModule(spellPowerModifier(BLOOD_UPGRADE,     AttributeRegistry.BLOOD_SPELL_POWER    .get())).build();
 		buildModifier(EVOCATION_UPGRADE).addModule(spellPowerModifier(EVOCATION_UPGRADE, AttributeRegistry.EVOCATION_SPELL_POWER.get())).build();
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
-		buildModifier(SPELL_PROTECTION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_PROTECTION).eachLevel(0.10f)).build();
 
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {

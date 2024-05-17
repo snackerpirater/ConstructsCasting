@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:pattern"
+  },
+  "cast_consumed": true,
+  "cooling_time": 10,
+  "fluid": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_exilite"
+  },
+  "result": "constructs_casting:exilite_reinforcement"
+}

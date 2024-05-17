@@ -1,0 +1,30 @@
+{
+  "type": "tconstruct:composable",
+  "level_display": "tconstruct:single_level",
+  "modules": [
+    {
+      "type": "tconstruct:set_stat",
+      "stat": "tconstruct:use_item_speed",
+      "value": 1.8
+    },
+    {
+      "type": "tconstruct:requirements",
+      "display_modifiers": [
+        {
+          "level": 1,
+          "name": "constructs_casting:casting"
+        }
+      ],
+      "requirement": {
+        "type": "tconstruct:has_modifier",
+        "check": "all",
+        "modifier": {
+          "type": "tconstruct:single",
+          "modifier": "constructs_casting:casting"
+        }
+      },
+      "translation_key": "constructs_casting.modifier.swiftcasting.requirement"
+    }
+  ],
+  "tooltip_display": "always"
+}

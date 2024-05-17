@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": {
+    "item": "irons_spellbooks:cooldown_rune"
+  },
+  "level": {
+    "max": 3
+  },
+  "needed_per_level": 16,
+  "result": "constructs_casting:cooldown_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

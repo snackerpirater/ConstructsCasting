@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:composable",
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:lightning_spell_power",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "unique": "constructs_casting.modifier.lightning_upgrade"
+    }
+  ],
+  "tooltip_display": "always"
+}

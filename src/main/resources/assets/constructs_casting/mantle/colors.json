@@ -18,11 +18,14 @@
 
     "__traits__": null,
     "arcane": "#f1cdfa",
-    "antimagic": "#5a5b5c"
+    "antimagic": "#6e7278",
+    "spell_protection": "#6e7278"
   },
   "material.constructs_casting": {
     "__tier_3__": null,
     "arcanium":"#adc6f5",
-    "exilite": "#5a5b5c"
+    "arcane_cloth":"#adc6f5",
+    "arcane_hide":"#dbbbcd",
+    "exilite": "#6e7278"
   }
 }

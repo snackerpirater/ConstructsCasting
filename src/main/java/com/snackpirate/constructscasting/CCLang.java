@@ -40,9 +40,11 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.EVOCATION_UPGRADE, "Evocation Upgrade", "Hrmmm?", "Grants +5% Evocation Spell Power.");
 		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
 
-		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +3 damage against magic users.");
+		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
 		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
 
+		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
+		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
 		addFluid(CCFluids.iceEssence, "Ice Essence");
@@ -72,6 +74,7 @@ public class CCLang extends LanguageProvider {
 
 		addItem(CCItems.exiliteIngot, "Exilite Ingot");
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
+		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
 		add("school.constructs_casting.slime", "Slime");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");

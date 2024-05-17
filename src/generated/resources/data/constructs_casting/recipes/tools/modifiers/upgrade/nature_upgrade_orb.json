@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:nature_upgrade_orb"
+    }
+  ],
+  "level": {
+    "max": 3
+  },
+  "result": "constructs_casting:nature_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

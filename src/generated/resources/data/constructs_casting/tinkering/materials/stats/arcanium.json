@@ -3,7 +3,7 @@
     "tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": 0.05,
-      "melee_damage": -0.2,
+      "melee_damage": -0.15,
       "melee_speed": -0.05,
       "mining_speed": 0.1
     },

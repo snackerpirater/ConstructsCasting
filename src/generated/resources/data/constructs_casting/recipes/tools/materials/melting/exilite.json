@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "constructs_casting:exilite",
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_exilite"
+  },
+  "temperature": 700
+}

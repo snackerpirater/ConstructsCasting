@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 90,
+      "tag": "forge:molten_iron"
+    },
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 250,
+      "tag": "minecraft:lava"
+    }
+  ],
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_exilite"
+  },
+  "temperature": 700
+}

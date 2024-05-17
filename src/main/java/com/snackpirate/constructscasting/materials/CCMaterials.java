@@ -56,7 +56,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialStats() {
 			addMaterialStats(arcanium,
 					new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f),
-					new HandleMaterialStats(0.05f, 0.1f, -0.05f, -0.2f),
+					new HandleMaterialStats(0.05f, 0.1f, -0.05f, -0.15f),
 					StatlessMaterialStats.BINDING,
 					//about worse than amethyst bronze
 					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 288, 2, 2, 0.1f),
@@ -67,7 +67,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE);
 			addMaterialStats(exilite,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
-					new HandleMaterialStats(-0.05f, -0.2f, 0.2f, 1.1f),
+					new HandleMaterialStats(-0.05f, -0.15f, 0.15f, 0.1f),
 					StatlessMaterialStats.BINDING,
 					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 318, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 458, 6, 2, 0.15f),
@@ -96,6 +96,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(arcaneCloth, CCModifiers.ARCANE);
 			addDefaultTraits(arcaneHide, CCModifiers.ARCANE);
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
+			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
 		}
 
 		@Override

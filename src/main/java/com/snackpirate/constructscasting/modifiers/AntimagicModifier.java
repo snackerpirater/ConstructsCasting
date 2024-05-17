@@ -35,12 +35,12 @@ public class AntimagicModifier extends Modifier implements MeleeDamageModifierHo
 	public float getMeleeDamage(IToolStackView iToolStackView, ModifierEntry modifierEntry, ToolAttackContext toolAttackContext, float v, float v1) {
 		int level = modifierEntry.getLevel();
 		float damage = isMagicUser(Objects.requireNonNull(toolAttackContext.getLivingTarget())) ? iToolStackView.getStats().get(ToolStats.ATTACK_DAMAGE) : 0;
-		return damage + (3.0f * level);
+		return damage + (2.0f * level);
 	}
 
 	@Override
 	public void addTooltip(IToolStackView iToolStackView, ModifierEntry modifierEntry, @Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-		int damageBoost = 3 * modifierEntry.getLevel();
+		int damageBoost = 2 * modifierEntry.getLevel();
 		list.add(applyStyle(Component.literal(Util.BONUS_FORMAT.format(damageBoost) + " ").append(Component.translatable("modifier.constructs_casting.antimagic.damage_boost"))));
 	}
 	private static boolean isMagicUser(LivingEntity target) {

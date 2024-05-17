@@ -35,11 +35,14 @@ import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.tables.TinkerTables;
 
 import java.util.function.Consumer;
 
@@ -73,14 +76,17 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.INGOT), 800).addInput(new FluidStack(CCFluids.arcaneEssence.get(), 4*FluidValues.BOTTLE)).addInput(FluidIngredient.of(CCFluids.CCFluidTags.ARCANIUM_BASE, FluidValues.INGOT)).save(consumer, ConstructsCasting.id(alloyFolder + "molten_arcanium"));
 		materialMeltingCasting(consumer, CCMaterials.arcanium, CCFluids.moltenArcanium, FluidValues.INGOT, materialFolder);
 		castingWithCast(consumer, CCFluids.moltenArcanium, false, FluidValues.INGOT, TinkerSmeltery.ingotCast, ItemRegistry.ARCANE_INGOT.get(), castingFolder + "arcane_ingot");
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.arcanium).setIngredient(ItemRegistry.ARCANE_INGOT.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "arcanium/ingot"));
 		//exilite making
 		materialMeltingCasting(consumer, CCMaterials.exilite, CCFluids.moltenExilite, FluidValues.INGOT, materialFolder);
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteIngot.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT), 800, 30).save(consumer, ConstructsCasting.id(meltingFolder + "metal/exilite_ingot_melting"));
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "metal/exilite_nugget_melting"));
 		ingotCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteIngot.get(), castingFolder + "exilite_ingot");
 		nuggetCastingRecipe(consumer, CCFluids.moltenExilite, CCItems.exiliteNugget.get(), castingFolder + "exilite_nugget");
-		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.moltenArcanium.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer);
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer);
 
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
 		//casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING).allowCrystal().exactLevel(1).setSlots(SlotType.ABILITY, 1).setTools(TinkerTags.Items.STAFFS)
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
@@ -97,7 +103,10 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(Items.RABBIT_FOOT)
 				.addInput(Items.RABBIT_FOOT)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/swiftcasting"));
-		//methodize?
+		//spell prot
+		ItemCastingRecipeBuilder.tableRecipe(CCItems.exiliteReinforcement.get()).setCast(TinkerTables.pattern.get(), true).setFluid(CCFluids.moltenExilite.get(), FluidValues.INGOT).setCoolingTime(10).save(consumer, ConstructsCasting.id(castingFolder + "exilite_reinforcement"));
+		IncrementalModifierRecipeBuilder.modifier(CCModifiers.SPELL_PROTECTION.getId()).setInput(CCItems.exiliteReinforcement.get(), 1, 5).setSlots(SlotType.DEFENSE, 1).save(consumer, ConstructsCasting.id(modifierFolder + "spell_protection"));
+
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
 		incrementalModifierRecipe(CCModifiers.FIRE_UPGRADE,      ItemRegistry.FIRE_RUNE.get(),      ItemRegistry.FIRE_UPGRADE_ORB.get(),      "fire_upgrade");
