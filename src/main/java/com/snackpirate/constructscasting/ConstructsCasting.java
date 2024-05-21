@@ -58,7 +58,7 @@ public class ConstructsCasting {
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         gen.addProvider(server, new MaterialPartTextureGenerator(gen, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new CCMaterials.CCMaterialStats(gen, mats));
-        gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures()));
+        gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(gen));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(gen, mats));
         gen.addProvider(server, new CCItems.CCItemTagsProvider(gen, new BlockTagsProvider(gen, MOD_ID, fileHelper), MOD_ID, fileHelper));

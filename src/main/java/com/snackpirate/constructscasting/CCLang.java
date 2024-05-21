@@ -45,6 +45,9 @@ public class CCLang extends LanguageProvider {
 
 		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
 		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
+
+		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +10% power to all types of spells.");
+
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
 		addFluid(CCFluids.iceEssence, "Ice Essence");

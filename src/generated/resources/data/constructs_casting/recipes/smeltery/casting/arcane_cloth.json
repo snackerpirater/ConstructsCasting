@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:cobweb"
+  },
+  "cast_consumed": true,
+  "cooling_time": 52,
+  "fluid": {
+    "amount": 1500,
+    "fluid": "constructs_casting:arcane_essence"
+  },
+  "result": "irons_spellbooks:magic_cloth"
+}

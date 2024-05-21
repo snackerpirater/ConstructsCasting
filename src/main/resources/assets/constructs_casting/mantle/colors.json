@@ -19,7 +19,8 @@
     "__traits__": null,
     "arcane": "#f1cdfa",
     "antimagic": "#6e7278",
-    "spell_protection": "#6e7278"
+    "spell_protection": "#6e7278",
+    "spellbound": "#f1cdfa"
   },
   "material.constructs_casting": {
     "__tier_3__": null,

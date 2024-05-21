@@ -26,9 +26,11 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> SPELL_PROTECTION = MODIFIERS.register("spell_protection", SpellProtectionModifier::new);
 
+
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
+	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
 
 	//orb upgrades
 	public static final ModifierId MANA_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
@@ -57,6 +59,8 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(new SetStatModule<>(ToolStats.USE_ITEM_SPEED, 1.8f, ModifierCondition.ANY_CONTEXT))
 				.addModule(ModifierRequirementsModule.builder().requireModifier(CASTING.getId(), 1).translationKey("constructs_casting.modifier.swiftcasting.requirement").build())
 				.build();
+
+		buildModifier(SPELLBOUND).addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELLBOUND).eachLevel(0.1f)).build();
 
 		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).uniqueFrom(MANA_UPGRADE).eachLevel(80f)).build();
 		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.08f)).build();

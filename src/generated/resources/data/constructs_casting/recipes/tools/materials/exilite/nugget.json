@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "constructs_casting:exilite_nugget"
+  },
+  "material": "constructs_casting:exilite",
+  "needed": 9,
+  "value": 1
+}

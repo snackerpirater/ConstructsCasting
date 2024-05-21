@@ -4,6 +4,7 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialRenderInfoProvider;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
@@ -37,8 +38,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	protected void addMaterials() {
 		addMaterial(arcanium, 3, 0, false);
 		addMaterial(exilite, 3, 0, false);
-		addMaterial(arcaneCloth, 2, 0, false);
-		addMaterial(arcaneHide, 4, 0, false);
+		addMaterial(arcaneCloth, 2, 0, true);
+//		addMaterial(arcaneHide, 4, 0, false);
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		protected void addMaterialTraits() {
 			addDefaultTraits(arcanium, CCModifiers.ARCANE);
-			addDefaultTraits(arcaneCloth, CCModifiers.ARCANE);
+			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(arcaneHide, CCModifiers.ARCANE);
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
@@ -107,8 +108,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	public static class CCMaterialRenderInfo extends AbstractMaterialRenderInfoProvider {
 
-		public CCMaterialRenderInfo(DataGenerator gen, @Nullable AbstractMaterialSpriteProvider materialSprites) {
-			super(gen, materialSprites);
+		public CCMaterialRenderInfo(DataGenerator gen, @Nullable AbstractMaterialSpriteProvider materialSprites, ExistingFileHelper fileHelper) {
+			super(gen, materialSprites, fileHelper);
 		}
 
 		@Override

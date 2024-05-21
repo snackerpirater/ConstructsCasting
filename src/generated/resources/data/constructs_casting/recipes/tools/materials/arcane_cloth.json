@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "irons_spellbooks:magic_cloth"
+  },
+  "material": "constructs_casting:arcane_cloth",
+  "needed": 1,
+  "value": 1
+}
