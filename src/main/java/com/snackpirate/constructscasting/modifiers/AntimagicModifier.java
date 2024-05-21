@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import net.minecraft.network.chat.Component;

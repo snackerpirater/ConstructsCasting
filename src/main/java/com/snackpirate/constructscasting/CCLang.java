@@ -4,7 +4,6 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
@@ -104,9 +103,5 @@ public class CCLang extends LanguageProvider {
 	public void addFluid(FluidObject<?> fluid, String name) {
 		add("fluid_type.constructs_casting." + fluid.getId().getPath(), name);
 		add("item.constructs_casting." + fluid.getId().getPath() + "_bucket", name + " Bucket");
-	}
-	public void addSpell(AbstractSpell spell, String name, String guide) {
-		add("spell." + spell.getSpellId().replace(':', '.'), name);
-		add("spell." + spell.getSpellId().replace(':', '.') + ".guide", guide);
 	}
 }

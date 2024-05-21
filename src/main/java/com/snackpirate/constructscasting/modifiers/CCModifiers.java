@@ -2,14 +2,12 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;

@@ -11,7 +11,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

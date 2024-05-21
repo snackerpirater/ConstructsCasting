@@ -5,7 +5,6 @@ import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
-import slimeknights.tconstruct.library.client.data.spritetransformer.IColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.RecolorSpriteTransformer;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
