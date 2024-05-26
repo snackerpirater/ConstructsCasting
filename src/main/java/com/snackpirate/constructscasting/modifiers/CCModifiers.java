@@ -23,6 +23,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> SPELL_PROTECTION = MODIFIERS.register("spell_protection", SpellProtectionModifier::new);
+	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");

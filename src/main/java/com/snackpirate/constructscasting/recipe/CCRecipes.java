@@ -17,6 +17,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.crafting.DifferenceIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -107,8 +108,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/swiftcasting"));
 		//spell prot
 		ItemCastingRecipeBuilder.tableRecipe(CCItems.exiliteReinforcement.get()).setCast(TinkerTables.pattern.get(), true).setFluid(CCFluids.moltenExilite.get(), FluidValues.INGOT).setCoolingTime(10).save(consumer, ConstructsCasting.id(castingFolder + "exilite_reinforcement"));
-		IncrementalModifierRecipeBuilder.modifier(CCModifiers.SPELL_PROTECTION.getId()).setInput(CCItems.exiliteReinforcement.get(), 1, 5).setSlots(SlotType.DEFENSE, 1).save(consumer, ConstructsCasting.id(modifierFolder + "spell_protection"));
-
+		IncrementalModifierRecipeBuilder.modifier(CCModifiers.SPELL_PROTECTION.getId()).setInput(CCItems.exiliteReinforcement.get(), 1, 5).setSlots(SlotType.DEFENSE, 1).save(consumer, ConstructsCasting.id(modifierFolder + "defense/spell_protection"));
+		//imbued
+		ModifierRecipeBuilder.modifier(CCModifiers.IMBUED).allowCrystal().exactLevel(1).setSlots(SlotType.ABILITY, 1).setTools(DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.SWORD))).setMaxLevel(1)
+				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
+				.addInput(TinkerTags.Items.SWORD)
+				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
+				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
+				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
+				.save(pConsumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
 		incrementalModifierRecipe(CCModifiers.FIRE_UPGRADE,      ItemRegistry.FIRE_RUNE.get(),      ItemRegistry.FIRE_UPGRADE_ORB.get(),      "fire_upgrade");

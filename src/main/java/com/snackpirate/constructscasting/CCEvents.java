@@ -4,6 +4,7 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
+import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
@@ -21,8 +22,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
+import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {
@@ -62,6 +65,14 @@ public class CCEvents {
 			event.setCanceled(event.getSpellId().equals("irons_spellbooks:teleport")
 					|| event.getSpellId().equals("irons_spellbooks:blood_step")
 					|| event.getSpellId().equals("irons_spellbooks:frost_step"));
+		}
+	}
+	@SubscribeEvent
+	static void imbueSlotOnSwords(ToolEquipmentChangeEvent event) {
+		ItemStack replacement = event.getContext().getReplacement();
+		if (replacement.getItem() instanceof ModifiableSwordItem && !ISpellContainer.isSpellContainer(replacement)) {
+			var container = ISpellContainer.create(1, true, false);
+			container.save(replacement);
 		}
 	}
 }

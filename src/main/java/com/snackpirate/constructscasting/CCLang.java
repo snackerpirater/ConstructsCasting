@@ -19,16 +19,25 @@ public class CCLang extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
-		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals +10% damage per part against magic-wielding enemies.");
-		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "", "");
+		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
+		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
+		add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.arcaneHide, "Arcane Hide", "", "");
 
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
-		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
-		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
+		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
 
+		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
+		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
+		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
+		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
+		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
+
+		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +10% power to all types of spells.");
+
+		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
 		addModifier(CCModifiers.FIRE_UPGRADE, "Fire Upgrade", "Hot hot hot!", "Grants +5% Fire Spell Power.");
 		addModifier(CCModifiers.ICE_UPGRADE, "Ice Upgrade", "Ice ice baby!", "Grants +5% Ice Spell Power.");
@@ -39,13 +48,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.EVOCATION_UPGRADE, "Evocation Upgrade", "Hrmmm?", "Grants +5% Evocation Spell Power.");
 		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
 
-		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
-		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
 
-		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
-		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
-
-		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +10% power to all types of spells.");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");

@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.modifiers;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,6 +44,6 @@ public class AntimagicModifier extends Modifier implements MeleeDamageModifierHo
 		list.add(applyStyle(Component.literal(Util.BONUS_FORMAT.format(damageBoost) + " ").append(Component.translatable("modifier.constructs_casting.antimagic.damage_boost"))));
 	}
 	private static boolean isMagicUser(LivingEntity target) {
-		return MagicData.getPlayerMagicData(target).isCasting() || target instanceof AbstractSpellCastingMob;
+		return MagicData.getPlayerMagicData(target).isCasting() || target instanceof AbstractSpellCastingMob || target instanceof MagicSummon;
 	}
 }
