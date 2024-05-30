@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting;
 import com.mojang.logging.LogUtils;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -56,6 +57,7 @@ public class ConstructsCasting {
         CCMaterials mats = new CCMaterials(gen);
         gen.addProvider(server, mats);
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        gen.addProvider(server, new CCTools.CCToolDefinitions(gen, MOD_ID));
         gen.addProvider(server, new MaterialPartTextureGenerator(gen, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new CCMaterials.CCMaterialStats(gen, mats));
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures(), fileHelper));

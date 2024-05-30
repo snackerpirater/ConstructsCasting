@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 750,
+      "fluid": "constructs_casting:squid_ink"
+    },
+    {
+      "amount": 500,
+      "fluid": "constructs_casting:arcane_essence"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:common_ink"
+  },
+  "temperature": 300
+}

@@ -1,0 +1,40 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:arcane_salvage"
+    },
+    {
+      "tag": "tconstruct:modifiable/melee/sword"
+    },
+    {
+      "item": "irons_spellbooks:arcane_salvage"
+    },
+    {
+      "item": "irons_spellbooks:mana_upgrade_orb"
+    },
+    {
+      "item": "irons_spellbooks:mana_upgrade_orb"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:imbued",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": [
+    {
+      "type": "forge:difference",
+      "base": {
+        "tag": "tconstruct:modifiable/held"
+      },
+      "subtracted": {
+        "tag": "tconstruct:modifiable/melee/sword"
+      }
+    },
+    {
+      "tag": "tconstruct:modifiable/armor"
+    }
+  ]
+}

@@ -48,6 +48,7 @@ public class CCFluids {
 
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).tagName("molten_arcanium").bucket().block(Material.LAVA).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).tagName("molten_exilite").bucket().block(Material.LAVA).flowing();
+	public static final FluidObject<UnplaceableFluid> squidInk =    FLUIDS.register("squid_ink")   .type(cool().temperature(100)).tagName("ink/squid")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).tagName("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).tagName("ink/uncommon") .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> rareInk =      FLUIDS.register("rare_ink")     .type(cool().temperature(100)).tagName("ink/rare")     .bucket().unplacable();
@@ -109,6 +110,7 @@ public class CCFluids {
 			texture(poisonousPotatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
 			texture(moltenArcanium).textures(new ResourceLocation("tconstruct:fluid/molten/"), false, false).color(0xff79c0f3);
 			texture(moltenExilite) .textures(new ResourceLocation("tconstruct:fluid/molten/"), false, false).color(0xff5a5b5c);
+			texture(squidInk)	 .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff180030);
 			texture(commonInk)   .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff2d2d2d);
 			texture(uncommonInk) .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff124300);
 			texture(rareInk)     .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff0f3844);
@@ -186,6 +188,7 @@ public class CCFluids {
 			tag(essenceOf("blood")).add(bloodEssence.get());
 			tag(essenceOf("evocation")).add(evocationEssence.get());
 			tag(essenceOf("nature")).add(natureEssence.get());
+			tag(ink("squid")).add(squidInk.get());
 			tag(ink("common")).add(commonInk.get());
 			tag(ink("uncommon")).add(uncommonInk.get());
 			tag(ink("rare")).add(rareInk.get());
@@ -205,6 +208,7 @@ public class CCFluids {
 					.add(natureEssence.get())
 					.add(liquidLightning.get())
 					.add(liquidDivinity.get())
+					.add(squidInk.get())
 					.add(commonInk.get())
 					.add(uncommonInk.get())
 					.add(rareInk.get())

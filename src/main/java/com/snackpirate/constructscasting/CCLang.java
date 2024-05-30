@@ -68,6 +68,7 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");
 		addFluid(CCFluids.moltenExilite, "Molten Exilite");
 
+		addFluid(CCFluids.squidInk, "Squid Ink");
 		addFluid(CCFluids.commonInk, "Common Ink");
 		addFluid(CCFluids.uncommonInk, "Uncommon Ink");
 		addFluid(CCFluids.rareInk, "Rare Ink");

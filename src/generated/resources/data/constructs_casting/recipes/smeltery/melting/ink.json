@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "minecraft:ink_sac"
+  },
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:squid_ink"
+  },
+  "temperature": 300,
+  "time": 8
+}

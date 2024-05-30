@@ -16,6 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.item.ContainerFoodItem;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.shared.TinkerFood;
@@ -28,6 +29,7 @@ public class CCItems {
 	public static final RegistryObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> exiliteReinforcement = ITEMS.register("exilite_reinforcement", () -> new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<Item> tinkerersSpellbook = ITEMS.register("tinkerers_spellbook", TinkerersSpellbookItem::new);
 	public static class CCItemTagsProvider extends ItemTagsProvider {
 
 		public CCItemTagsProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
@@ -38,7 +40,10 @@ public class CCItems {
 		protected void addTags() {
 			tag(ItemTags.create(new ResourceLocation("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(new ResourceLocation("forge:nuggets/exilite"))).add(exiliteNugget.get());
+			tag(TinkerTags.Items.BONUS_SLOTS).add(tinkerersSpellbook.get());
+			tag(ItemTags.create(new ResourceLocation("curios:spellbook"))).add(tinkerersSpellbook.get());
 		}
 	}
+
 }
 
