@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,6 +25,7 @@ import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
 
@@ -72,6 +74,10 @@ public class CCEvents {
 		ItemStack replacement = event.getContext().getReplacement();
 		if (replacement.getItem() instanceof ModifiableSwordItem && !ISpellContainer.isSpellContainer(replacement)) {
 			var container = ISpellContainer.create(1, true, false);
+			container.save(replacement);
+		}
+		else if (replacement.getItem() instanceof ModifiableArmorItem armor && armor.getSlot() == EquipmentSlot.CHEST && !ISpellContainer.isSpellContainer(replacement)) {
+			var container = ISpellContainer.create(1, true, true);
 			container.save(replacement);
 		}
 	}

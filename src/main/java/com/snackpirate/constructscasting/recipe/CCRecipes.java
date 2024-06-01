@@ -70,8 +70,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	}
 
 	@Override
-	protected void buildCraftingRecipes(Consumer<FinishedRecipe> pConsumer) {
-		consumer = pConsumer;
+	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
 		//arcanium making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_INGOT.get()), new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.INGOT), 800, 30)
@@ -150,7 +149,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
-				.save(pConsumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
+				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
@@ -215,7 +214,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		inkFillingRecipe(ItemRegistry.INK_EPIC.get(), CCFluids.epicInk, "epic");
 		inkFillingRecipe(ItemRegistry.INK_LEGENDARY.get(), CCFluids.legendaryInk, "legendary");
 
-		MeltingRecipeBuilder.melting(Ingredient.of(Items.INK_SAC), new FluidStack(CCFluids.squidInk.get(), FluidValues.BOTTLE), 300, 8).save(pConsumer, ConstructsCasting.id("smeltery/melting/ink"));
+		MeltingRecipeBuilder.melting(Ingredient.of(Items.INK_SAC), new FluidStack(CCFluids.squidInk.get(), FluidValues.BOTTLE), 300, 8).save(consumer, ConstructsCasting.id("smeltery/melting/ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.commonInk.get(),    250), 300).addInput(new FluidStack(CCFluids.squidInk.get(),    750)).addInput(CCFluids.arcaneEssence.get(), 500).save(consumer, ConstructsCasting.id(alloyFolder + "common_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.uncommonInk.get(),  250), 300).addInput(new FluidStack(CCFluids.commonInk.get(),   750)).addInput(TinkerFluids.moltenCopper  .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "uncommon_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.rareInk.get(),      250), 300).addInput(new FluidStack(CCFluids.uncommonInk.get(), 750)).addInput(TinkerFluids.moltenIron    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));

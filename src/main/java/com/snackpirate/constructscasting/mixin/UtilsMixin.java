@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.mixin;
 
+import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,6 +15,6 @@ public class UtilsMixin {
 	@Inject(method="canBeUpgraded", at=@At(value = "HEAD"), remap = false, cancellable = true)
 	private static void canBeUpgraded(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
 		Item item = stack.getItem();
-		if (item instanceof ModifiableArmorItem) cir.setReturnValue(false);
+		if (item instanceof ModifiableArmorItem || item instanceof TinkerersSpellbookItem) cir.setReturnValue(false);
 	}
 }
