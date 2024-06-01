@@ -17,7 +17,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.common.crafting.DifferenceIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -43,6 +42,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 
@@ -57,7 +57,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 
 	public static final RegistryObject<RecipeSerializer<ScrollMeltingRecipe>> scrollMeltingSerializer = RECIPE_SERIALIZERS.register("scroll_melting", () -> LoadableRecipeSerializer.of(ScrollMeltingRecipe.LOADER));
 
-	private static Consumer<FinishedRecipe> consumer;
+	private static Consumer<FinishedRecipe> aConsumer;
 	private static final String castingFolder = "smeltery/casting/";
 	private static final String alloyFolder = "smeltery/alloys/";
 	private static final String materialFolder = "tools/materials/";
@@ -71,7 +71,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-
+		aConsumer = consumer;
 		//arcanium making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_INGOT.get()), new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.INGOT), 800, 30)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "metal/molten_arcanium/arcane_ingot"));
@@ -150,6 +150,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
+		//encyclopedic
+		ModifierRecipeBuilder.modifier(CCModifiers.ENCYCLOPEDIC)
+				.allowCrystal()
+				.exactLevel(1)
+				.setTools(Ingredient.of(CCItems.tinkerersSpellbook.get()))
+				.setMaxLevel(1)
+				.addInput(TinkerCommons.encyclopedia)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "encyclopedic"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
@@ -224,13 +232,13 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
-		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));
+		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));
 	}
 	public static void essenceRecipe(FluidObject<?> essence, FluidStack alloyIngredient, String recipeId) {
-		AlloyRecipeBuilder.alloy(new FluidStack(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient).save(consumer, ConstructsCasting.id(alloyFolder + recipeId));
+		AlloyRecipeBuilder.alloy(new FluidStack(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient).save(aConsumer, ConstructsCasting.id(alloyFolder + recipeId));
 	}
 	public static void inkFillingRecipe(Item inkBottle, FluidObject<UnplaceableFluid> ink, String rarity) {
-		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink.get(),FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
+		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink.get(),FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(aConsumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
 	}
 	public static void incrementalModifierRecipe(ModifierId modifier, ItemLike runeItem, ItemLike orbItem, String id) {
 		IncrementalModifierRecipeBuilder.modifier(modifier)
@@ -238,13 +246,13 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune"));
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune"));
 		ModifierRecipeBuilder.modifier(modifier)
 				.addInput(orbItem)
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
 
 	}
 }

@@ -4,8 +4,10 @@ import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.definition.module.build.ToolActionsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
+import slimeknights.tconstruct.library.tools.definition.module.interaction.InteractionToolModule;
 
 public class CCTools {
 	public static class CCToolDefinitions extends AbstractToolDefinitionDataProvider {
@@ -23,6 +25,7 @@ public class CCTools {
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.SPELLBOUND)
 							.build());
+			//TODO: this should start with slime spell power
 		}
 
 		@Override

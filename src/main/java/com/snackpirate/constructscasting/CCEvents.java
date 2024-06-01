@@ -2,12 +2,14 @@ package com.snackpirate.constructscasting;
 
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -16,11 +18,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
@@ -28,6 +32,7 @@ import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {
@@ -79,6 +84,13 @@ public class CCEvents {
 		else if (replacement.getItem() instanceof ModifiableArmorItem armor && armor.getSlot() == EquipmentSlot.CHEST && !ISpellContainer.isSpellContainer(replacement)) {
 			var container = ISpellContainer.create(1, true, true);
 			container.save(replacement);
+		}
+	}
+	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+	public static class ClientSetup {
+		@SubscribeEvent
+		static void registerCurioRenderers(FMLClientSetupEvent e) {
+			CuriosRendererRegistry.register(CCItems.tinkerersSpellbook.get(), SpellBookCurioRenderer::new);
 		}
 	}
 }

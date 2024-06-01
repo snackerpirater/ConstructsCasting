@@ -28,6 +28,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
+		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spell Book to function as an encyclopedia.");
 
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
 		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
@@ -81,6 +82,8 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteIngot, "Exilite Ingot");
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
+
+		addItem(CCItems.tinkerersSpellbook, "Slimy Spell Book");
 
 		add("school.constructs_casting.slime", "Slime");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
