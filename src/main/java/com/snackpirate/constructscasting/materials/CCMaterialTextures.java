@@ -6,6 +6,8 @@ import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpri
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 import slimeknights.tconstruct.library.client.data.spritetransformer.RecolorSpriteTransformer;
+import slimeknights.tconstruct.tools.ArmorDefinitions;
+import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
@@ -60,5 +62,17 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFd7d7d7)
 						.addARGB(255, 0xFFffffff)
 						.build()));
+		ResourceLocation rainbowSlimeBase = ConstructsCasting.id("item/materials/generator/rainbowslime");
+		ResourceLocation rainbowSlimeBorder = ConstructsCasting.id("item/materials/generator/rainbowslime_border");
+		ResourceLocation rainbowSlimeHighlight = ConstructsCasting.id("item/materials/generator/rainbowslime_highlight");
+		buildMaterial(CCMaterials.rainbowSlime).statType(TinkerPartSpriteProvider.SLIMESUIT)
+				.transformer(GreyToSpriteTransformer.builderFromBlack()
+						.addTexture( 63, rainbowSlimeBorder,    0xFFC8C8C8)
+						.addTexture(102, rainbowSlimeBorder)
+						.addTexture(140, rainbowSlimeBase,      0xFFE1E1E1)
+						.addTexture(178, rainbowSlimeBase)
+						.addTexture(216, rainbowSlimeHighlight, 0xFFE1E1E1)
+						.addTexture(255, rainbowSlimeHighlight)
+						.build());
 	}
 }

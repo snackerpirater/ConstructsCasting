@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.materials;
 
+import com.ibm.icu.util.GenderInfo;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
@@ -13,10 +14,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataPr
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
-import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
-import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
-import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
-import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
+import slimeknights.tconstruct.tools.stats.*;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
@@ -25,7 +23,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	//armor trait: spell protection (also makes the reinforcement)
 	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
 	public static final MaterialId arcaneCloth = createMaterial("arcane_cloth"); //trait: mana regen, maille/binding only
-	public static final MaterialId arcaneHide = createMaterial("arcane_hide"); //trait: ancient hide is +1 defense slot, so let's do
+	public static final MaterialId arcaneHide = createMaterial("arcane_hide"); //unfinished
+	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
 	public CCMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -39,6 +38,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(arcanium, 3, 0, false);
 		addMaterial(exilite, 3, 0, false);
 		addMaterial(arcaneCloth, 2, 0, true);
+		addMaterial(rainbowSlime, 3, 0, false);
 //		addMaterial(arcaneHide, 4, 0, false);
 	}
 
@@ -78,6 +78,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE);
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
 			addMaterialStats(arcaneHide, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
+			addMaterialStats(rainbowSlime);
 		}
 
 		@Override
@@ -98,6 +99,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(arcaneHide, CCModifiers.ARCANE);
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
+			noTraits(rainbowSlime);
 		}
 
 		@Override
@@ -118,6 +120,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(arcaneCloth).color(0xFF0000);
 			buildRenderInfo(arcaneHide).color(0xFF0000);
 			buildRenderInfo(exilite).color(0xFF0000);
+			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 		}
 
 		@Override

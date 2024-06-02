@@ -41,10 +41,13 @@ import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.modifiers.slotless.EmbellishmentModifier;
 
 import java.util.function.Consumer;
 
@@ -157,7 +160,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setTools(Ingredient.of(CCItems.tinkerersSpellbook.get()))
 				.setMaxLevel(1)
 				.addInput(TinkerCommons.encyclopedia)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "encyclopedic"));
+				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/encyclopedic"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
@@ -228,7 +231,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.rareInk.get(),      250), 300).addInput(new FluidStack(CCFluids.uncommonInk.get(), 750)).addInput(TinkerFluids.moltenIron    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(new FluidStack(CCFluids.rareInk.get(),     750)).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.legendaryInk.get(), 250), 300).addInput(new FluidStack(CCFluids.epicInk.get(),     750)).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
-		//slime magic
+
+		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, "constructs_casting:rainbowslime")
+				.setTools(TinkerTags.Items.EMBELLISHMENT_SLIME)
+				.addInput(Items.RED_DYE)
+				.addInput(Items.ORANGE_DYE)
+				.addInput(Items.GREEN_DYE)
+				.addInput(Items.BLUE_DYE)
+				.addInput(Items.PURPLE_DYE)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rainbowslime_embellishment"));
 
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
