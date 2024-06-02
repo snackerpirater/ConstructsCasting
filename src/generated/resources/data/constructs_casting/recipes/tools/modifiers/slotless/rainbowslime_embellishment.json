@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "item": "minecraft:orange_dye"
+    },
+    {
+      "item": "minecraft:green_dye"
+    },
+    {
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "item": "minecraft:purple_dye"
+    }
+  ],
+  "result": {
+    "name": "tconstruct:embellishment",
+    "value": "constructs_casting:rainbowslime"
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/embellishment/slime"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "tconstruct:encyclopedia"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:encyclopedic",
+  "tools": {
+    "item": "constructs_casting:tinkerers_spellbook"
+  }
+}

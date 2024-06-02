@@ -1,0 +1,46 @@
+{
+  "color": "FFFFFF00",
+  "generator": {
+    "ignoreMaterialStats": false,
+    "supportedStats": [
+      "tconstruct:slimesuit"
+    ],
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "color": "FF000000",
+          "grey": 0
+        },
+        {
+          "color": "FFC8C8C8",
+          "grey": 63,
+          "path": "constructs_casting:item/materials/generator/rainbowslime_border"
+        },
+        {
+          "grey": 102,
+          "path": "constructs_casting:item/materials/generator/rainbowslime_border"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 140,
+          "path": "constructs_casting:item/materials/generator/rainbowslime"
+        },
+        {
+          "grey": 178,
+          "path": "constructs_casting:item/materials/generator/rainbowslime"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 216,
+          "path": "constructs_casting:item/materials/generator/rainbowslime_highlight"
+        },
+        {
+          "grey": 255,
+          "path": "constructs_casting:item/materials/generator/rainbowslime_highlight"
+        }
+      ]
+    }
+  },
+  "luminosity": 0
+}

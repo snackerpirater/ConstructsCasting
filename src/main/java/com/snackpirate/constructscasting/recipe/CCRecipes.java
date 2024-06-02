@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -25,6 +26,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.recipe.data.IRecipeHelper;
+import slimeknights.mantle.recipe.helper.ItemOutput;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
 import slimeknights.mantle.recipe.ingredient.FluidIngredient;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
@@ -37,17 +39,20 @@ import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.casting.material.MaterialCastingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.casting.material.ToolCastingRecipe;
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
+import slimeknights.tconstruct.library.tools.nbt.MaterialIdNBT;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerModifiers;
-import slimeknights.tconstruct.tools.modifiers.slotless.EmbellishmentModifier;
 
 import java.util.function.Consumer;
 
@@ -91,7 +96,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/nugget"));
 		ingotCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteIngot.get(), castingFolder + "exilite_ingot");
 		nuggetCastingRecipe(consumer, CCFluids.moltenExilite, CCItems.exiliteNugget.get(), castingFolder + "exilite_nugget");
-		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer);
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer, ConstructsCasting.id(alloyFolder + "molten_exilite"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MAGEHUNTER.get()), new FluidStack(CCFluids.moltenExilite.get(), 2*FluidValues.INGOT), 700, 30).setDamagable(25).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/magehunter"));
@@ -161,6 +166,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setMaxLevel(1)
 				.addInput(TinkerCommons.encyclopedia)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/encyclopedic"));
+		//gay slime armor!!!
+		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, "constructs_casting:rainbowslime")
+				.setTools(TinkerTags.Items.EMBELLISHMENT_SLIME)
+				.addInput(Items.RED_DYE)
+				.addInput(Items.ORANGE_DYE)
+				.addInput(Items.GREEN_DYE)
+				.addInput(Items.BLUE_DYE)
+				.addInput(Items.PURPLE_DYE)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rainbowslime_embellishment"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
@@ -232,14 +246,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(new FluidStack(CCFluids.rareInk.get(),     750)).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.legendaryInk.get(), 250), 300).addInput(new FluidStack(CCFluids.epicInk.get(),     750)).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
 
-		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, "constructs_casting:rainbowslime")
-				.setTools(TinkerTags.Items.EMBELLISHMENT_SLIME)
-				.addInput(Items.RED_DYE)
-				.addInput(Items.ORANGE_DYE)
-				.addInput(Items.GREEN_DYE)
-				.addInput(Items.BLUE_DYE)
-				.addInput(Items.PURPLE_DYE)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rainbowslime_embellishment"));
+		//slimy spellbook!
+		ItemCastingRecipeBuilder.basinRecipe(CCItems.tinkerersSpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(), true).setFluidAndTime(new FluidStack(TinkerFluids.enderSlime.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + "tinkerers_spellbook"));
 
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {

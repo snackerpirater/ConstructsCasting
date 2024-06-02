@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cast": {
+    "item": "irons_spellbooks:diamond_spell_book"
+  },
+  "cast_consumed": true,
+  "cooling_time": 106,
+  "fluid": {
+    "amount": 1000,
+    "fluid": "tconstruct:ender_slime"
+  },
+  "result": {
+    "item": "constructs_casting:tinkerers_spellbook",
+    "nbt": {
+      "ISB_Spells": {
+        "data": [],
+        "maxSpells": 10,
+        "mustEquip": 1,
+        "spellWheel": 1
+      },
+      "tic_materials": []
+    }
+  }
+}
