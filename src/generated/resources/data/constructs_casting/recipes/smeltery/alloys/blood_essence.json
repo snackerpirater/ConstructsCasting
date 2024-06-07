@@ -7,7 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "tconstruct:meat_soup"
+      "tag": "constructs_casting:essence/blood"
     }
   ],
   "result": {

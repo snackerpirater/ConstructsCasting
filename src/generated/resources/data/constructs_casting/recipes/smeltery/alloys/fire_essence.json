@@ -6,8 +6,8 @@
       "fluid": "constructs_casting:arcane_essence"
     },
     {
-      "amount": 100,
-      "fluid": "tconstruct:blazing_blood"
+      "amount": 250,
+      "tag": "constructs_casting:essence/fire"
     }
   ],
   "result": {

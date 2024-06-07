@@ -26,14 +26,12 @@ import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 @Mod(ConstructsCasting.MOD_ID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ConstructsCasting {
-    //TODO: creative tab
 
     public static final String MOD_ID = "constructs_casting";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ConstructsCasting() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         CCModifiers.MODIFIERS.register(modEventBus);
@@ -66,8 +64,8 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCItems.CCItemTagsProvider(gen, new BlockTagsProvider(gen, MOD_ID, fileHelper), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(gen, MOD_ID));
-        gen.addProvider(server, new CCFluids.CCFluidTags(gen, MOD_ID, fileHelper));
-        gen.addProvider(server, new CCFluids.CCFluidTags.CCFluidTooltipProvider(gen, MOD_ID));
+        gen.addProvider(server, new CCFluids.Tags(gen, MOD_ID, fileHelper));
+        gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(gen, MOD_ID));
         gen.addProvider(server, new CCRecipes(gen));
         gen.addProvider(server, new CCLang(gen, ConstructsCasting.MOD_ID, "en_us"));
     }

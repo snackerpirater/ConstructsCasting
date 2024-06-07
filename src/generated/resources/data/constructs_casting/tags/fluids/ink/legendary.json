@@ -1,5 +1,9 @@
 {
   "values": [
-    "constructs_casting:legendary_ink"
+    "constructs_casting:legendary_ink",
+    {
+      "id": "create_wizardry:legendary_ink",
+      "required": false
+    }
   ]
 }

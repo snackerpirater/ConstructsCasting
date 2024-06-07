@@ -3,7 +3,7 @@
   "inputs": [
     {
       "amount": 750,
-      "fluid": "constructs_casting:common_ink"
+      "tag": "constructs_casting:ink/common"
     },
     {
       "amount": 90,

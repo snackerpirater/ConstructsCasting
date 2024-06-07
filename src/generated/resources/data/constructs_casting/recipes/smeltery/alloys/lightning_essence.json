@@ -7,7 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "constructs_casting:liquid_lightning"
+      "tag": "constructs_casting:essence/lightning"
     }
   ],
   "result": {

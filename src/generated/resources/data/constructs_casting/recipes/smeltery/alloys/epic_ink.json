@@ -3,7 +3,7 @@
   "inputs": [
     {
       "amount": 750,
-      "fluid": "constructs_casting:rare_ink"
+      "tag": "constructs_casting:ink/rare"
     },
     {
       "amount": 90,

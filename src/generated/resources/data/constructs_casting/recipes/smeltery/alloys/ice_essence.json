@@ -7,7 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "tconstruct:powdered_snow"
+      "tag": "constructs_casting:essence/ice"
     }
   ],
   "result": {

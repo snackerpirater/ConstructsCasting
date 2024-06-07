@@ -7,7 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "constructs_casting:poisonous_potato_stew"
+      "tag": "constructs_casting:essence/nature"
     }
   ],
   "result": {

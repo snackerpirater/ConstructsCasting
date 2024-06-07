@@ -7,7 +7,7 @@
   "cooling_time": 1,
   "fluid": {
     "amount": 250,
-    "fluid": "constructs_casting:legendary_ink"
+    "tag": "constructs_casting:ink/legendary"
   },
   "result": "irons_spellbooks:legendary_ink"
 }

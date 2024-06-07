@@ -7,7 +7,7 @@
   "cooling_time": 1,
   "fluid": {
     "amount": 250,
-    "fluid": "constructs_casting:rare_ink"
+    "tag": "constructs_casting:ink/rare"
   },
   "result": "irons_spellbooks:rare_ink"
 }

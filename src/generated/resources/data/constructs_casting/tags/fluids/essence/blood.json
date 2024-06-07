@@ -1,5 +1,9 @@
 {
   "values": [
-    "constructs_casting:blood_essence"
+    "constructs_casting:blood_essence",
+    {
+      "id": "create_wizardry:blood",
+      "required": false
+    }
   ]
 }

@@ -119,7 +119,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(arcanium).color(0xFF0000);
 			buildRenderInfo(arcaneCloth).color(0xFF0000);
 			buildRenderInfo(arcaneHide).color(0xFF0000);
-			buildRenderInfo(exilite).color(0xFF0000);
+			buildRenderInfo(exilite).color(0x47494b);
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 		}
 

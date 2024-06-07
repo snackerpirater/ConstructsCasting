@@ -1,5 +1,9 @@
 {
   "values": [
-    "constructs_casting:uncommon_ink"
+    "constructs_casting:uncommon_ink",
+    {
+      "id": "create_wizardry:uncommon_ink",
+      "required": false
+    }
   ]
 }

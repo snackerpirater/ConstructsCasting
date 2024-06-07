@@ -1,5 +1,9 @@
 {
   "values": [
-    "constructs_casting:rare_ink"
+    "constructs_casting:rare_ink",
+    {
+      "id": "create_wizardry:rare_ink",
+      "required": false
+    }
   ]
 }

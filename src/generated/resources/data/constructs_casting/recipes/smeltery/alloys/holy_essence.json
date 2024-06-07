@@ -7,7 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "constructs_casting:liquid_divinity"
+      "tag": "constructs_casting:essence/holy"
     }
   ],
   "result": {

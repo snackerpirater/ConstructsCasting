@@ -4,6 +4,7 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
@@ -14,6 +15,7 @@ import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.fluid.texture.AbstractFluidTextureProvider;
@@ -129,7 +131,7 @@ public class CCFluids {
 			super(generator, modId);
 		}
 	}
-	public static class CCFluidTags extends FluidTagsProvider {
+	public static class Tags extends FluidTagsProvider {
 		public static class CCFluidTooltipProvider extends AbstractFluidTooltipProvider {
 
 			public CCFluidTooltipProvider(DataGenerator generator, String modId) {
@@ -157,7 +159,7 @@ public class CCFluids {
 		public static final TagKey<Fluid> LIQUID_DIVINITY = FluidTags.create(ConstructsCasting.id("liquid_divinity"));
 		public static final TagKey<Fluid> ARCANIUM_BASE = FluidTags.create(ConstructsCasting.id("arcanium_base"));
 		public static final TagKey<Fluid> BOTTLE_TOOLTIP = FluidTags.create(ConstructsCasting.id("bottle_tooltip"));
-		public CCFluidTags(DataGenerator p_126523_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+		public Tags(DataGenerator p_126523_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(p_126523_, modId, existingFileHelper);
 		}
 
@@ -177,7 +179,7 @@ public class CCFluids {
 			tag(LIQUID_LIGHTNING).add(liquidLightning.get());
 			tag(LIQUID_DIVINITY).add(liquidDivinity.get());
 
-			tag(ARCANIUM_BASE).add(TinkerFluids.moltenIron.get(),  TinkerFluids.moltenGold.get(), TinkerFluids.moltenCopper.get());
+			tag(ARCANIUM_BASE).addTag(TinkerFluids.moltenCopper.getForgeTag()).addTag(TinkerFluids.moltenIron.getForgeTag()).addTag(TinkerFluids.moltenGold.getForgeTag());
 
 			tag(essenceOf("arcane")).add(arcaneEssence.get());
 			tag(essenceOf("fire")).add(fireEssence.get());
@@ -185,15 +187,15 @@ public class CCFluids {
 			tag(essenceOf("lightning")).add(lightningEssence.get());
 			tag(essenceOf("ender")).add(enderEssence.get());
 			tag(essenceOf("holy")).add(holyEssence.get());
-			tag(essenceOf("blood")).add(bloodEssence.get());
+			tag(essenceOf("blood")).add(bloodEssence.get()).addOptional(new ResourceLocation("create_wizardry:blood"));
 			tag(essenceOf("evocation")).add(evocationEssence.get());
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
-			tag(ink("common")).add(commonInk.get());
-			tag(ink("uncommon")).add(uncommonInk.get());
-			tag(ink("rare")).add(rareInk.get());
-			tag(ink("epic")).add(epicInk.get());
-			tag(ink("legendary")).add(legendaryInk.get());
+			tag(ink("common")).add(commonInk.get()).addOptional(new ResourceLocation("create_wizardry:common_ink"));
+			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(new ResourceLocation("create_wizardry:uncommon_ink"));
+			tag(ink("rare")).add(rareInk.get()).addOptional(new ResourceLocation("create_wizardry:rare_ink"));
+			tag(ink("epic")).add(epicInk.get()).addOptional(new ResourceLocation("create_wizardry:epic_ink"));
+			tag(ink("legendary")).add(legendaryInk.get()).addOptional(new ResourceLocation("create_wizardry:legendary_ink"));
 			//tooltips
 			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get());
 			tag(BOTTLE_TOOLTIP)
