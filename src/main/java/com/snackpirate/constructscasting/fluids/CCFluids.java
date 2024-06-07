@@ -157,6 +157,7 @@ public class CCFluids {
 		public static final TagKey<Fluid> POISONOUS_POTATO_STEW = FluidTags.create(ConstructsCasting.id("poisonous_potato_stew"));
 		public static final TagKey<Fluid> LIQUID_LIGHTNING = FluidTags.create(ConstructsCasting.id("liquid_lightning"));
 		public static final TagKey<Fluid> LIQUID_DIVINITY = FluidTags.create(ConstructsCasting.id("liquid_divinity"));
+		public static final TagKey<Fluid> BLOOD_ESSENCE_INGREDIENTS = FluidTags.create(ConstructsCasting.id("blood_essence_ingredients"));
 		public static final TagKey<Fluid> ARCANIUM_BASE = FluidTags.create(ConstructsCasting.id("arcanium_base"));
 		public static final TagKey<Fluid> BOTTLE_TOOLTIP = FluidTags.create(ConstructsCasting.id("bottle_tooltip"));
 		public Tags(DataGenerator p_126523_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
@@ -187,7 +188,7 @@ public class CCFluids {
 			tag(essenceOf("lightning")).add(lightningEssence.get());
 			tag(essenceOf("ender")).add(enderEssence.get());
 			tag(essenceOf("holy")).add(holyEssence.get());
-			tag(essenceOf("blood")).add(bloodEssence.get()).addOptional(new ResourceLocation("create_wizardry:blood"));
+			tag(essenceOf("blood")).add(bloodEssence.get());
 			tag(essenceOf("evocation")).add(evocationEssence.get());
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
@@ -196,6 +197,7 @@ public class CCFluids {
 			tag(ink("rare")).add(rareInk.get()).addOptional(new ResourceLocation("create_wizardry:rare_ink"));
 			tag(ink("epic")).add(epicInk.get()).addOptional(new ResourceLocation("create_wizardry:epic_ink"));
 			tag(ink("legendary")).add(legendaryInk.get()).addOptional(new ResourceLocation("create_wizardry:legendary_ink"));
+			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get()).addOptional(new ResourceLocation("create_wizardry:blood"));
 			//tooltips
 			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get());
 			tag(BOTTLE_TOOLTIP)

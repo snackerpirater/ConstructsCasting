@@ -6,8 +6,8 @@
       "fluid": "constructs_casting:arcane_essence"
     },
     {
-      "amount": 250,
-      "tag": "constructs_casting:essence/evocation"
+      "amount": 100,
+      "tag": "tconstruct:molten_emerald"
     }
   ],
   "result": {

@@ -185,14 +185,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		//essence making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), new FluidStack(CCFluids.arcaneEssence.get(), 250), 100, 5)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
-		essenceRecipe(CCFluids.fireEssence,      CCFluids.Tags.essenceOf("fire"),     "fire_essence"     );
-		essenceRecipe(CCFluids.iceEssence,       CCFluids.Tags.essenceOf("ice"),      "ice_essence"      );
-		essenceRecipe(CCFluids.lightningEssence, CCFluids.Tags.essenceOf("lightning"),"lightning_essence");
-		essenceRecipe(CCFluids.enderEssence,     CCFluids.Tags.essenceOf("ender"),    "ender_essence"    );
-		essenceRecipe(CCFluids.holyEssence,      CCFluids.Tags.essenceOf("holy"),     "holy_essence"     );
-		essenceRecipe(CCFluids.bloodEssence,     CCFluids.Tags.essenceOf("blood"),    "blood_essence"    );
-		essenceRecipe(CCFluids.evocationEssence, CCFluids.Tags.essenceOf("evocation"),"evocation_essence");
-		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.essenceOf("nature"),   "nature_essence"   );
+		essenceRecipe(CCFluids.fireEssence,      TinkerFluids.blazingBlood   .getLocalTag(),100, "fire_essence"     );
+		essenceRecipe(CCFluids.iceEssence,       TinkerFluids.powderedSnow.getForgeTag(),   250, "ice_essence"      );
+		essenceRecipe(CCFluids.lightningEssence, CCFluids.Tags.LIQUID_LIGHTNING,            250, "lightning_essence");
+		essenceRecipe(CCFluids.enderEssence,     TinkerFluids.moltenEnder    .getLocalTag(),250, "ender_essence"    );
+		essenceRecipe(CCFluids.holyEssence,      CCFluids.Tags.LIQUID_DIVINITY,             250, "holy_essence"     );
+		essenceRecipe(CCFluids.bloodEssence,     TinkerFluids.meatSoup       .getLocalTag(),250, "blood_essence"    );
+		essenceRecipe(CCFluids.evocationEssence, TinkerFluids.moltenEmerald  .getLocalTag(),100, "evocation_essence");
+		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       250, "nature_essence"   );
 		//rune casting
 		runeCastingRecipe(CCFluids.fireEssence,      ItemRegistry.FIRE_RUNE.get(),           "fire_rune");
 		runeCastingRecipe(CCFluids.iceEssence,       ItemRegistry.ICE_RUNE.get(),             "ice_rune");
@@ -249,8 +249,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));
 	}
-	public static void essenceRecipe(FluidObject<?> essence, TagKey<Fluid> alloyIngredient, String recipeId) {
-		AlloyRecipeBuilder.alloy(new FluidStack(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient, 250).save(aConsumer, ConstructsCasting.id(alloyFolder + recipeId));
+	public static void essenceRecipe(FluidObject<?> essence, TagKey<Fluid> alloyIngredient, int amount, String recipeId) {
+		AlloyRecipeBuilder.alloy(new FluidStack(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient, amount).save(aConsumer, ConstructsCasting.id(alloyFolder + recipeId));
 	}
 	public static void inkFillingRecipe(Item inkBottle, TagKey<Fluid> ink, String rarity) {
 		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink,FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(aConsumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
