@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCTools;
-import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
