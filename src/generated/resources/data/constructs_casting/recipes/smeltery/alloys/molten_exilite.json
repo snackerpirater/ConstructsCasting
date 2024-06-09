@@ -3,7 +3,7 @@
   "inputs": [
     {
       "amount": 90,
-      "tag": "forge:molten_iron"
+      "tag": "forge:molten_cobalt"
     },
     {
       "amount": 250,
@@ -11,7 +11,7 @@
     },
     {
       "amount": 250,
-      "tag": "minecraft:lava"
+      "tag": "forge:molten_obsidian"
     }
   ],
   "result": {

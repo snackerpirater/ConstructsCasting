@@ -92,7 +92,11 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/nugget"));
 		ingotCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteIngot.get(), castingFolder + "exilite_ingot");
 		nuggetCastingRecipe(consumer, CCFluids.moltenExilite, CCItems.exiliteNugget.get(), castingFolder + "exilite_nugget");
-		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT)).addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(FluidTags.LAVA, FluidValues.BOTTLE).save(consumer, ConstructsCasting.id(alloyFolder + "molten_exilite"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT))
+				.addInput(TinkerFluids.moltenCobalt.getForgeTag(), FluidValues.INGOT)
+				.addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE)
+				.addInput(TinkerFluids.moltenObsidian.getForgeTag(), FluidValues.GLASS_PANE)
+				.save(consumer, ConstructsCasting.id(alloyFolder + "molten_exilite"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MAGEHUNTER.get()), new FluidStack(CCFluids.moltenExilite.get(), 2*FluidValues.INGOT), 700, 30).setDamagable(25).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/magehunter"));

@@ -125,4 +125,10 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		}
 		return new InteractionResultHolder<>(ToolInventoryCapability.tryOpenContainer(stack, tool, playerIn, Util.getSlotType(hand)), stack);
 	}
+
+	@Override
+	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+		super.onEquip(slotContext, prevStack, stack);
+		ToolStack.ensureInitialized(stack, getToolDefinition());
+	}
 }
