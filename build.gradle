@@ -59,21 +59,49 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name 'DVS1 Maven FS'
-        url 'https://dvs1.progwml6.com/files/maven'
+        url = 'https://dvs1.progwml6.com/files/maven'
+        content {
+            includeGroup "slimeknights.tconstruct"
+            includeGroup "slimeknights.mantle"
+        }
     }
     maven {
-        //ISS
-        name = "Iron's Maven - Release"
         url = "https://code.redspace.io/releases"
+        content {
+            includeGroup "io.redspace.ironsspellbooks"
+        }
     }
-    maven { url = "https://maven.enginehub.org/repo/" }
-    maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
-    maven { url = "https://maven.theillusivec4.top" }
-    maven { url = "https://cursemaven.com" }
-    maven { url = "https://maven.blamejared.com" }
-    maven { url = "https://maven.kosmx.dev/" }
-
+    maven {
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+        content {
+            includeGroup "software.bernie.geckolib"
+        }
+    }
+    maven {
+        url = "https://maven.theillusivec4.top"
+        content {
+            includeGroup "top.theillusivec4.curios"
+            includeGroup "top.theillusivec4.caelus"
+        }
+    }
+    maven {
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        url = "https://maven.blamejared.com"
+        content {
+            includeGroup "mezz.jei"
+        }
+    }
+    maven {
+        url = "https://maven.kosmx.dev/"
+        content {
+            includeGroup "dev.kosmx.player-anim"
+        }
+    }
     mavenCentral()
 }
 
@@ -104,22 +132,8 @@ dependencies {
     // CURIOS *****************************************************************************************************
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 
-    // TETRA ******************************************************************************************************
-    //runtimeOnly fg.deobf("se.mickelus.mutil:mutil:${mutil_version}")
-    //runtimeOnly fg.deobf("curse.maven:tetra-${tetra_version}")
-
     // JEI ********************************************************************************************************
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-
-    // PATCHOULI **************************************************************************************************
-    //runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-
-    // APOTHEOSIS
-    //runtimeOnly fg.deobf("curse.maven:placebo-283644:4546960")
-    //runtimeOnly fg.deobf("curse.maven:apotheosis-313970:4547399")
-
-    // JSON ******************************************************************************************************
-    implementation "com.google.code.gson:gson:${gson_version}"
 
     //DUMMMMY
     runtimeOnly fg.deobf("curse.maven:moonlight_lib-499980:4983974")

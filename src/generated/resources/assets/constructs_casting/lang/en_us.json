@@ -61,6 +61,8 @@
   "material.constructs_casting.exilite.encyclopedia": "Deals greater damage to magic-wielding enemies.",
   "material.constructs_casting.exilite.flavor": "#1 Wizard Hater",
   "material.constructs_casting.rainbowslime": "Rainbowslime",
+  "material.constructs_casting.rainbowslime.encyclopedia": "Happy pride month!",
+  "material.constructs_casting.rainbowslime.flavor": "How are you seeing this?",
   "modifier.constructs_casting.antimagic": "Antimagic",
   "modifier.constructs_casting.antimagic.damage_boost": "Antimagic Damage",
   "modifier.constructs_casting.antimagic.description": "Grants +2 damage against magic users.",

@@ -20,7 +20,8 @@ public class CCTools {
 		protected void addToolDefinitions() {
 			define(TinkerersSpellbookItem.DEFINITION)
 					.module(ToolSlotsModule.builder()
-							.slots(SlotType.UPGRADE, 3)
+							//match slimesuit, but w/o abilities since what's the point?
+							.slots(SlotType.UPGRADE, 5)
 							.build())
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.SPELLBOUND)

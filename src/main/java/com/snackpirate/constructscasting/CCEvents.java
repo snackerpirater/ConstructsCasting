@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -56,22 +57,16 @@ public class CCEvents {
 			);
 		}
 	}
-	@SubscribeEvent
-	static void swiftcastingHandleInput(MovementInputUpdateEvent event) {
-		if (ClientMagicData.isCasting() &&
-				ModifierUtil.getModifierLevel(event.getEntity().getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.SWIFTCASTING) > 0) {
-			event.getInput().leftImpulse *= 5;
-			event.getInput().forwardImpulse *= 5;
-		}
-	}
+
 	//if the target has the enderference effect, cancel teleportations
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
 		if (event.getEntity().hasEffect(TinkerModifiers.enderferenceEffect.get())) {
 			event.getEntity().level.playSound(null, event.getEntity().blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
-			event.setCanceled(event.getSpellId().equals("irons_spellbooks:teleport")
-					|| event.getSpellId().equals("irons_spellbooks:blood_step")
-					|| event.getSpellId().equals("irons_spellbooks:frost_step"));
+			String spellId = event.getSpellId();
+			event.setCanceled(spellId.equals("irons_spellbooks:teleport")
+					|| spellId.equals("irons_spellbooks:blood_step")
+					|| spellId.equals("irons_spellbooks:frost_step"));
 		}
 	}
 	@SubscribeEvent
@@ -85,6 +80,20 @@ public class CCEvents {
 			var container = ISpellContainer.create(1, true, true);
 			container.save(replacement);
 		}
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+	public static class ClientEvents {
+		@SubscribeEvent
+		static void swiftcastingHandleInput(MovementInputUpdateEvent event) {
+			if (ClientMagicData.isCasting() &&
+					ModifierUtil.getModifierLevel(event.getEntity().getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.SWIFTCASTING) > 0) {
+				event.getInput().leftImpulse *= 5;
+				event.getInput().forwardImpulse *= 5;
+			}
+		}
+
 	}
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSetup {

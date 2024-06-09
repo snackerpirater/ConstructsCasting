@@ -23,7 +23,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
 		add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.arcaneHide, "Arcane Hide", "", "");
-		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "", "");
+		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");

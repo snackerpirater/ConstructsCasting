@@ -2,7 +2,6 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import net.minecraft.nbt.CompoundTag;
