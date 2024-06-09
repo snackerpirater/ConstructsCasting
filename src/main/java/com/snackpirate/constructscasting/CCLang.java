@@ -18,6 +18,7 @@ public class CCLang extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
+		add("itemGroup.constructs_casting.constructs_casting", "Construct's Casting");
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
 		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");

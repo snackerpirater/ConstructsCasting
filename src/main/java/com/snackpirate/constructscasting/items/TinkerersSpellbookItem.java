@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting.items;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -42,6 +43,9 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	public static final ToolDefinition DEFINITION = ToolDefinition.create(CCItems.tinkerersSpellbook);
 	private ItemStack toolForRendering;
 
+	public TinkerersSpellbookItem(Properties prop) {
+		super(10, SpellRarity.EPIC, prop);
+	}
 	@Override
 	public ToolDefinition getToolDefinition() {
 		return DEFINITION;

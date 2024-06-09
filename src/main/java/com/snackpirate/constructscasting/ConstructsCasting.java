@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCTools;
+import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -11,6 +12,8 @@ import com.snackpirate.constructscasting.recipe.CCRecipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -20,14 +23,16 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import slimeknights.mantle.util.SupplierCreativeTab;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 @Mod(ConstructsCasting.MOD_ID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ConstructsCasting {
-
     public static final String MOD_ID = "constructs_casting";
+    public static final CreativeModeTab CREATIVE_TAB = new SupplierCreativeTab(MOD_ID, "constructs_casting", () -> new ItemStack(CCItems.tinkerersSpellbook.get(), 1));
+
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ConstructsCasting() {
