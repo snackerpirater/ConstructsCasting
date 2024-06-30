@@ -1,0 +1,19 @@
+{
+  "modules": [
+    {
+      "type": "tconstruct:modifier_slots",
+      "slots": {
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "constructs_casting:cooldown_upgrade"
+        }
+      ]
+    }
+  ]
+}

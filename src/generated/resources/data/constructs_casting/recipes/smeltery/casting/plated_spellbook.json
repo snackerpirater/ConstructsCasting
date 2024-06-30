@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "irons_spellbooks:diamond_spell_book"
+  },
+  "cast_consumed": true,
+  "cooling_time": 130,
+  "fluid": {
+    "amount": 360,
+    "fluid": "tconstruct:molten_cobalt"
+  },
+  "result": "constructs_casting:plated_spellbook"
+}

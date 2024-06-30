@@ -1,0 +1,19 @@
+{
+  "modules": [
+    {
+      "type": "tconstruct:modifier_slots",
+      "slots": {
+        "upgrades": 1
+      }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 2,
+          "name": "constructs_casting:arcane"
+        }
+      ]
+    }
+  ]
+}

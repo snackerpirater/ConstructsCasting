@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "irons_spellbooks:arcane_ingot"
+    },
+    "l": {
+      "tag": "minecraft:warped_stems"
+    },
+    "s": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "sls",
+    " a ",
+    " l "
+  ],
+  "result": {
+    "item": "constructs_casting:eldritch_staff"
+  }
+}

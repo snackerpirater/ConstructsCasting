@@ -1,0 +1,33 @@
+{
+  "modules": [
+    {
+      "type": "tconstruct:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 3,
+          "name": "constructs_casting:eldritch_upgrade"
+        },
+        {
+          "level": 1,
+          "name": "constructs_casting:casting"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct:base_stats",
+      "stats": {
+        "tconstruct:block_amount": 20.0,
+        "tconstruct:block_angle": 50.0,
+        "tconstruct:durability": 1337.0,
+        "tconstruct:use_item_speed": 0.4
+      }
+    }
+  ]
+}
