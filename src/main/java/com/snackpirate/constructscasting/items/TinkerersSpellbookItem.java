@@ -40,15 +40,16 @@ import java.util.List;
 import java.util.UUID;
 
 public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisplay {
-	public static final ToolDefinition DEFINITION = ToolDefinition.create(CCItems.tinkerersSpellbook);
+	private final ToolDefinition definition;
 	private ItemStack toolForRendering;
 
-	public TinkerersSpellbookItem(Properties prop) {
-		super(10, SpellRarity.EPIC, prop);
+	public TinkerersSpellbookItem(Properties prop, int slots, ToolDefinition definition) {
+		super(slots, SpellRarity.EPIC, prop);
+		this.definition = definition;
 	}
 	@Override
 	public ToolDefinition getToolDefinition() {
-		return DEFINITION;
+		return definition;
 	}
 
 	@Override
@@ -78,11 +79,6 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	@Override
 	public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
 		ToolStack.ensureInitialized(pStack, getToolDefinition());
-	}
-
-	@Override
-	public int getMaxSpellSlots() {
-		return 10;
 	}
 
 	@Override
@@ -134,4 +130,5 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		super.onEquip(slotContext, prevStack, stack);
 		ToolStack.ensureInitialized(stack, getToolDefinition());
 	}
+
 }

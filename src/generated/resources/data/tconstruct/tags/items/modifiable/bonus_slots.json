@@ -1,5 +1,8 @@
 {
   "values": [
-    "constructs_casting:tinkerers_spellbook"
+    "constructs_casting:tinkerers_spellbook",
+    "constructs_casting:plated_spellbook",
+    "constructs_casting:eldritch_staff",
+    "constructs_casting:eldritch_staff"
   ]
 }

@@ -49,6 +49,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.BLOOD_UPGRADE, "Blood Upgrade", "Bloody hell!", "Grants +5% Blood Spell Power.");
 		addModifier(CCModifiers.EVOCATION_UPGRADE, "Evocation Upgrade", "Hrmmm?", "Grants +5% Evocation Spell Power.");
 		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
+		addModifier(CCModifiers.ELDRITCH_UPGRADE, "Eldritch Upgrade", "Man-made modifiers beyond your comprehension", "Grants +5% Eldritch Spell Power");
 
 
 
@@ -84,8 +85,10 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
-		addItem(CCItems.tinkerersSpellbook, "Slimy Spell Book");
-
+		addItem(CCItems.travellersSpellbook, "Traveller's Spell Book");
+		addItem(CCItems.platedSpellbook, "Plated Spell Book");
+		addItem(CCItems.slimySpellbook, "Slimy Spell Book");
+		addItem(CCItems.eldritchStaff, "Sculk Staff");
 		add("school.constructs_casting.slime", "Slime");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 

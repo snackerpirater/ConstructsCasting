@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "constructs_casting:item/plated_spellbook_model"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "constructs_casting:item/plated_spellbook_gui"
+    }
+  }
+}

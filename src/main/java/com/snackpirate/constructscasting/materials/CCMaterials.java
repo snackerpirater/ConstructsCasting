@@ -116,8 +116,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialRenderInfo() {
-			buildRenderInfo(arcanium).color(0xFF0000);
-			buildRenderInfo(arcaneCloth).color(0xFF0000);
+			buildRenderInfo(arcanium).color(0x73abde);
+			buildRenderInfo(arcaneCloth).color(0x73abde);
 			buildRenderInfo(arcaneHide).color(0xFF0000);
 			buildRenderInfo(exilite).color(0x47494b);
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);

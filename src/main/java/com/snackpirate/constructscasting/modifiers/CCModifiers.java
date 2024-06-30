@@ -33,16 +33,17 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
 
 	//orb upgrades
-	public static final ModifierId MANA_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
-	public static final ModifierId FIRE_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "fire_upgrade");
-	public static final ModifierId ICE_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "ice_upgrade");
+	public static final ModifierId MANA_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
+	public static final ModifierId FIRE_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "fire_upgrade");
+	public static final ModifierId ICE_UPGRADE       = new ModifierId(ConstructsCasting.MOD_ID, "ice_upgrade");
 	public static final ModifierId LIGHTNING_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "lightning_upgrade");
-	public static final ModifierId ENDER_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "ender_upgrade");
-	public static final ModifierId HOLY_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "holy_upgrade");
-	public static final ModifierId BLOOD_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "blood_upgrade");
+	public static final ModifierId ENDER_UPGRADE     = new ModifierId(ConstructsCasting.MOD_ID, "ender_upgrade");
+	public static final ModifierId HOLY_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "holy_upgrade");
+	public static final ModifierId BLOOD_UPGRADE     = new ModifierId(ConstructsCasting.MOD_ID, "blood_upgrade");
 	public static final ModifierId EVOCATION_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "evocation_upgrade");
-	public static final ModifierId NATURE_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
-	public static final ModifierId COOLDOWN_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
+	public static final ModifierId NATURE_UPGRADE    = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
+	public static final ModifierId COOLDOWN_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
+	public static final ModifierId ELDRITCH_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_upgrade");
 	public CCModifiers(DataGenerator generator) {
 		super(generator);
 	}
@@ -72,6 +73,7 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(BLOOD_UPGRADE)    .addModule(spellPowerModifier(BLOOD_UPGRADE,     AttributeRegistry.BLOOD_SPELL_POWER    .get())).build();
 		buildModifier(EVOCATION_UPGRADE).addModule(spellPowerModifier(EVOCATION_UPGRADE, AttributeRegistry.EVOCATION_SPELL_POWER.get())).build();
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
+		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
 
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {

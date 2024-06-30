@@ -15,7 +15,6 @@ import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.fluid.texture.AbstractFluidTextureProvider;
@@ -181,7 +180,6 @@ public class CCFluids {
 			tag(LIQUID_DIVINITY).add(liquidDivinity.get());
 
 			tag(ARCANIUM_BASE).addTag(TinkerFluids.moltenCopper.getForgeTag()).addTag(TinkerFluids.moltenIron.getForgeTag()).addTag(TinkerFluids.moltenGold.getForgeTag());
-
 			tag(essenceOf("arcane")).add(arcaneEssence.get());
 			tag(essenceOf("fire")).add(fireEssence.get());
 			tag(essenceOf("ice")).add(iceEssence.get());
@@ -192,6 +190,7 @@ public class CCFluids {
 			tag(essenceOf("evocation")).add(evocationEssence.get());
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
+			tag(TagKey.create(ResourceKey.createRegistryKey(new ResourceLocation("forge:fluid_type")),new ResourceLocation("forge:ink"))).add(squidInk.get());
 			tag(ink("common")).add(commonInk.get()).addOptional(new ResourceLocation("create_wizardry:common_ink"));
 			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(new ResourceLocation("create_wizardry:uncommon_ink"));
 			tag(ink("rare")).add(rareInk.get()).addOptional(new ResourceLocation("create_wizardry:rare_ink"));

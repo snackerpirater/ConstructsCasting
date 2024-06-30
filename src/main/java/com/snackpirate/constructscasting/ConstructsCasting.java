@@ -30,7 +30,7 @@ import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ConstructsCasting {
     public static final String MOD_ID = "constructs_casting";
-    public static final CreativeModeTab CREATIVE_TAB = new SupplierCreativeTab(MOD_ID, "constructs_casting", () -> new ItemStack(CCItems.tinkerersSpellbook.get(), 1));
+    public static final CreativeModeTab CREATIVE_TAB = new SupplierCreativeTab(MOD_ID, "constructs_casting", () -> new ItemStack(CCItems.slimySpellbook.get(), 1));
 
     public static final Logger LOGGER = LogUtils.getLogger();
 

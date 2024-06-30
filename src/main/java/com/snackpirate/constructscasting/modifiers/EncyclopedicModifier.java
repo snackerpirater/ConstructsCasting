@@ -27,7 +27,6 @@ public class EncyclopedicModifier extends NoLevelsModifier implements GeneralInt
 	 * @param player   Interacting player
 	 * @param hand     Hand used for interaction
 	 * @param source   Source of the interaction
-	 * @return
 	 */
 	@Override
 	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {

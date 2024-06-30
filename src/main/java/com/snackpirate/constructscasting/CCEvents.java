@@ -99,7 +99,8 @@ public class CCEvents {
 	public static class ClientSetup {
 		@SubscribeEvent
 		static void registerCurioRenderers(FMLClientSetupEvent e) {
-			CuriosRendererRegistry.register(CCItems.tinkerersSpellbook.get(), SpellBookCurioRenderer::new);
+			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), SpellBookCurioRenderer::new);
+			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), SpellBookCurioRenderer::new);
 		}
 	}
 }

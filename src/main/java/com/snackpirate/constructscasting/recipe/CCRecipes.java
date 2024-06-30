@@ -10,7 +10,7 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.tags.FluidTags;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -162,7 +162,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ModifierRecipeBuilder.modifier(CCModifiers.ENCYCLOPEDIC)
 				.allowCrystal()
 				.exactLevel(1)
-				.setTools(Ingredient.of(CCItems.tinkerersSpellbook.get()))
+				.setTools(Ingredient.of(CCItems.slimySpellbook.get()))
 				.setMaxLevel(1)
 				.addInput(TinkerCommons.encyclopedia)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/encyclopedic"));
@@ -243,12 +243,23 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.commonInk.get(),    250), 300).addInput(CCFluids.squidInk.get(),                   750).addInput(CCFluids.arcaneEssence.get(), 500).save(consumer, ConstructsCasting.id(alloyFolder + "common_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.uncommonInk.get(),  250), 300).addInput(CCFluids.Tags.ink("common"),   750).addInput(TinkerFluids.moltenCopper  .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "uncommon_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.rareInk.get(),      250), 300).addInput(CCFluids.Tags.ink("uncommon"), 750).addInput(TinkerFluids.moltenIron    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));
-		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(CCFluids.Tags.ink("rare"), 	  750).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
+		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.epicInk.get(),      250), 300).addInput(CCFluids.Tags.ink("rare"), 	   750).addInput(TinkerFluids.moltenGold    .getForgeTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.legendaryInk.get(), 250), 300).addInput(CCFluids.Tags.ink("epic"),     750).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
 
 		//slimy spellbook!
-		ItemCastingRecipeBuilder.basinRecipe(CCItems.tinkerersSpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(), true).setFluidAndTime(new FluidStack(TinkerFluids.enderSlime.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + "tinkerers_spellbook"));
-
+		ItemCastingRecipeBuilder.basinRecipe(CCItems.slimySpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(),  true).setFluidAndTime(new FluidStack(TinkerFluids.enderSlime.get(),                  1000)).save(consumer, ConstructsCasting.id(castingFolder + "tinkerers_spellbook"));
+		//plated spellbook
+		ItemCastingRecipeBuilder.tableRecipe(CCItems.platedSpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(), true).setFluidAndTime(new FluidStack(TinkerFluids.moltenCobalt.get(), 4*FluidValues.INGOT)).save(consumer, ConstructsCasting.id(castingFolder + "plated_spellbook"));
+		//eldritch staff
+		ShapedRecipeBuilder.shaped(CCItems.eldritchStaff.get())
+				.define('s', Items.ECHO_SHARD)
+				.define('l', ItemTags.WARPED_STEMS)
+				.define('a', ItemRegistry.ARCANE_INGOT.get())
+				.pattern("sls")
+				.pattern(" a ")
+				.pattern(" l ")
+				.unlockedBy("has_item", RecipeProvider.has(Items.ECHO_SHARD))
+				.save(consumer, ConstructsCasting.id("crafting/eldritch_staff"));
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));

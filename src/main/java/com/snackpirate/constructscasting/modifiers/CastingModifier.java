@@ -54,7 +54,6 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 			if (spellData.getSpell().getCastType().holdToCast()) {
 				GeneralInteractionModifierHook.startUsing(iToolStackView, modifierEntry.getId(), player, interactionHand);
 			}
-
 			return InteractionResult.CONSUME;
 		} else {
 			return InteractionResult.FAIL;
@@ -77,5 +76,10 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 		GeneralInteractionModifierHook.finishUsing(tool);
 		Utils.releaseUsingHelper(entity, tool.getItem().getDefaultInstance(), timeLeft);
 
+	}
+
+	@Override
+	public int getPriority() {
+		return 150;//anything above blocking (100) works, but just to be sure
 	}
 }
