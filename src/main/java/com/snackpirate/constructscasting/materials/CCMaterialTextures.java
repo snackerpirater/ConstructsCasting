@@ -7,6 +7,7 @@ import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColor
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 import slimeknights.tconstruct.library.client.data.spritetransformer.RecolorSpriteTransformer;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
@@ -51,14 +52,34 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFb1d9ff)
 						.addARGB(255, 0xFFebf5ff)
 						.build()));
-		buildMaterial(CCMaterials.arcaneHide).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier())
-				.fallbacks("cloth")
+		buildMaterial(CCMaterials.hogskin).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier())
+				.fallbacks("cloth", "primitive")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF4c4c4c)
 						.addARGB(102, 0xFF7f7f7f)
 						.addARGB(140, 0xFF929292)
 						.addARGB(178, 0xFFb9b9b9)
 						.addARGB(216, 0xFFd7d7d7)
+						.addARGB(255, 0xFFffffff)
+						.build()));
+		buildMaterial(CCMaterials.frozenBone).meleeHarvest().statType(StatlessMaterialStats.BINDING.getIdentifier()).repairKit()
+				.fallbacks("bone", "rock")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF6a787d)
+						.addARGB(102, 0xFF7e9396)
+						.addARGB(140, 0xFFa3c9c8)
+						.addARGB(178, 0xFFd0e5e4)
+						.addARGB(216, 0xFFeaf8f9)
+						.addARGB(255, 0xFFfafcfc)
+						.build()));
+		buildMaterial(CCMaterials.frostRod).statType(HandleMaterialStats.ID)
+				.fallbacks("metal", "primitive")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF4b7589)
+						.addARGB(102, 0xFFa3b3b6)
+						.addARGB(140, 0xFFbed5d7)
+						.addARGB(178, 0xFFc8ecec)
+						.addARGB(216, 0xFFfcfcfc)
 						.addARGB(255, 0xFFffffff)
 						.build()));
 		ResourceLocation rainbowSlimeBase = ConstructsCasting.id("item/materials/generator/rainbowslime");

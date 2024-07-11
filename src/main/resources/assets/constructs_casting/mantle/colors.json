@@ -22,10 +22,14 @@
     "arcane": "#f1cdfa",
     "antimagic": "#6e7278",
     "spell_protection": "#6e7278",
-    "spellbound": "#f1cdfa"
+    "spellbound": "#f1cdfa",
+    "antifrost": "#eaf8f9"
   },
   "material.constructs_casting": {
+    "__tier_2__": null,
+    "frozen_bone": "#eaf8f9",
     "__tier_3__": null,
+    "frosted_rod": "#fcfcfc",
     "arcanium":"#adc6f5",
     "arcane_cloth":"#adc6f5",
     "arcane_hide":"#dbbbcd",

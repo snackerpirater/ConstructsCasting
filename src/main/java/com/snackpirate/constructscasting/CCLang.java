@@ -22,8 +22,10 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
 		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
+		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
+		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
 		add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
-		addMaterial(CCMaterials.arcaneHide, "Arcane Hide", "", "");
+		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
@@ -36,8 +38,9 @@ public class CCLang extends LanguageProvider {
 		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
 		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
 		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
-
-		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +10% power to all types of spells.");
+		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
+		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
+		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +7.5% power to all types of spells.");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");

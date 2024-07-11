@@ -34,8 +34,8 @@ public class AntimagicModifier extends Modifier implements MeleeDamageModifierHo
 	@Override
 	public float getMeleeDamage(IToolStackView iToolStackView, ModifierEntry modifierEntry, ToolAttackContext toolAttackContext, float v, float v1) {
 		int level = modifierEntry.getLevel();
-		float damage = isMagicUser(Objects.requireNonNull(toolAttackContext.getLivingTarget())) ? iToolStackView.getStats().get(ToolStats.ATTACK_DAMAGE) : 0;
-		return damage + (2.0f * level);
+		float damageBonus = isMagicUser(toolAttackContext.getLivingTarget()) ? 2.0f * level : 0;
+		return v1 + damageBonus;
 	}
 
 	@Override

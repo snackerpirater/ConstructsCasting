@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.materials;
 
-import com.ibm.icu.util.GenderInfo;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
@@ -14,7 +13,11 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataPr
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.*;
+
+import java.awt.*;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
@@ -23,7 +26,10 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	//armor trait: spell protection (also makes the reinforcement)
 	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
 	public static final MaterialId arcaneCloth = createMaterial("arcane_cloth"); //trait: mana regen, maille/binding only
-	public static final MaterialId arcaneHide = createMaterial("arcane_hide"); //unfinished
+	public static final MaterialId frozenBone = createMaterial("frozen_bone");
+	public static final MaterialId frostRod = createMaterial("frosted_rod");
+	public static final MaterialId hogskin = createMaterial("hogskin");
+	public static final MaterialId dragonskin = createMaterial("dragonskin");
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
 	public CCMaterials(DataGenerator gen) {
 		super(gen);
@@ -35,11 +41,14 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
+		addMaterial(frozenBone, 2, 0, true);
+		addMaterial(arcaneCloth, 2, 0, true);
 		addMaterial(arcanium, 3, 0, false);
 		addMaterial(exilite, 3, 0, false);
-		addMaterial(arcaneCloth, 2, 0, true);
+		addMaterial(frostRod, 3, 0, true);
 		addMaterial(rainbowSlime, 3, 0, false);
-//		addMaterial(arcaneHide, 4, 0, false);
+		addMaterial(hogskin, 3, 0, true);
+		addMaterial(dragonskin, 4, 0, true);
 	}
 
 	@Override
@@ -76,8 +85,15 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
 					StatlessMaterialStats.MAILLE);
+			addMaterialStats(frozenBone,
+					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
+					new HandleMaterialStats(0.1f, -0.05f, -0.1f, 0.1f),
+					StatlessMaterialStats.BINDING);
+			addMaterialStats(frostRod,
+					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
-			addMaterialStats(arcaneHide, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
+			addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
+			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE);
 			addMaterialStats(rainbowSlime);
 		}
 
@@ -96,7 +112,10 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialTraits() {
 			addDefaultTraits(arcanium, CCModifiers.ARCANE);
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
-			addDefaultTraits(arcaneHide, CCModifiers.ARCANE);
+			addDefaultTraits(hogskin, CCModifiers.ARCANE);
+			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
+			addDefaultTraits(dragonskin, CCModifiers.ENDER_UPGRADE);
+			addTraits(frostRod, HandleMaterialStats.ID, new ModifierEntry(CCModifiers.ICE_UPGRADE, 1));
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
 			noTraits(rainbowSlime);
@@ -117,10 +136,12 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		protected void addMaterialRenderInfo() {
 			buildRenderInfo(arcanium).color(0x73abde);
-			buildRenderInfo(arcaneCloth).color(0x73abde);
-			buildRenderInfo(arcaneHide).color(0xFF0000);
+			buildRenderInfo(arcaneCloth).color(0x73abde).fallbacks("cloth");
+			buildRenderInfo(hogskin).color(0xFF0000).fallbacks("cloth", "primitive");
 			buildRenderInfo(exilite).color(0x47494b);
+			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
+			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
 		}
 
 		@Override
