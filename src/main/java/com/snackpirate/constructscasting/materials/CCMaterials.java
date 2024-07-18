@@ -47,8 +47,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(exilite, 3, 0, false);
 		addMaterial(frostRod, 3, 0, true);
 		addMaterial(rainbowSlime, 3, 0, false);
-		addMaterial(hogskin, 3, 0, true);
-		addMaterial(dragonskin, 4, 0, true);
+//		addMaterial(hogskin, 3, 0, true);
+//		addMaterial(dragonskin, 4, 0, true);
 	}
 
 	@Override
@@ -110,7 +110,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialTraits() {
-			addDefaultTraits(arcanium, CCModifiers.ARCANE);
+			addTraits(arcanium, MaterialRegistry.MELEE_HARVEST, CCModifiers.ARCANE);
+			addTraits(arcanium, MaterialRegistry.ARMOR, new ModifierEntry(CCModifiers.ARCANE, 2));
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(hogskin, CCModifiers.ARCANE);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);

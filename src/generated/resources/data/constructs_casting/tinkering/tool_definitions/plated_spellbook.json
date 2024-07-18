@@ -12,6 +12,10 @@
         {
           "level": 2,
           "name": "constructs_casting:arcane"
+        },
+        {
+          "level": 2,
+          "name": "constructs_casting:mana_upgrade"
         }
       ]
     }

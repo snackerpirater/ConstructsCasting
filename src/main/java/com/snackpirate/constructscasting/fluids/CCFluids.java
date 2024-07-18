@@ -175,7 +175,7 @@ public class CCFluids {
 			tag(MOLTEN_ARCANIUM).add(moltenArcanium.get());
 			tag(MOLTEN_EXILITE).add(moltenExilite.get());
 			tag(POTATO_STEW).add(potatoStew.get());
-			tag(POISONOUS_POTATO_STEW).add(potatoStew.get());
+			tag(POISONOUS_POTATO_STEW).add(poisonousPotatoStew.get());
 			tag(LIQUID_LIGHTNING).add(liquidLightning.get());
 			tag(LIQUID_DIVINITY).add(liquidDivinity.get());
 

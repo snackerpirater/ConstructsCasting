@@ -1,0 +1,10 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "amount": 1000,
+    "fluid": "constructs_casting:ice_essence"
+  },
+  "input": "tconstruct:bone",
+  "output": "constructs_casting:frozen_bone",
+  "temperature": 0
+}

@@ -1,0 +1,10 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "irons_spellbooks:frosted_helve"
+  },
+  "leftover": "irons_spellbooks:frozen_bone",
+  "material": "constructs_casting:frosted_rod",
+  "needed": 1,
+  "value": 3
+}

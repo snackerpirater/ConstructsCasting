@@ -49,11 +49,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 
 		String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
 
-		//TODO: Fix the bug that causes every OTHER continuous cast to cease
 		if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level, player, selectionOption.getCastSource(), true, castingSlot)) {
-			if (spellData.getSpell().getCastType().holdToCast()) {
-				GeneralInteractionModifierHook.startUsing(iToolStackView, modifierEntry.getId(), player, interactionHand);
-			}
 			return InteractionResult.CONSUME;
 		} else {
 			return InteractionResult.FAIL;

@@ -5,7 +5,7 @@
     {
       "type": "tconstruct:attribute",
       "attribute": "irons_spellbooks:cooldown_reduction",
-      "each_level": 0.08,
+      "each_level": 0.05,
       "operation": "multiply_base",
       "slots": [
         "mainhand",

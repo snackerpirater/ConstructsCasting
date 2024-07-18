@@ -1,0 +1,10 @@
+{
+  "perStat": {
+    "tconstruct:handle": [
+      {
+        "level": 1,
+        "name": "constructs_casting:ice_upgrade"
+      }
+    ]
+  }
+}

@@ -43,6 +43,7 @@ public class CCTools {
 							.build())
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.COOLDOWN_UPGRADE)
+							.trait(CCModifiers.MANA_UPGRADE)
 							.build());
 
 			define(TRAVELLERS_SPELLBOOK)
@@ -59,6 +60,7 @@ public class CCTools {
 							.build())
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.ARCANE, 2)
+							.trait(CCModifiers.MANA_UPGRADE, 2)
 							.build());
 
 			define(ELDRITCH_STAFF)

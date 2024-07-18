@@ -101,7 +101,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT))
 				.addInput(TinkerFluids.moltenCobalt.getForgeTag(), FluidValues.INGOT)
 				.addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE)
-				.addInput(TinkerFluids.moltenObsidian.getForgeTag(), FluidValues.GLASS_PANE)
+				.addInput(TinkerFluids.moltenObsidian.getLocalTag(), FluidValues.GLASS_PANE)
 				.save(consumer, ConstructsCasting.id(alloyFolder + "molten_exilite"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
@@ -208,7 +208,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		essenceRecipe(CCFluids.holyEssence,      CCFluids.Tags.LIQUID_DIVINITY,             250, "holy_essence"     );
 		essenceRecipe(CCFluids.bloodEssence,     TinkerFluids.meatSoup       .getLocalTag(),250, "blood_essence"    );
 		essenceRecipe(CCFluids.evocationEssence, TinkerFluids.moltenEmerald  .getLocalTag(),100, "evocation_essence");
-		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       250, "nature_essence"   );
+		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       50, "nature_essence"   );
 		//rune casting
 		runeCastingRecipe(CCFluids.fireEssence,      ItemRegistry.FIRE_RUNE.get(),           "fire_rune");
 		runeCastingRecipe(CCFluids.iceEssence,       ItemRegistry.ICE_RUNE.get(),             "ice_rune");

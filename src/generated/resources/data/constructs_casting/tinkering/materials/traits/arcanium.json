@@ -1,8 +1,16 @@
 {
-  "default": [
-    {
-      "level": 1,
-      "name": "constructs_casting:arcane"
-    }
-  ]
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "level": 2,
+        "name": "constructs_casting:arcane"
+      }
+    ],
+    "tconstruct:melee_harvest": [
+      {
+        "level": 1,
+        "name": "constructs_casting:arcane"
+      }
+    ]
+  }
 }
