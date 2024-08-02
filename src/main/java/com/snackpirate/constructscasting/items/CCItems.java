@@ -32,6 +32,9 @@ public class CCItems {
 
 	public static final RegistryObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64).tab(ConstructsCasting.CREATIVE_TAB)));
 	public static final RegistryObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64).tab(ConstructsCasting.CREATIVE_TAB)));
+
+	public static final RegistryObject<Item> wizardslimeBall = ITEMS.register("wizardslime_ball", () -> new Item(new Item.Properties().stacksTo(64).tab(ConstructsCasting.CREATIVE_TAB)));
+
 	public static final RegistryObject<Item> exiliteReinforcement = ITEMS.register("exilite_reinforcement", () -> new Item(new Item.Properties().stacksTo(64).tab(ConstructsCasting.CREATIVE_TAB)));
 	public static final RegistryObject<Item> slimySpellbook = ITEMS.register("tinkerers_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).tab(ConstructsCasting.CREATIVE_TAB).rarity(Rarity.EPIC), 6, CCTools.CCToolDefinitions.SLIMY_SPELLBOOK));
 	//will fully implement later vvv
@@ -39,14 +42,16 @@ public class CCItems {
 	public static final RegistryObject<Item> platedSpellbook = ITEMS.register("plated_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).tab(ConstructsCasting.CREATIVE_TAB).rarity(Rarity.RARE), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
 	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).tab(ConstructsCasting.CREATIVE_TAB).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
-	public static class CCItemTagsProvider extends ItemTagsProvider {
+	public static class Tags extends ItemTagsProvider {
+		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
 
-		public CCItemTagsProvider(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+		public Tags(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(dataGenerator, blockTagsProvider, modId, existingFileHelper);
 		}
 
 		@Override
 		protected void addTags() {
+			tag(SLIME_FOCUS).add(wizardslimeBall.get());
 			tag(ItemTags.create(new ResourceLocation("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(new ResourceLocation("forge:nuggets/exilite"))).add(exiliteNugget.get());
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());

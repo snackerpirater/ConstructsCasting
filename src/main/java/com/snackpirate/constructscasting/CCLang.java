@@ -4,11 +4,15 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.spells.CCSpells;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+
+import java.util.function.Supplier;
 
 public class CCLang extends LanguageProvider {
 
@@ -96,6 +100,9 @@ public class CCLang extends LanguageProvider {
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
+
+		addSpell(CCSpells.FREEZE_SPELL, "Freeze", "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.");
+		add("spell.constructs_casting.freeze.invalid_target", "Invalid target!");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
@@ -117,5 +124,9 @@ public class CCLang extends LanguageProvider {
 	public void addFluid(FluidObject<?> fluid, String name) {
 		add("fluid_type.constructs_casting." + fluid.getId().getPath(), name);
 		add("item.constructs_casting." + fluid.getId().getPath() + "_bucket", name + " Bucket");
+	}
+	public void addSpell(Supplier<AbstractSpell> spell, String name, String desc) {
+		add("spell.constructs_casting." + spell.get().getSpellName(), name);
+		add("spell.constructs_casting." + spell.get().getSpellName() + ".guide", desc);
 	}
 }

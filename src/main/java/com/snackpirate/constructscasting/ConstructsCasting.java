@@ -8,6 +8,7 @@ import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
+import com.snackpirate.constructscasting.spells.CCSpells;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -42,6 +43,7 @@ public class ConstructsCasting {
         CCFluids.FLUIDS.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
         CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        CCSpells.register(modEventBus);
     }
     public static ResourceLocation id(String name) {
         return new ResourceLocation(MOD_ID, name);
@@ -65,7 +67,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(gen, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(gen));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(gen, mats));
-        gen.addProvider(server, new CCItems.CCItemTagsProvider(gen, new BlockTagsProvider(gen, MOD_ID, fileHelper), MOD_ID, fileHelper));
+        gen.addProvider(server, new CCItems.Tags(gen, new BlockTagsProvider(gen, MOD_ID, fileHelper), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(gen, MOD_ID));
         gen.addProvider(server, new CCFluids.Tags(gen, MOD_ID, fileHelper));

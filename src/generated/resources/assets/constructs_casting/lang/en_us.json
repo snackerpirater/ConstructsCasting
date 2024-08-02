@@ -136,5 +136,8 @@
   "modifier.constructs_casting.swiftcasting": "Swiftcasting",
   "modifier.constructs_casting.swiftcasting.description": "Allows the user to retain their full movement speed while casting spells.",
   "modifier.constructs_casting.swiftcasting.flavor": "Run 'n' Gun!",
-  "school.constructs_casting.slime": "Slime"
+  "school.constructs_casting.slime": "Slime",
+  "spell.constructs_casting.freeze": "Freeze",
+  "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process.",
+  "spell.constructs_casting.freeze.invalid_target": "Invalid target!"
 }
