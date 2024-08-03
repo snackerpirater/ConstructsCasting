@@ -96,11 +96,12 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.platedSpellbook, "Plated Spell Book");
 		addItem(CCItems.slimySpellbook, "Slimy Spell Book");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
-		add("school.constructs_casting.slime", "Slime");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
 
+		addItem(CCItems.wizardslimeBall, "Wizardslime Ball");
+		add("school.constructs_casting.slime", "Slime");
 		addSpell(CCSpells.FREEZE_SPELL, "Freeze", "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.");
 		add("spell.constructs_casting.freeze.invalid_target", "Invalid target!");
 	}

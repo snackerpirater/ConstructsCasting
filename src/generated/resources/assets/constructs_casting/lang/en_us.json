@@ -52,6 +52,7 @@
   "item.constructs_casting.tinkerers_spellbook": "Slimy Spell Book",
   "item.constructs_casting.travellers_spellbook": "Traveller's Spell Book",
   "item.constructs_casting.uncommon_ink_bucket": "Uncommon Ink Bucket",
+  "item.constructs_casting.wizardslime_ball": "Wizardslime Ball",
   "itemGroup.constructs_casting.constructs_casting": "Construct's Casting",
   "material.constructs_casting.arcane_cloth": "Arcane Cloth",
   "material.constructs_casting.arcane_cloth.encyclopedia": "Empowers the wielder with greater spell power.",
@@ -138,6 +139,6 @@
   "modifier.constructs_casting.swiftcasting.flavor": "Run 'n' Gun!",
   "school.constructs_casting.slime": "Slime",
   "spell.constructs_casting.freeze": "Freeze",
-  "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process.",
+  "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.",
   "spell.constructs_casting.freeze.invalid_target": "Invalid target!"
 }

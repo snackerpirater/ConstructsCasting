@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -52,6 +53,7 @@ public class CCItems {
 		@Override
 		protected void addTags() {
 			tag(SLIME_FOCUS).add(wizardslimeBall.get());
+			tag(ItemTags.create(IronsSpellbooks.id("school_focus"))).add(wizardslimeBall.get());
 			tag(ItemTags.create(new ResourceLocation("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(new ResourceLocation("forge:nuggets/exilite"))).add(exiliteNugget.get());
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());

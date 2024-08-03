@@ -40,25 +40,15 @@ public class FreezeSpell extends AbstractSpell {
 		this.baseManaCost = 50;
 		this.castTime = 15;
 	}
-	/**
-	 * @return
-	 */
 	@Override
 	public ResourceLocation getSpellResource() {
 		return id;
 	}
 
-	/**
-	 * @return
-	 */
 	@Override
 	public DefaultConfig getDefaultConfig() {
 		return config;
 	}
-
-	/**
-	 * @return
-	 */
 	@Override
 	public CastType getCastType() {
 		return CastType.LONG;
@@ -96,12 +86,12 @@ public class FreezeSpell extends AbstractSpell {
 	@Override
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
 		ConstructsCasting.LOGGER.info("freeze cast");
-		if (playerMagicData.getAdditionalCastData() instanceof TargetBlockCastData data && level.getBlockEntity(data.getTargetPos()) instanceof CastingBlockEntity cbe) {
+		if (playerMagicData.getAdditionalCastData() instanceof TargetBlockCastData data && level.getBlockEntity(data.getTargetPos()) instanceof CastingBlockEntity) {
 			//check if fluid is above molten temperature
 			BlockPos pos = data.getTargetPos();
 			//oh boy i hope this doesn't explode
 			CompoundTag tag = level.getBlockEntity(pos).getUpdateTag();
-			tag.putInt("timer", Integer.MAX_VALUE - 5);
+			tag.putInt("timer", Integer.MAX_VALUE - 5); //random ass number
 			level.getBlockEntity(pos).load(tag);
 
 			MagicManager.spawnParticles(level, ParticleHelper.SNOWFLAKE, pos.getX() + 0.5, pos.getY() + 1d, pos.getZ() + 0.5, 15, .1, .1, .1, .1, true);

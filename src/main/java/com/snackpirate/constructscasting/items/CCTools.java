@@ -59,7 +59,6 @@ public class CCTools {
 							.slots(SlotType.UPGRADE, 1)
 							.build())
 					.module(ToolTraitsModule.builder()
-							.trait(CCModifiers.ARCANE, 2)
 							.trait(CCModifiers.MANA_UPGRADE, 2)
 							.build());
 
