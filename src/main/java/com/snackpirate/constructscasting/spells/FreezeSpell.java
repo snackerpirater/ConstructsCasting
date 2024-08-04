@@ -80,7 +80,7 @@ public class FreezeSpell extends AbstractSpell {
 
 	@Override
 	public SchoolType getSchoolType() {
-		return CCSpells.Schools.SLIME.get();
+		return SchoolRegistry.ICE.get();
 	}
 
 	@Override

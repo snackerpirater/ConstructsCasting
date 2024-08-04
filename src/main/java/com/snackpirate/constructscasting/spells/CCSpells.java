@@ -1,20 +1,22 @@
 package com.snackpirate.constructscasting.spells;
 
+import com.snackpirate.constructscasting.CCSounds;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.spells.slimeball.SlimeballSpell;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
-import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -33,6 +35,7 @@ public class CCSpells {
 	}
 
 	public static final RegistryObject<AbstractSpell> FREEZE_SPELL = registerSpell(new FreezeSpell());
+	public static final RegistryObject<AbstractSpell> SLIMEBALL_SPELL = registerSpell(new SlimeballSpell());
 
 	public static RegistryObject<AbstractSpell> registerSpell(AbstractSpell spell) {
 		return SPELLS.register(spell.getSpellName(), () -> spell);
@@ -40,6 +43,7 @@ public class CCSpells {
 
 
 
+	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 	public static class Attributes {
 		public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, ConstructsCasting.MOD_ID);
 
@@ -53,6 +57,10 @@ public class CCSpells {
 
 		private static RegistryObject<Attribute> newPowerAttribute(String id) {
 			return ATTRIBUTES.register(id + "_spell_power", () -> (new MagicRangedAttribute("attribute.constructs_casting." + id + "_spell_power", 1.0D, -100, 100).setSyncable(true)));
+		}
+		@SubscribeEvent
+		public static void modifyEntityAttributes(EntityAttributeModificationEvent e) {
+			e.getTypes().forEach(entity -> ATTRIBUTES.getEntries().forEach(attribute -> e.add(entity, attribute.get())));
 		}
 
 	}
@@ -68,7 +76,7 @@ public class CCSpells {
 				Component.translatable("school.constructs_casting.slime").withStyle(Style.EMPTY.withColor(0x119c3b)),
 				LazyOptional.of(Attributes.SLIME_POWER::get),
 				LazyOptional.of(Attributes.SLIME_RESIST::get),
-				LazyOptional.of(() -> SoundEvents.SLIME_BLOCK_BREAK)
+				LazyOptional.of(() -> CCSounds.SLIME_CAST.get())
 		));
 
 		private static RegistryObject<SchoolType> registerSchool(SchoolType schoolType) {

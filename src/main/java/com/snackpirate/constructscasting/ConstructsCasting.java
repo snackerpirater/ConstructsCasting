@@ -8,6 +8,7 @@ import com.snackpirate.constructscasting.materials.CCMaterialTextures;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
+import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -43,6 +44,8 @@ public class ConstructsCasting {
         CCFluids.FLUIDS.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
         CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        CCSounds.register(modEventBus);
+        CCEntities.register(modEventBus);
         CCSpells.register(modEventBus);
     }
     public static ResourceLocation id(String name) {

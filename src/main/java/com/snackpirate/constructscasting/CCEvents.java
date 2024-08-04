@@ -4,6 +4,8 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.spells.CCEntities;
+import com.snackpirate.constructscasting.spells.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -20,6 +22,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -82,9 +85,8 @@ public class CCEvents {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-	public static class ClientEvents {
+	public static class ForgeClientEvents {
 		@SubscribeEvent
 		static void swiftcastingHandleInput(MovementInputUpdateEvent event) {
 			if (ClientMagicData.isCasting() &&
@@ -96,11 +98,15 @@ public class CCEvents {
 
 	}
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-	public static class ClientSetup {
+	public static class ModClientEvents {
 		@SubscribeEvent
 		static void registerCurioRenderers(FMLClientSetupEvent e) {
 			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), SpellBookCurioRenderer::new);
 			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), SpellBookCurioRenderer::new);
+		}
+		@SubscribeEvent
+		static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+			event.registerEntityRenderer(CCEntities.SLIMEBALL_PROJECTILE.get(), SlimeballProjectileRenderer::new);
 		}
 	}
 }

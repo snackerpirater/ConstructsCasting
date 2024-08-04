@@ -1,0 +1,7 @@
+{
+  "cast.generic.slime": {
+    "sounds": [
+      "constructs_casting:slime_cast"
+    ]
+  }
+}

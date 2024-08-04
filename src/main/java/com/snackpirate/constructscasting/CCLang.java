@@ -104,6 +104,8 @@ public class CCLang extends LanguageProvider {
 		add("school.constructs_casting.slime", "Slime");
 		addSpell(CCSpells.FREEZE_SPELL, "Freeze", "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.");
 		add("spell.constructs_casting.freeze.invalid_target", "Invalid target!");
+		addSpell(CCSpells.SLIMEBALL_SPELL, "Slimeball", "Lobs a random slimeball, capable of bouncing off of blocks and enemies alike. The higher level, the bouncier.");
+		add("ui.constructs_casting.slimeball.max_bounces", "%s Bounces");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
