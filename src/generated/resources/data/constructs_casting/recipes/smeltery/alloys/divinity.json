@@ -3,7 +3,7 @@
   "inputs": [
     {
       "amount": 90,
-      "tag": "forge:molten_gold"
+      "tag": "tconstruct:molten_gold"
     },
     {
       "amount": 100,

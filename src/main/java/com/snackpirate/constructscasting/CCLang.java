@@ -7,6 +7,7 @@ import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
@@ -16,8 +17,9 @@ import java.util.function.Supplier;
 
 public class CCLang extends LanguageProvider {
 
-	public CCLang(DataGenerator gen, String modid, String locale) {
-		super(gen, modid, locale);
+
+	public CCLang(PackOutput output, String modid, String locale) {
+		super(output, modid, locale);
 	}
 
 	@Override
@@ -40,7 +42,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
 		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
 		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
-		addModifier(CCModifiers.SPELL_PROTECTION.getId(), "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
+		addModifier(CCModifiers.SPELL_PROTECTION, "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
 		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
 		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
 		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
@@ -104,8 +106,11 @@ public class CCLang extends LanguageProvider {
 		add("school.constructs_casting.slime", "Slime");
 		addSpell(CCSpells.FREEZE_SPELL, "Freeze", "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.");
 		add("spell.constructs_casting.freeze.invalid_target", "Invalid target!");
-		addSpell(CCSpells.SLIMEBALL_SPELL, "Slimeball", "Lobs a random slimeball, capable of bouncing off of blocks and enemies alike. The higher level, the bouncier.");
+//		addSpell(CCSpells.SLIMEBALL_SPELL, "Slimeball", "Lobs a random slimeball, capable of bouncing off of blocks and enemies alike. The higher level, the bouncier.");
 		add("ui.constructs_casting.slimeball.max_bounces", "%s Bounces");
+		add("ui.constructs_casting.enderference_anti_teleport", "Your current affliction prevents you from teleporting...");
+//		addSpell(CCSpells.SLING_SPELL, "Sling", "Launches player in the opposite direction that they are looking.");
+
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

@@ -1,5 +1,6 @@
-package com.snackpirate.constructscasting.spells.slimeball;
+package com.snackpirate.constructscasting.spells.slime.slimeball;
 
+import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
@@ -44,7 +46,7 @@ public class SlimeballProjectile extends AbstractMagicProjectile implements IEnt
 
 	@Override
 	public void impactParticles(double v, double v1, double v2) {
-		MagicManager.spawnParticles(level, ParticleTypes.ITEM_SLIME, v, v1, v2, 5, .1, .1, .1, .25, true);
+		MagicManager.spawnParticles(level(), ParticleTypes.ITEM_SLIME, v, v1, v2, 5, .1, .1, .1, .25, true);
 
 	}
 
@@ -60,19 +62,27 @@ public class SlimeballProjectile extends AbstractMagicProjectile implements IEnt
 
 	@Override
 	protected void doImpactSound(SoundEvent sound) {
-		level.playSound(null, getX(), getY(), getZ(), sound, SoundSource.NEUTRAL, 2, 1.2f + Utils.random.nextFloat() * .2f);
+		level().playSound(null, getX(), getY(), getZ(), sound, SoundSource.NEUTRAL, 2, 1.2f + Utils.random.nextFloat() * .2f);
 	}
 
 	@Override
 	protected void onHitEntity(EntityHitResult pResult) {
 		super.onHitEntity(pResult);
 		var target = pResult.getEntity();
-		DamageSources.applyDamage(target, getDamage(), CCSpells.SLIMEBALL_SPELL.get().getDamageSource(this, getOwner()));
-		discard();
+		DamageSources.applyDamage(target, getDamage(), DamageSources.get(this.level(), CCDamageTypes.SLIME_MAGIC));
+		if (getBounces() > 0) {
+			final double x = this.getDeltaMovement().scale(0.8).x;
+			final double y = this.getDeltaMovement().scale(0.8).y;
+			final double z = this.getDeltaMovement().scale(0.8).z;
+			this.setDeltaMovement(-x, y, -z);
+			decBounces();
+		} else {
+			discard();
+		}
 	}
 
 	@Override
-	protected void onHitBlock(BlockHitResult pResult) {
+	protected void onHitBlock(@NotNull BlockHitResult pResult) {
 		super.onHitBlock(pResult);
 		if (getBounces() > 0) {
 			final double x = this.getDeltaMovement().x;

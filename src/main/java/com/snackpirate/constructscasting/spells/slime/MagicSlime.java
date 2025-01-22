@@ -1,7 +1,6 @@
-package com.snackpirate.constructscasting.spells;
+package com.snackpirate.constructscasting.spells.slime;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.Item;
 
 public class MagicSlime {
 	public enum Type {

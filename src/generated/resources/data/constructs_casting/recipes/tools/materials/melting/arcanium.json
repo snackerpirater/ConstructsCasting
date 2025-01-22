@@ -3,7 +3,7 @@
   "input": "constructs_casting:arcanium",
   "result": {
     "amount": 90,
-    "fluid": "constructs_casting:molten_arcanium"
+    "tag": "forge:molten_arcanium"
   },
   "temperature": 700
 }

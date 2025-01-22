@@ -5,8 +5,7 @@
     "primitive"
   ],
   "generator": {
-    "ignoreMaterialStats": false,
-    "supportedStats": [
+    "supported_stats": [
       "tconstruct:handle"
     ],
     "transformer": {
@@ -45,6 +44,5 @@
         ]
       }
     }
-  },
-  "luminosity": 0
+  }
 }

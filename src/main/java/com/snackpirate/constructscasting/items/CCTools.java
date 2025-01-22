@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -22,7 +23,7 @@ public class CCTools {
 		public static final ToolDefinition TRAVELLERS_SPELLBOOK = ToolDefinition.create(CCItems.travellersSpellbook);
 		public static final ToolDefinition PLATED_SPELLBOOK = ToolDefinition.create(CCItems.platedSpellbook);
 		public static final ToolDefinition ELDRITCH_STAFF = ToolDefinition.create(CCItems.eldritchStaff);
-		public CCToolDefinitions(DataGenerator generator, String modId) {
+		public CCToolDefinitions(PackOutput generator, String modId) {
 			super(generator, modId);
 		}
 

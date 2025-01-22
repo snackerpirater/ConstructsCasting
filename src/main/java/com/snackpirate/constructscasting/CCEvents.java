@@ -5,13 +5,15 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCEntities;
-import com.snackpirate.constructscasting.spells.slimeball.SlimeballProjectileRenderer;
+import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -21,7 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -65,7 +66,8 @@ public class CCEvents {
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
 		if (event.getEntity().hasEffect(TinkerModifiers.enderferenceEffect.get())) {
-			event.getEntity().level.playSound(null, event.getEntity().blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
+			event.getEntity().level().playSound(null, event.getEntity().blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
+			event.getEntity().displayClientMessage(Component.translatable("ui.constructs_casting.enderference_anti_teleport").withStyle(ChatFormatting.RED), true);
 			String spellId = event.getSpellId();
 			event.setCanceled(spellId.equals("irons_spellbooks:teleport")
 					|| spellId.equals("irons_spellbooks:blood_step")
@@ -79,7 +81,7 @@ public class CCEvents {
 			var container = ISpellContainer.create(1, true, false);
 			container.save(replacement);
 		}
-		else if (replacement.getItem() instanceof ModifiableArmorItem armor && armor.getSlot() == EquipmentSlot.CHEST && !ISpellContainer.isSpellContainer(replacement)) {
+		else if (replacement.getItem() instanceof ModifiableArmorItem armor && armor.getEquipmentSlot() == EquipmentSlot.CHEST && !ISpellContainer.isSpellContainer(replacement)) {
 			var container = ISpellContainer.create(1, true, true);
 			container.save(replacement);
 		}

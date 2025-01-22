@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "amount": 90,
-    "tag": "constructs_casting:molten_arcanium"
+    "tag": "forge:molten_arcanium"
   },
   "output": "constructs_casting:arcanium",
   "temperature": 700

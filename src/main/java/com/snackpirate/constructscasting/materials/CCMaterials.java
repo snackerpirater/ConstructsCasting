@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting.materials;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId hogskin = createMaterial("hogskin");
 	public static final MaterialId dragonskin = createMaterial("dragonskin");
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
-	public CCMaterials(DataGenerator gen) {
+	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
 
@@ -58,7 +59,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	public static class CCMaterialStats extends AbstractMaterialStatsDataProvider {
 
-		public CCMaterialStats(DataGenerator gen, AbstractMaterialDataProvider materials) {
+		public CCMaterialStats(PackOutput gen, AbstractMaterialDataProvider materials) {
 			super(gen, materials);
 		}
 
@@ -104,7 +105,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	}
 	public static class CCMaterialTraits extends AbstractMaterialTraitDataProvider {
 
-		public CCMaterialTraits(DataGenerator gen, AbstractMaterialDataProvider materials) {
+		public CCMaterialTraits(PackOutput gen, AbstractMaterialDataProvider materials) {
 			super(gen, materials);
 		}
 
@@ -130,7 +131,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	public static class CCMaterialRenderInfo extends AbstractMaterialRenderInfoProvider {
 
-		public CCMaterialRenderInfo(DataGenerator gen, @Nullable AbstractMaterialSpriteProvider materialSprites, ExistingFileHelper fileHelper) {
+		public CCMaterialRenderInfo(PackOutput gen, @Nullable AbstractMaterialSpriteProvider materialSprites, ExistingFileHelper fileHelper) {
 			super(gen, materialSprites, fileHelper);
 		}
 

@@ -141,7 +141,6 @@
   "spell.constructs_casting.freeze": "Freeze",
   "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.",
   "spell.constructs_casting.freeze.invalid_target": "Invalid target!",
-  "spell.constructs_casting.slimeball": "Slimeball",
-  "spell.constructs_casting.slimeball.guide": "Lobs a random slimeball, capable of bouncing off of blocks and enemies alike. The higher level, the bouncier.",
+  "ui.constructs_casting.enderference_anti_teleport": "Your current affliction prevents you from teleporting...",
   "ui.constructs_casting.slimeball.max_bounces": "%s Bounces"
 }

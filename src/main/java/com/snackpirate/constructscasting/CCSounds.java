@@ -13,7 +13,7 @@ public class CCSounds {
 		EVENTS.register(eventBus);
 	}
 	private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-		return EVENTS.register(name, () -> new SoundEvent(ConstructsCasting.id(name)));
+		return EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ConstructsCasting.id(name)));
 	}
 
 	public static RegistryObject<SoundEvent> SLIME_CAST = registerSoundEvent("cast.generic.slime");

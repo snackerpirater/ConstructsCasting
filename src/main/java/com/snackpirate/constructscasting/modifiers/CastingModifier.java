@@ -35,7 +35,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 		}
 		SpellData spellData = selectionOption.spellData;
 
-		if (player.level.isClientSide()) {
+		if (player.level().isClientSide()) {
 			if (ClientMagicData.isCasting()) {
 				return InteractionResult.CONSUME;
 			} else if (ClientMagicData.getPlayerMana() < spellData.getSpell().getManaCost(spellData.getLevel())
@@ -49,7 +49,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 
 		String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
 
-		if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level, player, selectionOption.getCastSource(), true, castingSlot)) {
+		if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, selectionOption.getCastSource(), true, castingSlot)) {
 			return InteractionResult.CONSUME;
 		} else {
 			return InteractionResult.FAIL;

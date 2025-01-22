@@ -1,7 +1,7 @@
 {
   "values": [
-    "#forge:molten_copper",
-    "#forge:molten_iron",
-    "#forge:molten_gold"
+    "tconstruct:molten_copper",
+    "tconstruct:molten_iron",
+    "tconstruct:molten_gold"
   ]
 }

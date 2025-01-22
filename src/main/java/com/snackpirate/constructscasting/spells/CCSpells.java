@@ -1,9 +1,10 @@
 package com.snackpirate.constructscasting.spells;
 
+import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.CCSounds;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
-import com.snackpirate.constructscasting.spells.slimeball.SlimeballSpell;
+import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballSpell;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -35,7 +36,7 @@ public class CCSpells {
 	}
 
 	public static final RegistryObject<AbstractSpell> FREEZE_SPELL = registerSpell(new FreezeSpell());
-	public static final RegistryObject<AbstractSpell> SLIMEBALL_SPELL = registerSpell(new SlimeballSpell());
+//	public static final RegistryObject<AbstractSpell> SLIMEBALL_SPELL = registerSpell(new SlimeballSpell());
 
 	public static RegistryObject<AbstractSpell> registerSpell(AbstractSpell spell) {
 		return SPELLS.register(spell.getSpellName(), () -> spell);
@@ -76,7 +77,8 @@ public class CCSpells {
 				Component.translatable("school.constructs_casting.slime").withStyle(Style.EMPTY.withColor(0x119c3b)),
 				LazyOptional.of(Attributes.SLIME_POWER::get),
 				LazyOptional.of(Attributes.SLIME_RESIST::get),
-				LazyOptional.of(() -> CCSounds.SLIME_CAST.get())
+				LazyOptional.of(() -> CCSounds.SLIME_CAST.get()),
+				CCDamageTypes.SLIME_MAGIC
 		));
 
 		private static RegistryObject<SchoolType> registerSchool(SchoolType schoolType) {

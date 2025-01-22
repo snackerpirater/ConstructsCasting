@@ -2,12 +2,13 @@
   "type": "tconstruct:alloy",
   "inputs": [
     {
-      "amount": 40,
+      "amount": 50,
       "fluid": "constructs_casting:potato_stew"
     },
     {
       "amount": 10,
-      "fluid": "tconstruct:venom"
+      "catalyst": true,
+      "fluid": "constructs_casting:poisonous_potato_stew"
     }
   ],
   "result": {

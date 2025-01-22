@@ -2,17 +2,19 @@ package com.snackpirate.constructscasting.fluids;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +28,8 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.fluids.data.FluidBucketModelProvider;
 import slimeknights.tconstruct.library.recipe.FluidValues;
+
+import java.util.concurrent.CompletableFuture;
 
 public class CCFluids {
 	public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ConstructsCasting.MOD_ID);
@@ -44,17 +48,17 @@ public class CCFluids {
 
 	public static final FluidObject<UnplaceableFluid> liquidDivinity = FLUIDS.register("liquid_divinity").bucket().type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(Material.WATER).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(Material.WATER).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).tagName("molten_arcanium").bucket().block(Material.LAVA).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).tagName("molten_exilite").bucket().block(Material.LAVA).flowing();
-	public static final FluidObject<UnplaceableFluid> squidInk =    FLUIDS.register("squid_ink")   .type(cool().temperature(100)).tagName("ink/squid")   .bucket().unplacable();
-	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).tagName("ink/common")   .bucket().unplacable();
-	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).tagName("ink/uncommon") .bucket().unplacable();
-	public static final FluidObject<UnplaceableFluid> rareInk =      FLUIDS.register("rare_ink")     .type(cool().temperature(100)).tagName("ink/rare")     .bucket().unplacable();
-	public static final FluidObject<UnplaceableFluid> epicInk =      FLUIDS.register("epic_ink")     .type(cool().temperature(100)).tagName("ink/epic")     .bucket().unplacable();
-	public static final FluidObject<UnplaceableFluid> legendaryInk = FLUIDS.register("legendary_ink").type(cool().temperature(100)).tagName("ink/legendary").bucket().unplacable();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).commonTag("molten_arcanium").bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).commonTag("molten_exilite").bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
+	public static final FluidObject<UnplaceableFluid> squidInk =    FLUIDS.register("squid_ink")   .type(cool().temperature(100)).commonTag("ink/squid")   .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> rareInk =      FLUIDS.register("rare_ink")     .type(cool().temperature(100)).commonTag("ink/rare")     .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> epicInk =      FLUIDS.register("epic_ink")     .type(cool().temperature(100)).commonTag("ink/epic")     .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> legendaryInk = FLUIDS.register("legendary_ink").type(cool().temperature(100)).commonTag("ink/legendary").bucket().unplacable();
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
@@ -88,7 +92,7 @@ public class CCFluids {
 //datagen all below here
 	public static class CCFluidTextures extends AbstractFluidTextureProvider {
 
-		public CCFluidTextures(DataGenerator generator, @Nullable String modId) {
+		public CCFluidTextures(PackOutput generator, @Nullable String modId) {
 			super(generator, modId);
 		}
 
@@ -126,14 +130,18 @@ public class CCFluids {
 	}
 
 	public static class CCBucketModels extends FluidBucketModelProvider {
-		public CCBucketModels(DataGenerator generator, String modId) {
-			super(generator, modId);
+		public CCBucketModels(PackOutput packOutput, String modId) {
+			super(packOutput, modId);
 		}
 	}
 	public static class Tags extends FluidTagsProvider {
+		public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pProvider) {
+			super(pOutput, pProvider);
+		}
+
 		public static class CCFluidTooltipProvider extends AbstractFluidTooltipProvider {
 
-			public CCFluidTooltipProvider(DataGenerator generator, String modId) {
+			public CCFluidTooltipProvider(PackOutput generator, String modId) {
 				super(generator, modId);
 			}
 
@@ -159,9 +167,7 @@ public class CCFluids {
 		public static final TagKey<Fluid> BLOOD_ESSENCE_INGREDIENTS = FluidTags.create(ConstructsCasting.id("blood_essence_ingredients"));
 		public static final TagKey<Fluid> ARCANIUM_BASE = FluidTags.create(ConstructsCasting.id("arcanium_base"));
 		public static final TagKey<Fluid> BOTTLE_TOOLTIP = FluidTags.create(ConstructsCasting.id("bottle_tooltip"));
-		public Tags(DataGenerator p_126523_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-			super(p_126523_, modId, existingFileHelper);
-		}
+
 
 		public static TagKey<Fluid> essenceOf(String type) {
 			return FluidTags.create(new ResourceLocation(ConstructsCasting.MOD_ID, "essence/" + type));
@@ -171,7 +177,7 @@ public class CCFluids {
 		}
 
 		@Override
-		protected void addTags() {
+		protected void addTags(HolderLookup.Provider provider) {
 			tag(MOLTEN_ARCANIUM).add(moltenArcanium.get());
 			tag(MOLTEN_EXILITE).add(moltenExilite.get());
 			tag(POTATO_STEW).add(potatoStew.get());
@@ -179,7 +185,7 @@ public class CCFluids {
 			tag(LIQUID_LIGHTNING).add(liquidLightning.get());
 			tag(LIQUID_DIVINITY).add(liquidDivinity.get());
 
-			tag(ARCANIUM_BASE).addTag(TinkerFluids.moltenCopper.getForgeTag()).addTag(TinkerFluids.moltenIron.getForgeTag()).addTag(TinkerFluids.moltenGold.getForgeTag());
+			tag(ARCANIUM_BASE).add(TinkerFluids.moltenCopper.get()).add(TinkerFluids.moltenIron.get()).add(TinkerFluids.moltenGold.get());
 			tag(essenceOf("arcane")).add(arcaneEssence.get());
 			tag(essenceOf("fire")).add(fireEssence.get());
 			tag(essenceOf("ice")).add(iceEssence.get());

@@ -5,8 +5,7 @@
     "primitive"
   ],
   "generator": {
-    "ignoreMaterialStats": false,
-    "supportedStats": [
+    "supported_stats": [
       "tconstruct:maille",
       "tconstruct:armor_maille",
       "tconstruct:repair_kit",
@@ -48,6 +47,5 @@
         ]
       }
     }
-  },
-  "luminosity": 0
+  }
 }

@@ -1,4 +1,4 @@
-package com.snackpirate.constructscasting.spells.slimeball;
+package com.snackpirate.constructscasting.spells.slime.slimeball;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.spells.CCSpells;
@@ -26,9 +26,11 @@ public class SlimeballSpell extends AbstractSpell {
 
 	@Override
 	public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-		return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
+		return List.of(
+				Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
 				Component.translatable("ui.constructs_casting.slimeball.max_bounces", getMaxBounces(spellLevel)));
 	}
+
 	public SlimeballSpell() {
 		this.manaCostPerLevel = 2;
 		this.baseSpellPower = 6;
@@ -61,7 +63,7 @@ public class SlimeballSpell extends AbstractSpell {
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
 		SlimeballProjectile slimeball = new SlimeballProjectile(level, entity, spellLevel);
 		slimeball.setPos(entity.position().add(0, entity.getEyeHeight() - slimeball.getBoundingBox().getYsize() * .5f, 0));
-		slimeball.shoot(entity.getLookAngle());
+		slimeball.setDeltaMovement(entity.getLookAngle().scale(slimeball.getSpeed()).add(entity.getDeltaMovement()));
 		slimeball.setDamage(getDamage(spellLevel, entity));
 		level.addFreshEntity(slimeball);
 		super.onCast(level, spellLevel, entity, castSource, playerMagicData);
@@ -72,4 +74,5 @@ public class SlimeballSpell extends AbstractSpell {
 		return getSpellPower(spellLevel, entity) * .5f;
 	}
 	public static int getMaxBounces(int spellLevel) {return spellLevel;}
+
 }
