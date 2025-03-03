@@ -65,7 +65,7 @@ description='''${mod_description}'''
 [[dependencies."${mod_id}"]]
    modId="tconstruct"
    mandatory=true
-   versionRange="[3.9.0,3.9.2)"
+   versionRange="[3.9.2,3.9.4)"
    ordering="NONE"
    side="BOTH"
 

@@ -176,7 +176,7 @@ tasks.named('jar', Jar).configure {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-//mixin {
-//    add sourceSets.main, 'mixins.constructscasting.refmap.json'
-//    config 'mixins.constructscasting.json'
-//}
+mixin {
+    add sourceSets.main, 'mixins.constructscasting.refmap.json'
+    config 'mixins.constructscasting.json'
+}
