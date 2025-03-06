@@ -51,8 +51,8 @@ public class CCFluids {
 	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).commonTag("molten_arcanium").bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).commonTag("molten_exilite").bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
 	public static final FluidObject<UnplaceableFluid> squidInk =    FLUIDS.register("squid_ink")   .type(cool().temperature(100)).commonTag("ink/squid")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();

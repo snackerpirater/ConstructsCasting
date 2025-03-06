@@ -6,7 +6,7 @@
   "cooling_time": 19,
   "fluid": {
     "amount": 10,
-    "tag": "forge:molten_exilite"
+    "tag": "constructs_casting:molten_exilite"
   },
   "result": "constructs_casting:exilite_nugget"
 }

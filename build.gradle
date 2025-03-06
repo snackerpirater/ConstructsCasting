@@ -135,9 +135,6 @@ dependencies {
     // JEI ********************************************************************************************************
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 
-    //DUMMMMY
-    runtimeOnly fg.deobf("curse.maven:moonlight_lib-499980:6107636")
-    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:5976998")
 
 }
 tasks.named('processResources', ProcessResources).configure {

@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "amount": 90,
-    "tag": "forge:molten_exilite"
+    "tag": "constructs_casting:molten_exilite"
   },
   "output": "constructs_casting:exilite",
   "temperature": 700

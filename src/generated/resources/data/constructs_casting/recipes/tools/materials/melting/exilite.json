@@ -3,7 +3,7 @@
   "input": "constructs_casting:exilite",
   "result": {
     "amount": 90,
-    "tag": "forge:molten_exilite"
+    "fluid": "constructs_casting:molten_exilite"
   },
   "temperature": 700
 }
