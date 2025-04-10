@@ -18,15 +18,17 @@ public class ManaBarOverlayMixin {
 	private static void shouldShowManaBar(Player player, CallbackInfoReturnable<Boolean> cir) {
 		ItemStack mainHandItem = player.getItemInHand(InteractionHand.MAIN_HAND);
 		ItemStack offHandItem = player.getItemInHand(InteractionHand.OFF_HAND);
+		boolean doIt = false;
 		if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ModifiableItem) {
-			cir.setReturnValue( ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.CASTING.getId()) > 0 ||
+			doIt = (ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.CASTING.getId()) > 0 ||
 								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.ARCANE) > 0 ||
 								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.MANA_UPGRADE) > 0);
 		}
 		else if (player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ModifiableItem) {
-			cir.setReturnValue( ModifierUtil.getModifierLevel(offHandItem, CCModifiers.CASTING.getId()) > 0 ||
+			doIt = (ModifierUtil.getModifierLevel(offHandItem, CCModifiers.CASTING.getId()) > 0 ||
 								ModifierUtil.getModifierLevel(offHandItem, CCModifiers.ARCANE) > 0 ||
 								ModifierUtil.getModifierLevel(offHandItem, CCModifiers.MANA_UPGRADE) > 0);
 		}
+		if (doIt) cir.setReturnValue(doIt);
 	}
 }

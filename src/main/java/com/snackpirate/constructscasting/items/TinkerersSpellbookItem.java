@@ -35,6 +35,7 @@ import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
 import slimeknights.tconstruct.library.tools.nbt.IModDataView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
+import slimeknights.tconstruct.tools.client.OverslimeModifierModel;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
