@@ -17,10 +17,8 @@ import slimeknights.mantle.recipe.helper.FluidOutput;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
 import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer;
 import slimeknights.tconstruct.library.recipe.melting.IMeltingRecipe;
-import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeLookup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScrollMeltingRecipe implements IMeltingRecipe {
@@ -37,7 +35,6 @@ public class ScrollMeltingRecipe implements IMeltingRecipe {
 	protected final int temperature;
 	protected final int time;
 	protected final List<FluidOutput> byproducts;
-	protected List<List<FluidStack>> outputWithByproducts;
 
 	public ScrollMeltingRecipe(ResourceLocation id, String group, Ingredient input, FluidOutput output, int temperature, int time, List<FluidOutput> byproducts) {
 		this(id, group, input, output, temperature, time, byproducts, true);
