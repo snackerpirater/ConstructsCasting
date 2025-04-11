@@ -29,14 +29,18 @@ public class CCDamageTypes {
 
 		@Override
 		protected void addTags(HolderLookup.Provider pProvider) {
-			this.tag(SPELL_BASED).addTags(DamageTypeTagGenerator.BLOOD_MAGIC, DamageTypeTagGenerator.EVOCATION_MAGIC,
-					DamageTypeTagGenerator.NATURE_MAGIC,
-					DamageTypeTagGenerator.ELDRITCH_MAGIC,
-					DamageTypeTagGenerator.ENDER_MAGIC,
-					DamageTypeTagGenerator.FIRE_MAGIC,
-					DamageTypeTagGenerator.HOLY_MAGIC,
-					DamageTypeTagGenerator.ICE_MAGIC,
-					DamageTypeTagGenerator.LIGHTNING_MAGIC).add(CCDamageTypes.SLIME_MAGIC);
+			this.tag(SPELL_BASED).add(
+					ISSDamageTypes.BLOOD_MAGIC,
+					ISSDamageTypes.EVOCATION_MAGIC,
+					ISSDamageTypes.NATURE_MAGIC,
+					ISSDamageTypes.ELDRITCH_MAGIC,
+					ISSDamageTypes.ENDER_MAGIC,
+					ISSDamageTypes.FIRE_MAGIC,
+					ISSDamageTypes.HOLY_MAGIC,
+					ISSDamageTypes.ICE_MAGIC,
+					ISSDamageTypes.LIGHTNING_MAGIC)
+//					.add(CCDamageTypes.SLIME_MAGIC)
+			;
 		}
 	}
 }

@@ -50,7 +50,7 @@ minecraft {
         data {
             workingDirectory project.file('run-data')
 
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing-mod', 'tconstruct'
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing-mod', 'tconstruct', '--existing-mod', 'irons_spellbooks'
         }
     }
 }
@@ -134,7 +134,7 @@ dependencies {
 
     // JEI ********************************************************************************************************
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-
+//    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
 
 }
 tasks.named('processResources', ProcessResources).configure {

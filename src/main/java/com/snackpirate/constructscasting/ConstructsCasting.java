@@ -94,5 +94,6 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(output, MOD_ID));
         gen.addProvider(server, new CCRecipes(output));
         gen.addProvider(server, new CCLang(output, ConstructsCasting.MOD_ID, "en_us"));
+        gen.addProvider(server, new CCDamageTypes.Tags(output, provider, MOD_ID, fileHelper));
     }
 }

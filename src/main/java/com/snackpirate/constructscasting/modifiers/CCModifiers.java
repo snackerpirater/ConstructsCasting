@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting.modifiers;
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.datagen.DamageTypeTagGenerator;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -87,7 +88,6 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
 
 		buildModifier(SPELL_PROTECTION).addModule(ProtectionModule.builder().source(DamageSourcePredicate.tag(CCDamageTypes.Tags.SPELL_BASED)).eachLevel(2.5f)).build();
-
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
