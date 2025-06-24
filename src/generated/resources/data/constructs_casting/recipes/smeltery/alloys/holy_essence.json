@@ -6,8 +6,12 @@
       "fluid": "constructs_casting:arcane_essence"
     },
     {
-      "amount": 250,
-      "tag": "constructs_casting:liquid_divinity"
+      "amount": 90,
+      "tag": "tconstruct:molten_gold"
+    },
+    {
+      "amount": 100,
+      "tag": "tconstruct:molten_amethyst"
     }
   ],
   "result": {

@@ -35,6 +35,7 @@ import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
+import slimeknights.tconstruct.shared.TinkerEffects;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -65,7 +66,7 @@ public class CCEvents {
 	//if the target has the enderference effect, cancel teleportations
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
-		if (event.getEntity().hasEffect(TinkerModifiers.enderferenceEffect.get())) {
+		if (event.getEntity().hasEffect(TinkerEffects.enderference.get())) {
 			event.getEntity().level().playSound(null, event.getEntity().blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
 			event.getEntity().displayClientMessage(Component.translatable("ui.constructs_casting.enderference_anti_teleport").withStyle(ChatFormatting.RED), true);
 			String spellId = event.getSpellId();

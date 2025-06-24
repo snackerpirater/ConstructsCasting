@@ -70,6 +70,7 @@ public class FreezeSpell extends AbstractSpell {
 				return true;
 			}
 		}
+		playerMagicData.resetAdditionalCastData();
 		sendInvalidMessage(entity);
 		return false;
 	}

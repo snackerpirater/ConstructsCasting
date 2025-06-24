@@ -3,20 +3,21 @@ package com.snackpirate.constructscasting.fluids;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.SoundActions;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.registries.RegisterEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.fluid.texture.AbstractFluidTextureProvider;
@@ -27,6 +28,7 @@ import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.fluids.data.FluidBucketModelProvider;
+import slimeknights.tconstruct.library.modifiers.fluid.FluidEffect;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 
 import java.util.concurrent.CompletableFuture;
@@ -43,10 +45,9 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> bloodEssence = essence("blood_essence");
 	public static final FluidObject<UnplaceableFluid> evocationEssence = essence("evocation_essence");
 	public static final FluidObject<UnplaceableFluid> natureEssence = essence("nature_essence");
-
 	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning").type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
 
-	public static final FluidObject<UnplaceableFluid> liquidDivinity = FLUIDS.register("liquid_divinity").bucket().type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
+	public static final FluidObject<UnplaceableFluid> cinderEssence = essence("cinder_essence");
 
 	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
@@ -89,6 +90,17 @@ public class CCFluids {
 				.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
 				.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA);
 	}
+
+
+	@SubscribeEvent
+	void registerSerializers(RegisterEvent event) {
+		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
+			ConstructsCasting.LOGGER.info("recipe serializer event");
+			FluidEffect.ENTITY_EFFECTS.register(ConstructsCasting.id("deplete_mana"), CCFluidEffects.DEPLETE_MANA.getLoader());
+			FluidEffect.ENTITY_EFFECTS.register(ConstructsCasting.id("add_mana"), CCFluidEffects.ADD_MANA.getLoader());
+		}
+	}
+
 //datagen all below here
 	public static class CCFluidTextures extends AbstractFluidTextureProvider {
 
@@ -108,9 +120,9 @@ public class CCFluids {
 			texture(bloodEssence).textures(potion, false, false).color(0xffd67369);
 			texture(evocationEssence).textures(potion, false, false).color(0xff75fc79);
 			texture(natureEssence).textures(potion, false, false).color(0xffb0f869);
+			texture(cinderEssence).textures(potion, false, false).color(0xff6a2b00);
 
 			texture(liquidLightning).textures(potion, false, false).color(0xffd7eef5);
-			texture(liquidDivinity).textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xfffce969);
 			texture(potatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffe9ba61);
 			texture(poisonousPotatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
 			texture(moltenArcanium).textures(new ResourceLocation("tconstruct:fluid/molten/"), false, false).color(0xff79c0f3);
@@ -163,7 +175,6 @@ public class CCFluids {
 		public static final TagKey<Fluid> POTATO_STEW = FluidTags.create(ConstructsCasting.id("potato_stew"));
 		public static final TagKey<Fluid> POISONOUS_POTATO_STEW = FluidTags.create(ConstructsCasting.id("poisonous_potato_stew"));
 		public static final TagKey<Fluid> LIQUID_LIGHTNING = FluidTags.create(ConstructsCasting.id("liquid_lightning"));
-		public static final TagKey<Fluid> LIQUID_DIVINITY = FluidTags.create(ConstructsCasting.id("liquid_divinity"));
 		public static final TagKey<Fluid> BLOOD_ESSENCE_INGREDIENTS = FluidTags.create(ConstructsCasting.id("blood_essence_ingredients"));
 		public static final TagKey<Fluid> ARCANIUM_BASE = FluidTags.create(ConstructsCasting.id("arcanium_base"));
 		public static final TagKey<Fluid> BOTTLE_TOOLTIP = FluidTags.create(ConstructsCasting.id("bottle_tooltip"));
@@ -183,7 +194,6 @@ public class CCFluids {
 			tag(POTATO_STEW).add(potatoStew.get());
 			tag(POISONOUS_POTATO_STEW).add(poisonousPotatoStew.get());
 			tag(LIQUID_LIGHTNING).add(liquidLightning.get());
-			tag(LIQUID_DIVINITY).add(liquidDivinity.get());
 
 			tag(ARCANIUM_BASE).add(TinkerFluids.moltenCopper.get()).add(TinkerFluids.moltenIron.get()).add(TinkerFluids.moltenGold.get());
 			tag(essenceOf("arcane")).add(arcaneEssence.get());
@@ -216,7 +226,6 @@ public class CCFluids {
 					.add(evocationEssence.get())
 					.add(natureEssence.get())
 					.add(liquidLightning.get())
-					.add(liquidDivinity.get())
 					.add(squidInk.get())
 					.add(commonInk.get())
 					.add(uncommonInk.get())

@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting;
 
 import com.mojang.logging.LogUtils;
+import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCTools;
@@ -62,6 +63,7 @@ public class ConstructsCasting {
         CCEntities.register(modEventBus);
         CCSpells.register(modEventBus);
         CREATIVE_TABS.register(modEventBus);
+        modEventBus.register(new CCFluids());
     }
     public static ResourceLocation id(String name) {
         return new ResourceLocation(MOD_ID, name);
@@ -93,7 +95,9 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCFluids.Tags(output, provider));
         gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(output, MOD_ID));
         gen.addProvider(server, new CCRecipes(output));
+        gen.addProvider(server, new CCFluidEffects(output, ConstructsCasting.MOD_ID));
         gen.addProvider(server, new CCLang(output, ConstructsCasting.MOD_ID, "en_us"));
         gen.addProvider(server, new CCDamageTypes.Tags(output, provider, MOD_ID, fileHelper));
+        gen.addProvider(server, new CCModifiers.Tags(output, MOD_ID, fileHelper));
     }
 }

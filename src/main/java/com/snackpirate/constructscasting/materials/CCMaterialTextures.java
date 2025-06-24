@@ -94,5 +94,20 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addTexture(216, rainbowSlimeHighlight, 0xFFE1E1E1)
 						.addTexture(255, rainbowSlimeHighlight)
 						.build());
+
+
+		ResourceLocation cosmiBase = ConstructsCasting.id("item/materials/generator/cosmichalcum");
+		ResourceLocation cosmiBorder = ConstructsCasting.id("item/materials/generator/cosmichalcum_border");
+		ResourceLocation cosmiHighlight = ConstructsCasting.id("item/materials/generator/cosmichalcum_highlight");
+		buildMaterial(CCMaterials.cosmichalcum).meleeHarvest().ranged().armor().maille().repairKit()
+				.fallbacks("metal")
+				.transformer(GreyToSpriteTransformer.builderFromBlack()
+						.addTexture( 63, cosmiBorder,    0xFFC8C8C8)
+						.addTexture(102, cosmiBorder)
+						.addTexture(140, cosmiBase,      0xFFE1E1E1)
+						.addTexture(178, cosmiBase)
+						.addTexture(216, cosmiHighlight, 0xFFE1E1E1)
+						.addTexture(255, cosmiHighlight)
+						.build());
 	}
 }

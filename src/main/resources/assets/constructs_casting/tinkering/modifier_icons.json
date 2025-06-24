@@ -1,0 +1,12 @@
+{
+  "constructs_casting:fire_upgrade": ["irons_spellbooks:item/fire_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:ice_upgrade": ["irons_spellbooks:item/ice_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:lightning_upgrade": ["irons_spellbooks:item/lightning_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:blood_upgrade": ["irons_spellbooks:item/blood_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:holy_upgrade": ["irons_spellbooks:item/holy_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:evocation_upgrade": ["irons_spellbooks:item/evocation_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:nature_upgrade": ["irons_spellbooks:item/nature_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:mana_upgrade": ["irons_spellbooks:item/arcane_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:ender_upgrade": ["irons_spellbooks:item/ender_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:cooldown_upgrade": ["irons_spellbooks:item/cooldown_rune", "tconstruct:gui/modifiers/plus"]
+}

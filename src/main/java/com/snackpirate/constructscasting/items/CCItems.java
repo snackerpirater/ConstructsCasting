@@ -50,12 +50,14 @@ public class CCItems {
 	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
 
-	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> {
-		ITEMS.getEntries().forEach((regObj) -> output.accept(regObj.get()));
-	};
+	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
+		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
+	})
+;
 
 	public static class Tags extends ItemTagsProvider {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
+		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
 
 		public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(pOutput, pLookupProvider, pBlockTags, modId, existingFileHelper);
@@ -65,14 +67,14 @@ public class CCItems {
 		private void addToolTags(ItemLike tool, TagKey<Item>... tags) {
 			Item item = tool.asItem();
 			for (TagKey<Item> tag : tags) {
-				ConstructsCasting.LOGGER.info("adding tool tag {}", tag.toString());
+//				ConstructsCasting.LOGGER.info("adding tool tag {}", tag.toString());
 				this.tag(tag).add(item);
 			}
 		}
 
 		@Override
 		protected void addTags(HolderLookup.Provider pProvider) {
-			ConstructsCasting.LOGGER.info("addubg tags");
+//			ConstructsCasting.LOGGER.info("addubg tags");
 //			tag(SLIME_FOCUS).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("school_focus"))).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
@@ -81,8 +83,8 @@ public class CCItems {
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
 			tag(ItemTags.create(new ResourceLocation("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);
-
-			ConstructsCasting.LOGGER.info("addubg tags finish");
+			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get());
+//			ConstructsCasting.LOGGER.info("addubg tags finish");
 		}
 	}
 

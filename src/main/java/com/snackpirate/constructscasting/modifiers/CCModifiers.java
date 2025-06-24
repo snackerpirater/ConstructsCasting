@@ -9,9 +9,13 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import org.checkerframework.checker.units.qual.A;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
+import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.common.data.tags.ModifierTagProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
+import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
 import slimeknights.tconstruct.library.json.variable.entity.EntityEffectLevelVariable;
 import slimeknights.tconstruct.library.json.variable.melee.EntityMeleeVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -96,5 +100,30 @@ public class CCModifiers extends AbstractModifierProvider {
 	@Override
 	public String getName() {
 		return "Construct's Casting Modifiers";
+	}
+	public static class Tags extends AbstractModifierTagProvider {
+
+		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
+			super(packOutput, modId, existingFileHelper);
+		}
+
+		/**
+		 *
+		 */
+		@Override
+		protected void addTags() {
+			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
+			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE);
+			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
+			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
+		}
+
+		/**
+		 * @return
+		 */
+		@Override
+		public String getName() {
+			return "Construct's Casting Modifier Tags";
+		}
 	}
 }

@@ -35,6 +35,9 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
+
+		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
+
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
 		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spell Book to function as an encyclopedia.");
@@ -71,10 +74,9 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.bloodEssence, "Blood Essence");
 		addFluid(CCFluids.evocationEssence, "Evocation Essence");
 		addFluid(CCFluids.natureEssence, "Nature Essence");
-
+		addFluid(CCFluids.cinderEssence, "Cinder Essence");
 
 		addFluid(CCFluids.liquidLightning, "Lightning");
-		addFluid(CCFluids.liquidDivinity, "Divinity");
 		addFluid(CCFluids.potatoStew, "Potato Stew");
 		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
 		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");

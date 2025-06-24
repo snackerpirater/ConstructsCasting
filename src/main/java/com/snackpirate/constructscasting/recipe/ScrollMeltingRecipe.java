@@ -57,9 +57,8 @@ public class ScrollMeltingRecipe implements IMeltingRecipe {
 
 	@Override
 	public FluidStack getOutput(IMeltingContainer inv) {
-		return new FluidStack(CCFluids.getInkFluidForRarity(ISpellContainer.get(inv.getStack()).getSpellAtIndex(0).getRarity()).get(), 100);
+		return new FluidStack(CCFluids.getInkFluidForRarity(ISpellContainer.get(inv.getStack()).getSpellAtIndex(0).getRarity()).get(), 125);
 	}
-
 	@Override
 	public int getTemperature(IMeltingContainer iMeltingContainer) {
 		return this.temperature;

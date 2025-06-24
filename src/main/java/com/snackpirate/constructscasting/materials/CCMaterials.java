@@ -32,6 +32,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId hogskin = createMaterial("hogskin");
 	public static final MaterialId dragonskin = createMaterial("dragonskin");
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
+
+	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum");
 	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
@@ -48,6 +50,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(exilite, 3, 0, false);
 		addMaterial(frostRod, 3, 0, true);
 		addMaterial(rainbowSlime, 3, 0, false);
+
+		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
 //		addMaterial(dragonskin, 4, 0, true);
 	}
@@ -86,6 +90,18 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
 					StatlessMaterialStats.MAILLE);
+			//TODO: temp stats, should be t4
+			addMaterialStats(cosmichalcum,
+					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
+					new HandleMaterialStats(-0.05f, -0.15f, 0.15f, 0.1f),
+					StatlessMaterialStats.BINDING,
+					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 318, 2, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 458, 6, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 430, 6, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
+					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
+					StatlessMaterialStats.MAILLE);
+
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
 					new HandleMaterialStats(0.1f, -0.05f, -0.1f, 0.1f),
@@ -113,6 +129,10 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialTraits() {
 			addTraits(arcanium, MaterialRegistry.MELEE_HARVEST, CCModifiers.ARCANE);
 			addTraits(arcanium, MaterialRegistry.ARMOR, new ModifierEntry(CCModifiers.ARCANE, 2));
+
+			addTraits(cosmichalcum, MaterialRegistry.MELEE_HARVEST, CCModifiers.ENDER_UPGRADE);
+			addTraits(cosmichalcum, MaterialRegistry.ARMOR, CCModifiers.ENDER_UPGRADE);
+
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(hogskin, CCModifiers.ARCANE);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
@@ -144,6 +164,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
+
+			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 		}
 
 		@Override
