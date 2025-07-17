@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:arcane_essence",
+    "constructs_casting:cinder_essence",
     "constructs_casting:fire_essence",
     "constructs_casting:ice_essence",
     "constructs_casting:lightning_essence",

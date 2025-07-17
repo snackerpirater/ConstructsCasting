@@ -68,6 +68,7 @@ public class FreezeSpell extends AbstractSpell {
 			var fluidStack = cbe.getTank().getFluid();
 			if (fluidStack.getAmount() > 0 && fluidStack.getFluid().getFluidType().getTemperature() > 700) {
 				return true;
+
 			}
 		}
 		playerMagicData.resetAdditionalCastData();

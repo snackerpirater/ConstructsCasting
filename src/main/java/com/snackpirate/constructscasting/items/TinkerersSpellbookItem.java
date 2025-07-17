@@ -98,6 +98,7 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
 		return ToolStack.from(stack).getModifierLevel(CCModifiers.ENCYCLOPEDIC.getId()) < 1;
 	}
+
 	protected static boolean shouldInteract(@Nullable LivingEntity player, ToolStack toolStack, InteractionHand hand) {
 		IModDataView volatileData = toolStack.getVolatileData();
 		if (volatileData.getBoolean(NO_INTERACTION)) {
@@ -110,6 +111,7 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		// main hand may wish to defer to the offhand if it has a tool
 		return player == null || !volatileData.getBoolean(DEFER_OFFHAND) || player.getOffhandItem().isEmpty();
 	}
+
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand hand) {
 		ItemStack stack = playerIn.getItemInHand(hand);

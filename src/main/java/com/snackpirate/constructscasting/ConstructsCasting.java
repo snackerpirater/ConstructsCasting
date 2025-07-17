@@ -57,6 +57,7 @@ public class ConstructsCasting {
         MinecraftForge.EVENT_BUS.register(this);
         CCModifiers.MODIFIERS.register(modEventBus);
         CCFluids.FLUIDS.register(modEventBus);
+        CCFluidEffects.MobEffects.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
         CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         CCSounds.register(modEventBus);

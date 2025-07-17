@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting;
 
+import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
@@ -81,6 +82,7 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
 		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");
 		addFluid(CCFluids.moltenExilite, "Molten Exilite");
+		addFluid(CCFluids.moltenArcaneSalvage, "Molten Arcane Salvage");
 
 		addFluid(CCFluids.squidInk, "Squid Ink");
 		addFluid(CCFluids.commonInk, "Common Ink");
@@ -113,6 +115,15 @@ public class CCLang extends LanguageProvider {
 		add("ui.constructs_casting.enderference_anti_teleport", "Your current affliction prevents you from teleporting...");
 //		addSpell(CCSpells.SLING_SPELL, "Sling", "Launches player in the opposite direction that they are looking.");
 
+		addEffect(CCFluidEffects.MobEffects.bloodEmpowerment, "Blood Empowerment");
+		addEffect(CCFluidEffects.MobEffects.enderEmpowerment, "Ender Empowerment");
+		addEffect(CCFluidEffects.MobEffects.evocationEmpowerment, "Evocation Empowerment");
+		addEffect(CCFluidEffects.MobEffects.fireEmpowerment, "Fire Empowerment");
+		addEffect(CCFluidEffects.MobEffects.holyEmpowerment, "Holy Empowerment");
+		addEffect(CCFluidEffects.MobEffects.iceEmpowerment, "Ice Empowerment");
+		addEffect(CCFluidEffects.MobEffects.lightningEmpowerment, "Lightning Empowerment");
+		addEffect(CCFluidEffects.MobEffects.natureEmpowerment, "Nature Empowerment");
+		addEffect(CCFluidEffects.MobEffects.recoveryEmpowerment, "Recovery Empowerment");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

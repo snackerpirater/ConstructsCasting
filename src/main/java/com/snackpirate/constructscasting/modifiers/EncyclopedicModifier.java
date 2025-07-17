@@ -29,8 +29,8 @@ public class EncyclopedicModifier extends NoLevelsModifier implements GeneralInt
 	 * @param source   Source of the interaction
 	 */
 	@Override
-	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
-		ConstructsCasting.LOGGER.info("encyclopedic use");
+	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source)  {
+//		ConstructsCasting.LOGGER.info("encyclopedic use");
 		if (player.level().isClientSide) TinkerBook.getBook(TinkerBookItem.BookType.ENCYCLOPEDIA).openGui(hand, player.getItemInHand(hand));
 		return InteractionResult.SUCCESS;
 	}

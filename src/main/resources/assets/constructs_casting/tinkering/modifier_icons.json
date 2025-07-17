@@ -8,5 +8,9 @@
   "constructs_casting:nature_upgrade": ["irons_spellbooks:item/nature_rune", "tconstruct:gui/modifiers/plus"],
   "constructs_casting:mana_upgrade": ["irons_spellbooks:item/arcane_rune", "tconstruct:gui/modifiers/plus"],
   "constructs_casting:ender_upgrade": ["irons_spellbooks:item/ender_rune", "tconstruct:gui/modifiers/plus"],
-  "constructs_casting:cooldown_upgrade": ["irons_spellbooks:item/cooldown_rune", "tconstruct:gui/modifiers/plus"]
+  "constructs_casting:cooldown_upgrade": ["irons_spellbooks:item/cooldown_rune", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:casting": ["irons_spellbooks:item/hither_thither_wand", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:swiftcasting": ["minecraft:item/rabbit_foot", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:encyclopedic": ["tconstruct:item/encyclopedia", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:spell_protection": "constructs_casting:gui/modifiers/spell_protection"
 }

@@ -99,8 +99,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.arcanium).setIngredient(ItemRegistry.ARCANE_INGOT.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "arcanium/ingot"));
 		//exilite making
 		materialMeltingCasting(consumer, CCMaterials.exilite, CCFluids.moltenExilite, FluidValues.INGOT, materialFolder);
-		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteIngot.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT), 800, 30).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/ingot"));
-		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()),new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/nugget"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteIngot.get()), new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT), 800, 30).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/ingot"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteNugget.get()), new FluidStack(CCFluids.moltenExilite.get(), FluidValues.NUGGET), 800, 4).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/nugget"));
 		ingotCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteIngot.get(), castingFolder + "exilite_ingot");
 		nuggetCasting(consumer, CCFluids.moltenExilite, CCItems.exiliteNugget.get(), castingFolder + "exilite_nugget");
 		AlloyRecipeBuilder.alloy(new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT))
@@ -111,7 +111,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MAGEHUNTER.get()), new FluidStack(CCFluids.moltenExilite.get(), 2*FluidValues.INGOT), 700, 30).setDamagable(25).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/magehunter"));
-		//arcane cloth making
+		//arcane salvage making
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_DEBRIS_BLOCK_ITEM.get()), new FluidStack(CCFluids.moltenArcaneSalvage.get(), 2*FluidValues.INGOT), 1175,40).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_salvage/ore"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_SALVAGE.get()), new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT), 1175,20).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_salvage/ingot"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.ARCANE_SALVAGE.get()).setFluidAndTime(new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "arcane_salvage_multi"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.ARCANE_SALVAGE.get()).setFluidAndTime(new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "arcane_salvage_single"));
+		// arcane cloth making
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MAGIC_CLOTH.get())
 				.setCast(Items.COBWEB.asItem(), true)
 				.setCoolingTime(52)

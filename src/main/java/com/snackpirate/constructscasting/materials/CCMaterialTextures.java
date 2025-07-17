@@ -42,7 +42,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFF6e7278)
 						.addARGB(255, 0xFF989ba1)
 						.build()));
-		buildMaterial(CCMaterials.arcaneCloth).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier())
+		buildMaterial(CCMaterials.arcaneCloth).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier())
 				.fallbacks("cloth")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF0d4578)
@@ -52,7 +52,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFb1d9ff)
 						.addARGB(255, 0xFFebf5ff)
 						.build()));
-		buildMaterial(CCMaterials.hogskin).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier())
+		buildMaterial(CCMaterials.hogskin).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier())
 				.fallbacks("cloth", "primitive")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF4c4c4c)
