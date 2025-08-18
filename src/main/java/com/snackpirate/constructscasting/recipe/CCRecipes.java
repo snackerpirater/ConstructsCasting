@@ -211,6 +211,11 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		//essence making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), new FluidStack(CCFluids.arcaneEssence.get(), 250), 100, 5)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.ARCANE_ESSENCE.get()).setFluidAndTime(new FluidStack(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "arcane_essence_casting"));
+
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.CINDER_ESSENCE.get()), new FluidStack(CCFluids.cinderEssence.get(), 250), 1175, 5)
+				.save(consumer, ConstructsCasting.id(meltingFolder + "cinder_essence"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.CINDER_ESSENCE.get()).setFluidAndTime(new FluidStack(CCFluids.cinderEssence.get(), FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "cinder_essence_casting"));
 		essenceRecipe(CCFluids.fireEssence,      TinkerFluids.blazingBlood   .getLocalTag(),100, "fire_essence"     );
 		essenceRecipe(CCFluids.iceEssence,       TinkerFluids.powderedSnow.getCommonTag(),   250, "ice_essence"      );
 		essenceRecipe(CCFluids.lightningEssence, CCFluids.Tags.LIQUID_LIGHTNING,            250, "lightning_essence");
@@ -303,7 +308,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.PRIEST.get()), new FluidStack(CCFluids.holyEssence.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.ARCHEVOKER.get()), new FluidStack(CCFluids.evocationEssence.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.NECROMANCER.get()), new FluidStack(CCFluids.arcaneEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.KEEPER.get()), new FluidStack(TinkerFluids.moltenDebris.get(), 10)).save(consumer);
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.KEEPER.get()), new FluidStack(CCFluids.cinderEssence.get(), 25)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CULTIST.get()), new FluidStack(CCFluids.bloodEssence.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(CCFluids.rareInk.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
