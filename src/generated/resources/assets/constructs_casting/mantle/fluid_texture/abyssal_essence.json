@@ -1,0 +1,5 @@
+{
+  "color": "FF6400FC",
+  "flowing": "tconstruct:fluid/potion/flowing",
+  "still": "tconstruct:fluid/potion/still"
+}

@@ -46,6 +46,8 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> bloodEssence = essence("blood_essence");
 	public static final FluidObject<UnplaceableFluid> evocationEssence = essence("evocation_essence");
 	public static final FluidObject<UnplaceableFluid> natureEssence = essence("nature_essence");
+
+
 	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning").type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
 
 	public static final FluidObject<UnplaceableFluid> cinderEssence = essence("cinder_essence");
@@ -63,6 +65,19 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> legendaryInk = FLUIDS.register("legendary_ink").type(cool().temperature(100)).commonTag("ink/legendary").bucket().unplacable();
 
 	public static final FlowingFluidObject<ForgeFlowingFluid> moltenArcaneSalvage = FLUIDS.register("molten_arcane_salvage").type(hot()).bucket().block(MapColor.TERRACOTTA_WHITE, 12).flowing();
+	//------compat------
+	//arcane essence + crystallized coral?
+	//ugh why does it have to be multiple colors
+	public static final FluidObject<UnplaceableFluid> moltenCrystallizedCoral = essence("molten_crystallized_coral");
+	public static final FluidObject<UnplaceableFluid> abyssalEssence = essence("abyssal_essence");
+	//arcane essence + redstone?
+	//redstone is NOT a fluid i won't allow it
+	public static final FluidObject<UnplaceableFluid> gasifiedRedstone = FLUIDS.register("gasified_redstone").type(hot().density(-1600)).bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> technomancyEssence = essence("technomancy_essence");
+	//arcane essence + pearls?
+	//molten pearl i guess
+	public static final FluidObject<UnplaceableFluid> moltenPearl = essence("molten_pearl");
+	public static final FluidObject<UnplaceableFluid> aquaEssence = essence("aqua_essence");
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
@@ -128,15 +143,25 @@ public class CCFluids {
 			texture(liquidLightning).textures(potion, false, false).color(0xffd7eef5);
 			texture(potatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffe9ba61);
 			texture(poisonousPotatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
-			texture(moltenArcanium).textures(new ResourceLocation("tconstruct:fluid/molten/"),      false, false).color(0xff79c0f3);
-			texture(moltenExilite) .textures(new ResourceLocation("tconstruct:fluid/molten/"),      false, false).color(0xff5a5b5c);
-			texture(moltenArcaneSalvage).textures(new ResourceLocation("tconstruct:fluid/molten/"), false, false).color(0xffffffff);
-			texture(squidInk)	   .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff180030);
-			texture(commonInk)     .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff2d2d2d);
-			texture(uncommonInk)   .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff124300);
-			texture(rareInk)       .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff0f3844);
-			texture(epicInk)       .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xff442d5d);
-			texture(legendaryInk)  .textures(new ResourceLocation("tconstruct:fluid/slime/venom/"), false, false).color(0xffd6a200);
+			ResourceLocation molten = new ResourceLocation("tconstruct:fluid/molten/");
+			texture(moltenArcanium).textures(molten,      false, false).color(0xff79c0f3);
+			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
+			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
+			ResourceLocation inky = new ResourceLocation("tconstruct:fluid/slime/venom/");
+			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);
+			texture(commonInk)     .textures(inky, false, false).color(0xff2d2d2d);
+			texture(uncommonInk)   .textures(inky, false, false).color(0xff124300);
+			texture(rareInk)       .textures(inky, false, false).color(0xff0f3844);
+			texture(epicInk)       .textures(inky, false, false).color(0xff442d5d);
+			texture(legendaryInk)  .textures(inky, false, false).color(0xffd6a200);
+
+			texture(moltenCrystallizedCoral).textures(molten, false, false).color(0xcfd48996);
+			texture(gasifiedRedstone).textures(new ResourceLocation("tconstruct:fluid/slime/ichor/"), false, false).color(0xffff0f01);
+			texture(moltenPearl).textures(molten, false, false).color(0xfff28ba6);
+
+			texture(abyssalEssence).textures(potion, false, false).color(0xff6400fc);
+			texture(technomancyEssence).textures(potion, false, false).color(0xffb1bcc3);
+			texture(aquaEssence).textures(potion, false, false).color(0xff56aada);
 		}
 
 		@Override
@@ -236,8 +261,13 @@ public class CCFluids {
 					.add(uncommonInk.get())
 					.add(rareInk.get())
 					.add(epicInk.get())
-					.add(legendaryInk.get());
+					.add(legendaryInk.get())
+					.add(abyssalEssence.get())
+					.add(aquaEssence.get())
+					.add(technomancyEssence.get());
 			tag(MantleTags.Fluids.SOUP).add(potatoStew.get()).add(poisonousPotatoStew.get());
+			tag(TinkerTags.Fluids.SLIME_TOOLTIPS).add(moltenPearl.get());
+			tag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS).add(moltenCrystallizedCoral.get());
 		}
 	}
 }

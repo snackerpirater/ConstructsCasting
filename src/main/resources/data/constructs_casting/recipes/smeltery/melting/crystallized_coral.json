@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "cataclysm:crystallized_coral"
+  },
+  "result": {
+    "amount": 100,
+    "fluid": "constructs_casting:molten_crystallized_coral"
+  },
+  "temperature": 800,
+  "time": 12
+}

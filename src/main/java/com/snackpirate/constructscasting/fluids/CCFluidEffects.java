@@ -40,7 +40,6 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 		addFluid(CCFluids.cinderEssence, FluidValues.SIP).addEntityEffect(DEPLETE_MANA);
 		addMetal(CCFluids.moltenArcanium).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicEmpowerment.get(), 100, 1), TimeAction.SET);
 		addMetal(CCFluids.moltenExilite).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicVulnerability.get(), 100, 1), TimeAction.SET);
-
 		addFluid(CCFluids.bloodEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.bloodEmpowerment.get(), 100, 1), TimeAction.SET);
 		addFluid(CCFluids.enderEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.enderEmpowerment.get(), 100, 1), TimeAction.SET);
 		addFluid(CCFluids.evocationEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.evocationEmpowerment.get(), 100, 1), TimeAction.SET);

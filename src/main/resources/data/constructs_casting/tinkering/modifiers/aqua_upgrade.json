@@ -1,0 +1,21 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "traveloptics:aqua_spell_power",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "unique": "constructs_casting.modifier.aqua_upgrade"
+    }
+  ],
+  "tooltip_display": "always"
+}

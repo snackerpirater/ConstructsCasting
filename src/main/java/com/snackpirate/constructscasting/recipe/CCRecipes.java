@@ -8,11 +8,13 @@ import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.registries.EntityRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -312,6 +314,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CULTIST.get()), new FluidStack(CCFluids.bloodEssence.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(CCFluids.rareInk.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
+
+
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));

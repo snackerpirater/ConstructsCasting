@@ -1,0 +1,25 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "cataclysm_spellbooks:technomancy_upgrade_orb"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
+  "level": {
+    "max": 3
+  },
+  "result": "constructs_casting:technomancy_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

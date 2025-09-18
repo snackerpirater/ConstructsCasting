@@ -17,6 +17,9 @@
     "nature_upgrade": "#b0f869",
     "cooldown_upgrade": "#dbbbcd",
     "eldritch_upgrade": "#009295",
+    "abyssal_upgrade": "#6400fc",
+    "technomancy_upgrade": "#b1bcc3",
+    "aqua_upgrade": "#56aada",
 
     "__traits__": null,
     "arcane": "#f1cdfa",

@@ -1,0 +1,27 @@
+{
+  "block_effects": [
+    {
+      "type": "tconstruct:mob_effect_cloud",
+      "effects": [
+        {
+          "effect": "constructs_casting:inky_impairment",
+          "level": 4,
+          "time": 190
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct:mob_effect",
+      "action": "set",
+      "effect": "constructs_casting:inky_impairment",
+      "level": 4,
+      "time": 190
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "tag": "forge:ink/epic"
+  }
+}

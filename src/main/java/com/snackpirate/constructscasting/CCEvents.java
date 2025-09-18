@@ -4,6 +4,7 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
@@ -13,6 +14,7 @@ import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,15 +34,20 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
+import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.shared.TinkerEffects;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
+import slimeknights.tconstruct.tools.modules.armor.ShieldStrapModule;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+
+import static slimeknights.tconstruct.TConstruct.getResource;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {

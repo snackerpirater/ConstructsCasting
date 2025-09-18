@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 100,
+      "fluid": "constructs_casting:molten_crystallized_coral"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:abyssal_essence"
+  },
+  "temperature": 700
+}

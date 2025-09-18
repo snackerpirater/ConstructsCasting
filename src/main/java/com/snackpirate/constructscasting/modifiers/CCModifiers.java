@@ -3,26 +3,40 @@ package com.snackpirate.constructscasting.modifiers;
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegisterEvent;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
+import slimeknights.tconstruct.library.modifiers.modules.build.VolatileFlagModule;
 import slimeknights.tconstruct.library.modifiers.modules.util.ModifierCondition;
+import slimeknights.tconstruct.library.modifiers.util.DynamicModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+import slimeknights.tconstruct.library.recipe.partbuilder.Pattern;
+import slimeknights.tconstruct.library.tools.capability.inventory.InventoryMenuModule;
+import slimeknights.tconstruct.library.tools.capability.inventory.InventoryModule;
+import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.modules.armor.ShieldStrapModule;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ConstructsCasting.MOD_ID)
 public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
@@ -31,6 +45,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
 	public static final StaticModifier<Modifier> ANTIFROST = MODIFIERS.register("antifrost", AntifrostModifier::new);
+	public static final StaticModifier<Modifier> SPELLBOOK_STRAP = MODIFIERS.register("spellbook_strap", SpellbookStrapModifier::new);
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
@@ -38,7 +53,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
 	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
 	public static final ModifierId SPELL_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "spell_protection");
-
+//	public static final ModifierId SPELLBOOK_STRAP = new ModifierId(ConstructsCasting.MOD_ID, "spellbook_strap");
 	//orb upgrades
 	public static final ModifierId MANA_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
 	public static final ModifierId FIRE_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "fire_upgrade");
@@ -51,6 +66,11 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId NATURE_UPGRADE    = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
 	public static final ModifierId COOLDOWN_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
 	public static final ModifierId ELDRITCH_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_upgrade");
+
+	public static final ModifierId ABYSSAL_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
+	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
+	public static final ModifierId AQUA_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
+
 	public CCModifiers(PackOutput generator) {
 		super(generator);
 	}
@@ -83,6 +103,11 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
 
 		buildModifier(SPELL_PROTECTION).addModule(ProtectionModule.builder().source(DamageSourcePredicate.tag(CCDamageTypes.Tags.SPELL_BASED)).eachLevel(2.5f)).build();
+//		buildModifier(SPELLBOOK_STRAP).priority(95)
+//				.addModule(InventoryModule.builder().pattern(new Pattern("constructs_casting:spellbook_plus")).slotsPerLevel(1))
+//				.addModule(new SpellbookStrapModule(TooltipKey.NORMAL))
+//				.addModule(InventoryMenuModule.SHIFT)
+//				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
@@ -104,17 +129,23 @@ public class CCModifiers extends AbstractModifierProvider {
 		@Override
 		protected void addTags() {
 			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
-			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE);
+			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, TECHNOMANCY_UPGRADE, ABYSSAL_UPGRADE);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
+			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
 		}
 
-		/**
-		 * @return
-		 */
 		@Override
 		public String getName() {
 			return "Construct's Casting Modifier Tags";
+		}
+	}
+
+	@SubscribeEvent
+	void registerSerializers(RegisterEvent event) {
+		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
+			ConstructsCasting.LOGGER.info("register serializer event");
+			ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
 		}
 	}
 }

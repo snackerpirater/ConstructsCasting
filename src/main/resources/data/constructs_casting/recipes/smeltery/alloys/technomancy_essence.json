@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "amount": 250,
+      "fluid": "constructs_casting:arcane_essence"
+    },
+    {
+      "amount": 90,
+      "fluid": "constructs_casting:gasified_redstone"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:technomancy_essence"
+  },
+  "temperature": 700
+}

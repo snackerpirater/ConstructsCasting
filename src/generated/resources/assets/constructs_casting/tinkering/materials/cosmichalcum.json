@@ -1,0 +1,60 @@
+{
+  "color": "FF111081",
+  "fallbacks": [
+    "metal"
+  ],
+  "generator": {
+    "supported_stats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:binding",
+      "tconstruct:repair_kit",
+      "tconstruct:limb",
+      "tconstruct:grip",
+      "tconstruct:armor_plating",
+      "tconstruct:plating_helmet",
+      "tconstruct:plating_chestplate",
+      "tconstruct:plating_leggings",
+      "tconstruct:plating_boots",
+      "tconstruct:plating_shield",
+      "tconstruct:maille",
+      "tconstruct:armor_maille"
+    ],
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "color": "FF000000",
+          "grey": 0
+        },
+        {
+          "color": "FFC8C8C8",
+          "grey": 63,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum_border"
+        },
+        {
+          "grey": 102,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum_border"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 140,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum"
+        },
+        {
+          "grey": 178,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 216,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum_highlight"
+        },
+        {
+          "grey": 255,
+          "path": "constructs_casting:item/materials/generator/cosmichalcum_highlight"
+        }
+      ]
+    }
+  }
+}
