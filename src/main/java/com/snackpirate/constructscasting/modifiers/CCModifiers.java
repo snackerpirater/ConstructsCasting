@@ -52,7 +52,8 @@ public class CCModifiers extends AbstractModifierProvider {
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
 	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
-	public static final ModifierId SPELL_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "spell_protection");
+    public static final ModifierId SPELL_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "spell_protection");
+//  for some reason, the module-based approach does not work due to something weird with the serializer, so we're hardcoding this
 //	public static final ModifierId SPELLBOOK_STRAP = new ModifierId(ConstructsCasting.MOD_ID, "spellbook_strap");
 	//orb upgrades
 	public static final ModifierId MANA_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "mana_upgrade");
@@ -84,7 +85,7 @@ public class CCModifiers extends AbstractModifierProvider {
 				.build();
 
 		buildModifier(SWIFTCASTING).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
-				.addModule(new SetStatModule<>(ToolStats.USE_ITEM_SPEED, 1.8f, ModifierCondition.ANY_CONTEXT))
+                .addModule(SetStatModule.set(ToolStats.USE_ITEM_SPEED).value(1.8f))
 				.addModule(ModifierRequirementsModule.builder().requireModifier(CASTING.getId(), 1).translationKey("constructs_casting.modifier.swiftcasting.requirement").build())
 				.build();
 
