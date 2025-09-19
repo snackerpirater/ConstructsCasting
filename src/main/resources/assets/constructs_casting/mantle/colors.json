@@ -4,6 +4,7 @@
     "casting": "#54fcfc",
     "swiftcasting": "#54fcfc",
     "encyclopedic": "#fdf55f",
+    "spellbook_strap": "#54fcfc",
 
     "__tool_upgrades__": null,
     "mana_upgrade": "#79c0f3",
@@ -17,6 +18,9 @@
     "nature_upgrade": "#b0f869",
     "cooldown_upgrade": "#dbbbcd",
     "eldritch_upgrade": "#009295",
+    "abyssal_upgrade": "#6400fc",
+    "technomancy_upgrade": "#b1bcc3",
+    "aqua_upgrade": "#56aada",
 
     "__traits__": null,
     "arcane": "#f1cdfa",

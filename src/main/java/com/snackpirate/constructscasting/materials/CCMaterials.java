@@ -51,7 +51,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(frostRod, 3, 0, true);
 		addMaterial(rainbowSlime, 3, 0, false);
 
-		addMaterial(cosmichalcum, 4, 10, false);
+//		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
 //		addMaterial(dragonskin, 4, 0, true);
 	}

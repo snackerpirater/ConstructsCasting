@@ -135,6 +135,15 @@ dependencies {
     // JEI ********************************************************************************************************
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
 //    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
+    // COMPAT *****************************************************************************************************
+
+    runtimeOnly fg.deobf("curse.maven:azurelib-817423:6849107")
+    runtimeOnly fg.deobf("curse.maven:lionfish-api-1001614:5922047")
+    runtimeOnly fg.deobf("curse.maven:lendercataclysm-551586:6849032")
+    runtimeOnly fg.deobf("curse.maven:citadel-331936:6702068")
+    runtimeOnly fg.deobf("curse.maven:alexs-caves-924854:5848216")
+    runtimeOnly fg.deobf("curse.maven:cataclysm-spellbooks-1099461:6769871")
+//    runtimeOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:6901041")
 
 }
 tasks.named('processResources', ProcessResources).configure {

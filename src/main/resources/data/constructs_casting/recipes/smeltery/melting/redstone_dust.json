@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "minecraft:redstone"
+  },
+  "result": {
+    "amount": 90,
+    "fluid": "constructs_casting:gasified_redstone"
+  },
+  "temperature": 1100,
+  "time": 4
+}

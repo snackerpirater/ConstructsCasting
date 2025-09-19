@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:casting_table",
+  "cooling_time": 82,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "fluid": {
+    "amount": 250,
+    "fluid": "constructs_casting:molten_pearl"
+  },
+  "result": "alexscaves:pearl"
+}

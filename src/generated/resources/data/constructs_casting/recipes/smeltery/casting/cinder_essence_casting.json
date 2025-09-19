@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_table",
+  "cooling_time": 47,
+  "fluid": {
+    "amount": 250,
+    "fluid": "constructs_casting:cinder_essence"
+  },
+  "result": "irons_spellbooks:cinder_essence"
+}

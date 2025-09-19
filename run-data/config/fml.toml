@@ -12,10 +12,10 @@ earlyWindowProvider = "fmlearlywindow"
 earlyWindowWidth = 854
 #Early window starts maximized
 earlyWindowMaximized = false
-#Default config path for servers
-defaultConfigPath = "defaultconfigs"
 #Disables Optimized DFU client-side - already disabled on servers
 disableOptimizedDFU = true
+#Default config path for servers
+defaultConfigPath = "defaultconfigs"
 #Skip specific GL versions, may help with buggy graphics card drivers
 earlyWindowSkipGLVersions = []
 #Max threads for early initialization parallelism,  -1 is based on processor count

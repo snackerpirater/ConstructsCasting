@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:entity_melting",
+  "damage": 2,
+  "entity": {
+    "type": "irons_spellbooks:citadel_keeper"
+  },
+  "result": {
+    "amount": 25,
+    "fluid": "constructs_casting:cinder_essence"
+  }
+}

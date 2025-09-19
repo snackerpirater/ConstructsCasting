@@ -16,6 +16,9 @@
     "constructs_casting:uncommon_ink",
     "constructs_casting:rare_ink",
     "constructs_casting:epic_ink",
-    "constructs_casting:legendary_ink"
+    "constructs_casting:legendary_ink",
+    "constructs_casting:abyssal_essence",
+    "constructs_casting:aqua_essence",
+    "constructs_casting:technomancy_essence"
   ]
 }

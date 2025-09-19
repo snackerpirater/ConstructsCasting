@@ -51,6 +51,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
 		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
 		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +7.5% power to all types of spells.");
+		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your Spellbook with another one in the leggings' inventory.");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
@@ -64,7 +65,9 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.NATURE_UPGRADE, "Nature Upgrade", "All natural!", "Grants +5% Nature Spell Power.");
 		addModifier(CCModifiers.ELDRITCH_UPGRADE, "Eldritch Upgrade", "Man-made modifiers beyond your comprehension", "Grants +5% Eldritch Spell Power");
 
-
+		addModifier(CCModifiers.ABYSSAL_UPGRADE, "Abyssal Upgrade", "Not to be confused with Aqua", "Grants +5% Abyssal Spell Power.");
+		addModifier(CCModifiers.TECHNOMANCY_UPGRADE, "Technomancy Upgrade", "Hackerman", "Grants +5% Technomancy Spell Power.");
+		addModifier(CCModifiers.AQUA_UPGRADE, "Aqua Upgrade", "Not to be confused with Abyssal", "Grants +5% Aqua Spell Power.");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
@@ -124,6 +127,15 @@ public class CCLang extends LanguageProvider {
 		addEffect(CCFluidEffects.MobEffects.lightningEmpowerment, "Lightning Empowerment");
 		addEffect(CCFluidEffects.MobEffects.natureEmpowerment, "Nature Empowerment");
 		addEffect(CCFluidEffects.MobEffects.recoveryEmpowerment, "Recovery Empowerment");
+
+		addFluid(CCFluids.moltenCrystallizedCoral, "Molten Crystallized Coral");
+		addFluid(CCFluids.gasifiedRedstone, "Redstone");
+		addFluid(CCFluids.moltenPearl, "Molten Pearl");
+
+		addFluid(CCFluids.abyssalEssence, "Abyssal Essence");
+		addFluid(CCFluids.technomancyEssence, "Technomancy Essence");
+		addFluid(CCFluids.aquaEssence, "Aqua Essence");
+
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

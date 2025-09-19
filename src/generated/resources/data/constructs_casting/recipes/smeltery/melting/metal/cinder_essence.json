@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:cinder_essence"
+  },
+  "result": {
+    "amount": 250,
+    "fluid": "constructs_casting:cinder_essence"
+  },
+  "temperature": 1175,
+  "time": 5
+}
