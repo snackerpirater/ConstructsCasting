@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "byproducts": [
+    {
+      "amount": 100,
+      "tag": "tconstruct:molten_amethyst"
+    }
+  ],
+  "ingredient": {
+    "item": "irons_spellbooks:divine_pearl"
+  },
+  "result": {
+    "amount": 90,
+    "tag": "tconstruct:molten_gold"
+  },
+  "temperature": 700,
+  "time": 12
+}

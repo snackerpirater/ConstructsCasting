@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:arcane_debris"
+  },
+  "result": {
+    "amount": 180,
+    "fluid": "constructs_casting:molten_arcane_salvage"
+  },
+  "temperature": 1175,
+  "time": 40
+}

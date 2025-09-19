@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "irons_spellbooks:arcane_essence"
+    },
+    "e": {
+      "item": "minecraft:slime_ball"
+    },
+    "i": {
+      "item": "tconstruct:ichor_slime_ball"
+    },
+    "n": {
+      "item": "tconstruct:ender_slime_ball"
+    },
+    "s": {
+      "item": "tconstruct:sky_slime_ball"
+    }
+  },
+  "pattern": [
+    " e ",
+    "nas",
+    " i "
+  ],
+  "result": {
+    "item": "constructs_casting:wizardslime_ball"
+  },
+  "show_notification": true
+}
