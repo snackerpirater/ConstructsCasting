@@ -5,8 +5,7 @@ import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCTools;
-import com.snackpirate.constructscasting.materials.CCMaterialTextures;
-import com.snackpirate.constructscasting.materials.CCMaterials;
+import com.snackpirate.constructscasting.materials.*;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
 import com.snackpirate.constructscasting.spells.CCEntities;
@@ -33,6 +32,7 @@ import org.slf4j.Logger;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.tconstruct.common.data.tags.BlockTagProvider;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
+import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -55,6 +55,8 @@ public class ConstructsCasting {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        MaterialRegistry.getInstance().registerStatType(MagicBaseMaterialStats.TYPE, CCToolStats.MAGIC);
+        MaterialRegistry.getInstance().registerStatType(MagicClothMaterialStats.TYPE, CCToolStats.MAGIC);
         CCModifiers.MODIFIERS.register(modEventBus);
         CCFluids.FLUIDS.register(modEventBus);
         CCFluidEffects.MobEffects.register(modEventBus);
