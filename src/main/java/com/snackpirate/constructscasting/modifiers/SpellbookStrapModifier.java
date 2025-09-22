@@ -44,7 +44,7 @@ public class SpellbookStrapModifier extends Modifier implements KeybindInteractM
 
 	@Override
 	public int getPriority() {
-		return 95;
+		return 95; //same as shield strap, can run one or the other
 	}
 
 	@Override
@@ -70,6 +70,7 @@ public class SpellbookStrapModifier extends Modifier implements KeybindInteractM
 					stacks.getStacks().setStackInSlot(0, newOffhand);
 					return stacks;}));
 				// shift all other slots back by 1;
+                //not sure if this is necessary, may not want >1 level
 				for (int i = 1; i < slots; i++) {
 					inventory.setStack(tool, modifier, i - 1, inventory.getStack(tool, modifier, i));
 				}
