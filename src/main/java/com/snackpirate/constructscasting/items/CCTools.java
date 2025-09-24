@@ -1,5 +1,7 @@
 package com.snackpirate.constructscasting.items;
 
+import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
+import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -11,10 +13,20 @@ import slimeknights.tconstruct.library.tools.definition.module.build.ToolActions
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.InteractionToolModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.MaterialStatsModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.PartsModule;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
+import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 import javax.tools.Tool;
+
+import java.util.List;
+
+import static slimeknights.tconstruct.tools.TinkerToolParts.*;
 
 public class CCTools {
 	public static class CCToolDefinitions extends AbstractToolDefinitionDataProvider {
@@ -34,9 +46,8 @@ public class CCTools {
 			//Slimy armor: High upgrade, no defense
 
 			//Traveller's book: Mid upgrade, mid slots
-			//Plate book: Low upgrade, high slots
+			//Plate book: Low upgrade, high slots, defense
 			//Slimy book: High upgrade, low slots
-			//TODO: this should start with slime spell power
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
@@ -56,6 +67,12 @@ public class CCTools {
 							.build());
 
 			define(PLATED_SPELLBOOK)
+                    .module(MaterialStatsModule.stats()
+                            .stat(PlatingMaterialStats.SHIELD)
+                            .stat(MagicBaseMaterialStats.TYPE)
+                            .stat(MagicClothMaterialStats.TYPE)
+                            .primaryPart(0).build())
+                    .module(new PartsModule(List.of(CCItems.spellbookPlating.get())))
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())

@@ -1,6 +1,21 @@
 {
   "modules": [
     {
+      "type": "tconstruct:material_stats",
+      "primary_part": 0,
+      "stat_types": [
+        "tconstruct:plating_shield",
+        "constructs_casting:magic_base",
+        "constructs_casting:magic_cloth"
+      ]
+    },
+    {
+      "type": "tconstruct:tool_parts",
+      "parts": [
+        "constructs_casting:spellbook_plating"
+      ]
+    },
+    {
       "type": "tconstruct:modifier_slots",
       "slots": {
         "upgrades": 1

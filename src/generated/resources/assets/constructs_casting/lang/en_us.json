@@ -97,6 +97,9 @@
   "material.constructs_casting.frozen_bone.encyclopedia": "Deals greater damage to frozen enemies",
   "material.constructs_casting.frozen_bone.flavor": "Ice, ice, baby",
   "material.constructs_casting.hogskin": "Arcane Hide",
+  "material.constructs_casting.paper": "Paper",
+  "material.constructs_casting.paper.encyclopedia": "No special ability, but has a lot of spell slots",
+  "material.constructs_casting.paper.flavor": "Simple but effective",
   "material.constructs_casting.rainbowslime": "Rainbowslime",
   "material.constructs_casting.rainbowslime.encyclopedia": "Happy pride month!",
   "material.constructs_casting.rainbowslime.flavor": "How are you seeing this?",
@@ -179,6 +182,7 @@
   "spell.constructs_casting.freeze": "Freeze",
   "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.",
   "spell.constructs_casting.freeze.invalid_target": "Invalid target!",
+  "stat.constructs_casting.magic_cloth": "Pages",
   "ui.constructs_casting.enderference_anti_teleport": "Your current affliction prevents you from teleporting...",
   "ui.constructs_casting.slimeball.max_bounces": "%s Bounces"
 }

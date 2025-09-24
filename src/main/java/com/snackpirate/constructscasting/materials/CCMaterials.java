@@ -13,6 +13,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvide
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
+import slimeknights.tconstruct.library.materials.definition.Material;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.tools.TinkerModifiers;
@@ -34,6 +35,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
 
 	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum");
+
+    public static final MaterialId paper = createMaterial("paper");
+
 	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
@@ -44,6 +48,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
+        addMaterial(paper, 1, 0, true);
 		addMaterial(frozenBone, 2, 0, true);
 		addMaterial(arcaneCloth, 2, 0, true);
 		addMaterial(arcanium, 3, 0, false);
@@ -112,6 +117,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(rainbowSlime);
+
+            addMaterialStats(paper, new MagicClothMaterialStats(6, 0.1f));
 		}
 
 		@Override
@@ -141,6 +148,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
 			noTraits(rainbowSlime);
+            noTraits(paper);
 		}
 
 		@Override
@@ -166,6 +174,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
 
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
+
+            buildRenderInfo(paper).color(0xEEEEEE).fallbacks("cloth");
 		}
 
 		@Override
