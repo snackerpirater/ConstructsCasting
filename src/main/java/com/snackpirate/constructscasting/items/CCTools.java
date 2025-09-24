@@ -67,12 +67,11 @@ public class CCTools {
 							.build());
 
 			define(PLATED_SPELLBOOK)
-                    .module(MaterialStatsModule.stats()
-                            .stat(PlatingMaterialStats.SHIELD)
-                            .stat(MagicBaseMaterialStats.TYPE)
-                            .stat(MagicClothMaterialStats.TYPE)
-                            .primaryPart(0).build())
-                    .module(new PartsModule(List.of(CCItems.spellbookPlating.get())))
+					.module(PartStatsModule.parts()
+							.part(CCItems.spellbookPlating.get())
+							.part(CCItems.spellbookCover.get())
+							.part(CCItems.pages.get())
+							.build())
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())

@@ -1,19 +1,13 @@
 {
   "modules": [
     {
-      "type": "tconstruct:material_stats",
-      "primary_part": 0,
-      "stat_types": [
-        "tconstruct:plating_shield",
-        "constructs_casting:magic_base",
-        "constructs_casting:magic_cloth"
-      ]
-    },
-    {
-      "type": "tconstruct:tool_parts",
+      "type": "tconstruct:part_stats",
       "parts": [
-        "constructs_casting:spellbook_plating"
-      ]
+        "constructs_casting:spellbook_plating",
+        "constructs_casting:spellbook_cover",
+        "constructs_casting:pages"
+      ],
+      "primary_part": 0
     },
     {
       "type": "tconstruct:modifier_slots",
