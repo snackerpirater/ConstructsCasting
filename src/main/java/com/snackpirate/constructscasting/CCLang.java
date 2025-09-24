@@ -31,7 +31,10 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
 		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
-		add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
+
+        addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
+        add("stat.constructs_casting.magic_cloth", "Pages");
+        add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");

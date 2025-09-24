@@ -13,12 +13,13 @@ import java.util.List;
 
 public class CCMaterialStats {
 	public enum Statless implements IMaterialStats {
-		SPELLBOOK_PAGES("spellbook_pages");
+		MAGIC_CRYSTAL("crystal");
 
 
 		private static final List<Component> LOCALIZED = List.of(IMaterialStats.makeTooltip(ConstructsCasting.id("extra.no_stats")));
 		private static final List<Component> DESCRIPTION = List.of(Component.empty());
 		private final MaterialStatType<Statless> type;
+
 		Statless(String name) {
 			this.type = MaterialStatType.singleton(new MaterialStatsId(ConstructsCasting.id(name)), this);
 		}
@@ -40,8 +41,5 @@ public class CCMaterialStats {
 
 		@Override
 		public void apply(ModifierStatsBuilder builder, float scale) {}
-	}
-	public record SpellbookPlatingStats(MaterialStatType<?> getType, int manaBonus) {
-
 	}
 }

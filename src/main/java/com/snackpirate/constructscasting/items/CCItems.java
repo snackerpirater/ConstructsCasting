@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -21,11 +22,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.item.ContainerFoodItem;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.shared.TinkerFood;
+import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -49,6 +53,9 @@ public class CCItems {
 	public static final RegistryObject<Item> platedSpellbook = ITEMS.register("plated_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
 	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
+    public static final RegistryObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), PlatingMaterialStats.SHIELD.getId()));
+
+    public static final RegistryObject<ToolPartItem> pages = ITEMS.register("pages", () -> new ToolPartItem(new Item.Properties(), MagicClothMaterialStats.ID));
 
 	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
 		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
