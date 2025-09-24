@@ -57,11 +57,13 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBui
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
+import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
+import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.function.Consumer;
 
@@ -199,6 +201,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(Items.BLUE_DYE)
 				.addInput(Items.PURPLE_DYE)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rainbowslime_embellishment"));
+		//spellbook strap
+		ModifierRecipeBuilder.modifier(CCModifiers.SPELLBOOK_STRAP)
+				.addInput(TinkerWorld.enderSlimeVine)
+				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
+				.addInput(TinkerWorld.enderSlimeVine)
+				.setSlots(SlotType.ABILITY, 1)
+				.setMaxLevel(1)
+				.setTools(TinkerTags.Items.LEGGINGS)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/spellbook_strap"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
