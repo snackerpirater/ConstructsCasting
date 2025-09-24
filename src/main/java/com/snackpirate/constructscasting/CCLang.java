@@ -34,6 +34,10 @@ public class CCLang extends LanguageProvider {
 
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
         add("stat.constructs_casting.magic_cloth", "Pages");
+        add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
+        add("tool_stat.constructs_casting.cooldown_reduction", "Cooldown Reduction: ");
+        add("tool_stat.constructs_casting.max_mana", "Max Mana: ");
+        add("tool_stat.constructs_casting.spell_power", "Spell Power: ");
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
@@ -109,6 +113,10 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.slimySpellbook, "Slimy Spell Book");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
+
+        addItem(CCItems.spellbookPlating, "Spellbook Plating");
+        addItem(CCItems.spellbookCover, "Spellbook Cover");
+        addItem(CCItems.pages, "Pages");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
 

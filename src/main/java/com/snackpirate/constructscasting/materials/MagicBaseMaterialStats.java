@@ -1,14 +1,20 @@
 package com.snackpirate.constructscasting.materials;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
 import slimeknights.mantle.data.loadable.primitive.FloatLoadable;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
 import slimeknights.tconstruct.library.materials.stats.IMaterialStats;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatType;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
+import slimeknights.tconstruct.library.tools.stat.IToolStat;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.utils.Util;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public record MagicBaseMaterialStats(float maxMana, float spellPower) implements IMaterialStats {
@@ -18,6 +24,9 @@ public record MagicBaseMaterialStats(float maxMana, float spellPower) implements
             FloatLoadable.ANY.defaultField("spell_power", 0f, true, MagicBaseMaterialStats::spellPower),
             MagicBaseMaterialStats::new
     ));
+
+    private static final List<Component> DESCRIPTION = ImmutableList.of(CCToolStats.MAX_MANA.getDescription(), CCToolStats.SPELL_POWER.getDescription());
+
     @Override
     public MaterialStatType<?> getType() {
         return TYPE;
@@ -25,12 +34,15 @@ public record MagicBaseMaterialStats(float maxMana, float spellPower) implements
 
     @Override
     public List<Component> getLocalizedInfo() {
-        return List.of();
+        List<Component> info = Lists.newArrayList();
+        info.add(IToolStat.formatNumber(IMaterialStats.makeTooltipKey(ConstructsCasting.id("max_mana")), TextColor.fromRgb(0x54fcfc), this.maxMana));
+        info.add(IToolStat.formatColoredPercentBoost(IMaterialStats.makeTooltipKey(ConstructsCasting.id("spell_power")), this.spellPower));
+        return info;
     }
 
     @Override
     public List<Component> getLocalizedDescriptions() {
-        return List.of();
+        return DESCRIPTION;
     }
 
     @Override

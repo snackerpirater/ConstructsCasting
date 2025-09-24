@@ -2,8 +2,10 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import net.minecraft.nbt.CompoundTag;
@@ -33,6 +35,7 @@ import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
 import slimeknights.tconstruct.library.tools.nbt.IModDataView;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.client.OverslimeModifierModel;
@@ -42,7 +45,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisplay {
-	private final ToolDefinition definition;
+
+    private final ToolDefinition definition;
 	private ItemStack toolForRendering;
 
 	public TinkerersSpellbookItem(Properties prop, int slots, ToolDefinition definition) {
@@ -86,13 +90,16 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 
 	@Override
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
-		ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
-		ToolStack tool = ToolStack.from(stack);
-		for (ModifierEntry entry : tool.getModifierList()) {
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
+        ToolStack tool = ToolStack.from(stack);
+        int manaBonus = tool.getStats().get(CCToolStats.MAX_MANA).intValue();
+        attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier("tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
+        for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.MAINHAND, attributeBuilder::put);
 		}
-		return attributeBuilder.build();
+        return attributeBuilder.build();
 	}
+
 
 	@Override
 	public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {

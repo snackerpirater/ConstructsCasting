@@ -31,6 +31,7 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.shared.TinkerFood;
 import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
+import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -54,7 +55,7 @@ public class CCItems {
 	public static final RegistryObject<Item> platedSpellbook = ITEMS.register("plated_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
 	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
-    public static final RegistryObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), PlatingMaterialStats.SHIELD.getId()));
+    public static final RegistryObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), StatlessMaterialStats.MAILLE.getIdentifier()));
 
     public static final RegistryObject<ToolPartItem> pages = ITEMS.register("pages", () -> new ToolPartItem(new Item.Properties(), MagicClothMaterialStats.ID));
 

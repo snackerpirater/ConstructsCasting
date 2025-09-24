@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.items;
 
+import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -13,12 +14,14 @@ import slimeknights.tconstruct.library.tools.definition.module.build.ToolActions
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.InteractionToolModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.MaterialStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartsModule;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
@@ -65,20 +68,18 @@ public class CCTools {
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.COOLDOWN_UPGRADE)
 							.build());
-
 			define(PLATED_SPELLBOOK)
 					.module(PartStatsModule.parts()
 							.part(CCItems.spellbookPlating.get())
 							.part(CCItems.spellbookCover.get())
 							.part(CCItems.pages.get())
+                            .primaryPart(0)
 							.build())
+                    .module(DefaultMaterialsModule.builder().material(MaterialIds.cobalt).material(MaterialIds.wood).material(CCMaterials.paper).build())
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
-							.build())
-					.module(ToolTraitsModule.builder()
-							.trait(CCModifiers.MANA_UPGRADE, 2)
+                            .slots(SlotType.DEFENSE, 1)
 							.build());
-
 			define(ELDRITCH_STAFF)
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 3)

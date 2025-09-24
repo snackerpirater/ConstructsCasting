@@ -10,19 +10,28 @@
       "primary_part": 0
     },
     {
-      "type": "tconstruct:modifier_slots",
-      "slots": {
-        "upgrades": 1
-      }
-    },
-    {
-      "type": "tconstruct:traits",
-      "traits": [
+      "type": "tconstruct:default_materials",
+      "materials": [
         {
-          "level": 2,
-          "name": "constructs_casting:mana_upgrade"
+          "type": "tconstruct:fixed",
+          "material": "tconstruct:cobalt"
+        },
+        {
+          "type": "tconstruct:fixed",
+          "material": "tconstruct:wood"
+        },
+        {
+          "type": "tconstruct:fixed",
+          "material": "constructs_casting:paper"
         }
       ]
+    },
+    {
+      "type": "tconstruct:modifier_slots",
+      "slots": {
+        "defense": 1,
+        "upgrades": 1
+      }
     }
   ]
 }

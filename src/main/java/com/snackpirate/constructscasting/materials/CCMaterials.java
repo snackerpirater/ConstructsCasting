@@ -16,7 +16,9 @@ import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.Material;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.*;
 
 import java.awt.*;
@@ -119,6 +121,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(paper, new MagicClothMaterialStats(6, 0.1f));
+
+            //existing materials, new stats
+            addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
 		}
 
 		@Override
