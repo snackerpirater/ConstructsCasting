@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
 import com.snackpirate.constructscasting.spells.CCEntities;

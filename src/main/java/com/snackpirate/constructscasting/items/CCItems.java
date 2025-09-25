@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
@@ -92,6 +93,7 @@ public class CCItems {
 			tag(ItemTags.create(new ResourceLocation("forge:nuggets/exilite"))).add(exiliteNugget.get());
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
 			tag(ItemTags.create(new ResourceLocation("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
+			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");

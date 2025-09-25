@@ -2,14 +2,27 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.spells.CastSource;
+import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
+import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.compat.Curios;
 import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.player.ClientMagicData;
+import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
+import io.redspace.ironsspellbooks.util.TooltipsUtils;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -25,6 +38,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.SafeClientAccess;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
@@ -32,8 +46,10 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
+import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
+import slimeknights.tconstruct.library.tools.item.ITinkerStationDisplay;
 import slimeknights.tconstruct.library.tools.nbt.IModDataView;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -43,6 +59,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisplay {
 
@@ -61,8 +78,37 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 
 	@Override
 	public void appendHoverText(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> lines, @NotNull TooltipFlag flag) {
-		super.appendHoverText(itemStack, level, lines, flag);
+		spellbookLines(itemStack, level, lines, flag, SafeClientAccess.getTooltipKey());
 		TooltipUtil.addInformation(this, itemStack, level, lines, SafeClientAccess.getTooltipKey(), flag);
+	}
+	public void spellbookLines(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> lines, @NotNull TooltipFlag flag, TooltipKey key) {
+		if (key == TooltipKey.CONTROL || key == TooltipKey.SHIFT) return;
+		if (this.isUnique()) {
+			lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_rarity", new Object[]{Component.translatable("tooltip.irons_spellbooks.spellbook_unique").withStyle(TooltipsUtils.UNIQUE_STYLE)}).withStyle(ChatFormatting.GRAY));
+		}
+
+		Player player = MinecraftInstanceHelper.getPlayer();
+		if (player != null && ISpellContainer.isSpellContainer(itemStack)) {
+			ISpellContainer spellList = ISpellContainer.get(itemStack);
+			List<SpellData> activeSpellSlots = spellList.getActiveSpells();
+			if (!activeSpellSlots.isEmpty()) {
+				lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_tooltip").withStyle(ChatFormatting.GRAY));
+				SpellSelectionManager spellSelectionManager = ClientMagicData.getSpellSelectionManager();
+
+				for(int i = 0; i < activeSpellSlots.size(); ++i) {
+					MutableComponent spellText = TooltipsUtils.getTitleComponent((SpellData)activeSpellSlots.get(i), (LocalPlayer)player).setStyle(Style.EMPTY);
+					if (MinecraftInstanceHelper.getPlayer() != null && Utils.getPlayerSpellbookStack(MinecraftInstanceHelper.getPlayer()) == itemStack && spellSelectionManager.getCurrentSelection().equipmentSlot.equals(Curios.SPELLBOOK_SLOT) && i == spellSelectionManager.getSelectionIndex()) {
+						List<MutableComponent> shiftMessage = TooltipsUtils.formatActiveSpellTooltip(itemStack, spellSelectionManager.getSelectedSpellData(), CastSource.SPELLBOOK, (LocalPlayer)player);
+						shiftMessage.remove(0);
+						TooltipsUtils.addShiftTooltip(lines, Component.literal("> ").append(spellText).withStyle(ChatFormatting.YELLOW), (List)shiftMessage.stream().map((component) -> {
+							return Component.literal(" ").append(component);
+						}).collect(Collectors.toList()));
+					} else {
+						lines.add(Component.literal(" ").append(spellText.withStyle(Style.EMPTY.withColor(8947966))));
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -99,7 +145,6 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		}
         return attributeBuilder.build();
 	}
-
 
 	@Override
 	public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
@@ -141,6 +186,32 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
 		super.onEquip(slotContext, prevStack, stack);
 		ToolStack.ensureInitialized(stack, getToolDefinition());
+	}
+
+	@Override
+	public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
+		TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
+		if (tool.hasTag(CCToolStats.MAGIC_TOOL)) {
+			builder.add(CCToolStats.MAX_MANA);
+			builder.add(CCToolStats.SPELL_POWER);
+			builder.add(CCToolStats.SPELL_SLOTS);
+			builder.add(CCToolStats.COOLDOWN_REDUCTION);
+		}
+		IModifiableDisplay.super.getStatInformation(tool, player, tooltips, key, tooltipFlag);
+		return tooltips;
+	}
+
+	@Override
+	public void initializeSpellContainer(ItemStack itemStack) {
+		ConstructsCasting.LOGGER.info("tinker spellbook initialize spell container");
+		IToolStackView tool = ToolStack.from(itemStack);
+		ConstructsCasting.LOGGER.info("tool: {}", tool.getStats());
+		int spells = tool.getStats().get(CCToolStats.SPELL_SLOTS).intValue();
+		ConstructsCasting.LOGGER.info("spells: {}", spells);
+		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
+			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
+			spellContainer.save(itemStack);
+		}
 	}
 
 }

@@ -48,6 +48,6 @@ public record MagicBaseMaterialStats(float maxMana, float spellPower) implements
     @Override
     public void apply(ModifierStatsBuilder builder, float scale) {
         CCToolStats.MAX_MANA.add(builder, maxMana * scale);
-        CCToolStats.SPELL_POWER.percent(builder, spellPower * scale);
+        CCToolStats.SPELL_POWER.add(builder, spellPower * scale);
     }
 }

@@ -120,10 +120,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(rainbowSlime);
 
-            addMaterialStats(paper, new MagicClothMaterialStats(6, 0.1f));
+            addMaterialStats(paper, new MagicClothMaterialStats(10, -0.2f));
 
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
+			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(10, 0.1f));
 		}
 
 		@Override

@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.materials.CCMaterials;
+import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;

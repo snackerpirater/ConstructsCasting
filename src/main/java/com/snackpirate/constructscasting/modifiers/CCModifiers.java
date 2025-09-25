@@ -95,7 +95,10 @@ public class CCModifiers extends AbstractModifierProvider {
 
 		buildModifier(SPELLBOUND).addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELLBOUND).eachLevel(0.075f)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
 
-		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(80f)).addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCToolStats.MAGIC_TOOL).inverted()).eachLevel(80f)).build();
+		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT)
+				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(80f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCToolStats.MAGIC_TOOL).inverted()).eachLevel(80f))
+				.build();
 		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.05f)).build();
 		buildModifier(FIRE_UPGRADE)     .addModule(spellPowerModifier(FIRE_UPGRADE,      AttributeRegistry.FIRE_SPELL_POWER     .get())).build();
 		buildModifier(ICE_UPGRADE)      .addModule(spellPowerModifier(ICE_UPGRADE,       AttributeRegistry.ICE_SPELL_POWER      .get())).build();

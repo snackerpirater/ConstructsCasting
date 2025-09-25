@@ -27,6 +27,12 @@
       ]
     },
     {
+      "type": "tconstruct:base_stats",
+      "stats": {
+        "constructs_casting:spell_slots": 0.0
+      }
+    },
+    {
       "type": "tconstruct:modifier_slots",
       "slots": {
         "defense": 1,

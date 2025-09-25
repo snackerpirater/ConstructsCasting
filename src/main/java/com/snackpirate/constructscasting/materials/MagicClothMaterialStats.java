@@ -46,7 +46,7 @@ public record MagicClothMaterialStats(float spellSlots, float cooldownReduction)
 
     @Override
     public void apply(ModifierStatsBuilder builder, float scale) {
-        CCToolStats.SPELL_SLOTS.add(builder, spellSlots * scale);
-        CCToolStats.COOLDOWN_REDUCTION.percent(builder, cooldownReduction * scale);
+        CCToolStats.SPELL_SLOTS.update(builder, spellSlots * scale);
+        CCToolStats.COOLDOWN_REDUCTION.update(builder, cooldownReduction * scale);
     }
 }
