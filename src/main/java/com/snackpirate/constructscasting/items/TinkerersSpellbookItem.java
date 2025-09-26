@@ -204,12 +204,14 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	@Override
 	public void initializeSpellContainer(ItemStack itemStack) {
 		ConstructsCasting.LOGGER.info("tinker spellbook initialize spell container");
-		IToolStackView tool = ToolStack.from(itemStack);
+		ToolStack tool = ToolStack.from(itemStack);
+        tool.ensureHasData();
 		ConstructsCasting.LOGGER.info("tool: {}", tool.getStats());
 		int spells = tool.getStats().get(CCToolStats.SPELL_SLOTS).intValue();
 		ConstructsCasting.LOGGER.info("spells: {}", spells);
-		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
-			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
+		if (!ISpellContainer.isSpellContainer(itemStack)) {
+			ConstructsCasting.LOGGER.info("initializing container");
+            var spellContainer = ISpellContainer.create(spells, true, true);
 			spellContainer.save(itemStack);
 		}
 	}
