@@ -33,15 +33,9 @@ import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
-import slimeknights.tconstruct.library.materials.definition.MaterialId;
-import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
-import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(ConstructsCasting.MOD_ID)
@@ -53,7 +47,7 @@ public class ConstructsCasting {
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.constructs_casting.constructs_casting"))
             .icon(() -> CCItems.platedSpellbook.get().getRenderTool())
-            .displayItems(CCItems.DISPLAY_ITEMS)
+            .displayItems(CCItems::addTabItems)
             .build());
 
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -95,7 +89,7 @@ public class ConstructsCasting {
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
         gen.addProvider(server, new CCTools.CCToolDefinitions(output, MOD_ID));
-        gen.addProvider(server, new CCMaterials.CCMaterialStats(output, mats));
+        gen.addProvider(server, new CCMaterials.MaterialStats(output, mats));
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(output, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(output));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
@@ -112,14 +106,13 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCDamageTypes.Tags(output, provider, MOD_ID, fileHelper));
         gen.addProvider(server, new CCModifiers.Tags(output, MOD_ID, fileHelper));
     }
+    //there's probably a way to do this automatically buuuut
     private static GeneratorPartTextureJsonGenerator.StatOverride getOverride() {
         GeneratorPartTextureJsonGenerator.StatOverride.Builder builder = new GeneratorPartTextureJsonGenerator.StatOverride.Builder();
-        builder
-                .add(MagicBaseMaterialStats.ID, MaterialIds.wood)
-                .add(CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), MaterialIds.cobalt)
-                .build();
-        tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
+        CCMaterials.tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
+        CCMaterials.tinkerMagicMaterials.forEach((material) -> builder.add(MagicBaseMaterialStats.ID, material.getId()));
+        CCMaterials.platingMaterials.forEach((material) -> builder.add(CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), material));
         return builder.build();
     }
-    private static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin);
+
 }

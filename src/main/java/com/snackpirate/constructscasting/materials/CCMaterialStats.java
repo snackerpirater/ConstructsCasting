@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting.materials;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.network.chat.Component;
 import slimeknights.tconstruct.library.materials.stats.IMaterialStats;
+import slimeknights.tconstruct.library.materials.stats.IRepairableMaterialStats;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatType;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
@@ -10,7 +11,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import java.util.List;
 
 public class CCMaterialStats {
-	public enum Statless implements IMaterialStats {
+	public enum Statless implements IRepairableMaterialStats {
 		MAGIC_CRYSTAL("crystal"),
 		SPELLBOOK_PLATING("spellbook_plating");
 
@@ -40,5 +41,12 @@ public class CCMaterialStats {
 
 		@Override
 		public void apply(ModifierStatsBuilder builder, float scale) {}
-	}
+
+        //because material-named tools (e.g "Cobalt Plated Spell Book) relies on repair mats
+        @Override
+        public int durability() {
+            return 0;
+        }
+
+    }
 }

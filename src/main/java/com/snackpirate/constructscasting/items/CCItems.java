@@ -19,6 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.DeferredRegister;
@@ -55,7 +56,7 @@ public class CCItems {
 	public static final RegistryObject<Item> slimySpellbook = ITEMS.register("tinkerers_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 6, CCTools.CCToolDefinitions.SLIMY_SPELLBOOK));
 	//will fully implement later vvv
 	public static final RegistryObject<Item> travellersSpellbook = ITEMS.register("travellers_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1), 10, CCTools.CCToolDefinitions.TRAVELLERS_SPELLBOOK));
-	public static final RegistryObject<TinkerersSpellbookItem> platedSpellbook = ITEMS.register("plated_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
+	public static final RegistryObject<TinkerersSpellbookItem> platedSpellbook = ITEMS.register("plated_spellbook", () -> new TinkerersSpellbookItem(new Item.Properties().stacksTo(1), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
 	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
     public static final RegistryObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier()));
@@ -64,14 +65,18 @@ public class CCItems {
 
 	public static final RegistryObject<ToolPartItem> spellbookCover = ITEMS.register("spellbook_cover", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
 
-	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
-		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
+//	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
+//		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
+//
+//	});
 
-		ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
-		spellbookPlating.get().addVariants(output::accept, "");
-		spellbookCover.get().addVariants(output::accept, "");
-		pages.get().addVariants(output::accept, "");
-	});
+    public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+        ITEMS.getEntries().forEach((regObj) -> { if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());});
+        ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
+        spellbookPlating.get().addVariants(output::accept, "");
+        spellbookCover.get().addVariants(output::accept, "");
+        pages.get().addVariants(output::accept, "");
+    }
 
 	public static class Tags extends ItemTagsProvider {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));

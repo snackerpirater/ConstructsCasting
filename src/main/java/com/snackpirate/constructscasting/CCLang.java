@@ -38,6 +38,8 @@ public class CCLang extends LanguageProvider {
         add("tool_stat.constructs_casting.cooldown_reduction", "Cooldown Reduction: ");
         add("tool_stat.constructs_casting.max_mana", "Max Mana: ");
         add("tool_stat.constructs_casting.spell_power", "Spell Power: ");
+        add("stat.constructs_casting.spellbook_plating", "Plating");
+        add("tool_stat.constructs_casting.extra.no_stats", "No stats");
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
@@ -58,7 +60,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
 		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
 		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +7.5% power to all types of spells.");
-		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your Spellbook with another one in the leggings' inventory.");
+		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spell Book Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your Spell Book with another one in the leggings' inventory.");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
@@ -114,8 +116,8 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
-        addItem(CCItems.spellbookPlating, "Spellbook Plating");
-        addItem(CCItems.spellbookCover, "Spellbook Cover");
+        addItem(CCItems.spellbookPlating, "Spell Book Plating");
+        addItem(CCItems.spellbookCover, "Spell Book Cover");
         addItem(CCItems.pages, "Pages");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");

@@ -2,7 +2,6 @@ package com.snackpirate.constructscasting.materials;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,19 +12,21 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvide
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
-import slimeknights.tconstruct.library.materials.definition.Material;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.shared.TinkerMaterials;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.*;
 
-import java.awt.*;
+import java.util.List;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
-	public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
+    public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin);
+    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone);
+    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.copper, MaterialIds.iron, MaterialIds.searedStone, MaterialIds.scorchedStone, MaterialIds.gold, MaterialIds.amethystBronze, MaterialIds.obsidian, MaterialIds.pigIron, MaterialIds.roseGold, MaterialIds.cobalt, MaterialIds.steel, MaterialIds.hepatizon, MaterialIds.manyullyn); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
+
+    public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
 	//armor trait: spell protection (also makes the reinforcement)
 	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
@@ -68,9 +69,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		return "Construct's Casting Materials";
 	}
 
-	public static class CCMaterialStats extends AbstractMaterialStatsDataProvider {
+	public static class MaterialStats extends AbstractMaterialStatsDataProvider {
 
-		public CCMaterialStats(PackOutput gen, AbstractMaterialDataProvider materials) {
+		public MaterialStats(PackOutput gen, AbstractMaterialDataProvider materials) {
 			super(gen, materials);
 		}
 
@@ -86,7 +87,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 400, 5, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 344, 2, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f),
-					StatlessMaterialStats.MAILLE);
+					StatlessMaterialStats.MAILLE,
+                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
 			addMaterialStats(exilite,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
 					new HandleMaterialStats(-0.05f, -0.15f, 0.15f, 0.1f),
@@ -96,7 +98,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 430, 6, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
-					StatlessMaterialStats.MAILLE);
+					StatlessMaterialStats.MAILLE,
+                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
 			//TODO: temp stats, should be t4
 			addMaterialStats(cosmichalcum,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
@@ -107,7 +110,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 430, 6, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
-					StatlessMaterialStats.MAILLE);
+					StatlessMaterialStats.MAILLE,
+                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
 
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
@@ -125,6 +129,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
 			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
+
+            //spellbook platings
+            platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
 		}
 
 		@Override

@@ -78,6 +78,11 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		this.definition = definition;
 	}
 
+    @Override
+    public Component getName(ItemStack stack) {
+        return TooltipUtil.getDisplayName(stack, getToolDefinition());
+    }
+
 	@Override
 	public ToolDefinition getToolDefinition() {
 		return definition;
