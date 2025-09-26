@@ -1,12 +1,15 @@
 {
-  "parent": "minecraft:item/handheld",
-  "loader": "forge:separate_transforms",
-  "base": {
-    "parent": "constructs_casting:item/plated_spellbook_model"
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+    "plating": "constructs_casting:item/tool/plated_spellbook/plating",
+    "cover":   "constructs_casting:item/tool/plated_spellbook/cover",
+    "pages":   "constructs_casting:item/tool/plated_spellbook/pages"
   },
-  "perspectives": {
-    "gui": {
-      "parent": "constructs_casting:item/plated_spellbook_gui"
-    }
-  }
+  "modifier_roots": [ "constructs_casting:item/plated_spellbook/modifiers/" ],
+  "parts": [
+    { "name": "cover",   "index": 1 },
+    { "name": "plating", "index": 0 },
+    { "name": "pages",   "index": 2 }
+  ]
 }

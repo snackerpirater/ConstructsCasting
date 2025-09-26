@@ -77,6 +77,7 @@ public class CCTools {
                             .primaryPart(0)
 							.build())
                     .module(DefaultMaterialsModule.builder().material(MaterialIds.cobalt).material(MaterialIds.wood).material(CCMaterials.paper).build())
+//					.module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
                             .slots(SlotType.DEFENSE, 1)

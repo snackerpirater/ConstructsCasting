@@ -120,11 +120,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(rainbowSlime);
 
-            addMaterialStats(paper, new MagicClothMaterialStats(10, -0.2f));
+            addMaterialStats(paper, new MagicClothMaterialStats(8, -0.2f));
 
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
-			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(10, 0.1f));
+			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
 		}
 
 		@Override
@@ -140,8 +140,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialTraits() {
-			addTraits(arcanium, MaterialRegistry.MELEE_HARVEST, CCModifiers.ARCANE);
-			addTraits(arcanium, MaterialRegistry.ARMOR, new ModifierEntry(CCModifiers.ARCANE, 2));
+			addDefaultTraits(arcanium, CCModifiers.ARCANE);
 
 			addTraits(cosmichalcum, MaterialRegistry.MELEE_HARVEST, CCModifiers.ENDER_UPGRADE);
 			addTraits(cosmichalcum, MaterialRegistry.ARMOR, CCModifiers.ENDER_UPGRADE);

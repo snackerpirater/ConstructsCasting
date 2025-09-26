@@ -83,9 +83,9 @@ public class CCModifiers extends AbstractModifierProvider {
 	@Override
 	protected void addModifiers() {
 		buildModifier(ARCANE).levelDisplay(ModifierLevelDisplay.DEFAULT)
-				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION)
-						.uniqueFrom(ARCANE)
-						.eachLevel(25f))
+				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(50f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.or(ToolStackPredicate.tag(CCToolStats.MAGIC_TOOL), ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).inverted()).eachLevel(25f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).eachLevel(50f))
 				.build();
 
 		buildModifier(SWIFTCASTING).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)

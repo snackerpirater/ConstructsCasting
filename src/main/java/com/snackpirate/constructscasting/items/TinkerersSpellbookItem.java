@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting.items;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.snackpirate.constructscasting.ConstructsCasting;
+import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
@@ -52,9 +53,11 @@ import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
 import slimeknights.tconstruct.library.tools.item.ITinkerStationDisplay;
 import slimeknights.tconstruct.library.tools.nbt.IModDataView;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.MaterialIdNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.client.OverslimeModifierModel;
+import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
@@ -114,7 +117,7 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	@Override
 	public ItemStack getRenderTool() {
 		if (toolForRendering == null) {
-			toolForRendering = ToolBuildHandler.buildToolForRendering(this, this.getToolDefinition());
+			toolForRendering = new MaterialIdNBT(List.of(MaterialIds.cobalt, MaterialIds.wood, CCMaterials.paper)).updateStack(new ItemStack(CCItems.platedSpellbook.get()));
 		}
 		return toolForRendering;
 	}
@@ -203,15 +206,19 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 
 	@Override
 	public void initializeSpellContainer(ItemStack itemStack) {
-		ConstructsCasting.LOGGER.info("tinker spellbook initialize spell container");
-		IToolStackView tool = ToolStack.from(itemStack);
-		ConstructsCasting.LOGGER.info("tool: {}", tool.getStats());
-		int spells = tool.getStats().get(CCToolStats.SPELL_SLOTS).intValue();
+		ToolStack tool = ToolStack.from(itemStack);
+		tool.ensureHasData();
+		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
 		ConstructsCasting.LOGGER.info("spells: {}", spells);
+
 		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
 			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
 			spellContainer.save(itemStack);
 		}
 	}
 
+	@Override
+	public boolean canSync(SlotContext slotContext, ItemStack stack) {
+		return true;
+	}
 }
