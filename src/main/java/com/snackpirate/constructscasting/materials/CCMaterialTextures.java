@@ -109,5 +109,15 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addTexture(216, cosmiHighlight, 0xFFE1E1E1)
 						.addTexture(255, cosmiHighlight)
 						.build());
+		buildMaterial(CCMaterials.paper).statType(MagicClothMaterialStats.ID)
+				.fallbacks("cloth")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF3f3f3f)
+						.addARGB(102, 0xFF666666)
+						.addARGB(140, 0xFF8C8C8C)
+						.addARGB(178, 0xFFB2B2B2)
+						.addARGB(216, 0xFFD8D8D8)
+						.addARGB(255, 0xFFffffff)
+						.build()));
 	}
 }
