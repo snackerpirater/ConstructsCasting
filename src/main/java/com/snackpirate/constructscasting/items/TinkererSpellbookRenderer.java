@@ -32,11 +32,10 @@ public class TinkererSpellbookRenderer implements ICurioRenderer {
 			humanoidModel.body.translateAndRotate(poseStack);
 			//Negative X is right, Negative Z is Forward
 			//Scale by 1/16th, we are now dealing with units of pixels
-			poseStack.translate((slotContext.entity() != null && !slotContext.entity().getItemBySlot(EquipmentSlot.CHEST).isEmpty() ? -5.5 : -4.5) * .0625f, 9 * .0625f, 0);
-			//poseStack.mulPose(Vector3f.YP.rotation(Mth.PI * .5f));
-			poseStack.mulPose(Axis.YP.rotation(Mth.PI));
+			poseStack.translate((slotContext.entity() != null && !slotContext.entity().getItemBySlot(EquipmentSlot.CHEST).isEmpty() ? -5.5 : -4.5) * .0625f, 12 * .0625f, 0);
+			poseStack.mulPose(Axis.YP.rotation(Mth.PI * 1.5f));
 			poseStack.mulPose(Axis.ZP.rotation(Mth.PI - 5 * Mth.DEG_TO_RAD));
-			poseStack.scale(.625f, .625f, .625f);
+			poseStack.scale(-.35f, 0.35f, 0.35f);
 			itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, poseStack, renderTypeBuffer, null, 0);
 			poseStack.popPose();
 		}

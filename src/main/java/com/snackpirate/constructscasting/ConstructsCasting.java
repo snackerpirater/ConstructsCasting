@@ -33,12 +33,15 @@ import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(ConstructsCasting.MOD_ID)
@@ -97,12 +100,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCModifiers(output));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
-        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID),
-                new GeneratorPartTextureJsonGenerator.StatOverride.Builder()
-                        .add(MagicClothMaterialStats.ID, MaterialIds.leather)
-                        .add(MagicBaseMaterialStats.ID, MaterialIds.wood)
-                        .add(CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), MaterialIds.cobalt)
-                        .build(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
+        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
         gen.addProvider(server, new CCItems.Tags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(output, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(output, MOD_ID));
@@ -114,4 +112,14 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCDamageTypes.Tags(output, provider, MOD_ID, fileHelper));
         gen.addProvider(server, new CCModifiers.Tags(output, MOD_ID, fileHelper));
     }
+    private static GeneratorPartTextureJsonGenerator.StatOverride getOverride() {
+        GeneratorPartTextureJsonGenerator.StatOverride.Builder builder = new GeneratorPartTextureJsonGenerator.StatOverride.Builder();
+        builder
+                .add(MagicBaseMaterialStats.ID, MaterialIds.wood)
+                .add(CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), MaterialIds.cobalt)
+                .build();
+        tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
+        return builder.build();
+    }
+    private static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin);
 }

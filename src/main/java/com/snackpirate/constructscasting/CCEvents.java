@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.TinkererSpellbookRenderer;
 import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
@@ -116,8 +117,8 @@ public class CCEvents {
 	public static class ModClientEvents {
 		@SubscribeEvent
 		static void registerCurioRenderers(FMLClientSetupEvent e) {
-			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), SpellBookCurioRenderer::new);
-			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), SpellBookCurioRenderer::new);
+			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), TinkererSpellbookRenderer::new);
+			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), TinkererSpellbookRenderer::new);
 		}
 		@SubscribeEvent
 		static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
