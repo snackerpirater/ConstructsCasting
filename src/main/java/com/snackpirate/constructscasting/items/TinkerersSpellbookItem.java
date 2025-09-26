@@ -6,6 +6,7 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
@@ -15,7 +16,9 @@ import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.compat.Curios;
 import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.network.ClientboundSyncMana;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
+import io.redspace.ironsspellbooks.setup.Messages;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import io.redspace.ironsspellbooks.util.TooltipsUtils;
 import net.minecraft.ChatFormatting;
@@ -30,6 +33,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -141,15 +145,31 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
         ToolStack tool = ToolStack.from(stack);
-        int manaBonus = tool.getStats().get(CCToolStats.MAX_MANA).intValue();
+        int manaBonus = tool.getStats().getInt(CCToolStats.MAX_MANA);
         attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier("tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
+        float spBonus = tool.getStats().get(CCToolStats.SPELL_POWER);
+        attributeBuilder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("tool.constructs_casting.spell_power_bonus", spBonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        float cdBonus = tool.getStats().get(CCToolStats.COOLDOWN_REDUCTION);
+        attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier("tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
+
         for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.MAINHAND, attributeBuilder::put);
 		}
         return attributeBuilder.build();
 	}
+    //doesn't automatically clear max mana bonus for some reason, need to force it
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        AttributeInstance maxMana = slotContext.entity().getAttribute(AttributeRegistry.MAX_MANA.get());
+        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.mana_bonus")).forEach((modifier) -> maxMana.removeModifier(modifier));
+        AttributeInstance sp = slotContext.entity().getAttribute(AttributeRegistry.SPELL_POWER.get());
+        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.spell_power_bonus")).forEach((modifier) -> sp.removeModifier(modifier));
+        AttributeInstance cd = slotContext.entity().getAttribute(AttributeRegistry.COOLDOWN_REDUCTION.get());
+        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.cd_reduction")).forEach((modifier) -> cd.removeModifier(modifier));
+        super.onUnequip(slotContext, newStack, stack);
+    }
 
-	@Override
+    @Override
 	public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
 		return ToolStack.from(stack).getModifierLevel(CCModifiers.ENCYCLOPEDIC.getId()) < 1;
 	}
