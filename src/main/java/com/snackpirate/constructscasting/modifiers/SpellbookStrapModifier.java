@@ -57,7 +57,7 @@ public class SpellbookStrapModifier extends Modifier implements KeybindInteractM
 				return true;
 			}
 			ItemStack spellbook = CuriosApi.getCuriosInventory(player).map(handler -> handler.getStacksHandler("spellbook").map(stacks -> stacks.getStacks().getStackInSlot(0))).get().orElse(ItemStack.EMPTY);
-			ConstructsCasting.LOGGER.info(spellbook.toString());
+//			ConstructsCasting.LOGGER.info(spellbook.toString());
 //
 			if (spellbook.isEmpty() || !ToolInventoryCapability.isBlacklisted(spellbook)) {
 				ToolInventoryCapability.InventoryModifierHook inventory = modifier.getHook(ToolInventoryCapability.HOOK);

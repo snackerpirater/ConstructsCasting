@@ -48,7 +48,7 @@ public record SpellbookStrapModule(Set<TooltipKey> keys) implements ModifierModu
 			// offhand must be able to go in the pants
 			CuriosApi.getCuriosInventory(player).ifPresent((handler) -> {
 				ItemStack spellbook = handler.getCurios().get("spellbook").getStacks().getStackInSlot(1);
-				ConstructsCasting.LOGGER.info(spellbook.toString());
+//				ConstructsCasting.LOGGER.info(spellbook.toString());
 			});
 //			if (offhand.isEmpty() || !ToolInventoryCapability.isBlacklisted(offhand)) {
 //				ToolInventoryCapability.InventoryModifierHook inventory = modifier.getHook(ToolInventoryCapability.HOOK);

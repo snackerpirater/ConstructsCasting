@@ -234,7 +234,7 @@ public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisp
 		ToolStack tool = ToolStack.from(itemStack);
 		tool.ensureHasData();
 		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
-		ConstructsCasting.LOGGER.info("spells: {}", spells);
+//		ConstructsCasting.LOGGER.info("spells: {}", spells);
 
 		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
 			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);

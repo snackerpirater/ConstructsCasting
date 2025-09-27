@@ -152,7 +152,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	@SubscribeEvent
 	void registerSerializers(RegisterEvent event) {
 		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-			ConstructsCasting.LOGGER.info("register serializer event");
+//			ConstructsCasting.LOGGER.info("register serializer event");
 			ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
 		}
 	}
