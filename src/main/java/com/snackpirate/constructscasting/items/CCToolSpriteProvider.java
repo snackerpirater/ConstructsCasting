@@ -1,12 +1,8 @@
 package com.snackpirate.constructscasting.items;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
-import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import slimeknights.tconstruct.library.client.data.material.AbstractPartSpriteProvider;
-import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
-import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
 public class CCToolSpriteProvider extends AbstractPartSpriteProvider {

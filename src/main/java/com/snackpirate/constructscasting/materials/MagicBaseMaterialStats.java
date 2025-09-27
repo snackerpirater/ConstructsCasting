@@ -12,9 +12,7 @@ import slimeknights.tconstruct.library.materials.stats.MaterialStatType;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import slimeknights.tconstruct.library.tools.stat.IToolStat;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
-import slimeknights.tconstruct.library.utils.Util;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public record MagicBaseMaterialStats(float maxMana, float spellPower) implements IMaterialStats {
