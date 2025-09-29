@@ -1,7 +1,6 @@
 package com.snackpirate.constructscasting;
 
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
-import io.redspace.ironsspellbooks.datagen.DamageTypeTagGenerator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;

@@ -87,7 +87,7 @@ public class FreezeSpell extends AbstractSpell {
 
 	@Override
 	public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-		ConstructsCasting.LOGGER.info("freeze cast");
+//		ConstructsCasting.LOGGER.info("freeze cast");
 		if (playerMagicData.getAdditionalCastData() instanceof TargetBlockCastData data && level.getBlockEntity(data.getTargetPos()) instanceof CastingBlockEntity) {
 			//check if fluid is above molten temperature
 			BlockPos pos = data.getTargetPos();

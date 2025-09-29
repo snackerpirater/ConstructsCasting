@@ -1,34 +1,19 @@
 package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.materials.CCMaterials;
-import com.snackpirate.constructscasting.materials.CCToolStats;
-import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
-import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.definition.module.build.SetStatsModule;
-import slimeknights.tconstruct.library.tools.definition.module.build.ToolActionsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
-import slimeknights.tconstruct.library.tools.definition.module.interaction.InteractionToolModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
-import slimeknights.tconstruct.library.tools.definition.module.material.MaterialStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
-import slimeknights.tconstruct.library.tools.definition.module.material.PartsModule;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
-import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
-import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
-
-import javax.tools.Tool;
-
-import java.util.List;
 
 import static slimeknights.tconstruct.tools.TinkerToolParts.*;
 
@@ -49,9 +34,9 @@ public class CCTools {
 			//Plate armor: Low upgrade, high defense
 			//Slimy armor: High upgrade, no defense
 
-			//Traveller's book: Mid upgrade, mid slots
+			//Traveller's book: Mid upgrade, 6 slots
 			//Plate book: Low upgrade, high slots, defense
-			//Slimy book: High upgrade, low slots
+			//Slimy book: High upgrade, 6 slots
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?

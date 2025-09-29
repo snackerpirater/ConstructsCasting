@@ -72,7 +72,7 @@ public class ConstructsCasting {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP");
+//        LOGGER.info("HELLO FROM COMMON SETUP");
         MaterialRegistry.getInstance().registerStatType(MagicBaseMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(MagicClothMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(CCMaterialStats.Statless.SPELLBOOK_PLATING.getType(), MaterialRegistry.ARMOR);

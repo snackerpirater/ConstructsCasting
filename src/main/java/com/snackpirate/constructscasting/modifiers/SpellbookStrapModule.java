@@ -1,14 +1,12 @@
 package com.snackpirate.constructscasting.modifiers;
 
 import com.google.common.collect.ImmutableSet;
-import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
-import slimeknights.mantle.data.registry.GenericLoaderRegistry;
 import slimeknights.tconstruct.library.json.TinkerLoadables;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -48,7 +46,7 @@ public record SpellbookStrapModule(Set<TooltipKey> keys) implements ModifierModu
 			// offhand must be able to go in the pants
 			CuriosApi.getCuriosInventory(player).ifPresent((handler) -> {
 				ItemStack spellbook = handler.getCurios().get("spellbook").getStacks().getStackInSlot(1);
-				ConstructsCasting.LOGGER.info(spellbook.toString());
+//				ConstructsCasting.LOGGER.info(spellbook.toString());
 			});
 //			if (offhand.isEmpty() || !ToolInventoryCapability.isBlacklisted(offhand)) {
 //				ToolInventoryCapability.InventoryModifierHook inventory = modifier.getHook(ToolInventoryCapability.HOOK);

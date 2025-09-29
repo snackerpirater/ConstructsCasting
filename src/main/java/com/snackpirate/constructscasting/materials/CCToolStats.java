@@ -1,15 +1,11 @@
 package com.snackpirate.constructscasting.materials;
 
-import com.google.gson.JsonElement;
 import com.snackpirate.constructscasting.ConstructsCasting;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import slimeknights.tconstruct.library.tools.stat.*;
 import slimeknights.tconstruct.library.utils.Util;

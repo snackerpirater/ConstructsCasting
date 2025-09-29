@@ -7,7 +7,6 @@ import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import slimeknights.mantle.registration.object.FluidObject;

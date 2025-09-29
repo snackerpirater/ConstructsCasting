@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;

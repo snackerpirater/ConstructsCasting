@@ -12,12 +12,10 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegisterEvent;
-import slimeknights.mantle.client.TooltipKey;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
-import slimeknights.tconstruct.library.json.predicate.tool.ToolStackItemPredicate;
 import slimeknights.tconstruct.library.json.predicate.tool.ToolStackPredicate;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
@@ -27,18 +25,10 @@ import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModul
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.StatBoostModule;
-import slimeknights.tconstruct.library.modifiers.modules.build.VolatileFlagModule;
-import slimeknights.tconstruct.library.modifiers.modules.util.ModifierCondition;
-import slimeknights.tconstruct.library.modifiers.util.DynamicModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
-import slimeknights.tconstruct.library.recipe.partbuilder.Pattern;
-import slimeknights.tconstruct.library.tools.capability.inventory.InventoryMenuModule;
-import slimeknights.tconstruct.library.tools.capability.inventory.InventoryModule;
-import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.modules.armor.ShieldStrapModule;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ConstructsCasting.MOD_ID)
 public class CCModifiers extends AbstractModifierProvider {
@@ -152,7 +142,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	@SubscribeEvent
 	void registerSerializers(RegisterEvent event) {
 		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-			ConstructsCasting.LOGGER.info("register serializer event");
+//			ConstructsCasting.LOGGER.info("register serializer event");
 			ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
 		}
 	}

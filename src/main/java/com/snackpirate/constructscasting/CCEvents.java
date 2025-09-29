@@ -4,9 +4,7 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.TinkererSpellbookRenderer;
-import com.snackpirate.constructscasting.items.TinkerersSpellbookItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
@@ -14,45 +12,58 @@ import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
-import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.RegisterEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
-import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.shared.TinkerEffects;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
-import slimeknights.tconstruct.tools.modules.armor.ShieldStrapModule;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import static slimeknights.tconstruct.TConstruct.getResource;
+import static slimeknights.tconstruct.tools.logic.ModifierEvents.SOULBOUND;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {
+	private static final String SOULBOUND_SLOT = "tic_soulbound_slot";
 	private static AttachCapabilitiesEvent<ItemStack> event;
 	@SubscribeEvent
 	static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
@@ -98,6 +109,94 @@ public class CCEvents {
 			var container = ISpellContainer.create(1, true, true);
 			container.save(replacement);
 		}
+	}
+	@SubscribeEvent
+	static void soulboundSpellbookDeath(LivingDeathEvent event) {
+		LivingEntity entity = event.getEntity();
+		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(player instanceof FakePlayer)) {
+			// start with the hotbar, must be soulbound or soul belt
+			CuriosApi.getCuriosInventory(player).ifPresent((handler) -> {
+				ItemStack spellbook = handler.getCurios().get("spellbook").getStacks().getStackInSlot(0);
+				if (!spellbook.isEmpty() && (ModifierUtil.checkVolatileFlag(spellbook, SOULBOUND))) {
+					spellbook.getOrCreateTag().putInt(SOULBOUND_SLOT, 999 /*a great idea*/);
+			}
+		});
+		}
+	}
+	@SubscribeEvent
+	static void soulboundSpellbookDrop(LivingDropsEvent event) {
+		// only care about real players with keep inventory off
+		LivingEntity entity = event.getEntity();
+		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(entity instanceof FakePlayer)) {
+			Collection<ItemEntity> drops = event.getDrops();
+			Iterator<ItemEntity> iter = drops.iterator();
+			Inventory inventory = player.getInventory();
+			List<ItemEntity> takenSlot = new ArrayList<>();
+			while (iter.hasNext()) {
+				ItemEntity itemEntity = iter.next();
+				ItemStack stack = itemEntity.getItem();
+				// find items with our soulbound tag set and move them back into the inventory, will move them over later
+				CompoundTag tag = stack.getTag();
+				if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
+					int slot = tag.getInt(SOULBOUND_SLOT);
+					// return the tool to its requested slot if possible, remove from the drops
+					if (slot == 999) {
+						CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+							handler.setEquippedCurio("spellbook", 0, stack);
+						});
+						iter.remove();
+						// don't clear the tag yet, we need it one last time for player clone
+					}
+				}
+				// handle items that did not get their requested slot last, to ensure they don't take someone else's slot while being added to a default
+//			for (ItemEntity itemEntity : takenSlot) {
+//				ItemStack stack = itemEntity.getItem();
+//				if (!inventory.add(stack)) {
+//					// last resort, somehow we just cannot put the stack anywhere, so drop it on the ground
+//					// this should never happen, but better to be safe
+//					// ditch the soulbound slot tag, to prevent item stacking issues
+//					CompoundTag tag = stack.getTag();
+//					if (tag != null) {
+//						tag.remove(SOULBOUND_SLOT);
+//						if (tag.isEmpty()) {
+//							stack.setTag(null);
+//						}
+//					}
+//					drops.add(itemEntity);
+//				}
+//			}
+			}
+		}
+	}
+	@SubscribeEvent
+	static void soulboundSpellbookClone(PlayerEvent.Clone event) {
+		if (!event.isWasDeath()) {
+			return;
+		}
+		Player original = event.getOriginal();
+		Player clone = event.getEntity();
+		// inventory already copied
+		if (clone.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) || original.isSpectator()) {
+			return;
+		}
+		// find items with the soulbound tag set and move them over
+		LazyOptional<ICuriosItemHandler> originalInv = CuriosApi.getCuriosInventory(original);
+		LazyOptional<ICuriosItemHandler> cloneInv = CuriosApi.getCuriosInventory(clone);
+			originalInv.ifPresent((handler) -> handler.findCurio("spellbook", 0).ifPresent(slotResult -> {
+				ItemStack stack = slotResult.stack();
+				if (!stack.isEmpty()) {
+					CompoundTag tag = stack.getTag();
+					if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
+						cloneInv.ifPresent(handler2 -> handler2.setEquippedCurio("spellbook", 0, stack));
+						// remove the slot tag, clear the tag if needed
+						tag.remove(SOULBOUND_SLOT);
+						if (tag.isEmpty()) {
+							stack.setTag(null);
+						}
+					}
+				}
+
+			}));
 	}
 
 

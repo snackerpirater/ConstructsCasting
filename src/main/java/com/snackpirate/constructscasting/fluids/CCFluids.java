@@ -113,7 +113,7 @@ public class CCFluids {
 	@SubscribeEvent
 	void registerSerializers(RegisterEvent event) {
 		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-			ConstructsCasting.LOGGER.info("recipe serializer event");
+//			ConstructsCasting.LOGGER.info("recipe serializer event");
 			FluidEffect.ENTITY_EFFECTS.register(ConstructsCasting.id("deplete_mana"), CCFluidEffects.DEPLETE_MANA.getLoader());
 			FluidEffect.ENTITY_EFFECTS.register(ConstructsCasting.id("add_mana"), CCFluidEffects.ADD_MANA.getLoader());
 		}
