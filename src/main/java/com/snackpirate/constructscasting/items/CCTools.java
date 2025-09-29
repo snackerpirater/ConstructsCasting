@@ -34,9 +34,9 @@ public class CCTools {
 			//Plate armor: Low upgrade, high defense
 			//Slimy armor: High upgrade, no defense
 
-			//Traveller's book: Mid upgrade, mid slots
+			//Traveller's book: Mid upgrade, 6 slots
 			//Plate book: Low upgrade, high slots, defense
-			//Slimy book: High upgrade, low slots
+			//Slimy book: High upgrade, 6 slots
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
