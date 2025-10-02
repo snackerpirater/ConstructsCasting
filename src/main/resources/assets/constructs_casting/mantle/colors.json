@@ -39,5 +39,6 @@
     "arcane_hide":"#dbbbcd",
     "exilite": "#6e7278",
     "rainbowslime": "#fc493a"
-  }
+  },
+  "stat.tconstruct.slot.affinity": "#ea9999"
 }

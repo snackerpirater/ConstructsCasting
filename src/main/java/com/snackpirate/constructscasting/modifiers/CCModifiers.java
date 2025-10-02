@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.modifiers.modules.build.StatBoostModule;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ConstructsCasting.MOD_ID)
@@ -65,6 +66,10 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId ABYSSAL_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
+
+    //paper trait: lets you apply orb upgrades to level 4
+    public static final SlotType AFFINITY = SlotType.getOrCreate("affinity");
+    public static final ModifierId BLANK = new ModifierId(ConstructsCasting.MOD_ID, "blank");
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);

@@ -148,7 +148,10 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.technomancyEssence, "Technomancy Essence");
 		addFluid(CCFluids.aquaEssence, "Aqua Essence");
 
-	}
+	    add("item.tconstruct.creative_slot.affinity", "Creative Affinity Slot");
+        add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");
+        add("stat.tconstruct.slot.display.affinity", "affinity");
+    }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
 		String id = material.getPath();
