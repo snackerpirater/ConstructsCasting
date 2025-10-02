@@ -61,12 +61,12 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class TinkerersSpellbookItem extends SpellBook implements IModifiableDisplay {
+public class ModifiableSpellbookItem extends SpellBook implements IModifiableDisplay {
 
     private final ToolDefinition definition;
 	private ItemStack toolForRendering;
 
-	public TinkerersSpellbookItem(Properties prop, int slots, ToolDefinition definition) {
+	public ModifiableSpellbookItem(Properties prop, int slots, ToolDefinition definition) {
 		super(slots, SpellRarity.EPIC, prop);
 		this.definition = definition;
 	}

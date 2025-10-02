@@ -18,7 +18,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
 //multipart renderer for spellbooks, hopefully
-public class TinkererSpellbookRenderer implements ICurioRenderer {
+public class ModifiableSpellbookRenderer implements ICurioRenderer {
 	ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
 	@Override

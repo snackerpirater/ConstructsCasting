@@ -346,6 +346,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.allowCrystal()
 				.setMaxLevel(3)
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
+		ModifierRecipeBuilder.modifier(modifier)
+				.addInput(runeItem)
+				.addInput(orbItem)
+				.addInput(runeItem)
+				.setSlots(CCModifiers.AFFINITY, 1)
+				.allowCrystal()
+				.setLevelRange(4, 5)
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
 
 	}
 }

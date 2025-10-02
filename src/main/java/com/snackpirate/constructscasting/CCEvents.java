@@ -3,7 +3,7 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
-import com.snackpirate.constructscasting.items.TinkererSpellbookRenderer;
+import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
@@ -58,7 +58,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import static slimeknights.tconstruct.TConstruct.getResource;
 import static slimeknights.tconstruct.tools.logic.ModifierEvents.SOULBOUND;
 
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -216,8 +215,8 @@ public class CCEvents {
 	public static class ModClientEvents {
 		@SubscribeEvent
 		static void registerCurioRenderers(FMLClientSetupEvent e) {
-			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), TinkererSpellbookRenderer::new);
-			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), TinkererSpellbookRenderer::new);
+			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), ModifiableSpellbookRenderer::new);
+			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), ModifiableSpellbookRenderer::new);
 		}
 		@SubscribeEvent
 		static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
