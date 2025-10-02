@@ -23,6 +23,7 @@ import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
+import slimeknights.tconstruct.library.modifiers.modules.build.ModifierSlotModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.StatBoostModule;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -67,9 +68,9 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
 
-    //paper trait: lets you apply orb upgrades to level 4
-    public static final SlotType AFFINITY = SlotType.getOrCreate("affinity");
-    public static final ModifierId BLANK = new ModifierId(ConstructsCasting.MOD_ID, "blank");
+    public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
+	//paper trait: lets you apply orb upgrades to level 4
+    public static final ModifierId IMPROVEABLE = new ModifierId(ConstructsCasting.MOD_ID, "blank");
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);
@@ -111,6 +112,7 @@ public class CCModifiers extends AbstractModifierProvider {
 //				.addModule(new SpellbookStrapModule(TooltipKey.NORMAL))
 //				.addModule(InventoryMenuModule.SHIFT)
 //				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
+		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);

@@ -160,7 +160,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
 			noTraits(rainbowSlime);
-            noTraits(paper);
+            addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
 		}
 
 		@Override

@@ -350,7 +350,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(runeItem)
 				.addInput(orbItem)
 				.addInput(runeItem)
-				.setSlots(CCModifiers.AFFINITY, 1)
+				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
 				.allowCrystal()
 				.setLevelRange(4, 5)
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
