@@ -1,0 +1,26 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:holy_rune"
+    },
+    {
+      "item": "irons_spellbooks:holy_upgrade_orb"
+    },
+    {
+      "item": "irons_spellbooks:holy_rune"
+    }
+  ],
+  "level": {
+    "max": 5,
+    "min": 4
+  },
+  "result": "constructs_casting:holy_upgrade",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}
