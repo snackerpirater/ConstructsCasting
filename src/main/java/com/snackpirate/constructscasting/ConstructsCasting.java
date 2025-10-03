@@ -70,7 +70,7 @@ public class ConstructsCasting {
         modEventBus.register(new CCFluids());
     }
     public static ResourceLocation id(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -101,7 +101,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCItems.Tags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(output, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(output, MOD_ID));
-        gen.addProvider(server, new CCFluids.Tags(output, provider));
+        gen.addProvider(server, new CCFluids.Tags(output, provider, MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(output, MOD_ID));
         gen.addProvider(server, new CCRecipes(output));
         gen.addProvider(server, new CCFluidEffects(output, ConstructsCasting.MOD_ID));

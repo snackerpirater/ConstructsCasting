@@ -96,10 +96,10 @@ public class CCItems {
 //			tag(SLIME_FOCUS).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("school_focus"))).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
-			tag(ItemTags.create(new ResourceLocation("forge:ingots/exilite"))).add(exiliteIngot.get());
-			tag(ItemTags.create(new ResourceLocation("forge:nuggets/exilite"))).add(exiliteNugget.get());
+			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/exilite"))).add(exiliteIngot.get());
+			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
-			tag(ItemTags.create(new ResourceLocation("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
+			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
             tag(MODIFIABLE).add(platedSpellbook.get());
 			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);

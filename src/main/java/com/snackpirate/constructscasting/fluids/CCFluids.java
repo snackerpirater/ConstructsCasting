@@ -14,6 +14,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.SoundActions;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -128,7 +129,7 @@ public class CCFluids {
 
 		@Override
 		public void addTextures() {
-			ResourceLocation potion = new ResourceLocation("tconstruct:fluid/potion/");
+			ResourceLocation potion = ResourceLocation.parse("tconstruct:fluid/potion/");
 			texture(arcaneEssence)   .textures(potion, false, false).color(0xff79c0f3);
 			texture(fireEssence)     .textures(potion, false, false).color(0xfffc9269);
 			texture(iceEssence)      .textures(potion, false, false).color(0xff75f1ec);
@@ -141,13 +142,13 @@ public class CCFluids {
 			texture(cinderEssence)   .textures(potion, false, false).color(0xff6a2b00);
 
 			texture(liquidLightning).textures(potion, false, false).color(0xffd7eef5);
-			texture(potatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffe9ba61);
-			texture(poisonousPotatoStew).textures(new ResourceLocation("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
-			ResourceLocation molten = new ResourceLocation("tconstruct:fluid/molten/");
+			texture(potatoStew).textures(ResourceLocation.parse("tconstruct:fluid/food/stew/"), false, false).color(0xffe9ba61);
+			texture(poisonousPotatoStew).textures(ResourceLocation.parse("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
+			ResourceLocation molten = ResourceLocation.parse("tconstruct:fluid/molten/");
 			texture(moltenArcanium).textures(molten,      false, false).color(0xff79c0f3);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
-			ResourceLocation inky = new ResourceLocation("tconstruct:fluid/slime/venom/");
+			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
 			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);
 			texture(commonInk)     .textures(inky, false, false).color(0xff2d2d2d);
 			texture(uncommonInk)   .textures(inky, false, false).color(0xff124300);
@@ -156,7 +157,7 @@ public class CCFluids {
 			texture(legendaryInk)  .textures(inky, false, false).color(0xffd6a200);
 
 			texture(moltenCrystallizedCoral).textures(molten, false, false).color(0xcfd48996);
-			texture(gasifiedRedstone).textures(new ResourceLocation("tconstruct:fluid/slime/ichor/"), false, false).color(0xffff0f01);
+			texture(gasifiedRedstone).textures(ResourceLocation.parse("tconstruct:fluid/slime/ichor/"), false, false).color(0xffff0f01);
 			texture(moltenPearl).textures(molten, false, false).color(0xfff28ba6);
 
 			texture(abyssalEssence).textures(potion, false, false).color(0xff6400fc);
@@ -176,9 +177,11 @@ public class CCFluids {
 		}
 	}
 	public static class Tags extends FluidTagsProvider {
-		public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pProvider) {
-			super(pOutput, pProvider);
+		public Tags(PackOutput p_255941_, CompletableFuture<HolderLookup.Provider> p_256600_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+			super(p_255941_, p_256600_, modId, existingFileHelper);
 		}
+
+
 
 		public static class CCFluidTooltipProvider extends AbstractFluidTooltipProvider {
 
@@ -210,10 +213,10 @@ public class CCFluids {
 
 
 		public static TagKey<Fluid> essenceOf(String type) {
-			return FluidTags.create(new ResourceLocation(ConstructsCasting.MOD_ID, "essence/" + type));
+			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, "essence/" + type));
 		}
 		public static TagKey<Fluid> ink(String rarity) {
-			return FluidTags.create(new ResourceLocation(ConstructsCasting.MOD_ID, "ink/" + rarity));
+			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, "ink/" + rarity));
 		}
 
 		@Override
@@ -235,13 +238,13 @@ public class CCFluids {
 			tag(essenceOf("evocation")).add(evocationEssence.get());
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
-			tag(TagKey.create(ResourceKey.createRegistryKey(new ResourceLocation("forge:fluid_type")),new ResourceLocation("forge:ink"))).add(squidInk.get());
-			tag(ink("common")).add(commonInk.get()).addOptional(new ResourceLocation("create_wizardry:common_ink"));
-			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(new ResourceLocation("create_wizardry:uncommon_ink"));
-			tag(ink("rare")).add(rareInk.get()).addOptional(new ResourceLocation("create_wizardry:rare_ink"));
-			tag(ink("epic")).add(epicInk.get()).addOptional(new ResourceLocation("create_wizardry:epic_ink"));
-			tag(ink("legendary")).add(legendaryInk.get()).addOptional(new ResourceLocation("create_wizardry:legendary_ink"));
-			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get()).addOptional(new ResourceLocation("create_wizardry:blood"));
+			tag(TagKey.create(ResourceKey.createRegistryKey(ResourceLocation.parse("forge:fluid_type")),ResourceLocation.parse("forge:ink"))).add(squidInk.get());
+			tag(ink("common")).add(commonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:common_ink"));
+			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:uncommon_ink"));
+			tag(ink("rare")).add(rareInk.get()).addOptional(ResourceLocation.parse("create_wizardry:rare_ink"));
+			tag(ink("epic")).add(epicInk.get()).addOptional(ResourceLocation.parse("create_wizardry:epic_ink"));
+			tag(ink("legendary")).add(legendaryInk.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
+			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
 			//tooltips
 			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get()).add(moltenArcaneSalvage.get());
 			tag(BOTTLE_TOOLTIP)
