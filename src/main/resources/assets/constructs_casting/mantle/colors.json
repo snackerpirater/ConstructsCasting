@@ -27,7 +27,8 @@
     "antimagic": "#6e7278",
     "spell_protection": "#6e7278",
     "spellbound": "#f1cdfa",
-    "antifrost": "#eaf8f9"
+    "antifrost": "#eaf8f9",
+    "conserving": "#C65C35"
   },
   "material.constructs_casting": {
     "__tier_2__": null,

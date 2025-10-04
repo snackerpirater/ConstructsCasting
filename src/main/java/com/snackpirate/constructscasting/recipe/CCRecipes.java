@@ -206,6 +206,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setMaxLevel(1)
 				.setTools(TinkerTags.Items.LEGGINGS)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/spellbook_strap"));
+		ModifierRecipeBuilder.modifier(CCModifiers.IMPROVEABLE)
+				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.addInput(Items.APPLE)
+				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.setSlots(SlotType.ABILITY, 1)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/improveable"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");

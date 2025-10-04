@@ -42,6 +42,8 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
 	public static final StaticModifier<Modifier> ANTIFROST = MODIFIERS.register("antifrost", AntifrostModifier::new);
 	public static final StaticModifier<Modifier> SPELLBOOK_STRAP = MODIFIERS.register("spellbook_strap", SpellbookStrapModifier::new);
+	public static final StaticModifier<Modifier> CONSERVING = MODIFIERS.register("conserving", ConservingModifier::new);
+
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
@@ -71,6 +73,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
 	//paper trait: lets you apply orb upgrades to level 4
     public static final ModifierId IMPROVEABLE = new ModifierId(ConstructsCasting.MOD_ID, "blank");
+
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);

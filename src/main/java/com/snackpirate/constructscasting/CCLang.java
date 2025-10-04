@@ -153,7 +153,8 @@ public class CCLang extends LanguageProvider {
         add("stat.tconstruct.slot.display.affinity", "affinity");
 
 		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");
-    }
+    	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
+	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
 		String id = material.getPath();
