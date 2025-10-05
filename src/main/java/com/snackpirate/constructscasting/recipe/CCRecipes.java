@@ -41,6 +41,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
@@ -52,6 +53,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.tinkerstation.building.ToolBuildingRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.block.SlimeType;
@@ -63,7 +65,7 @@ import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.function.Consumer;
 
-public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper {
+public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper, IToolRecipeHelper {
 	public CCRecipes(PackOutput output) {
 		super(output);
 	}
@@ -295,7 +297,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		//slimy spellbook!
 		ItemCastingRecipeBuilder.basinRecipe(CCItems.slimySpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(),  true).setFluidAndTime(new FluidStack(TinkerFluids.enderSlime.get(),                  1000)).save(consumer, ConstructsCasting.id(castingFolder + "tinkerers_spellbook"));
 		//plated spellbook
-		ItemCastingRecipeBuilder.tableRecipe(CCItems.platedSpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(), true).setFluidAndTime(new FluidStack(TinkerFluids.moltenCobalt.get(), 4*FluidValues.INGOT)).save(consumer, ConstructsCasting.id(castingFolder + "plated_spellbook"));
+		toolBuilding(consumer, CCItems.platedSpellbook, "tools/building/");
 		//eldritch staff
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CCItems.eldritchStaff.get())
 				.define('s', Items.ECHO_SHARD)

@@ -1,0 +1,37 @@
+{
+  "icon": {
+    "item": "constructs_casting:plated_spellbook",
+    "nbt": "{ISB_Spells:{data:[],maxSpells:0,mustEquip:1b,spellWheel:1b},tic_materials:[\"tconstruct:cobalt\",\"tconstruct:wood\",\"constructs_casting:paper\"]}"
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "constructs_casting:spellbook_plating"
+      },
+      "icon": "constructs_casting:spellbook_plating",
+      "translation_key": "item.constructs_casting.spellbook_plating",
+      "x": 31,
+      "y": 22
+    },
+    {
+      "filter": {
+        "item": "constructs_casting:spellbook_cover"
+      },
+      "icon": "constructs_casting:spellbook_cover",
+      "translation_key": "item.constructs_casting.spellbook_cover",
+      "x": 51,
+      "y": 34
+    },
+    {
+      "filter": {
+        "item": "constructs_casting:pages"
+      },
+      "icon": "constructs_casting:pages",
+      "translation_key": "item.constructs_casting.pages",
+      "x": 22,
+      "y": 53
+    }
+  ],
+  "sortIndex": 15,
+  "translation_key": "item.constructs_casting.plated_spellbook"
+}

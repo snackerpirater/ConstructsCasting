@@ -45,6 +45,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
+import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
@@ -164,6 +165,11 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
         maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.spell_power_bonus")).forEach((modifier) -> sp.removeModifier(modifier));
         AttributeInstance cd = slotContext.entity().getAttribute(AttributeRegistry.COOLDOWN_REDUCTION.get());
         maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.cd_reduction")).forEach((modifier) -> cd.removeModifier(modifier));
+		ToolStack tool = ToolStack.from(stack);
+		EquipmentChangeContext context = new EquipmentChangeContext(slotContext.entity(), EquipmentSlot.LEGS, stack, newStack);
+		for (ModifierEntry entry : tool.getModifierList()) {
+			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onUnequip(tool, entry, context);
+		}
         super.onUnequip(slotContext, newStack, stack);
     }
 
@@ -206,7 +212,11 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	@Override
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
 		super.onEquip(slotContext, prevStack, stack);
-		ToolStack.ensureInitialized(stack, getToolDefinition());
+		ToolStack.ensureInitialized(stack, getToolDefinition());ToolStack tool = ToolStack.from(stack);
+		EquipmentChangeContext context = new EquipmentChangeContext(slotContext.entity(), EquipmentSlot.LEGS, prevStack, stack);
+		for (ModifierEntry entry : tool.getModifierList()) {
+			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onEquip(tool, entry, context);
+		}
 	}
 
 	@Override

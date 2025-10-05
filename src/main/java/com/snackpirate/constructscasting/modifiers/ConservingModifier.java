@@ -2,15 +2,12 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookItem;
-import io.redspace.ironsspellbooks.api.events.ChangeManaEvent;
 import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
-import io.redspace.ironsspellbooks.compat.Curios;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.modifiers.Modifier;

@@ -9,6 +9,7 @@ import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.*;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
+import com.snackpirate.constructscasting.recipe.CCSlotLayoutProvider;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import net.minecraft.core.HolderLookup;
@@ -98,6 +99,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
+        gen.addProvider(server, new CCSlotLayoutProvider(output));
         gen.addProvider(server, new CCItems.Tags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(output, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(output, MOD_ID));

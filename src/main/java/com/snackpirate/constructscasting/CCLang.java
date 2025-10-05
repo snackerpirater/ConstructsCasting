@@ -111,6 +111,7 @@ public class CCLang extends LanguageProvider {
 
 		addItem(CCItems.travellersSpellbook, "Traveller's Spell Book");
 		addItem(CCItems.platedSpellbook, "Plated Spell Book");
+		add("item.constructs_casting.plated_spellbook.description", "A heavily fortified spellbook geared towards defense rather than spell power.");
 		addItem(CCItems.slimySpellbook, "Slimy Spell Book");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");

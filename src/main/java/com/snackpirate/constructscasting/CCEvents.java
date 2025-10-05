@@ -19,6 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -35,9 +36,12 @@ import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
@@ -45,6 +49,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
+import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.shared.TinkerEffects;
@@ -63,19 +68,17 @@ import static slimeknights.tconstruct.tools.logic.ModifierEvents.SOULBOUND;
 @Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CCEvents {
 	private static final String SOULBOUND_SLOT = "tic_soulbound_slot";
-	private static AttachCapabilitiesEvent<ItemStack> event;
 	@SubscribeEvent
 	static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
-		CCEvents.event = event;
 		ItemStack stack = event.getObject();
-		itemPouring(stack, ItemRegistry.LIGHTNING_BOTTLE.get(), CCFluids.liquidLightning, 250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(stack, ItemRegistry.INK_COMMON.get(),       CCFluids.commonInk,       250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(stack, ItemRegistry.INK_UNCOMMON.get(),     CCFluids.uncommonInk,     250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(stack, ItemRegistry.INK_RARE.get(),         CCFluids.rareInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(stack, ItemRegistry.INK_EPIC.get(),         CCFluids.epicInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(stack, ItemRegistry.INK_LEGENDARY.get(),    CCFluids.legendaryInk,    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.LIGHTNING_BOTTLE.get(), CCFluids.liquidLightning, 250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_COMMON.get(),       CCFluids.commonInk,       250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_UNCOMMON.get(),     CCFluids.uncommonInk,     250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_RARE.get(),         CCFluids.rareInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_EPIC.get(),         CCFluids.epicInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_LEGENDARY.get(),    CCFluids.legendaryInk,    250, Items.GLASS_BOTTLE.getDefaultInstance());
 	}
-	public static void itemPouring(ItemStack itemStack, Item input, FluidObject<? extends Fluid> fluidObject, int amount, ItemStack output) {
+	public static void itemPouring(AttachCapabilitiesEvent<ItemStack> event, ItemStack itemStack, Item input, FluidObject<? extends Fluid> fluidObject, int amount, ItemStack output) {
 		if (itemStack.getItem().equals(input)) {
 			event.addCapability(
 					fluidObject.getId(),
@@ -88,13 +91,12 @@ public class CCEvents {
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
 		Player entity = event.getEntity();
-		if (entity.hasEffect(TinkerEffects.enderference.get())) {
-			entity.level().playSound(null, entity.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
-			entity.displayClientMessage(Component.translatable("ui.constructs_casting.enderference_anti_teleport").withStyle(ChatFormatting.RED), true);
-			String spellId = event.getSpellId();
-			event.setCanceled(spellId.equals("irons_spellbooks:teleport")
-					|| spellId.equals("irons_spellbooks:blood_step")
-					|| spellId.equals("irons_spellbooks:frost_step"));
+		if (entity.hasEffect(TinkerEffects.enderference.get())) {String spellId = event.getSpellId();
+			if (spellId.equals("irons_spellbooks:teleport") || spellId.equals("irons_spellbooks:blood_step") || spellId.equals("irons_spellbooks:frost_step")) {
+				entity.level().playSound(null, entity.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
+				entity.displayClientMessage(Component.translatable("ui.constructs_casting.enderference_anti_teleport").withStyle(ChatFormatting.RED), true);
+				event.setCanceled(true);
+			}
 		}
 	}
 	@SubscribeEvent
@@ -196,6 +198,23 @@ public class CCEvents {
 				}
 
 			}));
+	}
+	//stuff to run modifiers on worn spellbooks
+	@SubscribeEvent(priority = EventPriority.LOW)
+	static void livingHurt(LivingHurtEvent event) {
+		LivingEntity entity = event.getEntity();
+		DamageSource source = event.getSource();
+		EquipmentContext context = new EquipmentContext(entity);
+		int vanillaModifier = 0;
+		float modifierValue = 0;
+		float originalDamage = event.getAmount();
+	}
+
+	@SubscribeEvent
+	static void livingDamage(LivingDamageEvent event) {
+		LivingEntity entity = event.getEntity();
+		DamageSource source = event.getSource();
+
 	}
 
 
