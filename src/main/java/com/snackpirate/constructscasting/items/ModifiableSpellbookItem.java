@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -234,19 +235,22 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 
 	@Override
 	public void initializeSpellContainer(ItemStack itemStack) {
-		ToolStack tool = ToolStack.from(itemStack);
-		tool.ensureHasData();
-		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
+//		ToolStack tool = ToolStack.from(itemStack);
+//		tool.ensureHasData();
+//		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
 //		ConstructsCasting.LOGGER.info("spells: {}", spells);
+//
+//		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
+//			ISpellContainer spellContainer = ISpellContainer.create(6, true, true);
+//			spellContainer.save(itemStack);
+//			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
+//		}
 
-		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
-			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
-			spellContainer.save(itemStack);
-		}
+		super.initializeSpellContainer(itemStack);
 	}
-
-	@Override
-	public boolean canSync(SlotContext slotContext, ItemStack stack) {
-		return true;
-	}
+//
+//	@Override
+//	public boolean canSync(SlotContext slotContext, ItemStack stack) {
+//		return true;
+//	}
 }
