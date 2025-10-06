@@ -154,23 +154,31 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
         attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier("tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
 
         for (ModifierEntry entry : tool.getModifierList()) {
-			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.LEGS, attributeBuilder::put);
+			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.LEGS, (attr, mod) -> {
+                AttributeModifier newMod = new AttributeModifier(mod.getId(), mod.getName() + ".spellbook", mod.getAmount(), mod.getOperation());
+                attributeBuilder.put(attr, newMod);
+            });
 		}
+
         return attributeBuilder.build();
 	}
     //doesn't automatically clear max mana bonus for some reason, need to force it
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        ToolStack tool = ToolStack.from(stack);
         AttributeInstance maxMana = slotContext.entity().getAttribute(AttributeRegistry.MAX_MANA.get());
         maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.mana_bonus")).forEach((modifier) -> maxMana.removeModifier(modifier));
         AttributeInstance sp = slotContext.entity().getAttribute(AttributeRegistry.SPELL_POWER.get());
         maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.spell_power_bonus")).forEach((modifier) -> sp.removeModifier(modifier));
         AttributeInstance cd = slotContext.entity().getAttribute(AttributeRegistry.COOLDOWN_REDUCTION.get());
         maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.cd_reduction")).forEach((modifier) -> cd.removeModifier(modifier));
-		ToolStack tool = ToolStack.from(stack);
 		EquipmentChangeContext context = new EquipmentChangeContext(slotContext.entity(), EquipmentSlot.LEGS, stack, newStack);
 		for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onUnequip(tool, entry, context);
+            entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.LEGS, (attr, mod) -> {
+                AttributeModifier newMod = new AttributeModifier(mod.getId(), mod.getName() + ".spellbook", mod.getAmount(), mod.getOperation());
+                slotContext.entity().getAttribute(attr).removeModifier(newMod);
+            });
 		}
         super.onUnequip(slotContext, newStack, stack);
     }
