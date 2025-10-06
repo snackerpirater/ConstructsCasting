@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.common.crafting.DifferenceIngredient;
@@ -56,10 +57,12 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifier
 import slimeknights.tconstruct.library.recipe.tinkerstation.building.ToolBuildingRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
+import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.world.TinkerWorld;
 
@@ -332,6 +335,17 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(CCFluids.rareInk.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
 
+		Ingredient rebalancedCommon = Ingredient.of(TinkerModifiers.dragonScale, Blocks.GILDED_BLACKSTONE);
+
+		SwappableModifierRecipeBuilder.modifier(ModifierIds.rebalanced, CCModifiers.AFFINITY_SLOT.getName())
+				.setTools(TinkerTags.Items.BONUS_SLOTS)
+				.addInput(rebalancedCommon)
+				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.addInput(rebalancedCommon)
+				.addInput(Items.AMETHYST_BLOCK)
+				.addInput(Items.AMETHYST_BLOCK)
+				.disallowCrystal()
+				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rebalanced_affinity"));
 
 	}
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {

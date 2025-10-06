@@ -152,6 +152,7 @@ public class CCLang extends LanguageProvider {
 	    add("item.tconstruct.creative_slot.affinity", "Creative Affinity Slot");
         add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");
         add("stat.tconstruct.slot.display.affinity", "affinity");
+		add("modifier.tconstruct.rebalanced.affinity", "Affinity");
 
 		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");

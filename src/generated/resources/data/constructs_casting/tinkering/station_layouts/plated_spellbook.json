@@ -1,7 +1,7 @@
 {
   "icon": {
     "item": "constructs_casting:plated_spellbook",
-    "nbt": "{ISB_Spells:{data:[],maxSpells:0,mustEquip:1b,spellWheel:1b},tic_materials:[\"tconstruct:cobalt\",\"tconstruct:wood\",\"constructs_casting:paper\"]}"
+    "nbt": "{tic_materials:[\"tconstruct:cobalt\",\"tconstruct:wood\",\"constructs_casting:paper\"]}"
   },
   "input_slots": [
     {

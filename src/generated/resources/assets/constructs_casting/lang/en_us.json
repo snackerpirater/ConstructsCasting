@@ -189,6 +189,7 @@
   "modifier.constructs_casting.technomancy_upgrade": "Technomancy Upgrade",
   "modifier.constructs_casting.technomancy_upgrade.description": "Grants +5% Technomancy Spell Power.",
   "modifier.constructs_casting.technomancy_upgrade.flavor": "Hackerman",
+  "modifier.tconstruct.rebalanced.affinity": "Affinity",
   "school.constructs_casting.slime": "Slime",
   "spell.constructs_casting.freeze": "Freeze",
   "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.",
