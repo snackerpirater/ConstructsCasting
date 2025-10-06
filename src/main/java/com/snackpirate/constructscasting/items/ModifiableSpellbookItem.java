@@ -154,7 +154,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
         attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier("tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
 
         for (ModifierEntry entry : tool.getModifierList()) {
-			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.MAINHAND, attributeBuilder::put);
+			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.LEGS, attributeBuilder::put);
 		}
         return attributeBuilder.build();
 	}
