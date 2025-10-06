@@ -54,6 +54,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.partbuilder.PartRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.tinkerstation.building.ToolBuildingRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
@@ -69,7 +70,8 @@ import slimeknights.tconstruct.world.TinkerWorld;
 import java.util.function.Consumer;
 
 public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper, IToolRecipeHelper {
-	public CCRecipes(PackOutput output) {
+
+    public CCRecipes(PackOutput output) {
 		super(output);
 	}
 
@@ -83,6 +85,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	private static final String materialFolder = "tools/materials/";
 	private static final String modifierFolder = "tools/modifiers/";
 	private static final String meltingFolder = "smeltery/melting/metal/";
+    private static final String partsFolder = "tools/parts/";
 
 	@Override
 	public String getModId() {
@@ -137,7 +140,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialFluidRecipeBuilder.material(CCMaterials.frozenBone).setInputId(MaterialIds.bone).setFluidAndTemp(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone_composite"));
 		//frosted rod
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frostRod).setIngredient(ItemRegistry.FROSTED_HELVE.get()).setValue(3).setNeeded(1).setLeftover(ItemOutput.fromItem(ItemRegistry.FROZEN_BONE_SHARD.get())).save(consumer, ConstructsCasting.id(materialFolder + "frost_rod"));
-		//casting ability
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.paper)
+                        .setIngredient(Items.PAPER)
+                                .setValue(1).setNeeded(1)
+                        .save(consumer, ConstructsCasting.id(materialFolder + "paper"));
+
+        //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)
 				.allowCrystal()
 				.exactLevel(1)
@@ -347,7 +355,20 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.disallowCrystal()
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rebalanced_affinity"));
 
-	}
+        ModifierRecipeBuilder.modifier(CCModifiers.EXPEDIENT)
+                .addInput(Items.AMETHYST_SHARD)
+                .addInput(Items.COPPER_INGOT)
+                .addInput(Items.COPPER_INGOT)
+                .addInput(Items.COPPER_INGOT)
+                .addInput(Items.COPPER_INGOT)
+                .setSlots(SlotType.UPGRADE, 1)
+                .setMaxLevel(3)
+                .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/expedient"));
+
+        partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
+        uncastablePart(consumer, CCItems.spellbookCover.get(), 2, null, partsFolder);
+        uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
+        }
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));
 	}

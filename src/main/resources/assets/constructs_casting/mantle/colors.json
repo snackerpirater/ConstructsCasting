@@ -28,7 +28,9 @@
     "spell_protection": "#6e7278",
     "spellbound": "#f1cdfa",
     "antifrost": "#eaf8f9",
-    "conserving": "#C65C35"
+    "conserving": "#C65C35",
+    "regrowth": "#8e661b",
+    "expedient": "#8AAE60"
   },
   "material.constructs_casting": {
     "__tier_2__": null,

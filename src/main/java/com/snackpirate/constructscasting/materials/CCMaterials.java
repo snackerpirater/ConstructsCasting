@@ -24,7 +24,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin);
     public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone);
-    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.copper, MaterialIds.iron, MaterialIds.searedStone, MaterialIds.scorchedStone, MaterialIds.gold, MaterialIds.amethystBronze, MaterialIds.obsidian, MaterialIds.pigIron, MaterialIds.roseGold, MaterialIds.cobalt, MaterialIds.steel, MaterialIds.hepatizon, MaterialIds.manyullyn); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
+    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.copper, MaterialIds.iron, MaterialIds.searedStone, MaterialIds.scorchedStone, MaterialIds.gold, MaterialIds.amethystBronze, MaterialIds.obsidian, MaterialIds.roseGold, MaterialIds.cobalt, MaterialIds.steel, MaterialIds.hepatizon, MaterialIds.manyullyn); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
@@ -128,6 +128,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
+            addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
 			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
 
             //spellbook platings
@@ -162,6 +163,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			noTraits(rainbowSlime);
             addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
 			addTraits(MaterialIds.leather, MagicClothMaterialStats.ID, CCModifiers.CONSERVING);
+            addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
+            addTraits(MaterialIds.bamboo, MagicBaseMaterialStats.ID, CCModifiers.EXPEDIENT);
 		}
 
 		@Override

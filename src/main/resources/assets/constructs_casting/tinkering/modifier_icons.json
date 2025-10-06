@@ -14,5 +14,7 @@
   "constructs_casting:encyclopedic": ["tconstruct:item/encyclopedia", "tconstruct:gui/modifiers/plus"],
   "constructs_casting:spell_protection": "constructs_casting:gui/modifiers/spell_protection",
   "constructs_casting:spellbook_strap": "constructs_casting:gui/modifiers/spellbook_strap",
-  "constructs_casting:blank": "constructs_casting:gui/modifiers/blank"
+  "constructs_casting:blank": "constructs_casting:gui/modifiers/blank",
+  "constructs_casting:imbued": ["irons_spellbooks:item/scroll", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:expedient": ["irons_spellbooks:item/cast_time_ring", "tconstruct:gui/modifiers/plus"]
 }

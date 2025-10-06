@@ -24,7 +24,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.common.registration.CastItemObject;
+import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.fluids.item.ContainerFoodItem;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
@@ -33,40 +36,49 @@ import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.shared.TinkerFood;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 import static slimeknights.tconstruct.common.TinkerTags.Items.*;
 
 public class CCItems {
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ConstructsCasting.MOD_ID);
-	public static final RegistryObject<ContainerFoodItem.FluidContainerFoodItem> potatoStewBowl = ITEMS.register("potato_stew", () -> new ContainerFoodItem.FluidContainerFoodItem(new Item.Properties().food(TinkerFood.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL), () -> new FluidStack(CCFluids.potatoStew.get(), FluidValues.BOWL)));
-	public static final RegistryObject<ContainerFoodItem.FluidContainerFoodItem> poisonousPotatoStewBowl = ITEMS.register("poisonous_potato_stew", () -> new ContainerFoodItem.FluidContainerFoodItem(new Item.Properties().food(TinkerFood.VENOM_BOTTLE).stacksTo(1).craftRemainder(Items.BOWL), () -> new FluidStack(CCFluids.poisonousPotatoStew.get(), FluidValues.BOWL)));
+	public static final ItemDeferredRegisterExtension ITEMS = new ItemDeferredRegisterExtension(ConstructsCasting.MOD_ID);
+	public static final ItemObject<ContainerFoodItem.FluidContainerFoodItem> potatoStewBowl = ITEMS.register("potato_stew", () -> new ContainerFoodItem.FluidContainerFoodItem(new Item.Properties().food(TinkerFood.MEAT_SOUP).stacksTo(1).craftRemainder(Items.BOWL), () -> new FluidStack(CCFluids.potatoStew.get(), FluidValues.BOWL)));
+	public static final ItemObject<ContainerFoodItem.FluidContainerFoodItem> poisonousPotatoStewBowl = ITEMS.register("poisonous_potato_stew", () -> new ContainerFoodItem.FluidContainerFoodItem(new Item.Properties().food(TinkerFood.VENOM_BOTTLE).stacksTo(1).craftRemainder(Items.BOWL), () -> new FluidStack(CCFluids.poisonousPotatoStew.get(), FluidValues.BOWL)));
 
-	public static final RegistryObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64)));
-	public static final RegistryObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64)));
+	public static final ItemObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64)));
+	public static final ItemObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64)));
 
-	public static final RegistryObject<Item> wizardslimeBall = ITEMS.register("wizardslime_ball", () -> new Item(new Item.Properties().stacksTo(64)));
-	public static final RegistryObject<Item> slimeRune = ITEMS.register("slime_rune", () -> new Item(new Item.Properties().stacksTo(64)));
+	public static final ItemObject<Item> wizardslimeBall = ITEMS.register("wizardslime_ball", () -> new Item(new Item.Properties().stacksTo(64)));
+	public static final ItemObject<Item> slimeRune = ITEMS.register("slime_rune", () -> new Item(new Item.Properties().stacksTo(64)));
 
-	public static final RegistryObject<Item> exiliteReinforcement = ITEMS.register("exilite_reinforcement", () -> new Item(new Item.Properties().stacksTo(64)));
-	public static final RegistryObject<Item> slimySpellbook = ITEMS.register("tinkerers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 6, CCTools.CCToolDefinitions.SLIMY_SPELLBOOK));
+	public static final ItemObject<Item> exiliteReinforcement = ITEMS.register("exilite_reinforcement", () -> new Item(new Item.Properties().stacksTo(64)));
+	public static final ItemObject<Item> slimySpellbook = ITEMS.register("tinkerers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 6, CCTools.CCToolDefinitions.SLIMY_SPELLBOOK));
 	//will fully implement later vvv
-	public static final RegistryObject<Item> travellersSpellbook = ITEMS.register("travellers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 10, CCTools.CCToolDefinitions.TRAVELLERS_SPELLBOOK));
-	public static final RegistryObject<ModifiableSpellbookItem> platedSpellbook = ITEMS.register("plated_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
-	public static final RegistryObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
+	public static final ItemObject<Item> travellersSpellbook = ITEMS.register("travellers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 10, CCTools.CCToolDefinitions.TRAVELLERS_SPELLBOOK));
+	public static final ItemObject<ModifiableSpellbookItem> platedSpellbook = ITEMS.register("plated_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
+	public static final ItemObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
-    public static final RegistryObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier()));
+    public static final ItemObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier()));
 
-    public static final RegistryObject<ToolPartItem> pages = ITEMS.register("pages", () -> new ToolPartItem(new Item.Properties(), MagicClothMaterialStats.ID));
+    public static final ItemObject<ToolPartItem> pages = ITEMS.register("pages", () -> new ToolPartItem(new Item.Properties(), MagicClothMaterialStats.ID));
 
-	public static final RegistryObject<ToolPartItem> spellbookCover = ITEMS.register("spellbook_cover", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
+	public static final ItemObject<ToolPartItem> spellbookCover = ITEMS.register("spellbook_cover", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
 
+    public static final CastItemObject spellbookPlatingCast = ITEMS.registerCast("spellbook_plating_cast", new Item.Properties());
 //	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
 //		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
 //
 //	});
 
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-        ITEMS.getEntries().forEach((regObj) -> { if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());});
+        output.accept(potatoStewBowl);
+        output.accept(poisonousPotatoStewBowl);
+        output.accept(exiliteIngot);
+        output.accept(exiliteNugget);
+        output.accept(slimySpellbook);
+        output.accept(eldritchStaff);
+        output.accept(spellbookPlatingCast);
+
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
         spellbookPlating.get().addVariants(output::accept, "");
         spellbookCover.get().addVariants(output::accept, "");
@@ -105,6 +117,24 @@ public class CCItems {
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");
+
+            IntrinsicTagAppender<Item> goldCasts = this.tag(TinkerTags.Items.GOLD_CASTS);
+            IntrinsicTagAppender<Item> sandCasts = this.tag(TinkerTags.Items.SAND_CASTS);
+            IntrinsicTagAppender<Item> redSandCasts = this.tag(TinkerTags.Items.RED_SAND_CASTS);
+            IntrinsicTagAppender<Item> singleUseCasts = this.tag(TinkerTags.Items.SINGLE_USE_CASTS);
+            IntrinsicTagAppender<Item> multiUseCasts = this.tag(TinkerTags.Items.MULTI_USE_CASTS);
+            Consumer<CastItemObject> addCast = cast -> {
+                // tag based on material
+                goldCasts.add(cast.get());
+                sandCasts.add(cast.getSand());
+                redSandCasts.add(cast.getRedSand());
+                // tag based on usage
+                singleUseCasts.addTag(cast.getSingleUseTag());
+                this.tag(cast.getSingleUseTag()).add(cast.getSand(), cast.getRedSand());
+                multiUseCasts.addTag(cast.getMultiUseTag());
+                this.tag(cast.getMultiUseTag()).add(cast.get());
+            };
+            addCast.accept(CCItems.spellbookPlatingCast);
 		}
 	}
 

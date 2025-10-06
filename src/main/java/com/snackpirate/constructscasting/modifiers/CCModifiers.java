@@ -45,7 +45,6 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> CONSERVING = MODIFIERS.register("conserving", ConservingModifier::new);
 
 
-
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
@@ -76,6 +75,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	//wood magic trait: 10% mana regen
 	public static final ModifierId REGROWTH = new ModifierId(ConstructsCasting.MOD_ID, "regrowth");
 
+    public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);
@@ -119,7 +119,8 @@ public class CCModifiers extends AbstractModifierProvider {
 //				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
 		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
 		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).build();
-	}
+	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).build();
+    }
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
 	}

@@ -33,6 +33,7 @@ public class CCLang extends LanguageProvider {
 
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
         add("stat.constructs_casting.magic_cloth", "Pages");
+        add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
         add("tool_stat.constructs_casting.cooldown_reduction", "Cooldown Reduction: ");
         add("tool_stat.constructs_casting.max_mana", "Max Mana: ");
@@ -48,7 +49,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
 
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
-		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
+		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "One more spell!", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
 		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spell Book to function as an encyclopedia.");
 
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
@@ -117,6 +118,7 @@ public class CCLang extends LanguageProvider {
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
         addItem(CCItems.spellbookPlating, "Spell Book Plating");
+        add(CCItems.spellbookPlatingCast.getSand().getDescriptionId(), "Spell Book Plating Sand Cast");
         addItem(CCItems.spellbookCover, "Spell Book Cover");
         addItem(CCItems.pages, "Pages");
 
@@ -154,9 +156,12 @@ public class CCLang extends LanguageProvider {
         add("stat.tconstruct.slot.display.affinity", "affinity");
 		add("modifier.tconstruct.rebalanced.affinity", "Affinity");
 
+
 		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");
+        addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 15%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
-	}
+        addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
+    }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
 		String id = material.getPath();
