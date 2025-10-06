@@ -240,13 +240,14 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 		ToolStack tool = ToolStack.from(itemStack);
 		tool.ensureHasData();
 		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
+        if (spells == 0) return;
 //		ConstructsCasting.LOGGER.info("spells: {}", spells);
 
 		if (!ISpellContainer.isSpellContainer(itemStack)) {
 			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
 			spellContainer.save(itemStack);
 //			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
-		} else if ((spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
+		} else if (ISpellContainer.get(itemStack).getMaxSpellCount() != spells) {
             ISpellContainer spellContainer = ISpellContainer.get(itemStack);
             spellContainer.setMaxSpellCount(spells);
             spellContainer.save(itemStack);
