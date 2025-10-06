@@ -1,0 +1,42 @@
+{
+  "type": "tconstruct:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct:dragon_scale"
+        },
+        {
+          "item": "minecraft:gilded_blackstone"
+        }
+      ]
+    },
+    {
+      "item": "irons_spellbooks:arcane_ingot"
+    },
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct:dragon_scale"
+        },
+        {
+          "item": "minecraft:gilded_blackstone"
+        }
+      ]
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    }
+  ],
+  "result": {
+    "name": "tconstruct:rebalanced",
+    "value": "affinity"
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/bonus_slots"
+  }
+}
