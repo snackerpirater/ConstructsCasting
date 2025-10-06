@@ -71,7 +71,7 @@ public class ConstructsCasting {
         modEventBus.register(new CCFluids());
     }
     public static ResourceLocation id(String name) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+        return ResourceLocation.tryBuild(MOD_ID, name);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

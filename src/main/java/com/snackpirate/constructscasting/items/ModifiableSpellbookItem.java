@@ -134,6 +134,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	@Override
 	public void verifyTagAfterLoad(CompoundTag pCompoundTag) {
 		ToolStack.verifyTag(this, pCompoundTag, getToolDefinition());
+
 	}
 
 	@Override
@@ -218,6 +219,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 		for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onEquip(tool, entry, context);
 		}
+        this.initializeSpellContainer(stack);
 	}
 
 	@Override
@@ -235,22 +237,22 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 
 	@Override
 	public void initializeSpellContainer(ItemStack itemStack) {
-//		ToolStack tool = ToolStack.from(itemStack);
-//		tool.ensureHasData();
-//		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
+		ToolStack tool = ToolStack.from(itemStack);
+		tool.ensureHasData();
+		int spells = tool.getStats().getInt(CCToolStats.SPELL_SLOTS);
 //		ConstructsCasting.LOGGER.info("spells: {}", spells);
-//
-//		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
-//			ISpellContainer spellContainer = ISpellContainer.create(6, true, true);
-//			spellContainer.save(itemStack);
-//			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
-//		}
 
-		super.initializeSpellContainer(itemStack);
+		if (!ISpellContainer.isSpellContainer(itemStack) || (spells > 0 && ISpellContainer.isSpellContainer(itemStack) && (ISpellContainer.get(itemStack).getMaxSpellCount() != spells))) {
+			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
+			spellContainer.save(itemStack);
+//			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
+		}
+
+//		super.initializeSpellContainer(itemStack);
 	}
-//
-//	@Override
-//	public boolean canSync(SlotContext slotContext, ItemStack stack) {
-//		return true;
-//	}
+
+	@Override
+	public boolean canSync(SlotContext slotContext, ItemStack stack) {
+		return true;
+	}
 }
