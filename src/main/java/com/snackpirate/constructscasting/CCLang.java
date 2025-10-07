@@ -35,10 +35,17 @@ public class CCLang extends LanguageProvider {
         add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
+		add("tool_stat.constructs_casting.spell_slots.description", "How many spells this Spell Book can have.");
         add("tool_stat.constructs_casting.cooldown_reduction", "Cooldown Reduction: ");
+		add("tool_stat.constructs_casting.cooldown_reduction.description", "Increases how often you can cast spells when equipped.");
         add("tool_stat.constructs_casting.max_mana", "Max Mana: ");
+		add("tool_stat.constructs_casting.max_mana.description", "Tool grants this much maximum mana when equipped.");
         add("tool_stat.constructs_casting.spell_power", "Spell Power: ");
+		add("tool_stat.constructs_casting.spell_power.description", "Increases the power of your spells when equipped.");
         add("stat.constructs_casting.spellbook_plating", "Plating");
+		add("pattern.constructs_casting.spellbook_plating", "Spellbook Plating");
+		add("pattern.constructs_casting.spellbook_cover", "Spellbook Cover");
+		add("pattern.constructs_casting.pages", "Pages");
         add("tool_stat.constructs_casting.extra.no_stats", "No stats");
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
@@ -119,6 +126,8 @@ public class CCLang extends LanguageProvider {
 
         addItem(CCItems.spellbookPlating, "Spell Book Plating");
         add(CCItems.spellbookPlatingCast.getSand().getDescriptionId(), "Spell Book Plating Sand Cast");
+		add(CCItems.spellbookPlatingCast.get().getDescriptionId(), "Spell Book Plating Gold Cast");
+		add(CCItems.spellbookPlatingCast.getRedSand().getDescriptionId(), "Spell Book Plating Red Sand Cast");
         addItem(CCItems.spellbookCover, "Spell Book Cover");
         addItem(CCItems.pages, "Pages");
 

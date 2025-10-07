@@ -64,7 +64,7 @@ public class CCItems {
 
 	public static final ItemObject<ToolPartItem> spellbookCover = ITEMS.register("spellbook_cover", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
 
-    public static final CastItemObject spellbookPlatingCast = ITEMS.registerCast("spellbook_plating_cast", new Item.Properties());
+    public static final CastItemObject spellbookPlatingCast = ITEMS.registerCast("spellbook_plating", new Item.Properties());
 //	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
 //		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
 //
@@ -78,6 +78,8 @@ public class CCItems {
         output.accept(slimySpellbook);
         output.accept(eldritchStaff);
         output.accept(spellbookPlatingCast);
+		output.accept(spellbookPlatingCast.getSand());
+		output.accept(spellbookPlatingCast.getRedSand());
 
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
         spellbookPlating.get().addVariants(output::accept, "");
