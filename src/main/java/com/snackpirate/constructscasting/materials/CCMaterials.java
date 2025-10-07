@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.*;
 
@@ -130,7 +131,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
 			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
-
+            addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.1f));
             //spellbook platings
             platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
 		}
@@ -163,6 +164,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			noTraits(rainbowSlime);
             addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
 			addTraits(MaterialIds.leather, MagicClothMaterialStats.ID, CCModifiers.CONSERVING);
+            addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
             addTraits(MaterialIds.bamboo, MagicBaseMaterialStats.ID, CCModifiers.EXPEDIENT);
 		}
