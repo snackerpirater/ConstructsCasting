@@ -1,11 +1,11 @@
 {
   "type": "tconstruct:item_part_builder",
-  "pattern": "constructs_casting:spellbook_plating_cast",
+  "pattern": "constructs_casting:spellbook_plating",
   "pattern_item": {
     "tag": "forge:sand/red"
   },
   "result": {
     "count": 4,
-    "item": "constructs_casting:spellbook_plating_cast_red_sand_cast"
+    "item": "constructs_casting:spellbook_plating_red_sand_cast"
   }
 }

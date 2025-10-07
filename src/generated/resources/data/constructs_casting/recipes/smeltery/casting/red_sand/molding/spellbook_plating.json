@@ -7,5 +7,5 @@
     "type": "tconstruct:material",
     "item": "constructs_casting:spellbook_plating"
   },
-  "result": "constructs_casting:spellbook_plating_cast_red_sand_cast"
+  "result": "constructs_casting:spellbook_plating_red_sand_cast"
 }

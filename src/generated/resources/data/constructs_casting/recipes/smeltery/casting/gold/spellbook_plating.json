@@ -10,6 +10,6 @@
     "amount": 90,
     "tag": "forge:molten_gold"
   },
-  "result": "constructs_casting:spellbook_plating_cast_cast",
+  "result": "constructs_casting:spellbook_plating_cast",
   "switch_slots": true
 }
