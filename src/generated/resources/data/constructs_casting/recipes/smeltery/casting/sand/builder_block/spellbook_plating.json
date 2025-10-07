@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "constructs_casting:spellbook_plating_cast",
+  "pattern_item": {
+    "tag": "forge:sand/colorless"
+  },
+  "result": {
+    "count": 4,
+    "item": "constructs_casting:spellbook_plating_cast_sand_cast"
+  }
+}

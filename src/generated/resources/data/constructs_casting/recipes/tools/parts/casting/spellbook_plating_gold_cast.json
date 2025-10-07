@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "constructs_casting:casts/multi_use/spellbook_plating_cast"
+  },
+  "item_cost": 2,
+  "result": "constructs_casting:spellbook_plating"
+}

@@ -1,0 +1,10 @@
+{
+  "perStat": {
+    "constructs_casting:magic_base": [
+      {
+        "level": 1,
+        "name": "constructs_casting:regrowth"
+      }
+    ]
+  }
+}
