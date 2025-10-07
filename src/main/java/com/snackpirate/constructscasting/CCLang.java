@@ -35,7 +35,7 @@ public class CCLang extends LanguageProvider {
         add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
-		add("tool_stat.constructs_casting.spell_slots.description", "How many spells this Spell Book can have.");
+		add("tool_stat.constructs_casting.spell_slots.description", "How many spells this spellbook can have.");
         add("tool_stat.constructs_casting.cooldown_reduction", "Cooldown Reduction: ");
 		add("tool_stat.constructs_casting.cooldown_reduction.description", "Increases how often you can cast spells when equipped.");
         add("tool_stat.constructs_casting.max_mana", "Max Mana: ");
@@ -57,7 +57,7 @@ public class CCLang extends LanguageProvider {
 
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "One more spell!", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
-		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spell Book to function as an encyclopedia.");
+		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spellbook to function as an encyclopedia.");
 
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
 		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
@@ -67,7 +67,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
 		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
 		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +7.5% power to all types of spells.");
-		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spell Book Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your Spell Book with another one in the leggings' inventory.");
+		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
@@ -117,18 +117,18 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
-		addItem(CCItems.travellersSpellbook, "Traveller's Spell Book");
-		addItem(CCItems.platedSpellbook, "Plated Spell Book");
+		addItem(CCItems.travellersSpellbook, "Traveller's Spellbook");
+		addItem(CCItems.platedSpellbook, "Plated Spellbook");
 		add("item.constructs_casting.plated_spellbook.description", "A heavily fortified spellbook geared towards defense rather than spell power.");
-		addItem(CCItems.slimySpellbook, "Slimy Spell Book");
+		addItem(CCItems.slimySpellbook, "Slimy Spellbook");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
-        addItem(CCItems.spellbookPlating, "Spell Book Plating");
-        add(CCItems.spellbookPlatingCast.getSand().getDescriptionId(), "Spell Book Plating Sand Cast");
-		add(CCItems.spellbookPlatingCast.get().getDescriptionId(), "Spell Book Plating Gold Cast");
-		add(CCItems.spellbookPlatingCast.getRedSand().getDescriptionId(), "Spell Book Plating Red Sand Cast");
-        addItem(CCItems.spellbookCover, "Spell Book Cover");
+        addItem(CCItems.spellbookPlating, "Spellbook Plating");
+        add(CCItems.spellbookPlatingCast.getSand().getDescriptionId(), "Spellbook Plating Sand Cast");
+		add(CCItems.spellbookPlatingCast.get().getDescriptionId(), "Spellbook Plating Gold Cast");
+		add(CCItems.spellbookPlatingCast.getRedSand().getDescriptionId(), "Spellbook Plating Red Sand Cast");
+        addItem(CCItems.spellbookCover, "Spellbook Cover");
         addItem(CCItems.pages, "Pages");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
