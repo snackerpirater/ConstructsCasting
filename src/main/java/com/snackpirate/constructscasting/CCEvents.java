@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.ModifiableSpellbookItem;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCEntities;
@@ -49,11 +50,16 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.events.ToolEquipmentChangeEvent;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHook;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.shared.TinkerEffects;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
+import slimeknights.tconstruct.tools.logic.ToolEvents;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
@@ -199,8 +205,8 @@ public class CCEvents {
 
 			}));
 	}
-	//stuff to run modifiers on worn spellbooks
-	@SubscribeEvent(priority = EventPriority.LOW)
+	//stuff to run modifiers on equipped spellbooks
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	static void livingHurt(LivingHurtEvent event) {
 		LivingEntity entity = event.getEntity();
 		DamageSource source = event.getSource();
@@ -208,6 +214,26 @@ public class CCEvents {
 		int vanillaModifier = 0;
 		float modifierValue = 0;
 		float originalDamage = event.getAmount();
+        ConstructsCasting.LOGGER.info("living hurt: {}", event.getAmount());
+
+//        if (CuriosApi.getCuriosInventory(entity).map(handler -> handler.findCurio("spellbook", 0)).isPresent()) {
+//            CuriosApi.getCuriosInventory(entity).ifPresent(handler -> handler.findCurio("spellbook", 0).ifPresent(slotResult -> {
+//
+//            }));
+//            ItemStack spellbook = CuriosApi.getCuriosInventory(entity).map(handler -> handler.findCurio("spellbook", 0).get().stack()).orElse(ItemStack.EMPTY);
+//            ToolStack toolStack = ToolStack.from(spellbook);
+//            for (ModifierEntry entry : toolStack.getModifierList()) {
+//                originalDamage = entry.getHook(ModifierHooks.MODIFY_DAMAGE).modifyDamageTaken(toolStack, entry, context, EquipmentSlot.LEGS, source, originalDamage, OnAttackedModifierHook.isDirectDamage(source));
+//            }
+//
+//            if (!toolStack.isBroken()) {
+//                for (ModifierEntry entry : toolStack.getModifierList()) {
+//                    modifierValue = entry.getHook(ModifierHooks.PROTECTION).getProtectionModifier(toolStack, entry, context, EquipmentSlot.LEGS, source, modifierValue);
+//                }
+//            }
+//
+//        }
+
 	}
 
 	@SubscribeEvent
