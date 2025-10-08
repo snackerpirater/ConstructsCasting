@@ -144,7 +144,7 @@
   "modifier.constructs_casting.conserving.description": "Reduces the mana cost of casting spells by 10.",
   "modifier.constructs_casting.conserving.flavor": "Great deals all day!",
   "modifier.constructs_casting.cooldown_upgrade": "Cooldown Upgrade",
-  "modifier.constructs_casting.cooldown_upgrade.description": "Grants +8% Cooldown Reduction.",
+  "modifier.constructs_casting.cooldown_upgrade.description": "Grants +5% Cooldown Reduction.",
   "modifier.constructs_casting.cooldown_upgrade.flavor": "I am speed!",
   "modifier.constructs_casting.eldritch_upgrade": "Eldritch Upgrade",
   "modifier.constructs_casting.eldritch_upgrade.description": "Grants +5% Eldritch Spell Power",

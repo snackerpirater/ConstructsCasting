@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
-    public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin);
+    public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
     public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone);
     public static final List<MaterialId> platingMaterials = List.of(MaterialIds.copper, MaterialIds.iron, MaterialIds.searedStone, MaterialIds.scorchedStone, MaterialIds.gold, MaterialIds.amethystBronze, MaterialIds.obsidian, MaterialIds.roseGold, MaterialIds.cobalt, MaterialIds.steel, MaterialIds.hepatizon, MaterialIds.manyullyn); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
@@ -136,6 +136,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(leaf, new MagicClothMaterialStats(6, 0.15f));
 			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.1f));
+            addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
             //spellbook platings
             platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
 		}

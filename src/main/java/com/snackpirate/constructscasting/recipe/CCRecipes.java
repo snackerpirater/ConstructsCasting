@@ -134,6 +134,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setIngredient(ItemRegistry.MAGIC_CLOTH.get())
 				.setValue(1).setNeeded(1)
 				.save(consumer, ConstructsCasting.id(materialFolder + "arcane_cloth"));
+        materialComposite(consumer, CCMaterials.paper, MaterialIds.roseGold, TinkerFluids.moltenRoseGold, FluidValues.INGOT, materialFolder + "rose_gold_pages");
 		//frozen bone
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.FROZEN_BONE_SHARD.get()).setCast(Items.BONE, true).setFluidAndTime(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "frozen_bone"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frozenBone).setIngredient(ItemRegistry.FROZEN_BONE_SHARD.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone"));
