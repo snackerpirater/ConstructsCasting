@@ -268,4 +268,15 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	public boolean canSync(SlotContext slotContext, ItemStack stack) {
 		return true;
 	}
+
+	@Override
+	public void curioTick(SlotContext slotContext, ItemStack stack) {
+//		ConstructsCasting.LOGGER.info("curio tic");
+		ToolStack tool = ToolStack.from(stack);
+		for (ModifierEntry entry : tool.getModifierList()) {
+//			ConstructsCasting.LOGGER.info("tick {}", entry.getModifier().getId());
+			entry.getHook(ModifierHooks.INVENTORY_TICK).onInventoryTick(tool, entry, slotContext.entity().level(), slotContext.entity(), EquipmentSlot.LEGS.getIndex(), true, true, stack);
+		}
+		super.curioTick(slotContext, stack);
+	}
 }

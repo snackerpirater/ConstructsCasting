@@ -43,6 +43,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> ANTIFROST = MODIFIERS.register("antifrost", AntifrostModifier::new);
 	public static final StaticModifier<Modifier> SPELLBOOK_STRAP = MODIFIERS.register("spellbook_strap", SpellbookStrapModifier::new);
 	public static final StaticModifier<Modifier> CONSERVING = MODIFIERS.register("conserving", ConservingModifier::new);
+	public static final StaticModifier<Modifier> SOLAR_CHARGED = MODIFIERS.register("solar_charged", SolarChargedModifier::new);
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");

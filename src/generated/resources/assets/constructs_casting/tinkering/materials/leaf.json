@@ -1,15 +1,10 @@
 {
-  "color": "FF73ABDE",
+  "color": "FF48B518",
   "fallbacks": [
-    "cloth"
+    "vine"
   ],
   "generator": {
     "supported_stats": [
-      "tconstruct:maille",
-      "tconstruct:armor_maille",
-      "tconstruct:repair_kit",
-      "tconstruct:binding",
-      "tconstruct:bowstring",
       "constructs_casting:magic_cloth"
     ],
     "transformer": {
@@ -22,27 +17,27 @@
             "grey": 0
           },
           {
-            "color": "FF0D4578",
+            "color": "FF143306",
             "grey": 63
           },
           {
-            "color": "FF2B6396",
+            "color": "FF183D08",
             "grey": 102
           },
           {
-            "color": "FF477FB2",
+            "color": "FF1F4E0A",
             "grey": 140
           },
           {
-            "color": "FF73ABDE",
+            "color": "FF265F0D",
             "grey": 178
           },
           {
-            "color": "FFB1D9FF",
+            "color": "FF2E730F",
             "grey": 216
           },
           {
-            "color": "FFEBF5FF",
+            "color": "FF3A9313",
             "grey": 255
           }
         ]

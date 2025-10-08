@@ -30,11 +30,13 @@
     "antifrost": "#eaf8f9",
     "conserving": "#C65C35",
     "regrowth": "#8e661b",
-    "expedient": "#8AAE60"
+    "expedient": "#8AAE60",
+    "solar_charged": "#48B518"
   },
   "material.constructs_casting": {
     "__tier_2__": null,
     "frozen_bone": "#eaf8f9",
+    "leaf": "#48B518",
     "__tier_3__": null,
     "frosted_rod": "#fcfcfc",
     "arcanium":"#adc6f5",

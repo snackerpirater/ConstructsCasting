@@ -6,6 +6,7 @@ import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpri
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 import slimeknights.tconstruct.library.client.data.spritetransformer.RecolorSpriteTransformer;
+import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
@@ -42,7 +43,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFF6e7278)
 						.addARGB(255, 0xFF989ba1)
 						.build()));
-		buildMaterial(CCMaterials.arcaneCloth).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier())
+		buildMaterial(CCMaterials.arcaneCloth).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier(), MagicClothMaterialStats.ID)
 				.fallbacks("cloth")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF0d4578)
@@ -52,7 +53,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFb1d9ff)
 						.addARGB(255, 0xFFebf5ff)
 						.build()));
-		buildMaterial(CCMaterials.hogskin).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier())
+		buildMaterial(CCMaterials.hogskin).maille().repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier(), MagicClothMaterialStats.ID)
 				.fallbacks("cloth", "primitive")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF4c4c4c)
@@ -119,5 +120,17 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFD8D8D8)
 						.addARGB(255, 0xFFffffff)
 						.build()));
+		buildMaterial(CCMaterials.leaf)
+				.statType(MagicClothMaterialStats.ID)
+				.fallbacks("primitive", "cloth")
+				.colorMapper(GreyToColorMapping.builderFromBlack()
+						.addARGB(63, 0xFF143306)
+						.addARGB(102, 0xFF183D08)
+						.addARGB(140, 0xFF1F4E0A)
+						.addARGB(178, 0xFF265F0D)
+						.addARGB(216, 0xFF2E730F)
+						.addARGB(255, 0xFF3A9313)
+						.build());
+
 	}
 }

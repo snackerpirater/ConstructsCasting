@@ -41,6 +41,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum");
 
     public static final MaterialId paper = createMaterial("paper");
+	public static final MaterialId leaf = createMaterial("leaf");
 
 	public CCMaterials(PackOutput gen) {
 		super(gen);
@@ -55,6 +56,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
         addMaterial(paper, 1, 0, true);
 		addMaterial(frozenBone, 2, 0, true);
 		addMaterial(arcaneCloth, 2, 0, true);
+		addMaterial(leaf,2,0,true);
 		addMaterial(arcanium, 3, 0, false);
 		addMaterial(exilite, 3, 0, false);
 		addMaterial(frostRod, 3, 0, true);
@@ -120,7 +122,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.BINDING);
 			addMaterialStats(frostRod,
 					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));
-			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
+			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
+					new MagicClothMaterialStats(10, 0.05f));
 			addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(rainbowSlime);
@@ -130,6 +133,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
+			addMaterialStats(leaf, new MagicClothMaterialStats(6, 0.15f));
 			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.1f));
             //spellbook platings
@@ -163,6 +167,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
 			noTraits(rainbowSlime);
             addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
+			addDefaultTraits(leaf, CCModifiers.SOLAR_CHARGED);
 			addTraits(MaterialIds.leather, MagicClothMaterialStats.ID, CCModifiers.CONSERVING);
             addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
@@ -190,6 +195,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
+			buildRenderInfo(leaf).color(0x48B518).fallbacks("vine");
 
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 

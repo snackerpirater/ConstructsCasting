@@ -10,7 +10,8 @@
       "tconstruct:armor_maille",
       "tconstruct:repair_kit",
       "tconstruct:binding",
-      "tconstruct:bowstring"
+      "tconstruct:bowstring",
+      "constructs_casting:magic_cloth"
     ],
     "transformer": {
       "type": "tconstruct:recolor_sprite",

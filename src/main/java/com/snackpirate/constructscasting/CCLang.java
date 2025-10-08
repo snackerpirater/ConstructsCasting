@@ -32,6 +32,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
 
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
+		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
         add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
@@ -70,7 +71,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
-		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +8% Cooldown Reduction.");
+		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +5% Cooldown Reduction.");
 		addModifier(CCModifiers.FIRE_UPGRADE, "Fire Upgrade", "Hot hot hot!", "Grants +5% Fire Spell Power.");
 		addModifier(CCModifiers.ICE_UPGRADE, "Ice Upgrade", "Ice ice baby!", "Grants +5% Ice Spell Power.");
 		addModifier(CCModifiers.LIGHTNING_UPGRADE, "Lightning Upgrade", "Electrifying!", "Grants +5% Lightning Spell Power.");
@@ -170,6 +171,8 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 15%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
+		addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
+		add("modifier.constructs_casting.solar_charged.boost", "Mana Regen In Sun");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
