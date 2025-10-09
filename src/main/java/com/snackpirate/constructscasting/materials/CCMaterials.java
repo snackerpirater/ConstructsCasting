@@ -25,7 +25,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
     public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone);
-    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.copper, MaterialIds.iron, MaterialIds.searedStone, MaterialIds.scorchedStone, MaterialIds.gold, MaterialIds.amethystBronze, MaterialIds.obsidian, MaterialIds.roseGold, MaterialIds.cobalt, MaterialIds.steel, MaterialIds.hepatizon, MaterialIds.manyullyn); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
+    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.searedStone, MaterialIds.cobalt, MaterialIds.gold, MaterialIds.iron, MaterialIds.steel, MaterialIds.pigIron, MaterialIds.copper, MaterialIds.obsidian); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
@@ -82,7 +82,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialStats() {
 			addMaterialStats(arcanium,
 					new HeadMaterialStats(380, 7.0f, Tiers.DIAMOND, 2.0f),
-					new HandleMaterialStats(0.05f, 0.1f, -0.05f, -0.15f),
+					new HandleMaterialStats(0.05f, 0.1f, -0.05f, -0.1f),
 					StatlessMaterialStats.BINDING,
 					//about worse than amethyst bronze
 					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 288, 2, 2, 0.1f),
@@ -94,7 +94,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
                     CCMaterialStats.Statless.SPELLBOOK_PLATING);
 			addMaterialStats(exilite,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
-					new HandleMaterialStats(-0.05f, -0.15f, 0.15f, 0.1f),
+					new HandleMaterialStats(-0.05f, -0.1f, 0.1f, 0.1f),
 					StatlessMaterialStats.BINDING,
 					new PlatingMaterialStats(PlatingMaterialStats.HELMET, 318, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 458, 6, 2, 0.15f),

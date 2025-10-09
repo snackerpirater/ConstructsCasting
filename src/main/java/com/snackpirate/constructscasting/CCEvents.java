@@ -106,18 +106,6 @@ public class CCEvents {
 		}
 	}
 	@SubscribeEvent
-	static void imbueSlotOnSwords(ToolEquipmentChangeEvent event) {
-		ItemStack replacement = event.getContext().getReplacement();
-		if (replacement.getItem() instanceof ModifiableSwordItem && !ISpellContainer.isSpellContainer(replacement)) {
-			var container = ISpellContainer.create(1, true, false);
-			container.save(replacement);
-		}
-		else if (replacement.getItem() instanceof ModifiableArmorItem armor && armor.getEquipmentSlot() == EquipmentSlot.CHEST && !ISpellContainer.isSpellContainer(replacement)) {
-			var container = ISpellContainer.create(1, true, true);
-			container.save(replacement);
-		}
-	}
-	@SubscribeEvent
 	static void soulboundSpellbookDeath(LivingDeathEvent event) {
 		LivingEntity entity = event.getEntity();
 		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(player instanceof FakePlayer)) {
@@ -204,43 +192,6 @@ public class CCEvents {
 				}
 
 			}));
-	}
-	//stuff to run modifiers on equipped spellbooks
-	@SubscribeEvent(priority = EventPriority.LOWEST)
-	static void livingHurt(LivingHurtEvent event) {
-		LivingEntity entity = event.getEntity();
-		DamageSource source = event.getSource();
-		EquipmentContext context = new EquipmentContext(entity);
-		int vanillaModifier = 0;
-		float modifierValue = 0;
-		float originalDamage = event.getAmount();
-        ConstructsCasting.LOGGER.info("living hurt: {}", event.getAmount());
-
-//        if (CuriosApi.getCuriosInventory(entity).map(handler -> handler.findCurio("spellbook", 0)).isPresent()) {
-//            CuriosApi.getCuriosInventory(entity).ifPresent(handler -> handler.findCurio("spellbook", 0).ifPresent(slotResult -> {
-//
-//            }));
-//            ItemStack spellbook = CuriosApi.getCuriosInventory(entity).map(handler -> handler.findCurio("spellbook", 0).get().stack()).orElse(ItemStack.EMPTY);
-//            ToolStack toolStack = ToolStack.from(spellbook);
-//            for (ModifierEntry entry : toolStack.getModifierList()) {
-//                originalDamage = entry.getHook(ModifierHooks.MODIFY_DAMAGE).modifyDamageTaken(toolStack, entry, context, EquipmentSlot.LEGS, source, originalDamage, OnAttackedModifierHook.isDirectDamage(source));
-//            }
-//
-//            if (!toolStack.isBroken()) {
-//                for (ModifierEntry entry : toolStack.getModifierList()) {
-//                    modifierValue = entry.getHook(ModifierHooks.PROTECTION).getProtectionModifier(toolStack, entry, context, EquipmentSlot.LEGS, source, modifierValue);
-//                }
-//            }
-//
-//        }
-
-	}
-
-	@SubscribeEvent
-	static void livingDamage(LivingDamageEvent event) {
-		LivingEntity entity = event.getEntity();
-		DamageSource source = event.getSource();
-
 	}
 
 
