@@ -58,7 +58,7 @@ public class CCFluids {
 
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
-	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink/squid")   .bucket().unplacable();
+	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> rareInk =      FLUIDS.register("rare_ink")     .type(cool().temperature(100)).commonTag("ink/rare")     .bucket().unplacable();
@@ -204,7 +204,8 @@ public class CCFluids {
 
 		public static final TagKey<Fluid> MOLTEN_ARCANIUM = FluidTags.create(ConstructsCasting.id( "molten_arcanium"));
 		public static final TagKey<Fluid> MOLTEN_EXILITE = FluidTags.create(ConstructsCasting.id( "molten_exilite"));
-		public static final TagKey<Fluid> POTATO_STEW = FluidTags.create(ConstructsCasting.id("potato_stew"));
+		public static final TagKey<Fluid> MOLTEN_ARCANE_SALVAGE = FluidTags.create(ConstructsCasting.id("molten_arcane_salvage"));
+        public static final TagKey<Fluid> POTATO_STEW = FluidTags.create(ConstructsCasting.id("potato_stew"));
 		public static final TagKey<Fluid> POISONOUS_POTATO_STEW = FluidTags.create(ConstructsCasting.id("poisonous_potato_stew"));
 		public static final TagKey<Fluid> LIQUID_LIGHTNING = FluidTags.create(ConstructsCasting.id("liquid_lightning"));
 		public static final TagKey<Fluid> BLOOD_ESSENCE_INGREDIENTS = FluidTags.create(ConstructsCasting.id("blood_essence_ingredients"));
@@ -213,22 +214,24 @@ public class CCFluids {
 
 
 		public static TagKey<Fluid> essenceOf(String type) {
-			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, "essence/" + type));
+			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, type + "_essence"));
 		}
 		public static TagKey<Fluid> ink(String rarity) {
-			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, "ink/" + rarity));
+			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(ConstructsCasting.MOD_ID, rarity + "_ink"));
 		}
 
 		@Override
 		protected void addTags(HolderLookup.Provider provider) {
 			tag(MOLTEN_ARCANIUM).add(moltenArcanium.get());
 			tag(MOLTEN_EXILITE).add(moltenExilite.get());
+            tag(MOLTEN_ARCANE_SALVAGE).add(moltenArcaneSalvage.get());
 			tag(POTATO_STEW).add(potatoStew.get());
 			tag(POISONOUS_POTATO_STEW).add(poisonousPotatoStew.get());
 			tag(LIQUID_LIGHTNING).add(liquidLightning.get());
 
 			tag(ARCANIUM_BASE).add(TinkerFluids.moltenCopper.get()).add(TinkerFluids.moltenIron.get()).add(TinkerFluids.moltenGold.get());
 			tag(essenceOf("arcane")).add(arcaneEssence.get());
+            tag(essenceOf("cinder")).add(cinderEssence.get());
 			tag(essenceOf("fire")).add(fireEssence.get());
 			tag(essenceOf("ice")).add(iceEssence.get());
 			tag(essenceOf("lightning")).add(lightningEssence.get());

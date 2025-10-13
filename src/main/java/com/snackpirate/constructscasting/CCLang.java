@@ -96,30 +96,30 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.EVOCATION_DISPULSION, "Evocation Dispulsion", "Hrmmm!", "Grants +15% Evocation Spell Resistance.");
 		addModifier(CCModifiers.NATURE_DISPULSION, "Nature Dispulsion", "Insert allegory for AI here", "Grants +15% Nature Spell Resistance.");
 
-		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
-		addFluid(CCFluids.fireEssence, "Fire Essence");
-		addFluid(CCFluids.iceEssence, "Ice Essence");
-		addFluid(CCFluids.lightningEssence, "Lightning Essence");
-		addFluid(CCFluids.enderEssence, "Ender Essence");
-		addFluid(CCFluids.holyEssence, "Holy Essence");
-		addFluid(CCFluids.bloodEssence, "Blood Essence");
-		addFluid(CCFluids.evocationEssence, "Evocation Essence");
-		addFluid(CCFluids.natureEssence, "Nature Essence");
-		addFluid(CCFluids.cinderEssence, "Cinder Essence");
+		addFluid(CCFluids.arcaneEssence, "Arcane Essence", "Probably tastes like blue raspberry; good if you're short on Mana though.");
+		addFluid(CCFluids.fireEssence, "Fire Essence" ,"Subtle notes of sulfur with an ashy aftertaste; Good if you need a little more FIREpower");
+		addFluid(CCFluids.iceEssence, "Ice Essence", "The active ingredient in Gatorade Frost; useful if you want to chill out");
+		addFluid(CCFluids.lightningEssence, "Lightning Essence", "The closest thing to battery acid you can still drink; Electromancers love it");
+		addFluid(CCFluids.enderEssence, "Ender Essence", "You'll have to stomach the grape flavoring, but Shadow-Walkers love it!");
+		addFluid(CCFluids.holyEssence, "Holy Essence", "Helpful for those who wish to boost their healing magic");
+		addFluid(CCFluids.bloodEssence, "Blood Essence", "Questionably ethical, but Cultists drink it every day");
+		addFluid(CCFluids.evocationEssence, "Evocation Essence", "Empowers evocation magic");
+		addFluid(CCFluids.natureEssence, "Nature Essence", "Still smells moldy; but it empowers nature magic");
+		addFluid(CCFluids.cinderEssence, "Cinder Essence", "From inferno to fork; leaches mana from your enemies");
 
-		addFluid(CCFluids.liquidLightning, "Lightning");
-		addFluid(CCFluids.potatoStew, "Potato Stew");
-		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew");
-		addFluid(CCFluids.moltenArcanium, "Molten Arcanium");
-		addFluid(CCFluids.moltenExilite, "Molten Exilite");
-		addFluid(CCFluids.moltenArcaneSalvage, "Molten Arcane Salvage");
+		addFluid(CCFluids.liquidLightning, "Lightning", "");
+		addFluid(CCFluids.potatoStew, "Potato Stew", "A vegan yet still hearty alternative to Meat Soup");
+		addFluid(CCFluids.poisonousPotatoStew, "Poisonous Potato Stew", "A vegan yet still devastating alternative to spider venom");
+		addFluid(CCFluids.moltenArcanium, "Molten Arcanium", "Definitely tastes like blue raspberry; good for any sort of magic");
+		addFluid(CCFluids.moltenExilite, "Molten Exilite", "Most effective against mages and other magic users.");
+		addFluid(CCFluids.moltenArcaneSalvage, "Molten Arcane Salvage", "Allows you to cast spells faster");
 
-		addFluid(CCFluids.squidInk, "Squid Ink");
-		addFluid(CCFluids.commonInk, "Common Ink");
-		addFluid(CCFluids.uncommonInk, "Uncommon Ink");
-		addFluid(CCFluids.rareInk, "Rare Ink");
-		addFluid(CCFluids.epicInk, "Epic Ink");
-		addFluid(CCFluids.legendaryInk, "Legendary Ink");
+		addFluid(CCFluids.squidInk, "Squid Ink", "Keep it out of your eyes!");
+		addFluid(CCFluids.commonInk, "Common Ink", "Weakens the target's magic");
+		addFluid(CCFluids.uncommonInk, "Uncommon Ink", "Weakens the target's magic");
+		addFluid(CCFluids.rareInk, "Rare Ink", "Weakens the target's magic");
+		addFluid(CCFluids.epicInk, "Epic Ink", "Weakens the target's magic");
+		addFluid(CCFluids.legendaryInk, "Legendary Ink", "Weakens the target's magic");
 
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
@@ -153,6 +153,9 @@ public class CCLang extends LanguageProvider {
 		add("ui.constructs_casting.enderference_anti_teleport", "Your current affliction prevents you from teleporting...");
 //		addSpell(CCSpells.SLING_SPELL, "Sling", "Launches player in the opposite direction that they are looking.");
 
+        addEffect(CCFluidEffects.MobEffects.inkyImpairment, "Inky Impairment");
+        addEffect(CCFluidEffects.MobEffects.magicEmpowerment, "Magic Empowerment");
+        addEffect(CCFluidEffects.MobEffects.magicVulnerability, "Magic Vulnerability");
 		addEffect(CCFluidEffects.MobEffects.bloodEmpowerment, "Blood Empowerment");
 		addEffect(CCFluidEffects.MobEffects.enderEmpowerment, "Ender Empowerment");
 		addEffect(CCFluidEffects.MobEffects.evocationEmpowerment, "Evocation Empowerment");
@@ -162,14 +165,16 @@ public class CCLang extends LanguageProvider {
 		addEffect(CCFluidEffects.MobEffects.lightningEmpowerment, "Lightning Empowerment");
 		addEffect(CCFluidEffects.MobEffects.natureEmpowerment, "Nature Empowerment");
 		addEffect(CCFluidEffects.MobEffects.recoveryEmpowerment, "Recovery Empowerment");
+        add("fluid_effect.constructs_casting.add_mana", "Adds 50 mana to the target");
+        add("fluid_effect.constructs_casting.subtract", "Subtracts 50 mana from the target");
 
-		addFluid(CCFluids.moltenCrystallizedCoral, "Molten Crystallized Coral");
-		addFluid(CCFluids.gasifiedRedstone, "Redstone");
-		addFluid(CCFluids.moltenPearl, "Molten Pearl");
+		addFluid(CCFluids.moltenCrystallizedCoral, "Molten Crystallized Coral", "");
+		addFluid(CCFluids.gasifiedRedstone, "Redstone", "");
+		addFluid(CCFluids.moltenPearl, "Molten Pearl", "");
 
-		addFluid(CCFluids.abyssalEssence, "Abyssal Essence");
-		addFluid(CCFluids.technomancyEssence, "Technomancy Essence");
-		addFluid(CCFluids.aquaEssence, "Aqua Essence");
+		addFluid(CCFluids.abyssalEssence, "Abyssal Essence", "");
+		addFluid(CCFluids.technomancyEssence, "Technomancy Essence", "");
+		addFluid(CCFluids.aquaEssence, "Aqua Essence", "");
 
 	    add("item.tconstruct.creative_slot.affinity", "Creative Affinity Slot");
         add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");
@@ -201,7 +206,9 @@ public class CCLang extends LanguageProvider {
 		add("modifier.constructs_casting." + id + ".description", desc);
 	}
 
-	public void addFluid(FluidObject<?> fluid, String name) {
+	public void addFluid(FluidObject<?> fluid, String name, String effect) {
+        add("fluid.constructs_casting." + fluid.getId().getPath(), name);
+        add("fluid.constructs_casting." + fluid.getId().getPath() + ".fluid_effect", effect);
 		add("fluid_type.constructs_casting." + fluid.getId().getPath(), name);
 		add("item.constructs_casting." + fluid.getId().getPath() + "_bucket", name + " Bucket");
 	}

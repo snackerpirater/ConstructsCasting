@@ -7,7 +7,7 @@
   "cooling_time": 1,
   "fluid": {
     "amount": 250,
-    "tag": "constructs_casting:ink/epic"
+    "tag": "constructs_casting:epic_ink"
   },
   "result": "irons_spellbooks:epic_ink"
 }

@@ -12,7 +12,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,7 +24,6 @@ import slimeknights.tconstruct.library.modifiers.fluid.FluidEffect;
 import slimeknights.tconstruct.library.modifiers.fluid.FluidEffectContext;
 import slimeknights.tconstruct.library.modifiers.fluid.FluidMobEffect;
 import slimeknights.tconstruct.library.modifiers.fluid.TimeAction;
-import slimeknights.tconstruct.library.modifiers.fluid.entity.MobEffectFluidEffect;
 import slimeknights.tconstruct.library.modifiers.fluid.entity.RestoreHungerFluidEffect;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 
@@ -36,28 +34,28 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 
 	@Override
 	protected void addFluids() {
-//		addFluid(CCFluids.arcaneEssence, FluidValues.SIP).addEntityEffect(ADD_MANA);
-//		addFluid(CCFluids.cinderEssence, FluidValues.SIP).addEntityEffect(DEPLETE_MANA);
-//		addMetal(CCFluids.moltenArcanium).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addMetal(CCFluids.moltenExilite).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicVulnerability.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.bloodEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.bloodEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.enderEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.enderEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.evocationEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.evocationEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.fireEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.fireEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.holyEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.holyEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.iceEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.iceEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.lightningEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.lightningEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.natureEssence, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.natureEmpowerment.get(), 100, 1), TimeAction.SET);
-//		addMetal(CCFluids.moltenArcaneSalvage).addEffect(FluidMobEffect.builder().effect(MobEffects.recoveryEmpowerment.get(), 100, 2), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("arcane"), FluidValues.SIP).addEntityEffect(ADD_MANA);
+		addFluid(CCFluids.Tags.essenceOf("cinder"), FluidValues.SIP).addEntityEffect(DEPLETE_MANA);
+		addFluid(CCFluids.Tags.MOLTEN_ARCANIUM, FluidValues.NUGGET).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.MOLTEN_EXILITE, FluidValues.NUGGET).fireDamage(2f).addEffect(FluidMobEffect.builder().effect(MobEffects.magicVulnerability.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("blood"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.bloodEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("ender"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.enderEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("evocation"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.evocationEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("fire"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.fireEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("holy"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.holyEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("ice"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.iceEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("lightning"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.lightningEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.essenceOf("nature"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.natureEmpowerment.get(), 100, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.MOLTEN_ARCANE_SALVAGE, FluidValues.NUGGET).addEffect(FluidMobEffect.builder().effect(MobEffects.recoveryEmpowerment.get(), 100, 2), TimeAction.SET);
 		addFluid(CCFluids.potatoStew, FluidValues.SIP).addEntityEffect(new RestoreHungerFluidEffect(2, 0.48f, false, ItemOutput.fromItem(CCItems.potatoStewBowl.get())));
 		addFluid(CCFluids.poisonousPotatoStew, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffectRegistry.BLIGHT.get(), 100, 1), TimeAction.SET);
 
 		addFluid(CCFluids.squidInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(net.minecraft.world.effect.MobEffects.BLINDNESS, 100, 1), TimeAction.SET);
-//		addFluid(CCFluids.commonInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 160, 1), TimeAction.SET);
-//		addFluid(CCFluids.uncommonInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 170, 2), TimeAction.SET);
-//		addFluid(CCFluids.rareInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 180, 3), TimeAction.SET);
-//		addFluid(CCFluids.epicInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 190, 4), TimeAction.SET);
-//		addFluid(CCFluids.legendaryInk, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 200, 5), TimeAction.SET);
+		addFluid(CCFluids.Tags.ink("common"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 160, 1), TimeAction.SET);
+		addFluid(CCFluids.Tags.ink("uncommon"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 170, 2), TimeAction.SET);
+		addFluid(CCFluids.Tags.ink("rare"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 180, 3), TimeAction.SET);
+		addFluid(CCFluids.Tags.ink("epic"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 190, 4), TimeAction.SET);
+		addFluid(CCFluids.Tags.ink("legendary"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.inkyImpairment.get(), 200, 5), TimeAction.SET);
 	}
 
 	@Override
