@@ -1,0 +1,11 @@
+{
+  "entity_effects": [
+    {
+      "type": "constructs_casting:deplete_mana"
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "tag": "constructs_casting:cinder_essence"
+  }
+}
