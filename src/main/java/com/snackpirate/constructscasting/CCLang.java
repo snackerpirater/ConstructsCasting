@@ -86,6 +86,16 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.TECHNOMANCY_UPGRADE, "Technomancy Upgrade", "Hackerman", "Grants +5% Technomancy Spell Power.");
 		addModifier(CCModifiers.AQUA_UPGRADE, "Aqua Upgrade", "Not to be confused with Abyssal", "Grants +5% Aqua Spell Power.");
 
+		addModifier(CCModifiers.SPELL_DISPULSION, "Spell Dispulsion", "Not to be confused with Spell Protection", "Grants +7.5% Spell Resistance");
+		addModifier(CCModifiers.FIRE_DISPULSION, "Fire Dispulsion", "The power of the sun in the palm of my hand", "Grants +15% Fire Spell Resistance.");
+		addModifier(CCModifiers.ICE_DISPULSION, "Ice Dispulsion", "Ice to meet you", "Grants +15% Ice Spell Resistance.");
+		addModifier(CCModifiers.LIGHTNING_DISPULSION, "Lightning Dispulsion", "Surge protection", "Grants +15% Lightning Spell Resistance.");
+		addModifier(CCModifiers.ENDER_DISPULSION, "Ender Dispulsion", "Take that, globeheads!", "Grants +15% Ender Spell Resistance.");
+		addModifier(CCModifiers.HOLY_DISPULSION, "Holy Dispulsion", "Neither the power of god nor anime", "Grants +15% Holy Spell Resistance.");
+		addModifier(CCModifiers.BLOOD_DISPULSION, "Blood Dispulsion", "Dirty haemophiles", "Grants +15% Blood Spell Resistance.");
+		addModifier(CCModifiers.EVOCATION_DISPULSION, "Evocation Dispulsion", "Hrmmm!", "Grants +15% Evocation Spell Resistance.");
+		addModifier(CCModifiers.NATURE_DISPULSION, "Nature Dispulsion", "Insert allegory for AI here", "Grants +15% Nature Spell Resistance.");
+
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence");
 		addFluid(CCFluids.fireEssence, "Fire Essence");
 		addFluid(CCFluids.iceEssence, "Ice Essence");

@@ -65,6 +65,16 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId NATURE_UPGRADE    = new ModifierId(ConstructsCasting.MOD_ID, "nature_upgrade");
 	public static final ModifierId COOLDOWN_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
 	public static final ModifierId ELDRITCH_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_upgrade");
+	
+	public static final ModifierId SPELL_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "spell_dispulsion");
+	public static final ModifierId FIRE_DISPULSION      = new ModifierId(ConstructsCasting.MOD_ID, "fire_dispulsion");
+	public static final ModifierId ICE_DISPULSION       = new ModifierId(ConstructsCasting.MOD_ID, "ice_dispulsion");
+	public static final ModifierId LIGHTNING_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "lightning_dispulsion");
+	public static final ModifierId ENDER_DISPULSION     = new ModifierId(ConstructsCasting.MOD_ID, "ender_dispulsion");
+	public static final ModifierId HOLY_DISPULSION      = new ModifierId(ConstructsCasting.MOD_ID, "holy_dispulsion");
+	public static final ModifierId BLOOD_DISPULSION     = new ModifierId(ConstructsCasting.MOD_ID, "blood_dispulsion");
+	public static final ModifierId EVOCATION_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "evocation_dispulsion");
+	public static final ModifierId NATURE_DISPULSION    = new ModifierId(ConstructsCasting.MOD_ID, "nature_dispulsion");
 
 	public static final ModifierId ABYSSAL_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
@@ -112,6 +122,17 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
 		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
 
+		buildModifier(SPELL_DISPULSION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_DISPULSION).eachLevel(0.075f));
+		buildModifier(FIRE_DISPULSION).addModule(spellDispulsionModifier(FIRE_DISPULSION, AttributeRegistry.FIRE_MAGIC_RESIST.get())).build();
+		buildModifier(ICE_DISPULSION).addModule(spellDispulsionModifier(ICE_DISPULSION, AttributeRegistry.ICE_MAGIC_RESIST.get())).build();
+		buildModifier(LIGHTNING_DISPULSION).addModule(spellDispulsionModifier(LIGHTNING_DISPULSION, AttributeRegistry.LIGHTNING_MAGIC_RESIST.get())).build();
+		buildModifier(ENDER_DISPULSION).addModule(spellDispulsionModifier(ENDER_DISPULSION, AttributeRegistry.ENDER_MAGIC_RESIST.get())).build();
+		buildModifier(HOLY_DISPULSION).addModule(spellDispulsionModifier(HOLY_DISPULSION, AttributeRegistry.HOLY_MAGIC_RESIST.get())).build();
+		buildModifier(BLOOD_DISPULSION).addModule(spellDispulsionModifier(BLOOD_DISPULSION, AttributeRegistry.BLOOD_MAGIC_RESIST.get())).build();
+		buildModifier(EVOCATION_DISPULSION).addModule(spellDispulsionModifier(EVOCATION_DISPULSION, AttributeRegistry.EVOCATION_MAGIC_RESIST.get())).build();
+		buildModifier(NATURE_DISPULSION).addModule(spellDispulsionModifier(NATURE_DISPULSION, AttributeRegistry.NATURE_MAGIC_RESIST.get())).build();
+
+
 		buildModifier(SPELL_PROTECTION).addModule(ProtectionModule.builder().source(DamageSourcePredicate.tag(CCDamageTypes.Tags.SPELL_BASED)).eachLevel(2.5f)).build();
 //		buildModifier(SPELLBOOK_STRAP).priority(95)
 //				.addModule(InventoryModule.builder().pattern(new Pattern("constructs_casting:spellbook_plus")).slotsPerLevel(1))
@@ -126,6 +147,9 @@ public class CCModifiers extends AbstractModifierProvider {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
 	}
 
+	private static AttributeModule spellDispulsionModifier(ModifierId modifier, Attribute attribute) {
+		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.15f);
+	}
 	@Override
 	public String getName() {
 		return "Construct's Casting Modifiers";

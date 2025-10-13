@@ -65,7 +65,6 @@ public class CCTools {
 //					.module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
-                            .slots(SlotType.DEFENSE, 1)
 							.build());
 			define(ELDRITCH_STAFF)
 					.module(ToolSlotsModule.builder()

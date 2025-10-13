@@ -173,6 +173,16 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
             addTraits(MaterialIds.bamboo, MagicBaseMaterialStats.ID, CCModifiers.EXPEDIENT);
+
+			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.SPELL_DISPULSION);
+			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
+			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
+			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
+			addTraits(MaterialIds.iron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.HOLY_DISPULSION);
+			addTraits(MaterialIds.steel, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.NATURE_DISPULSION);
+			addTraits(MaterialIds.pigIron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.EVOCATION_DISPULSION);
+			addTraits(MaterialIds.copper, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ENDER_DISPULSION);
+			addTraits(MaterialIds.obsidian, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.LIGHTNING_DISPULSION);
 		}
 
 		@Override

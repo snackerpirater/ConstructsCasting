@@ -1,0 +1,21 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:blood_magic_resist",
+      "each_level": 0.15,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "unique": "constructs_casting.modifier.blood_dispulsion"
+    }
+  ],
+  "tooltip_display": "always"
+}

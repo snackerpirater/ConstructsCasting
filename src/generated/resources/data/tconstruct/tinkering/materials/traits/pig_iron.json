@@ -1,0 +1,10 @@
+{
+  "perStat": {
+    "constructs_casting:spellbook_plating": [
+      {
+        "level": 1,
+        "name": "constructs_casting:evocation_dispulsion"
+      }
+    ]
+  }
+}

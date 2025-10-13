@@ -20,7 +20,17 @@
     "eldritch_upgrade": "#0f839c",
     "abyssal_upgrade": "#36156C",
     "technomancy_upgrade": "#B3BEC5",
+
     "aqua_upgrade": "#56aada",
+    "fire_dispulsion": "#FFAA00",
+    "ice_dispulsion": "#d0f9ff",
+    "lightning_dispulsion": "#55FFFF",
+    "ender_dispulsion": "#FF55FF",
+    "holy_dispulsion": "#fff8d4",
+    "blood_dispulsion": "#AA0000",
+    "evocation_dispulsion": "#FFFFFF",
+    "nature_dispulsion": "#55FF55",
+    "spell_dispulsion": "#6e7278",
 
     "__traits__": null,
     "arcane": "#f1cdfa",
