@@ -26,6 +26,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.common.crafting.DifferenceIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -145,6 +146,10 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                         .setIngredient(Items.PAPER)
                                 .setValue(1).setNeeded(1)
                         .save(consumer, ConstructsCasting.id(materialFolder + "paper"));
+        MaterialRecipeBuilder.materialRecipe(CCMaterials.leaf)
+                        .setIngredient(ItemTags.LEAVES)
+                                .setValue(1).setNeeded(1)
+                        .save(consumer, ConstructsCasting.id(materialFolder + "leaf"));
 
         //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)
