@@ -3,21 +3,17 @@
     {
       "type": "tconstruct:modifier_slots",
       "slots": {
+        "affinity": 2,
         "upgrades": 5
       }
     },
     {
-      "type": "tconstruct:traits",
-      "traits": [
-        {
-          "level": 1,
-          "name": "constructs_casting:cooldown_upgrade"
-        },
-        {
-          "level": 1,
-          "name": "constructs_casting:mana_upgrade"
-        }
-      ]
+      "type": "tconstruct:base_stats",
+      "stats": {
+        "constructs_casting:cooldown_reduction": 0.1,
+        "constructs_casting:max_mana": 125.0,
+        "constructs_casting:spell_slots": 6.0
+      }
     }
   ]
 }

@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.materials.CCMaterials;
+import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.PackOutput;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
@@ -41,11 +42,14 @@ public class CCTools {
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
 							.slots(SlotType.UPGRADE, 5)
+                            .slots(CCModifiers.AFFINITY_SLOT, 2)
 							.build())
-					.module(ToolTraitsModule.builder()
-							.trait(CCModifiers.COOLDOWN_UPGRADE)
-							.trait(CCModifiers.MANA_UPGRADE)
-							.build());
+					.module(new SetStatsModule(StatsNBT.builder()
+                            .set(CCToolStats.MAX_MANA, 125)
+                            .set(CCToolStats.COOLDOWN_REDUCTION, 0.1f)
+                            .set(CCToolStats.SPELL_SLOTS, 6)
+                            .build()))
+							.build();
 
 			define(TRAVELLERS_SPELLBOOK)
 					.module(ToolSlotsModule.builder()

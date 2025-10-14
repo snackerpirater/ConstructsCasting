@@ -264,6 +264,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 //		super.initializeSpellContainer(itemStack);
 	}
 
+
 	@Override
 	public boolean canSync(SlotContext slotContext, ItemStack stack) {
 		return true;

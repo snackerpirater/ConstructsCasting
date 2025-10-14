@@ -114,8 +114,8 @@ public class CCItems {
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
-            tag(MODIFIABLE).add(platedSpellbook.get());
-			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get());
+            tag(MODIFIABLE).add(platedSpellbook.get(), slimySpellbook.get());
+			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");
