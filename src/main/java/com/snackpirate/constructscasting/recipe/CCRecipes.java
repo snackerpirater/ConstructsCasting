@@ -225,6 +225,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setMaxLevel(1)
 				.setTools(TinkerTags.Items.LEGGINGS)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/spellbook_strap"));
+        //gilded but for affinity slots
 		ModifierRecipeBuilder.modifier(CCModifiers.IMPROVEABLE)
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
 				.addInput(ItemRegistry.ARCANE_INGOT.get())

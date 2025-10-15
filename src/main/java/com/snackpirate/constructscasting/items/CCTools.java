@@ -49,7 +49,8 @@ public class CCTools {
                             .set(CCToolStats.COOLDOWN_REDUCTION, 0.1f)
                             .set(CCToolStats.SPELL_SLOTS, 6)
                             .build()))
-					.module(ToolTraitsModule.builder().trait(CCModifiers.SPELL_SLOTS.getId()).build());
+//					.module(ToolTraitsModule.builder().trait(CCModifiers.SPELL_SLOTS.getId()).build())
+            ;
 
 			define(TRAVELLERS_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
@@ -70,7 +71,8 @@ public class CCTools {
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())
-					.module(ToolTraitsModule.builder().trait(CCModifiers.SPELL_SLOTS.getId()).build());
+//					.module(ToolTraitsModule.builder().trait(CCModifiers.SPELL_SLOTS.getId()).build())
+            ;
 			define(ELDRITCH_STAFF)
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 3)

@@ -143,6 +143,7 @@ public class CCLang extends LanguageProvider {
         addItem(CCItems.pages, "Pages");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
+        add("ui.constructs_casting.spellbook_has_slots", "Cannot modify, remove spells from spellbook first");
 
 		addItem(CCItems.wizardslimeBall, "Wizardslime Ball");
 		add("school.constructs_casting.slime", "Slime");

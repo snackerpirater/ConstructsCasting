@@ -316,5 +316,6 @@
   "tool_stat.constructs_casting.spell_slots": "Spell Slots: ",
   "tool_stat.constructs_casting.spell_slots.description": "How many spells this spellbook can have.",
   "ui.constructs_casting.enderference_anti_teleport": "Your current affliction prevents you from teleporting...",
-  "ui.constructs_casting.slimeball.max_bounces": "%s Bounces"
+  "ui.constructs_casting.slimeball.max_bounces": "%s Bounces",
+  "ui.constructs_casting.spellbook_has_slots": "Cannot modify, remove spells from spellbook first"
 }

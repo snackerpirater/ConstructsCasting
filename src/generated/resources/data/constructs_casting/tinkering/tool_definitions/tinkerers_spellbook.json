@@ -14,15 +14,6 @@
         "constructs_casting:max_mana": 125.0,
         "constructs_casting:spell_slots": 6.0
       }
-    },
-    {
-      "type": "tconstruct:traits",
-      "traits": [
-        {
-          "level": 1,
-          "name": "constructs_casting:spell_slots"
-        }
-      ]
     }
   ]
 }
