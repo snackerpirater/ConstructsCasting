@@ -155,18 +155,20 @@ public class CCModifiers extends AbstractModifierProvider {
                 .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
                 .addModule(ConditionalStatModule.stat(CCToolStats.SPELL_POWER)
                         .formula()
-                        .customVariable("temperature", new EntityConditionalStatVariable(EntityVariable.BIOME_TEMPERATURE, 2.0f))
+                        .customVariable("temperature", new EntityConditionalStatVariable(EntityVariable.BIOME_TEMPERATURE, 2.0f)) //temp range: -0.5, 2
                         .constant(0.75f).subtract() // range is now -1.25 to 1.25
-                        .constant(0.1f).multiply() // move range to be -0.75 to 0.75, bit more reasonable power ranges
-                        .variable(MULTIPLIER).multiply() // no need to multiply by levels, this never goes past level 1
+                        .constant(0.08f).multiply() // move range to be -0.1 to 0.1, bit more reasonable power ranges
+                        .variable(MULTIPLIER).multiply()
+                        .constant(0).max() //debuffs could be interesting but eh
                         .variable(VALUE).add()
                         .build())
                 .addModule(ConditionalStatModule.stat(CCToolStats.COOLDOWN_REDUCTION)
                         .formula()
                         .customVariable("temperature", new EntityConditionalStatVariable(EntityVariable.BIOME_TEMPERATURE, 2.0f))
                         .constant(0.75f).subtract() // range is now -1.25 to 1.25
-                        .constant(-0.1f).multiply() // move range to be -0.75 to 0.75, bit more reasonable power ranges
-                        .variable(MULTIPLIER).multiply() // no need to multiply by levels, this never goes past level 1
+                        .constant(-0.25f).multiply()// move range to be 0.2 to -0.2,
+                        .variable(MULTIPLIER).multiply()
+                        .constant(0).max()
                         .variable(VALUE).add()
                         .build());
     }

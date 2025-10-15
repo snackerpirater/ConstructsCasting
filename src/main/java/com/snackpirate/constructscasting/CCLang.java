@@ -189,6 +189,8 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
         addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
 		addModifier(CCModifiers.THICK_SKINNED, "Thick-Skinned", "You monster", "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.");
+        add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
+        add("modifier.constructs_casting.thick_skinned.cooldown_reduction", "Thick-Skinned Cooldown Reduction");
         add("modifier.constructs_casting.solar_charged.boost", "Mana Regen In Sun");
     }
 

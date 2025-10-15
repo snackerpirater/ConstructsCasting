@@ -39,6 +39,7 @@
     "spellbound": "#f1cdfa",
     "antifrost": "#eaf8f9",
     "conserving": "#C65C35",
+    "thick_skinned": "#e8a074",
     "regrowth": "#8e661b",
     "expedient": "#8AAE60",
     "solar_charged": "#48B518"
@@ -47,6 +48,7 @@
     "__tier_2__": null,
     "frozen_bone": "#eaf8f9",
     "leaf": "#48B518",
+    "hogskin": "#e8a074",
     "__tier_3__": null,
     "frosted_rod": "#fcfcfc",
     "arcanium":"#adc6f5",
