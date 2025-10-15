@@ -1,20 +1,13 @@
 {
   "modules": [
     {
-      "type": "tconstruct:material_stats",
-      "primary_part": 0,
-      "stat_types": [
-        "constructs_casting:spellbook_plating",
-        "constructs_casting:magic_base",
-        "constructs_casting:magic_cloth"
-      ]
-    },
-    {
-      "type": "tconstruct:tool_parts",
+      "type": "tconstruct:part_stats",
       "parts": [
         "constructs_casting:spellbook_plating",
-        "constructs_casting:spellbook_cover"
-      ]
+        "constructs_casting:spellbook_cover",
+        "constructs_casting:pages"
+      ],
+      "primary_part": 0
     },
     {
       "type": "tconstruct:default_materials",
@@ -38,6 +31,15 @@
       "slots": {
         "upgrades": 1
       }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "constructs_casting:spell_slots"
+        }
+      ]
     }
   ]
 }
