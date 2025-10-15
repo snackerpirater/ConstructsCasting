@@ -1,0 +1,52 @@
+{
+  "level_display": "tconstruct:single_level",
+  "modules": [
+    {
+      "type": "tconstruct:conditional_stat",
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        0.1,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "constructs_casting:spell_power",
+      "variables": {
+        "temperature": {
+          "type": "tconstruct:entity",
+          "entity_type": "tconstruct:biome_temperature",
+          "fallback": 2.0
+        }
+      }
+    },
+    {
+      "type": "tconstruct:conditional_stat",
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        -0.1,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "constructs_casting:cooldown_reduction",
+      "variables": {
+        "temperature": {
+          "type": "tconstruct:entity",
+          "entity_type": "tconstruct:biome_temperature",
+          "fallback": 2.0
+        }
+      }
+    }
+  ],
+  "tooltip_display": "always"
+}

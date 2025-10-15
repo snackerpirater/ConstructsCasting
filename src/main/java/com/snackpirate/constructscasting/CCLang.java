@@ -33,6 +33,7 @@ public class CCLang extends LanguageProvider {
 
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
 		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
+        addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
         add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
@@ -49,7 +50,6 @@ public class CCLang extends LanguageProvider {
 		add("pattern.constructs_casting.pages", "Pages");
         add("tool_stat.constructs_casting.extra.no_stats", "No stats");
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
-		addMaterial(CCMaterials.hogskin, "Arcane Hide", "", "");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
@@ -187,8 +187,9 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 15%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
-		addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
-		add("modifier.constructs_casting.solar_charged.boost", "Mana Regen In Sun");
+        addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
+		addModifier(CCModifiers.THICK_SKINNED, "Thick-Skinned", "You monster", "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.");
+        add("modifier.constructs_casting.solar_charged.boost", "Mana Regen In Sun");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

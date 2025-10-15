@@ -16,12 +16,17 @@ import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
+import slimeknights.tconstruct.library.json.math.ModifierFormula;
 import slimeknights.tconstruct.library.json.predicate.tool.ToolStackPredicate;
+import slimeknights.tconstruct.library.json.variable.entity.EntityVariable;
+import slimeknights.tconstruct.library.json.variable.melee.EntityMeleeVariable;
+import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
+import slimeknights.tconstruct.library.modifiers.modules.behavior.ConditionalStatModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierSlotModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
@@ -31,6 +36,9 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+
+import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
+import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ConstructsCasting.MOD_ID)
 public class CCModifiers extends AbstractModifierProvider {
@@ -86,7 +94,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final ModifierId IMPROVEABLE = new ModifierId(ConstructsCasting.MOD_ID, "blank");
 	//wood magic trait: 10% mana regen
 	public static final ModifierId REGROWTH = new ModifierId(ConstructsCasting.MOD_ID, "regrowth");
-
+    public static final ModifierId THICK_SKINNED = new ModifierId(ConstructsCasting.MOD_ID, "thick_skinned");
     public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
 
 	public CCModifiers(PackOutput generator) {
@@ -106,7 +114,7 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(ModifierRequirementsModule.builder().requireModifier(CASTING.getId(), 1).translationKey("constructs_casting.modifier.swiftcasting.requirement").build())
 				.build();
 
-		buildModifier(SPELLBOUND).addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELLBOUND).eachLevel(0.075f)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
+		buildModifier(SPELLBOUND).addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELLBOUND).eachLevel(0.05f)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
 
 		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT)
 				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(80f))
@@ -143,6 +151,24 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
 		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).build();
 	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).build();
+        buildModifier(THICK_SKINNED)
+                .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
+                .addModule(ConditionalStatModule.stat(CCToolStats.SPELL_POWER)
+                        .formula()
+                        .customVariable("temperature", new EntityConditionalStatVariable(EntityVariable.BIOME_TEMPERATURE, 2.0f))
+                        .constant(0.75f).subtract() // range is now -1.25 to 1.25
+                        .constant(0.1f).multiply() // move range to be -0.75 to 0.75, bit more reasonable power ranges
+                        .variable(MULTIPLIER).multiply() // no need to multiply by levels, this never goes past level 1
+                        .variable(VALUE).add()
+                        .build())
+                .addModule(ConditionalStatModule.stat(CCToolStats.COOLDOWN_REDUCTION)
+                        .formula()
+                        .customVariable("temperature", new EntityConditionalStatVariable(EntityVariable.BIOME_TEMPERATURE, 2.0f))
+                        .constant(0.75f).subtract() // range is now -1.25 to 1.25
+                        .constant(-0.1f).multiply() // move range to be -0.75 to 0.75, bit more reasonable power ranges
+                        .variable(MULTIPLIER).multiply() // no need to multiply by levels, this never goes past level 1
+                        .variable(VALUE).add()
+                        .build());
     }
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);

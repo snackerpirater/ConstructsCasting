@@ -43,6 +43,7 @@ import slimeknights.mantle.client.SafeClientAccess;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
@@ -150,9 +151,11 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
         ToolStack tool = ToolStack.from(stack);
         int manaBonus = tool.getStats().getInt(CCToolStats.MAX_MANA);
         attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier("tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
-        float spBonus = tool.getStats().get(CCToolStats.SPELL_POWER);
+        float spBonus = ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.SPELL_POWER);
+//                tool.getStats().get(CCToolStats.SPELL_POWER);
         attributeBuilder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("tool.constructs_casting.spell_power_bonus", spBonus, AttributeModifier.Operation.MULTIPLY_BASE));
-        float cdBonus = tool.getStats().get(CCToolStats.COOLDOWN_REDUCTION);
+        float cdBonus = ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.COOLDOWN_REDUCTION);
+//                tool.getStats().get(CCToolStats.COOLDOWN_REDUCTION);
         attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier("tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
 
         for (ModifierEntry entry : tool.getModifierList()) {

@@ -55,6 +55,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	protected void addMaterials() {
         addMaterial(paper, 1, 0, true);
 		addMaterial(frozenBone, 2, 0, true);
+        addMaterial(hogskin, 2, 0, true);
 		addMaterial(arcaneCloth, 2, 0, true);
 		addMaterial(leaf,2,0,true);
 		addMaterial(arcanium, 3, 0, false);
@@ -124,7 +125,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
 					new MagicClothMaterialStats(10, 0.05f));
-			addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
+            addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE,
+                    new MagicClothMaterialStats(8, 0));
 			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
 			addMaterialStats(rainbowSlime);
 
@@ -134,7 +136,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
-			addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
+
+            addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.1f));
             addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
             //spellbook platings
@@ -169,6 +172,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			noTraits(rainbowSlime);
             addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
 			addDefaultTraits(leaf, CCModifiers.SOLAR_CHARGED);
+            addDefaultTraits(hogskin, CCModifiers.THICK_SKINNED);
 			addTraits(MaterialIds.leather, MagicClothMaterialStats.ID, CCModifiers.CONSERVING);
             addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
@@ -201,7 +205,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialRenderInfo() {
 			buildRenderInfo(arcanium).color(0x73abde);
 			buildRenderInfo(arcaneCloth).color(0x73abde).fallbacks("cloth");
-			buildRenderInfo(hogskin).color(0xFF0000).fallbacks("cloth", "primitive");
+			buildRenderInfo(hogskin).color(0xe8a074).fallbacks("cloth", "primitive");
 			buildRenderInfo(exilite).color(0x47494b);
 			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
