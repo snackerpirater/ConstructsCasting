@@ -63,6 +63,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static com.snackpirate.constructscasting.modifiers.SpellSlotsModifier.TAG_HAS_SPELLS;
+
 public class ModifiableSpellbookItem extends SpellBook implements IModifiableDisplay {
 
     private final ToolDefinition definition;
@@ -222,7 +224,12 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	@Override
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
 		super.onEquip(slotContext, prevStack, stack);
-		ToolStack.ensureInitialized(stack, getToolDefinition());ToolStack tool = ToolStack.from(stack);
+		ToolStack.ensureInitialized(stack, getToolDefinition());
+		ToolStack tool = ToolStack.from(stack);
+		IModDataView persistentData = tool.getPersistentData();
+		if (persistentData.contains(ConstructsCasting.id(TAG_HAS_SPELLS)) && ISpellContainer.isSpellContainer(stack)) {
+			tool.getPersistentData().putBoolean(ConstructsCasting.id("spell_slots_active"), !ISpellContainer.get(stack).isEmpty());
+		}
 		EquipmentChangeContext context = new EquipmentChangeContext(slotContext.entity(), EquipmentSlot.LEGS, prevStack, stack);
 		for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onEquip(tool, entry, context);
@@ -252,7 +259,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 //		ConstructsCasting.LOGGER.info("spells: {}", spells);
 
 		if (!ISpellContainer.isSpellContainer(itemStack)) {
-			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
+			ISpellContainer spellContainer = new ModifiableSpellContainer(spells, true, true);
 			spellContainer.save(itemStack);
 //			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
 		} else if (ISpellContainer.get(itemStack).getMaxSpellCount() != spells) {
