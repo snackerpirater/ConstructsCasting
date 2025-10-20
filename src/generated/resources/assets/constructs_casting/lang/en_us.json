@@ -287,7 +287,7 @@
   "modifier.constructs_casting.spellbook_strap.description": "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.",
   "modifier.constructs_casting.spellbook_strap.flavor": "Twice the spells, twice the fun!",
   "modifier.constructs_casting.spellbound": "Spellbound",
-  "modifier.constructs_casting.spellbound.description": "Grants +7.5% power to all types of spells.",
+  "modifier.constructs_casting.spellbound.description": "Grants +5% power to all types of spells.",
   "modifier.constructs_casting.spellbound.flavor": "Jack of all trades!",
   "modifier.constructs_casting.swiftcasting": "Swiftcasting",
   "modifier.constructs_casting.swiftcasting.description": "Allows the user to retain their full movement speed while casting spells.",
