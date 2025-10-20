@@ -191,7 +191,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.allowCrystal()
 				.exactLevel(1)
 				.setSlots(SlotType.ABILITY, 1)
-				.setTools(CompoundIngredient.of(DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(TinkerTags.Items.SWORD)), Ingredient.of(TinkerTags.Items.ARMOR)))
+				.setTools(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(TinkerTags.Items.ARMOR)))
 				.setMaxLevel(1)
 				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
 				.addInput(TinkerTags.Items.SWORD)
