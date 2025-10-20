@@ -189,9 +189,6 @@ public class CCModifiers extends AbstractModifierProvider {
 			super(packOutput, modId, existingFileHelper);
 		}
 
-		/**
-		 *
-		 */
 		@Override
 		protected void addTags() {
 			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
