@@ -375,17 +375,17 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
         partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
         uncastablePart(consumer, CCItems.spellbookCover.get(), 2, null, partsFolder);
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
-        IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(TinkerTags.Modifiers.DUAL_INTERACTION);
+        IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(CCModifiers.Tags.CASTING_MODIFIER);
         //To allow the sculk staff (and future staffs) to switch its casting to apply on melee,
         ModifierSetWorktableRecipeBuilder.setAdding(DualOptionInteraction.KEY)
                 .modifierPredicate(whitelist)
-                .setTools(CCItems.Tags.MODIFIABLE_SPELLCASTING)
+                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())
                 .allowTraits()
                 .save(consumer, location("tools/modifiers/worktable/" + "cast_on_melee"));
         ModifierSetWorktableRecipeBuilder.setRemoving(DualOptionInteraction.KEY)
                 .modifierPredicate(whitelist)
-                .setTools(CCItems.Tags.MODIFIABLE_SPELLCASTING)
+                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())
                 .allowTraits()

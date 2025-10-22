@@ -47,6 +47,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
+	public static final StaticModifier<Modifier> SPELLBLADE = MODIFIERS.register("spellblade", SpellbladeModifier::new);
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
@@ -187,14 +188,14 @@ public class CCModifiers extends AbstractModifierProvider {
 	}
 	public static class Tags extends AbstractModifierTagProvider {
 
-        TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
+        public static final TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
 		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
 			super(packOutput, modId, existingFileHelper);
 		}
 
 		@Override
 		protected void addTags() {
-			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
+			tag(CASTING_MODIFIER).add(CASTING.getId(), SPELLBLADE.getId());
 			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, TECHNOMANCY_UPGRADE, ABYSSAL_UPGRADE, EXPEDIENT);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);

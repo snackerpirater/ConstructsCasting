@@ -10,9 +10,9 @@
   ],
   "modifier_predicate": {
     "type": "tconstruct:tag",
-    "tag": "tconstruct:dual_interaction"
+    "tag": "constructs_casting:casting_modifier"
   },
   "tools": {
-    "tag": "constructs_casting:modifiable_staffs"
+    "tag": "tconstruct:modifiable"
   }
 }
