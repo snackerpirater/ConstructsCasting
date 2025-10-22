@@ -4,6 +4,8 @@ import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,7 +18,11 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInterac
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
+import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+
+import javax.annotation.Nullable;
 
 public class CastingModifier extends NoLevelsModifier implements GeneralInteractionModifierHook {
 	@Override
@@ -26,7 +32,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 	//copy staff code? copy staff code.
 	@Override
 	public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-		if (interactionSource == InteractionSource.LEFT_CLICK) return InteractionResult.FAIL;
+		if (!iToolStackView.getHook(ToolHooks.INTERACTION).canInteract(iToolStackView, modifierEntry.getId(), interactionSource)) return InteractionResult.FAIL;
 		ItemStack itemStack = player.getItemInHand(interactionHand);
 		SpellSelectionManager spellSelectionManager = new SpellSelectionManager(player);
 		SpellSelectionManager.SelectionOption selectionOption = spellSelectionManager.getSelection();
@@ -72,6 +78,11 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 		GeneralInteractionModifierHook.finishUsing(tool);
 		Utils.releaseUsingHelper(entity, tool.getItem().getDefaultInstance(), timeLeft);
 	}
+
+    @Override
+    public Component getDisplayName(IToolStackView tool, ModifierEntry entry, @Nullable RegistryAccess access) {
+        return DualOptionInteraction.formatModifierName(tool, this, super.getDisplayName(tool, entry, access));
+    }
 
 	@Override
 	public int getPriority() {

@@ -25,13 +25,7 @@
   },
   "tools": [
     {
-      "type": "forge:difference",
-      "base": {
-        "tag": "tconstruct:modifiable/held"
-      },
-      "subtracted": {
-        "tag": "tconstruct:modifiable/melee/sword"
-      }
+      "tag": "tconstruct:modifiable/held"
     },
     {
       "tag": "tconstruct:modifiable/armor"

@@ -6,6 +6,7 @@ import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -23,6 +24,7 @@ import slimeknights.tconstruct.library.json.variable.melee.EntityMeleeVariable;
 import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
@@ -185,6 +187,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	}
 	public static class Tags extends AbstractModifierTagProvider {
 
+        TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
 		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
 			super(packOutput, modId, existingFileHelper);
 		}

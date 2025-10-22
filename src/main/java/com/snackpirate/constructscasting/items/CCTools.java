@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.definition.module.build.SetStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
+import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
@@ -85,7 +86,8 @@ public class CCTools {
 							.set(ToolStats.DURABILITY, 1337)
 							.set(ToolStats.BLOCK_AMOUNT, 20)
 							.set(ToolStats.BLOCK_ANGLE, 50)
-							.set(ToolStats.USE_ITEM_SPEED, 0.4f).build()));
+							.set(ToolStats.USE_ITEM_SPEED, 0.4f).build()))
+                    .module(DualOptionInteraction.INSTANCE);
 		}
 
 		@Override

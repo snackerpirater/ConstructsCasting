@@ -24,12 +24,11 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CompoundIngredient;
-import net.minecraftforge.common.crafting.DifferenceIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.data.predicate.IJsonPredicate;
 import slimeknights.mantle.fluid.UnplaceableFluid;
 import slimeknights.mantle.recipe.data.IRecipeHelper;
 import slimeknights.mantle.recipe.helper.FluidOutput;
@@ -44,6 +43,7 @@ import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
+import slimeknights.tconstruct.library.json.predicate.modifier.ModifierPredicate;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
@@ -55,11 +55,10 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.partbuilder.PartRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.tinkerstation.building.ToolBuildingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.worktable.ModifierSetWorktableRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.shared.TinkerCommons;
-import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
@@ -191,7 +190,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.allowCrystal()
 				.exactLevel(1)
 				.setSlots(SlotType.ABILITY, 1)
-				.setTools(CompoundIngredient.of(DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(TinkerTags.Items.SWORD)), Ingredient.of(TinkerTags.Items.ARMOR)))
+				.setTools(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(TinkerTags.Items.ARMOR)))
 				.setMaxLevel(1)
 				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
 				.addInput(TinkerTags.Items.SWORD)
@@ -217,6 +216,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(Items.PURPLE_DYE)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/rainbowslime_embellishment"));
 		//spellbook strap
+        //having two spellbooks at once is powerful, should be an ability
 		ModifierRecipeBuilder.modifier(CCModifiers.SPELLBOOK_STRAP)
 				.addInput(TinkerWorld.enderSlimeVine)
 				.addInput(ItemRegistry.ARCANE_SALVAGE.get())
@@ -375,6 +375,21 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
         partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
         uncastablePart(consumer, CCItems.spellbookCover.get(), 2, null, partsFolder);
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
+        IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(TinkerTags.Modifiers.DUAL_INTERACTION);
+        //To allow the sculk staff (and future staffs) to switch its casting to apply on melee,
+        ModifierSetWorktableRecipeBuilder.setAdding(DualOptionInteraction.KEY)
+                .modifierPredicate(whitelist)
+                .setTools(CCItems.Tags.MODIFIABLE_SPELLCASTING)
+                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+                .allowTraits()
+                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_melee"));
+        ModifierSetWorktableRecipeBuilder.setRemoving(DualOptionInteraction.KEY)
+                .modifierPredicate(whitelist)
+                .setTools(CCItems.Tags.MODIFIABLE_SPELLCASTING)
+                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+                .allowTraits()
+                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_interact"));
         }
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));
@@ -408,4 +423,5 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
 
 	}
+
 }
