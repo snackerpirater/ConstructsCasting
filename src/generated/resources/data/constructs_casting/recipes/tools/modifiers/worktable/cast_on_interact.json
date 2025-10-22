@@ -16,6 +16,6 @@
     "tag": "constructs_casting:casting_modifier"
   },
   "tools": {
-    "tag": "tconstruct:modifiable"
+    "tag": "tconstruct:modifiable/interactable/dual"
   }
 }

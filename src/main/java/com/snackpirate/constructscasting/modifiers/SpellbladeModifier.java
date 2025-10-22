@@ -1,9 +1,13 @@
 package com.snackpirate.constructscasting.modifiers;
 
+import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
+import io.redspace.ironsspellbooks.api.spells.CastSource;
+import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,74 +20,53 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
+import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class SpellbladeModifier extends Modifier implements GeneralInteractionModifierHook {
+public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModifierHook {
 	@Override
 	protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
 		super.registerHooks(hookBuilder);
-		hookBuilder.addHook(this, ModifierHooks.GENERAL_INTERACT);
+		hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
 		hookBuilder.addModule(ModifierRequirementsModule.builder().requireModifier(CCModifiers.IMBUED.getId(), 1).translationKey("constructs_casting.modifier.spellblade.requirement").build());
+
 	}
 
-	/**
-	 * @param tool     Tool performing interaction
-	 * @param modifier Modifier instance
-	 * @param player   Interacting player
-	 * @param hand     Hand used for interaction
-	 * @param source   Source of the interaction
-	 * @return
-	 */
-	@Override
-	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource source) {
-		if (source!=InteractionSource.LEFT_CLICK) return InteractionResult.FAIL;
-		ItemStack itemStack = player.getItemInHand(interactionHand);
-		SpellSelectionManager spellSelectionManager = new SpellSelectionManager(player);
-		SpellSelectionManager.SelectionOption selectionOption = spellSelectionManager.getSelection();
-		if (selectionOption == null || selectionOption.spellData.equals(SpellData.EMPTY)) {
-			return InteractionResult.PASS;
-		}
-		SpellData spellData = selectionOption.spellData;
 
-		if (player.level().isClientSide()) {
-			if (ClientMagicData.isCasting()) {
-				return InteractionResult.CONSUME;
-			} else if (ClientMagicData.getPlayerMana() < spellData.getSpell().getManaCost(spellData.getLevel())
-					|| ClientMagicData.getCooldowns().isOnCooldown(spellData.getSpell())
-					|| !ClientMagicData.getSyncedSpellData(player).isSpellLearned(spellData.getSpell())) {
-				return InteractionResult.PASS;
-			} else {
-				return InteractionResult.CONSUME;
-			}
-		}
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        float ret = MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
+//        ConstructsCasting.LOGGER.info("spellblade tool use");
+        Player player = context.getPlayerAttacker();
+        InteractionHand interactionHand = context.getHand();
+        ItemStack itemStack = player.getItemInHand(interactionHand);
+        if (!ISpellContainer.isSpellContainer(itemStack)) return ret;
+        ISpellContainer container = ISpellContainer.get(itemStack);
+        if (container.isEmpty()) return ret;
+        SpellData spellData = container.getSpellAtIndex(0);
 
-		String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
+        if (player.level().isClientSide()) {
+            if (ClientMagicData.isCasting()) {
+                return ret;
+            } else if (ClientMagicData.getPlayerMana() < spellData.getSpell().getManaCost(spellData.getLevel())
+                    || ClientMagicData.getCooldowns().isOnCooldown(spellData.getSpell())
+                    || !ClientMagicData.getSyncedSpellData(player).isSpellLearned(spellData.getSpell())) {
+                return ret;
+            } else {
+                return ret;
+            }
+        }
 
-		if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, selectionOption.getCastSource(), true, castingSlot)) {
-			return InteractionResult.CONSUME;
-		} else {
-			return InteractionResult.FAIL;
-		}
-//		return null;
-	}
-
-	@Override
-	public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
-		return 7200;
-	}
-
-	@Override
-	public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
-		return UseAnim.BOW;
-	}
-
-	@Override
-	public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
-		GeneralInteractionModifierHook.finishUsing(tool);
-		Utils.releaseUsingHelper(entity, tool.getItem().getDefaultInstance(), timeLeft);
-	}
+        String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
+        //TODO: recreate attemptInitiateCast with appropriate logic: longer cooldown, no cast time
+        spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot);
+        spellData.getSpell().castSpell(context.getLevel(), spellData.getLevel(), (ServerPlayer) context.getPlayerAttacker(), CastSource.SWORD, true);
+        return MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
+    }
 
 	@Override
 	public int getPriority() {
