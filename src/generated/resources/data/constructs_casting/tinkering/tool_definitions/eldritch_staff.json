@@ -28,6 +28,9 @@
         "tconstruct:durability": 1337.0,
         "tconstruct:use_item_speed": 0.4
       }
+    },
+    {
+      "type": "tconstruct:dual_option_interaction"
     }
   ]
 }

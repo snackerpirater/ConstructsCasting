@@ -11,6 +11,7 @@
     "constructs_casting:nature_upgrade",
     "constructs_casting:eldritch_upgrade",
     "constructs_casting:technomancy_upgrade",
-    "constructs_casting:abyssal_upgrade"
+    "constructs_casting:abyssal_upgrade",
+    "constructs_casting:expedient"
   ]
 }

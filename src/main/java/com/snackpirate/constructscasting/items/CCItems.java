@@ -20,9 +20,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -90,7 +87,7 @@ public class CCItems {
 	public static class Tags extends ItemTagsProvider {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
 		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
-
+        public static final TagKey<Item> MODIFIABLE_SPELLCASTING = ItemTags.create(ConstructsCasting.id("modifiable_staffs"));
 		public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(pOutput, pLookupProvider, pBlockTags, modId, existingFileHelper);
 		}
@@ -116,7 +113,7 @@ public class CCItems {
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
             tag(MODIFIABLE).add(platedSpellbook.get(), slimySpellbook.get());
 			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get());
-			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS);
+			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS, MODIFIABLE_SPELLCASTING);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");
 
