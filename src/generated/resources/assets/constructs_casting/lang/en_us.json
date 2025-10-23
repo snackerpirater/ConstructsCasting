@@ -252,7 +252,7 @@
   "modifier.constructs_casting.ice_upgrade.description": "Grants +5% Ice Spell Power.",
   "modifier.constructs_casting.ice_upgrade.flavor": "Ice ice baby!",
   "modifier.constructs_casting.ichorspells": "Ichorspells",
-  "modifier.constructs_casting.ichorspells.description": "Increases Spell Power in exchange for slower mana regeneration",
+  "modifier.constructs_casting.ichorspells.description": "Increases Spell Power by 15% in exchange for -30% mana regeneration",
   "modifier.constructs_casting.ichorspells.flavor": "You are filled with ichor... and determination I guess",
   "modifier.constructs_casting.imbued": "Imbued",
   "modifier.constructs_casting.imbued.description": "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.",

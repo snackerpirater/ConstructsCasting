@@ -140,7 +140,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
             addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
-            addMaterialStats(MaterialIds.ichorskin, new MagicClothMaterialStats(8, 0.15f));
+            addMaterialStats(MaterialIds.ichorskin, new MagicClothMaterialStats(8, 0.05f));
             //spellbook platings
             platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
 		}

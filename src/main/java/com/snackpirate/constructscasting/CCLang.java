@@ -192,7 +192,7 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.THICK_SKINNED, "Thick-Skinned", "You monster", "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.");
         add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
         add("modifier.constructs_casting.thick_skinned.cooldown_reduction", "Thick-Skinned Cooldown Reduction");
-        addModifier(CCModifiers.ICHORSPELLS, "Ichorspells", "You are filled with ichor... and determination I guess", "Increases Spell Power in exchange for slower mana regeneration");
+        addModifier(CCModifiers.ICHORSPELLS, "Ichorspells", "You are filled with ichor... and determination I guess", "Increases Spell Power by 15% in exchange for -30% mana regeneration");
 
     }
 

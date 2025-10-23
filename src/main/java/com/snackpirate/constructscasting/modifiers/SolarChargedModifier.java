@@ -24,6 +24,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.armor.EquipmentChangeModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
+import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -35,7 +36,7 @@ import java.util.List;
 import java.util.UUID;
 
 //if it's sunny outside, +15% mana regen
-public class SolarChargedModifier extends Modifier implements EquipmentChangeModifierHook, TooltipModifierHook, InventoryTickModifierHook {
+public class SolarChargedModifier extends SingleLevelModifier implements EquipmentChangeModifierHook, TooltipModifierHook, InventoryTickModifierHook {
     private static final UUID uuid = UUID.nameUUIDFromBytes("attribute.constructs_casting.solar_charged".getBytes());
     private static final Component BOOST = Component.literal(Util.makeTranslationKey("modifier", ConstructsCasting.id("solar_charged.boost")));
     private static final int minLight = 5;
@@ -73,7 +74,7 @@ public class SolarChargedModifier extends Modifier implements EquipmentChangeMod
         // no point trying if not on the ground
 //        ConstructsCasting.LOGGER.info("solar charged tick");
         Level level = living.level();
-        if (!living.onGround() || level.isClientSide) {
+        if (level.isClientSide) {
             return;
         }
         // must have regen
