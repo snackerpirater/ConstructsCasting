@@ -20,8 +20,8 @@
     "eldritch_upgrade": "#0f839c",
     "abyssal_upgrade": "#36156C",
     "technomancy_upgrade": "#B3BEC5",
-
     "aqua_upgrade": "#56aada",
+
     "fire_dispulsion": "#FFAA00",
     "ice_dispulsion": "#d0f9ff",
     "lightning_dispulsion": "#55FFFF",
@@ -42,7 +42,8 @@
     "thick_skinned": "#e8a074",
     "regrowth": "#8e661b",
     "expedient": "#8AAE60",
-    "solar_charged": "#48B518"
+    "solar_charged": "#48B518",
+    "ichorspells": "#ff970d"
   },
   "material.constructs_casting": {
     "__tier_2__": null,
