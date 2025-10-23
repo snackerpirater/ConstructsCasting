@@ -47,7 +47,6 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
-	public static final StaticModifier<Modifier> SPELLBLADE = MODIFIERS.register("spellblade", SpellbladeModifier::new);
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
@@ -99,6 +98,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId REGROWTH = new ModifierId(ConstructsCasting.MOD_ID, "regrowth");
     public static final ModifierId THICK_SKINNED = new ModifierId(ConstructsCasting.MOD_ID, "thick_skinned");
     public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
+    public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);
@@ -151,9 +151,9 @@ public class CCModifiers extends AbstractModifierProvider {
 //				.addModule(new SpellbookStrapModule(TooltipKey.NORMAL))
 //				.addModule(InventoryMenuModule.SHIFT)
 //				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
-		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
-		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).build();
-	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).build();
+		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
+		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
+	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
         buildModifier(THICK_SKINNED)
                 .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
                 .addModule(ConditionalStatModule.stat(CCToolStats.SPELL_POWER)
@@ -174,6 +174,11 @@ public class CCModifiers extends AbstractModifierProvider {
                         .constant(0).max()
                         .variable(VALUE).add()
                         .build());
+        buildModifier(ICHORSPELLS)
+                .addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_TOTAL).eachLevel(-0.3f))
+                .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).eachLevel(0.15f))
+                .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
+                .build();
     }
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
@@ -187,15 +192,19 @@ public class CCModifiers extends AbstractModifierProvider {
 		return "Construct's Casting Modifiers";
 	}
 	public static class Tags extends AbstractModifierTagProvider {
-
         public static final TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
+
 		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
 			super(packOutput, modId, existingFileHelper);
 		}
 
+		/**
+		 *
+		 */
 		@Override
 		protected void addTags() {
-			tag(CASTING_MODIFIER).add(CASTING.getId(), SPELLBLADE.getId());
+            tag(CASTING_MODIFIER).add(CASTING.getId());
+			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
 			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, TECHNOMANCY_UPGRADE, ABYSSAL_UPGRADE, EXPEDIENT);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);
