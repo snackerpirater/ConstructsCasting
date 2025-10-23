@@ -195,12 +195,13 @@ public class CCModifiers extends AbstractModifierProvider {
 
 		@Override
 		protected void addTags() {
-			tag(CASTING_MODIFIER).add(CASTING.getId(), SPELLBLADE.getId());
+			tag(CASTING_MODIFIER).add(CASTING.getId());
 			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, TECHNOMANCY_UPGRADE, ABYSSAL_UPGRADE, EXPEDIENT);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
+			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
 		}
 
 		@Override
