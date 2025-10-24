@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
@@ -63,8 +64,11 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
 
         String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
         //TODO: recreate attemptInitiateCast with appropriate logic: longer cooldown, no cast time
-//        spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot);
-        spellData.getSpell().castSpell(context.getLevel(), spellData.getLevel(), (ServerPlayer) context.getPlayerAttacker(), CastSource.SWORD, true);
+        if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot)) {
+			MagicData.getPlayerMagicData(player).initiateCast(spellData.getSpell(), spellData.getLevel(), 0, CastSource.SWORD, castingSlot);
+		}
+//		MagicData.getPlayerMagicData(player).castDurationRemaining = 0;
+//        spellData.getSpell().castSpell(context.getLevel(), spellData.getLevel(), (ServerPlayer) context.getPlayerAttacker(), CastSource.SWORD, true);
         return MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
     }
 

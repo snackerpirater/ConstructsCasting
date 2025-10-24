@@ -53,6 +53,7 @@ minecraft {
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing-mod', 'tconstruct', '--existing-mod', 'irons_spellbooks'
         }
     }
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
