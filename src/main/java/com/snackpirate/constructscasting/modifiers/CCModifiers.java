@@ -47,6 +47,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(ConstructsCasting.MOD_ID);
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
+	public static final StaticModifier<Modifier> SPELLBLADE = MODIFIERS.register("spellblade", SpellbladeModifier::new);
 	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
@@ -193,15 +194,13 @@ public class CCModifiers extends AbstractModifierProvider {
 		return "Construct's Casting Modifiers";
 	}
 	public static class Tags extends AbstractModifierTagProvider {
+
         public static final TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
 
 		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
 			super(packOutput, modId, existingFileHelper);
 		}
 
-		/**
-		 *
-		 */
 		@Override
 		protected void addTags() {
             tag(CASTING_MODIFIER).add(CASTING.getId());
@@ -211,6 +210,7 @@ public class CCModifiers extends AbstractModifierProvider {
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
+			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
 		}
 
 		@Override
