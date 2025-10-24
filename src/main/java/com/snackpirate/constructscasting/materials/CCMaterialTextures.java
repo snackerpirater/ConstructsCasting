@@ -53,7 +53,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFcaeafc)
 						.addARGB(255, 0xFFfcfcfc)
 						.build()));
-		buildMaterial(CCMaterials.hogskin).repairKit().statType(StatlessMaterialStats.BINDING.getIdentifier(), StatlessMaterialStats.BOWSTRING.getIdentifier(), MagicClothMaterialStats.ID)
+		buildMaterial(CCMaterials.hogskin).repairKit().statType(MagicClothMaterialStats.ID)
 				.fallbacks("cloth", "primitive")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF5e3235)

@@ -179,6 +179,7 @@ public class CCModifiers extends AbstractModifierProvider {
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).eachLevel(0.15f))
                 .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
                 .build();
+
     }
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);

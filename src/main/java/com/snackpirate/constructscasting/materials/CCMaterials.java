@@ -125,9 +125,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
 					new MagicClothMaterialStats(10, 0.05f));
-            addMaterialStats(hogskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE,
-                    new MagicClothMaterialStats(8, 0));
-			addMaterialStats(dragonskin, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING);
+            addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
+			addMaterialStats(dragonskin, new MagicBaseMaterialStats(200, 0.1f));
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(paper, new MagicClothMaterialStats(8, -0.15f));

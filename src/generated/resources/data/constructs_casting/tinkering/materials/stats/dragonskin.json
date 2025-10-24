@@ -1,7 +1,8 @@
 {
   "stats": {
-    "tconstruct:binding": {},
-    "tconstruct:bowstring": {},
-    "tconstruct:maille": {}
+    "constructs_casting:magic_base": {
+      "max_mana": 200.0,
+      "spell_power": 0.1
+    }
   }
 }
