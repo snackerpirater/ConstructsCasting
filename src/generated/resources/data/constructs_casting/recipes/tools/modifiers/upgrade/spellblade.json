@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "irons_spellbooks:arcane_salvage"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:spellblade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/held"
+  }
+}

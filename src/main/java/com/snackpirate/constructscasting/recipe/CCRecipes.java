@@ -59,6 +59,7 @@ import slimeknights.tconstruct.library.recipe.worktable.ModifierSetWorktableReci
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.shared.TinkerCommons;
+import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
@@ -202,6 +203,17 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
 				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
+        //spellblade
+        ModifierRecipeBuilder.modifier(CCModifiers.SPELLBLADE)
+                .allowCrystal()
+                .exactLevel(1)
+                .setSlots(SlotType.UPGRADE, 1)
+                .setTools(Ingredient.of(TinkerTags.Items.HELD))
+                .setMaxLevel(1)
+                .addInput(TinkerMaterials.steel.getIngotTag())
+                .addInput(ItemRegistry.ARCANE_SALVAGE.get())
+                .addInput(TinkerMaterials.steel.getIngotTag())
+                .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/spellblade"));
 		//encyclopedic
 		ModifierRecipeBuilder.modifier(CCModifiers.ENCYCLOPEDIC)
 				.allowCrystal()

@@ -79,7 +79,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId COOLDOWN_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "cooldown_upgrade");
 	public static final ModifierId ELDRITCH_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_upgrade");
 	
-	public static final ModifierId SPELL_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "spell_dispulsion");
+	public static final ModifierId SPELL_DISPULSION     = new ModifierId(ConstructsCasting.MOD_ID, "spell_dispulsion");
 	public static final ModifierId FIRE_DISPULSION      = new ModifierId(ConstructsCasting.MOD_ID, "fire_dispulsion");
 	public static final ModifierId ICE_DISPULSION       = new ModifierId(ConstructsCasting.MOD_ID, "ice_dispulsion");
 	public static final ModifierId LIGHTNING_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "lightning_dispulsion");
