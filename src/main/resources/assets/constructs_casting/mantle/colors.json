@@ -43,7 +43,8 @@
     "regrowth": "#8e661b",
     "expedient": "#8AAE60",
     "solar_charged": "#48B518",
-    "ichorspells": "#ff970d"
+    "ichorspells": "#ff970d",
+    "dragonspells": "#413248"
   },
   "material.constructs_casting": {
     "__tier_2__": null,
@@ -56,7 +57,9 @@
     "arcane_cloth":"#adc6f5",
     "arcane_hide":"#dbbbcd",
     "exilite": "#6e7278",
-    "rainbowslime": "#fc493a"
+    "rainbowslime": "#fc493a",
+    "__tier_4__": null,
+    "dragonskin": "#413248"
   },
   "stat.tconstruct.slot.affinity": "#ea9999"
 }

@@ -34,6 +34,7 @@ public class CCLang extends LanguageProvider {
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
 		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
         addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
+        addMaterial(CCMaterials.dragonskin, "Dragonskin", "How to read your dragon", "The might of the dragon empowers your magic while in flight.");
         add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
@@ -193,6 +194,7 @@ public class CCLang extends LanguageProvider {
         add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
         add("modifier.constructs_casting.thick_skinned.cooldown_reduction", "Thick-Skinned Cooldown Reduction");
         addModifier(CCModifiers.ICHORSPELLS, "Ichorspells", "You are filled with ichor... and determination I guess", "Increases Spell Power by 15% in exchange for -30% mana regeneration");
+        addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragon tinker", "Increases Spell Power by 25% while mid-air.");
 
     }
 

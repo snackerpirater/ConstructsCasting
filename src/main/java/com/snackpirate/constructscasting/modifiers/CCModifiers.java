@@ -56,6 +56,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> CONSERVING = MODIFIERS.register("conserving", ConservingModifier::new);
 	public static final StaticModifier<Modifier> SOLAR_CHARGED = MODIFIERS.register("solar_charged", SolarChargedModifier::new);
 	public static final StaticModifier<Modifier> SPELL_SLOTS = MODIFIERS.register("spell_slots", SpellSlotsModifier::new);
+    public static final StaticModifier<Modifier> DRAGONSPELLS = MODIFIERS.register("dragonspells", DragonspellsModifier::new);
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
@@ -100,6 +101,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final ModifierId THICK_SKINNED = new ModifierId(ConstructsCasting.MOD_ID, "thick_skinned");
     public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
     public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
+    //increase SP in air
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);

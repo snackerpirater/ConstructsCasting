@@ -65,7 +65,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 //		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
-//		addMaterial(dragonskin, 4, 0, true);
+		addMaterial(dragonskin, 4, 0, true);
 	}
 
 	@Override
@@ -126,7 +126,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
 					new MagicClothMaterialStats(10, 0.05f));
             addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
-			addMaterialStats(dragonskin, new MagicBaseMaterialStats(200, 0.1f));
+			addMaterialStats(dragonskin, new MagicBaseMaterialStats(200, -0.1f));
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(paper, new MagicClothMaterialStats(8, -0.15f));
@@ -165,7 +165,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(hogskin, CCModifiers.ARCANE);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
-			addDefaultTraits(dragonskin, CCModifiers.ENDER_UPGRADE);
+			addDefaultTraits(dragonskin, CCModifiers.DRAGONSPELLS);
 			addTraits(frostRod, HandleMaterialStats.ID, new ModifierEntry(CCModifiers.ICE_UPGRADE, 1));
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
@@ -212,6 +212,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
 			buildRenderInfo(leaf).color(0x48B518).fallbacks("vine");
+            buildRenderInfo(dragonskin).color(0x413248).fallbacks("rock", "primitive");
 
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 

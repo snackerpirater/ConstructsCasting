@@ -149,6 +149,10 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                         .setIngredient(ItemTags.LEAVES)
                                 .setValue(1).setNeeded(1)
                         .save(consumer, ConstructsCasting.id(materialFolder + "leaf"));
+        MaterialRecipeBuilder.materialRecipe(CCMaterials.dragonskin)
+                        .setIngredient(CCItems.Tags.DRAGONSCALES)
+                                .setValue(1).setNeeded(1)
+                        .save(consumer, ConstructsCasting.id(materialFolder + "dragonskin"));
 
         //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)
