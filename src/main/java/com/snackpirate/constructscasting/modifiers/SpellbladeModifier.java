@@ -1,30 +1,19 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
-import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequirementsModule;
-import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -37,7 +26,6 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
 		hookBuilder.addModule(ModifierRequirementsModule.builder().requireModifier(CCModifiers.IMBUED.getId(), 1).translationKey("constructs_casting.modifier.spellblade.requirement").build());
 
 	}
-
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
@@ -75,7 +63,8 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
 
 	@Override
 	public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-		context.getLivingTarget().invulnerableTime = 0;
+		//to allow a melee hit, then a spell hit right afterwards
+		if (context.getLivingTarget() != null) context.getLivingTarget().invulnerableTime = 0;
 		MeleeHitModifierHook.super.afterMeleeHit(tool, modifier, context, damageDealt);
 	}
 
