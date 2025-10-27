@@ -18,6 +18,7 @@ import net.minecraft.world.item.UseAnim;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
@@ -73,7 +74,14 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
     }
 
 	@Override
+	public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+		context.getLivingTarget().invulnerableTime = 0;
+		MeleeHitModifierHook.super.afterMeleeHit(tool, modifier, context, damageDealt);
+	}
+
+	@Override
 	public int getPriority() {
 		return 150;//anything above blocking (100) works, but just to be sure
 	}
+
 }
