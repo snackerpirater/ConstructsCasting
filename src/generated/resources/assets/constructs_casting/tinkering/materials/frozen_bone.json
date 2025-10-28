@@ -9,7 +9,8 @@
       "tconstruct:head",
       "tconstruct:handle",
       "tconstruct:binding",
-      "tconstruct:repair_kit"
+      "tconstruct:repair_kit",
+      "constructs_casting:magic_base"
     ],
     "transformer": {
       "type": "tconstruct:recolor_sprite",

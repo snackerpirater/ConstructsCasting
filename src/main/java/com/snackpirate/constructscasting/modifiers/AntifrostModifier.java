@@ -1,6 +1,8 @@
 package com.snackpirate.constructscasting.modifiers;
 
+import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.modifiers.hooks.SpellDamageModifierHook;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.network.chat.Component;
@@ -25,7 +27,7 @@ import java.util.List;
 public class AntifrostModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook, SpellDamageModifierHook {
 	@Override
 	protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-		hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP);
+		hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, CCModifierHooks.SPELL_DAMAGE);
 		super.registerHooks(hookBuilder);
 	}
 	private static final float DAMAGE_PER_LEVEL = 3f;
@@ -43,9 +45,9 @@ public class AntifrostModifier extends Modifier implements MeleeDamageModifierHo
 	}
 
 	private static float calculateBonus(ModifierEntry modifier, LivingEntity target) {
-//		ConstructsCasting.LOGGER.info("calc bonus");
 		int level = modifier.getLevel();
 		int isFrozen = target.getTicksFrozen() > target.getTicksRequiredToFreeze() ? 1 : 0;
+//		ConstructsCasting.LOGGER.info("calc bonus {}", DAMAGE_PER_LEVEL * level * isFrozen);
 		return DAMAGE_PER_LEVEL * level * isFrozen;
 	}
 
@@ -65,6 +67,8 @@ public class AntifrostModifier extends Modifier implements MeleeDamageModifierHo
 
 	@Override
 	public float getSpellDamage(IToolStackView tool, ModifierEntry modifier, LivingEntity caster, LivingEntity target, AbstractSpell spell, float previousDamage) {
+//		ConstructsCasting.LOGGER.info("get spell damage for {}: {}", tool.getItem().getDescriptionId(), previousDamage + (target != null && tool.getItem().builtInRegistryHolder().is(CCItems.Tags.MODIFIABLE_CURIOS) ? calculateBonus(modifier, target) : 0));
+//		ConstructsCasting.LOGGER.info("bool test: {}, {}", target != null, tool.getItem().builtInRegistryHolder().is(CCItems.Tags.MODIFIABLE_CURIOS));
 		return previousDamage + (target != null && tool.getItem().builtInRegistryHolder().is(CCItems.Tags.MODIFIABLE_CURIOS) ? calculateBonus(modifier, target) : 0);
 	}
 }

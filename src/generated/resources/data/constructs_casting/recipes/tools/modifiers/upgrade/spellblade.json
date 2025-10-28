@@ -3,13 +3,13 @@
   "allow_crystal": true,
   "inputs": [
     {
-      "item": "minecraft:netherite_scrap"
+      "tag": "forge:ingots/steel"
     },
     {
       "item": "irons_spellbooks:arcane_salvage"
     },
     {
-      "item": "minecraft:netherite_scrap"
+      "tag": "forge:ingots/steel"
     }
   ],
   "level": 1,

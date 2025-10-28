@@ -120,6 +120,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
 					new HandleMaterialStats(0.1f, -0.05f, -0.1f, 0.1f),
+					new MagicBaseMaterialStats(100, 0.05f),
 					StatlessMaterialStats.BINDING);
 			addMaterialStats(frostRod,
 					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));

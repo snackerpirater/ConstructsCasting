@@ -2,8 +2,6 @@ package com.snackpirate.constructscasting.modifiers.hooks;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
-import com.snackpirate.constructscasting.items.ModifiableSpellbookItem;
-import com.snackpirate.constructscasting.modifiers.ConservingModifier;
 import io.redspace.ironsspellbooks.api.events.SpellDamageEvent;
 import io.redspace.ironsspellbooks.api.events.SpellOnCastEvent;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
@@ -16,12 +14,9 @@ import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
-import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import top.theillusivec4.curios.api.CuriosApi;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 //event subscriber for tool hooks
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, modid = ConstructsCasting.MOD_ID)
