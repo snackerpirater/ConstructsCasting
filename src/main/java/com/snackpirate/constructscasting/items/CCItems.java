@@ -94,6 +94,8 @@ public class CCItems {
 		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
         public static final TagKey<Item> MODIFIABLE_SPELLCASTING = ItemTags.create(ConstructsCasting.id("modifiable_staffs"));
 		public static final TagKey<Item> DRAGONSCALES = ItemTags.create(ConstructsCasting.id("dragon_scales"));
+		public static final TagKey<Item> MODIFIABLE_CURIOS = ItemTags.create(ConstructsCasting.id("modifiable_curios"));
+
         public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(pOutput, pLookupProvider, pBlockTags, modId, existingFileHelper);
 		}
@@ -118,6 +120,7 @@ public class CCItems {
 			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
             tag(MODIFIABLE).add(platedSpellbook.get(), slimySpellbook.get());
+			tag(MODIFIABLE_CURIOS).add(platedSpellbook.get(), slimySpellbook.get());
 			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS, MODIFIABLE_SPELLCASTING);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());

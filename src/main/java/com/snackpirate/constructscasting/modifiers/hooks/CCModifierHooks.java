@@ -5,9 +5,10 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.module.ModuleHook;
 
 public class CCModifierHooks {
+    CCModifierHooks() {}
     public static void init() {}
 
-    public static final ModuleHook<SpellDamageModifierHook> SPELL_DAMAGE = ModifierHooks.register(ConstructsCasting.id("spell_damage"), SpellDamageModifierHook.class, SpellDamageModifierHook.AllMerger::new, (a, b, c, d, e, f, g) -> {return 0;});
+    public static final ModuleHook<SpellDamageModifierHook> SPELL_DAMAGE = ModifierHooks.register(ConstructsCasting.id("spell_damage"), SpellDamageModifierHook.class, SpellDamageModifierHook.AllMerger::new, (a, b, c, d, e, f) -> f);
 
     public static final ModuleHook<SpellHitModifierHook> SPELL_HIT = ModifierHooks.register(ConstructsCasting.id("spell_hit"), SpellHitModifierHook.class, SpellHitModifierHook.AllMerger::new, (a, b, c) -> {});
 

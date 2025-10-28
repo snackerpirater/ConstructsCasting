@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.modifiers;
 
+import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
@@ -30,7 +31,6 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         float ret = MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
-//        ConstructsCasting.LOGGER.info("spellblade tool use");
         Player player = context.getPlayerAttacker();
         InteractionHand interactionHand = context.getHand();
         ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -52,20 +52,16 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
         }
 
         String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
-        //TODO: recreate attemptInitiateCast with appropriate logic: longer cooldown, no cast time
         if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot)) {
 			MagicData.getPlayerMagicData(player).initiateCast(spellData.getSpell(), spellData.getLevel(), 0, CastSource.SWORD, castingSlot);
 		}
-//		MagicData.getPlayerMagicData(player).castDurationRemaining = 0;
-//        spellData.getSpell().castSpell(context.getLevel(), spellData.getLevel(), (ServerPlayer) context.getPlayerAttacker(), CastSource.SWORD, true);
-        return MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
+        return ret;
     }
 
 	@Override
 	public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
 		//to allow a melee hit, then a spell hit right afterwards
 		if (context.getLivingTarget() != null) context.getLivingTarget().invulnerableTime = 0;
-		MeleeHitModifierHook.super.afterMeleeHit(tool, modifier, context, damageDealt);
 	}
 
 	@Override
