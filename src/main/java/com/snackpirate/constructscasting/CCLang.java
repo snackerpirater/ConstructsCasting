@@ -194,8 +194,8 @@ public class CCLang extends LanguageProvider {
         add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
         add("modifier.constructs_casting.thick_skinned.cooldown_reduction", "Thick-Skinned Cooldown Reduction");
         addModifier(CCModifiers.ICHORSPELLS, "Ichorspells", "You are filled with ichor... and determination I guess", "Increases Spell Power by 15% in exchange for -30% mana regeneration");
-        addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragon tinker", "Increases Spell Power by 25% while mid-air.");
-
+        addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragonsmith", "Increases Spell Power by 25% while mid-air.");
+		addModifier(CCModifiers.GASHING.getId(), "Gashing", "You haemophile", "Dealing damage with spells has a 50% chance to apply the Bleeding effect");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

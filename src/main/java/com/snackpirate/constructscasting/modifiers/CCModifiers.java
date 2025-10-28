@@ -57,6 +57,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> SOLAR_CHARGED = MODIFIERS.register("solar_charged", SolarChargedModifier::new);
 	public static final StaticModifier<Modifier> SPELL_SLOTS = MODIFIERS.register("spell_slots", SpellSlotsModifier::new);
     public static final StaticModifier<Modifier> DRAGONSPELLS = MODIFIERS.register("dragonspells", DragonspellsModifier::new);
+	public static final StaticModifier<Modifier> GASHING = MODIFIERS.register("gashing", GashingModifier::new);
 
 
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");

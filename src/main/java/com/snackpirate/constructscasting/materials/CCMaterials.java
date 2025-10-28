@@ -136,6 +136,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
+			addMaterialStats(MaterialIds.nahuatl, new MagicBaseMaterialStats(150, -0.1f));
 
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
@@ -179,6 +180,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.ichorskin, MagicClothMaterialStats.ID, CCModifiers.ICHORSPELLS);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
             addTraits(MaterialIds.bamboo, MagicBaseMaterialStats.ID, CCModifiers.EXPEDIENT);
+			addTraits(MaterialIds.nahuatl, MagicBaseMaterialStats.ID, CCModifiers.GASHING);
 
 			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.SPELL_DISPULSION);
 			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);

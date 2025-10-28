@@ -45,7 +45,8 @@
     "expedient": "#8AAE60",
     "solar_charged": "#48B518",
     "ichorspells": "#ff970d",
-    "dragonspells": "#413248"
+    "dragonspells": "#413248",
+    "gashing": "#601cc4"
   },
   "material.constructs_casting": {
     "__tier_2__": null,

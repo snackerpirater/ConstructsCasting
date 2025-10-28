@@ -92,7 +92,7 @@ public class CCHookEvents {
                 IToolStackView toolStack = context.getToolInSlot(slotType);
                 if (toolStack != null && !toolStack.isBroken() && (livingAttacker.getItemBySlot(slotType).is(TinkerTags.Items.HELD) || livingAttacker.getItemBySlot(slotType).is(TinkerTags.Items.ARMOR))) {
                     for (ModifierEntry entry : toolStack.getModifierList()) {
-                        entry.getHook(CCModifierHooks.SPELL_HIT).onSpellHit(target, damage[0], event.getSpellDamageSource()); }
+                        entry.getHook(CCModifierHooks.SPELL_HIT).onSpellHit(toolStack, entry, target, damage[0], event.getSpellDamageSource()); }
                 }
             }
             if (attacker instanceof Player player) {
@@ -100,7 +100,8 @@ public class CCHookEvents {
 //					ConstructsCasting.LOGGER.info("change mana event 2");
                     IToolStackView toolStack = ToolStack.from(slotResult.stack());
                     for (ModifierEntry entry: toolStack.getModifierList()) {
-                        entry.getHook(CCModifierHooks.SPELL_HIT).onSpellHit(target, damage[0], event.getSpellDamageSource());
+//                        ConstructsCasting.LOGGER.info("spell hit {}", entry);
+                        entry.getHook(CCModifierHooks.SPELL_HIT).onSpellHit(toolStack, entry, target, damage[0], event.getSpellDamageSource());
                     }
                 }));
             }
