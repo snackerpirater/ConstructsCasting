@@ -42,6 +42,6 @@ public class AntimagicModifier extends Modifier implements MeleeDamageModifierHo
 		list.add(applyStyle(Component.literal(Util.BONUS_FORMAT.format(damageBoost) + " ").append(Component.translatable("modifier.constructs_casting.antimagic.damage_boost"))));
 	}
 	private static boolean isMagicUser(LivingEntity target) {
-		return MagicData.getPlayerMagicData(target).isCasting() || target instanceof AbstractSpellCastingMob || target instanceof MagicSummon;
+		return MagicData.getPlayerMagicData(target).isCasting() || target instanceof AbstractSpellCastingMob || target instanceof MagicSummon || MagicData.getPlayerMagicData(target).getMana() > 101;
 	}
 }

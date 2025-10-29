@@ -24,7 +24,7 @@ import java.util.List;
 public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
-    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone);
+    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.venombone, MaterialIds.necroticBone, MaterialIds.blazewood, MaterialIds.blazingBone);
     public static final List<MaterialId> platingMaterials = List.of(MaterialIds.searedStone, MaterialIds.cobalt, MaterialIds.gold, MaterialIds.iron, MaterialIds.steel, MaterialIds.pigIron, MaterialIds.copper, MaterialIds.obsidian); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
@@ -126,18 +126,23 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new HandleMaterialStats(0.1f, -0.1f, -0.15f, 0.15f));
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
 					new MagicClothMaterialStats(10, 0.05f));
-            addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
 			addMaterialStats(dragonskin, new MagicBaseMaterialStats(200, -0.1f));
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(paper, new MagicClothMaterialStats(8, -0.15f));
 			addMaterialStats(leaf, new MagicClothMaterialStats(6, 0.15f));
+			addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
 
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
-            addMaterialStats(MaterialIds.bone, new MagicBaseMaterialStats(75, 0.1f));
 			addMaterialStats(MaterialIds.nahuatl, new MagicBaseMaterialStats(150, -0.1f));
+			addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(150, 0.05f));
+			addMaterialStats(MaterialIds.bone, new MagicBaseMaterialStats(75, 0.1f));
+			addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(100, -0.05f));
+			addMaterialStats(MaterialIds.venombone, new MagicBaseMaterialStats(125, 0.1f));
+			addMaterialStats(MaterialIds.blazingBone, new MagicBaseMaterialStats(200, -0.1f));
+			addMaterialStats(MaterialIds.blazewood, new MagicBaseMaterialStats(150, 0.1f));
 
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
