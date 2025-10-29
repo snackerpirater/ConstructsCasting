@@ -189,13 +189,14 @@ public class CCLang extends LanguageProvider {
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
         addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
-        add("modifier.constructs_casting.solar_charged.boost", "Mana Regen In Sun");
+        add("modifier.constructs_casting.solar_charged.boost", "Solar Charged Mana Regen");
         addModifier(CCModifiers.THICK_SKINNED, "Thick-Skinned", "You monster", "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.");
         add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
         add("modifier.constructs_casting.thick_skinned.cooldown_reduction", "Thick-Skinned Cooldown Reduction");
         addModifier(CCModifiers.ICHORSPELLS, "Ichorspells", "You are filled with ichor... and determination I guess", "Increases Spell Power by 15% in exchange for -30% mana regeneration");
-        addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragonsmith", "Increases Spell Power by 25% while mid-air.");
+        addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragonsmith", "Increases Spell Power by 10% while mid-air.");
 		addModifier(CCModifiers.GASHING.getId(), "Gashing", "You haemophile", "Dealing damage with spells has a 50% chance to apply the Bleeding effect");
+        addModifier(CCModifiers.PUNCTURING.getId(), "Puncturing", "Why is magic blocked by armor anyways?", "Spell damage cancels out some of the target's armor!");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
