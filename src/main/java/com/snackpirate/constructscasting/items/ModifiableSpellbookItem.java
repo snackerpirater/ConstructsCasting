@@ -172,11 +172,11 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         ToolStack tool = ToolStack.from(stack);
         AttributeInstance maxMana = slotContext.entity().getAttribute(AttributeRegistry.MAX_MANA.get());
-        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.mana_bonus")).forEach((modifier) -> maxMana.removeModifier(modifier));
+        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.mana_bonus")).forEach(maxMana::removeModifier);
         AttributeInstance sp = slotContext.entity().getAttribute(AttributeRegistry.SPELL_POWER.get());
-        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.spell_power_bonus")).forEach((modifier) -> sp.removeModifier(modifier));
+        sp.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.spell_power_bonus")).forEach(sp::removeModifier);
         AttributeInstance cd = slotContext.entity().getAttribute(AttributeRegistry.COOLDOWN_REDUCTION.get());
-        maxMana.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.cd_reduction")).forEach((modifier) -> cd.removeModifier(modifier));
+        cd.getModifiers().stream().filter((modifier) -> modifier.getName().equals("tool.constructs_casting.cd_reduction")).forEach(cd::removeModifier);
 		EquipmentChangeContext context = new EquipmentChangeContext(slotContext.entity(), EquipmentSlot.LEGS, stack, newStack);
 		for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.EQUIPMENT_CHANGE).onUnequip(tool, entry, context);

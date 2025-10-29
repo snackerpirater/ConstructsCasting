@@ -197,6 +197,10 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragonsmith", "Increases Spell Power by 10% while mid-air.");
 		addModifier(CCModifiers.GASHING.getId(), "Gashing", "You haemophile", "Dealing damage with spells has a 50% chance to apply the Bleeding effect");
         addModifier(CCModifiers.PUNCTURING.getId(), "Puncturing", "Why is magic blocked by armor anyways?", "Spell damage cancels out some of the target's armor!");
+        addModifier(CCModifiers.ENDERBENDER.getId(), "Enderbender", "Hey, I've seen this one before!", "Teleporting via spell grants the Evasion effect");
+        addModifier(CCModifiers.APOPTOTIC.getId(), "Apoptotic", "This may be overpowered but who knows", "Dealing spell damage over a certain threshold heals you");
+        addModifier(CCModifiers.CALORIFIC.getId(), "Calorific", "Hot ones, and by ones I mean spells", "Spells deal multiplied damage when you are on fire");
+        add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

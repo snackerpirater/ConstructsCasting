@@ -59,7 +59,9 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final StaticModifier<Modifier> DRAGONSPELLS = MODIFIERS.register("dragonspells", DragonspellsModifier::new);
 	public static final StaticModifier<Modifier> GASHING = MODIFIERS.register("gashing", GashingModifier::new);
     public static final StaticModifier<Modifier> PUNCTURING = MODIFIERS.register("puncturing", PuncturingModifier::new);
-
+    public static final StaticModifier<Modifier> ENDERBENDER = MODIFIERS.register("enderbender", EnderbenderModifier::new);
+    public static final StaticModifier<Modifier> APOPTOTIC = MODIFIERS.register("apoptotic", ApoptoticModifier::new);
+    public static final StaticModifier<Modifier> CALORIFIC = MODIFIERS.register("calorific", CalorificModifier::new);
 	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
