@@ -46,7 +46,8 @@
     "solar_charged": "#48B518",
     "ichorspells": "#ff970d",
     "dragonspells": "#413248",
-    "gashing": "#601cc4"
+    "gashing": "#601cc4",
+    "puncturing": "#D1D37A"
   },
   "material.constructs_casting": {
     "__tier_2__": null,
