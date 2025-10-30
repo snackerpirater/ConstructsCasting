@@ -47,7 +47,10 @@
     "ichorspells": "#ff970d",
     "dragonspells": "#413248",
     "gashing": "#601cc4",
-    "puncturing": "#D1D37A"
+    "puncturing": "#D1D37A",
+    "enderbender": "#8F648F",
+    "apoptotic": "#4D4D4D",
+    "calorific": "#DBCC0B"
   },
   "material.constructs_casting": {
     "__tier_2__": null,
