@@ -201,6 +201,7 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.APOPTOTIC.getId(), "Apoptotic", "This may be overpowered but who knows", "Dealing spell damage over a certain threshold heals you");
         addModifier(CCModifiers.CALORIFIC.getId(), "Calorific", "Hot ones, and by ones I mean spells", "Spells deal multiplied damage when you are on fire");
         add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");
+        addModifier(CCModifiers.RINGBEARER.getId(), "Ringbearer", "Does it give you two more fingers?", "Allows you to wear two more rings on your person.");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

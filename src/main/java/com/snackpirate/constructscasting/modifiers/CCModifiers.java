@@ -218,6 +218,7 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
 			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
+            tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER.getId());
 		}
 
 		@Override

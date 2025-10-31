@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -250,6 +251,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
 				.setSlots(SlotType.ABILITY, 1)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/improveable"));
+        ModifierRecipeBuilder.modifier(CCModifiers.RINGBEARER)
+                .addInput(Ingredient.of(getItemTag("curios", "ring")))
+                .addInput(getItemTag("forge", "ingots/steel"))
+                .addInput(Ingredient.of(getItemTag("curios", "ring")))
+                .setSlots(SlotType.ABILITY, 1)
+                .setTools(TinkerTags.Items.CHESTPLATES)
+                .setMaxLevel(1)
+                .save(consumer, ConstructsCasting.id(modifierFolder + "ability/ringbearer"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
