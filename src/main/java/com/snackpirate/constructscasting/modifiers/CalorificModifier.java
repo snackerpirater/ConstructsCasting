@@ -44,7 +44,7 @@ public class CalorificModifier extends Modifier implements TooltipModifierHook, 
             bonus = 0.0F;
         }
 
-        tooltip.add(this.applyStyle(Component.literal(Util.PERCENT_BOOST_FORMAT.format((double)bonus) + " ").append(Component.translatable("modifier.constructs_casting.calorific.boost"))));
+        tooltip.add(this.applyStyle(Component.literal(Util.PERCENT_BOOST_FORMAT.format(bonus) + " ").append(Component.translatable("modifier.constructs_casting.calorific.boost"))));
 
     }
 }
