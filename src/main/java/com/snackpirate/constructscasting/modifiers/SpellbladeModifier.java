@@ -4,6 +4,7 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
+import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
@@ -50,7 +51,7 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
                 return ret;
             }
         }
-
+        if (spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player) > 40 || spellData.getSpell().getCastType()== CastType.CONTINUOUS) return ret; //if it takes longer than two seconds then don't do it (to prevent instablackhole)
         String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
         if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot)) {
 			MagicData.getPlayerMagicData(player).initiateCast(spellData.getSpell(), spellData.getLevel(), 0, CastSource.SWORD, castingSlot);
