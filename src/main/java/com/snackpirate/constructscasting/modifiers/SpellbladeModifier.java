@@ -19,6 +19,7 @@ import slimeknights.tconstruct.library.modifiers.modules.build.ModifierRequireme
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModifierHook {
 	@Override
@@ -51,7 +52,7 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
                 return ret;
             }
         }
-        if (spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player) > 40 || spellData.getSpell().getCastType()== CastType.CONTINUOUS) return ret; //if it takes longer than two seconds then don't do it (to prevent instablackhole)
+        if (!context.isFullyCharged() || spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player) > 100/tool.getStats().get(ToolStats.ATTACK_SPEED) || spellData.getSpell().getCastType() == CastType.CONTINUOUS) return ret;
         String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
         if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot)) {
 			MagicData.getPlayerMagicData(player).initiateCast(spellData.getSpell(), spellData.getLevel(), 0, CastSource.SWORD, castingSlot);
