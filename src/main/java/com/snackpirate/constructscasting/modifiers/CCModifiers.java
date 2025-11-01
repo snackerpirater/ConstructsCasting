@@ -38,6 +38,7 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import top.theillusivec4.curios.api.SlotAttribute;
 
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
@@ -62,7 +63,8 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final StaticModifier<Modifier> ENDERBENDER = MODIFIERS.register("enderbender", EnderbenderModifier::new);
     public static final StaticModifier<Modifier> APOPTOTIC = MODIFIERS.register("apoptotic", ApoptoticModifier::new);
     public static final StaticModifier<Modifier> CALORIFIC = MODIFIERS.register("calorific", CalorificModifier::new);
-	public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
+	public static final StaticModifier<RingbearerModifier> RINGBEARER = MODIFIERS.register("ringbearer", RingbearerModifier::new);
+    public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
 	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
@@ -216,6 +218,7 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
 			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
+            tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER.getId());
 		}
 
 		@Override

@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "tag": "curios:ring"
+    },
+    {
+      "tag": "forge:ingots/steel"
+    },
+    {
+      "tag": "curios:ring"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:ringbearer",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/chestplate"
+  }
+}
