@@ -4,7 +4,6 @@ import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.CCSounds;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
-import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballSpell;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;

@@ -13,7 +13,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -209,6 +208,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .allowCrystal()
                 .exactLevel(1)
                 .setSlots(SlotType.UPGRADE, 1)
+				//i can't imagine spellblade being that useful, plus imbued is already an ability
                 .setTools(Ingredient.of(TinkerTags.Items.HELD))
                 .setMaxLevel(1)
                 .addInput(TinkerMaterials.steel.getIngotTag())

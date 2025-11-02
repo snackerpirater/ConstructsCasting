@@ -31,11 +31,8 @@ import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
-import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.TinkerFood;
-import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerModifiers;
-import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;

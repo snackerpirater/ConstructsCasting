@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.modifiers.Modifier;

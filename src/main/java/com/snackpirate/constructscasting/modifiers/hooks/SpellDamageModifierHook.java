@@ -1,8 +1,6 @@
 package com.snackpirate.constructscasting.modifiers.hooks;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import io.redspace.ironsspellbooks.api.spells.CastSource;
 import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;

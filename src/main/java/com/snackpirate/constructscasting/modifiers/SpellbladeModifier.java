@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
@@ -35,6 +34,7 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
         float ret = MeleeHitModifierHook.super.beforeMeleeHit(tool, modifier, context, damage, baseKnockback, knockback);
         Player player = context.getPlayerAttacker();
         InteractionHand interactionHand = context.getHand();
+		if (player == null) return ret;
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (!ISpellContainer.isSpellContainer(itemStack)) return ret;
         ISpellContainer container = ISpellContainer.get(itemStack);
@@ -52,7 +52,10 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
                 return ret;
             }
         }
-        if (!context.isFullyCharged() || spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player) > 100/tool.getStats().get(ToolStats.ATTACK_SPEED) || spellData.getSpell().getCastType() == CastType.CONTINUOUS) return ret;
+		//ticks of cast time: spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player)
+		//ticks for three attacks: 60/tool.getStats().get(ToolStats.ATTACK_SPEED)
+		//if the cast time of the imbued spell is greater than the time of 3 full swings, then it can't cast
+        if (!context.isFullyCharged() || spellData.getSpell().getEffectiveCastTime(spellData.getLevel(), player) > 60/tool.getStats().get(ToolStats.ATTACK_SPEED) || spellData.getSpell().getCastType() == CastType.CONTINUOUS) return ret;
         String castingSlot = interactionHand.ordinal() == 0 ? SpellSelectionManager.MAINHAND : SpellSelectionManager.OFFHAND;
         if (spellData.getSpell().attemptInitiateCast(itemStack, spellData.getLevel(), player.level(), player, CastSource.SWORD, true, castingSlot)) {
 			MagicData.getPlayerMagicData(player).initiateCast(spellData.getSpell(), spellData.getLevel(), 0, CastSource.SWORD, castingSlot);

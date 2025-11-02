@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.modifiers.hooks.SpellHitModifierHook;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;

@@ -22,21 +22,27 @@ public class RingbearerModifier extends Modifier implements EquipmentChangeModif
 
     @Override
     public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        CuriosApi.getCuriosInventory(context.getEntity()).ifPresent(handler -> {
-            handler.getStacksHandler("ring").ifPresent(stacks -> {
-                stacks.addTransientModifier(new AttributeModifier(MODIFIER_UUID, "name", 2, AttributeModifier.Operation.ADDITION));
+//        ConstructsCasting.LOGGER.info("ringbearer eq");
+        if (!context.getLevel().isClientSide()) {
+            CuriosApi.getCuriosInventory(context.getEntity()).ifPresent(handler -> {
+                handler.getStacksHandler("ring").ifPresent(stacks -> {
+                    stacks.addTransientModifier(new AttributeModifier(MODIFIER_UUID, "name", 2, AttributeModifier.Operation.ADDITION));
+                });
             });
-        });
+        }
         EquipmentChangeModifierHook.super.onEquip(tool, modifier, context);
     }
 
     @Override
     public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        CuriosApi.getCuriosInventory(context.getEntity()).ifPresent(handler -> {
-            handler.getStacksHandler("ring").ifPresent(stacks -> {
-                stacks.removeModifier(MODIFIER_UUID);
+//        ConstructsCasting.LOGGER.info("ringbearer uneq");
+        if (!context.getLevel().isClientSide()) {
+            CuriosApi.getCuriosInventory(context.getEntity()).ifPresent(handler -> {
+                handler.getStacksHandler("ring").ifPresent(stacks -> {
+                    stacks.removeModifier(MODIFIER_UUID);
+                });
             });
-        });
+        }
         EquipmentChangeModifierHook.super.onUnequip(tool, modifier, context);
     }
 }

@@ -17,8 +17,6 @@ import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 
-import static slimeknights.tconstruct.tools.TinkerToolParts.*;
-
 public class CCTools {
 	public static class CCToolDefinitions extends AbstractToolDefinitionDataProvider {
 
