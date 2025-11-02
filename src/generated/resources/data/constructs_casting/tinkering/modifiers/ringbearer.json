@@ -1,0 +1,14 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "constructs_casting:bonus_curio_slots",
+      "amount": {
+        "each_level": 2
+      },
+      "slot_identifier": "ring",
+      "uuid": "64d62ea-03d8-4919-9ba5-fec06d332c72"
+    }
+  ],
+  "tooltip_display": "always"
+}

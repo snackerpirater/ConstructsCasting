@@ -4,26 +4,23 @@ import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
+import slimeknights.tconstruct.library.json.LevelingInt;
 import slimeknights.tconstruct.library.json.predicate.tool.ToolStackPredicate;
 import slimeknights.tconstruct.library.json.variable.entity.EntityVariable;
 import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.ModifierManager;
-import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.ConditionalStatModule;
@@ -60,7 +57,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final StaticModifier<Modifier> ENDERBENDER = MODIFIERS.register("enderbender", EnderbenderModifier::new);
     public static final StaticModifier<Modifier> APOPTOTIC = MODIFIERS.register("apoptotic", ApoptoticModifier::new);
     public static final StaticModifier<Modifier> CALORIFIC = MODIFIERS.register("calorific", CalorificModifier::new);
-	public static final StaticModifier<RingbearerModifier> RINGBEARER = MODIFIERS.register("ringbearer", RingbearerModifier::new);
+//	public static final StaticModifier<RingbearerModifier> RINGBEARER = MODIFIERS.register("ringbearer", RingbearerModifier::new);
     public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
@@ -103,6 +100,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final ModifierId THICK_SKINNED = new ModifierId(ConstructsCasting.MOD_ID, "thick_skinned");
     public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
     public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
+	public static final ModifierId RINGBEARER = new ModifierId(ConstructsCasting.MOD_ID, "ringbearer");
     //increase SP in air
 
 	public CCModifiers(PackOutput generator) {
@@ -157,6 +155,7 @@ public class CCModifiers extends AbstractModifierProvider {
 //				.addModule(InventoryMenuModule.SHIFT)
 //				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
 		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
+		buildModifier(RINGBEARER).addModule(new BonusCurioSlotModule("ring", new LevelingInt(0, 2), "64d62ea-03d8-4919-9ba5-fec06d332c72"));
 		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
 	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
         buildModifier(THICK_SKINNED)
@@ -215,7 +214,7 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
 			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
-            tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER.getId());
+            tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER);
 		}
 
 		@Override
@@ -224,11 +223,13 @@ public class CCModifiers extends AbstractModifierProvider {
 		}
 	}
 
-	@SubscribeEvent
-	void registerSerializers(RegisterEvent event) {
-		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
+//	@SubscribeEvent
+//	void registerSerializers(RegisterEvent event) {
+//		ConstructsCasting.LOGGER.info("register event");
+//		if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
 //			ConstructsCasting.LOGGER.info("register serializer event");
-			ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
-		}
-	}
+//			ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
+//			ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
+//		}
+//	}
 }

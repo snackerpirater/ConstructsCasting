@@ -7,7 +7,9 @@ import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCToolSpriteProvider;
 import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.*;
+import com.snackpirate.constructscasting.modifiers.BonusCurioSlotModule;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.recipe.CCRecipes;
 import com.snackpirate.constructscasting.recipe.CCSlotLayoutProvider;
@@ -29,6 +31,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import slimeknights.mantle.client.model.NBTKeyModel;
@@ -37,6 +40,7 @@ import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
+import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
@@ -59,6 +63,7 @@ public class ConstructsCasting {
     public ConstructsCasting() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerSerializers);
         MinecraftForge.EVENT_BUS.register(this);
         CCModifiers.MODIFIERS.register(modEventBus);
         CCFluids.FLUIDS.register(modEventBus);
@@ -122,4 +127,13 @@ public class ConstructsCasting {
         return builder.build();
     }
 
+//    @SubscribeEvent
+    void registerSerializers(RegisterEvent event) {
+        ConstructsCasting.LOGGER.info("register event");
+        if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
+            ConstructsCasting.LOGGER.info("register serializer event");
+            ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
+        }
+    }
 }
