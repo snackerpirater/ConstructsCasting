@@ -40,6 +40,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.SafeClientAccess;
 import slimeknights.mantle.client.TooltipKey;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
@@ -48,6 +51,7 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
@@ -59,6 +63,7 @@ import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -120,12 +125,29 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 		}
 	}
 
-	@Override
+
+    private static final MaterialId RENDER_MATERIAL = new MaterialId(TConstruct.MOD_ID, "ui_render");
+
+    @Override
 	public ItemStack getRenderTool() {
-		if (toolForRendering == null) {
-			toolForRendering = new MaterialIdNBT(List.of(MaterialIds.cobalt, MaterialIds.wood, CCMaterials.paper)).updateStack(this.getDefaultInstance());
-		}
-		return toolForRendering;
+        if (toolForRendering == null) {
+//            toolForRendering = ToolBuildHandler.buildToolForRendering(this, this.getToolDefinition());
+
+            // if no parts, just return the item directly with the display tag
+            ItemStack stack = new ItemStack(this);
+            // during datagen we have no idea if we will or won't have materials, so just add them regardless, won't hurt anything
+            if (!definition.isDataLoaded() || definition.hasMaterials()) {
+                // use all 5 render materials for display stacks, having too many materials is not a problem and its easier than making this reload sensitive
+                stack = new MaterialIdNBT(Arrays.asList(
+                        MaterialIds.cobalt,
+                        MaterialIds.wood,
+                        CCMaterials.paper
+                )).updateStack(stack);
+            }
+            stack.getOrCreateTag().putBoolean(TooltipUtil.KEY_DISPLAY, true);
+            toolForRendering = stack;
+        }
+        return toolForRendering;
 	}
 
 	@Override
