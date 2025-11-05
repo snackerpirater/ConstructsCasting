@@ -184,7 +184,7 @@
   "modifier.constructs_casting.abyssal_upgrade.description": "Grants +5% Abyssal Spell Power.",
   "modifier.constructs_casting.abyssal_upgrade.flavor": "Not to be confused with Aqua",
   "modifier.constructs_casting.antifrost": "Antifrost",
-  "modifier.constructs_casting.antifrost.damage_boost": "Antifrost Damage",
+  "modifier.constructs_casting.antifrost.attack_damage": "Antifrost Damage",
   "modifier.constructs_casting.antifrost.description": "Grants +3 damage per level to frozen targets.",
   "modifier.constructs_casting.antifrost.flavor": "Don't drink it!",
   "modifier.constructs_casting.antimagic": "Antimagic",

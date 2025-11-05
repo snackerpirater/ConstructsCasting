@@ -66,8 +66,8 @@ public class CCLang extends LanguageProvider {
 		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
 		addModifier(CCModifiers.SPELL_PROTECTION, "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
 		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
-		addModifier(CCModifiers.ANTIFROST.getId(), "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
-		add("modifier.constructs_casting.antifrost.damage_boost", "Antifrost Damage");
+		addModifier(CCModifiers.ANTIFROST, "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
+		add("modifier.constructs_casting.antifrost.attack_damage", "Antifrost Damage");
 		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +5% power to all types of spells.");
 		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.");
 
