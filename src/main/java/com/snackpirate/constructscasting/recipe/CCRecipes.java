@@ -341,6 +341,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ItemCastingRecipeBuilder.basinRecipe(CCItems.slimySpellbook.get()).setCast(ItemRegistry.DIAMOND_SPELL_BOOK.get(),  true).setFluidAndTime(new FluidStack(TinkerFluids.enderSlime.get(),                  1000)).save(consumer, ConstructsCasting.id(castingFolder + "tinkerers_spellbook"));
 		//plated spellbook
 		toolBuilding(consumer, CCItems.platedSpellbook, "tools/building/");
+		toolBuilding(consumer, CCItems.travellersSpellbook, "tools/building/");
 		//eldritch staff
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CCItems.eldritchStaff.get())
 				.define('s', Items.ECHO_SHARD)

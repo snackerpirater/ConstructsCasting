@@ -136,10 +136,10 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             //existing materials, new stats
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
-            addMaterialStats(MaterialIds.bone, new MagicBaseMaterialStats(75, 0.1f));
+            addMaterialStats(MaterialIds.bone, new MagicBaseMaterialStats(80, 0.1f));
 			addMaterialStats(MaterialIds.nahuatl, new MagicBaseMaterialStats(150, -0.1f));
-            addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(125, 0.1f));
-            addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(125, -0.05f));
+            addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(130, 0.1f));
+            addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(130, -0.05f));
             addMaterialStats(MaterialIds.blazingBone, new MagicBaseMaterialStats(200, 0f));
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
             addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));

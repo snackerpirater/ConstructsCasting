@@ -52,12 +52,17 @@ public class CCTools {
             ;
 
 			define(TRAVELLERS_SPELLBOOK)
+					.module(PartStatsModule.parts()
+							.part(CCItems.spellbookCover.get(), 0.5f)
+							.part(CCItems.spellbookCover.get(), 0.5f)
+							.part(CCItems.pages.get())
+							.primaryPart(0)
+							.build())
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 3)
+							.slots(SlotType.ABILITY, 1)
 							.build())
-					.module(ToolTraitsModule.builder()
-							.trait(CCModifiers.COOLDOWN_UPGRADE)
-							.build());
+					.module(DefaultMaterialsModule.builder().material(MaterialIds.wood).material(MaterialIds.wood).material(CCMaterials.paper).build());
 			define(PLATED_SPELLBOOK)
 					.module(PartStatsModule.parts()
 							.part(CCItems.spellbookPlating.get())

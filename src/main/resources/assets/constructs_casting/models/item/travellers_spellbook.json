@@ -1,0 +1,15 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+    "binding": "constructs_casting:item/tool/travellers_spellbook/binding",
+    "cover":   "constructs_casting:item/tool/travellers_spellbook/cover",
+    "pages":   "constructs_casting:item/tool/travellers_spellbook/pages"
+  },
+  "modifier_roots": [ "constructs_casting:item/travellers_spellbook/modifiers/" ],
+  "parts": [
+    { "name": "cover",   "index": 1 },
+    { "name": "binding", "index": 0 },
+    { "name": "pages",   "index": 2 }
+  ]
+}

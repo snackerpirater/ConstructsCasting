@@ -24,6 +24,10 @@ public class CCToolSpriteProvider extends AbstractPartSpriteProvider {
 				.addPart("plating", PlatingMaterialStats.SHIELD.getId())
 				.addPart("cover", MagicBaseMaterialStats.ID)
 				.addPart("pages", MagicClothMaterialStats.ID);
+		buildTool("travellers_spellbook")
+				.addPart("binding", MagicBaseMaterialStats.ID)
+				.addPart("cover", MagicBaseMaterialStats.ID)
+				.addPart("pages", MagicClothMaterialStats.ID);
 		addPart("spellbook_plating", PlatingMaterialStats.SHIELD.getId());
 		addPart("spellbook_cover", MagicBaseMaterialStats.ID);
 		addPart("pages", MagicClothMaterialStats.ID);

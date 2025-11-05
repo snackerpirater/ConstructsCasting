@@ -1,15 +1,19 @@
 {
   "icon": {
-    "item": "constructs_casting:plated_spellbook",
-    "nbt": "{tic_materials:[\"tconstruct:cobalt\",\"tconstruct:wood\",\"constructs_casting:paper\"]}"
+    "pattern": "constructs_casting:spellbooks"
   },
   "input_slots": [
     {
-      "filter": {
-        "item": "constructs_casting:spellbook_plating"
-      },
-      "icon": "constructs_casting:spellbook_plating",
-      "translation_key": "item.constructs_casting.spellbook_plating",
+      "filter": [
+        {
+          "item": "constructs_casting:spellbook_cover"
+        },
+        {
+          "item": "constructs_casting:spellbook_plating"
+        }
+      ],
+      "icon": "constructs_casting:spellbooks_first_part",
+      "translation_key": "pattern.constructs_casting.spellbooks_first_part",
       "x": 31,
       "y": 22
     },
@@ -32,6 +36,5 @@
       "y": 53
     }
   ],
-  "sortIndex": 15,
-  "translation_key": "item.constructs_casting.plated_spellbook"
+  "sortIndex": 15
 }

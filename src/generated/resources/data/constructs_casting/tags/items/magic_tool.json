@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:plated_spellbook",
-    "constructs_casting:tinkerers_spellbook"
+    "constructs_casting:tinkerers_spellbook",
+    "constructs_casting:travellers_spellbook"
   ]
 }

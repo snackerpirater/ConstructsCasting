@@ -53,7 +53,7 @@ public class CCItems {
 	public static final ItemObject<Item> exiliteReinforcement = ITEMS.register("exilite_reinforcement", () -> new Item(new Item.Properties().stacksTo(64)));
 	public static final ItemObject<Item> slimySpellbook = ITEMS.register("tinkerers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 6, CCTools.CCToolDefinitions.SLIMY_SPELLBOOK));
 	//will fully implement later vvv
-	public static final ItemObject<Item> travellersSpellbook = ITEMS.register("travellers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 10, CCTools.CCToolDefinitions.TRAVELLERS_SPELLBOOK));
+	public static final ItemObject<ModifiableSpellbookItem> travellersSpellbook = ITEMS.register("travellers_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 12, CCTools.CCToolDefinitions.TRAVELLERS_SPELLBOOK));
 	public static final ItemObject<ModifiableSpellbookItem> platedSpellbook = ITEMS.register("plated_spellbook", () -> new ModifiableSpellbookItem(new Item.Properties().stacksTo(1), 12, CCTools.CCToolDefinitions.PLATED_SPELLBOOK));
 	public static final ItemObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
@@ -81,6 +81,7 @@ public class CCItems {
 		output.accept(spellbookPlatingCast.getRedSand());
 
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
+		ToolBuildHandler.addVariants(output::accept, CCItems.travellersSpellbook.get(), "");
         spellbookPlating.get().addVariants(output::accept, "");
         spellbookCover.get().addVariants(output::accept, "");
         pages.get().addVariants(output::accept, "");
@@ -114,16 +115,16 @@ public class CCItems {
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
-			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get()).add(eldritchStaff.get());
-			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get()).add(platedSpellbook.get());
-            tag(MODIFIABLE).add(platedSpellbook.get(), slimySpellbook.get());
-			tag(MODIFIABLE_CURIOS).add(platedSpellbook.get(), slimySpellbook.get());
-			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get());
+			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get(), eldritchStaff.get(), travellersSpellbook.get());
+			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get(), platedSpellbook.get(), travellersSpellbook.get());
+            tag(MODIFIABLE).addTag(MODIFIABLE_CURIOS);
+			tag(MODIFIABLE_CURIOS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
+			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS, MODIFIABLE_SPELLCASTING);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");
             tag(DRAGONSCALES).add(ItemRegistry.DRAGONSKIN.get(), TinkerModifiers.dragonScale.asItem());
-            tag(MULTIPART_TOOL).add(platedSpellbook.get());
+            tag(MULTIPART_TOOL).add(platedSpellbook.get(), travellersSpellbook.get());
             IntrinsicTagAppender<Item> goldCasts = this.tag(TinkerTags.Items.GOLD_CASTS);
             IntrinsicTagAppender<Item> sandCasts = this.tag(TinkerTags.Items.SAND_CASTS);
             IntrinsicTagAppender<Item> redSandCasts = this.tag(TinkerTags.Items.RED_SAND_CASTS);

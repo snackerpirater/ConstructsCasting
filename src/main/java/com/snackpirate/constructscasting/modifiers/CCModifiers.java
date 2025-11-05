@@ -160,8 +160,8 @@ public class CCModifiers extends AbstractModifierProvider {
 //				.addModule(new VolatileFlagModule(ToolInventoryCapability.INCLUDE_OFFHAND));
 		buildModifier(IMPROVEABLE).addModule(ModifierSlotModule.slot(AFFINITY_SLOT).eachLevel(2)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
 		buildModifier(RINGBEARER).addModule(new BonusCurioSlotModule("ring", new LevelingInt(0, 2), "64d62ea-03d8-4919-9ba5-fec06d332c72"));
-		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
-	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).build();
+		buildModifier(REGROWTH).addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).levelDisplay(ModifierLevelDisplay.DEFAULT).build();
+	    buildModifier(EXPEDIENT).addModule(AttributeModule.builder(AttributeRegistry.CAST_TIME_REDUCTION, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.1f)).levelDisplay(ModifierLevelDisplay.DEFAULT).build();
         buildModifier(THICK_SKINNED)
                 .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
                 .addModule(ConditionalStatModule.stat(CCToolStats.SPELL_POWER)

@@ -185,7 +185,7 @@ public class CCLang extends LanguageProvider {
 
 
 		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");
-        addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 15%.");
+        addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 10%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
         addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
