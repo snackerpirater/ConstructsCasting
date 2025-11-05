@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CCMaterials extends AbstractMaterialDataProvider {
 
-    public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.ancientHide, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
+    public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
     public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone, MaterialIds.blazingBone, MaterialIds.necroticBone);
     public static final List<MaterialId> platingMaterials = List.of(MaterialIds.searedStone, MaterialIds.cobalt, MaterialIds.gold, MaterialIds.iron, MaterialIds.steel, MaterialIds.pigIron, MaterialIds.copper, MaterialIds.obsidian); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
@@ -142,7 +142,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(130, -0.05f));
             addMaterialStats(MaterialIds.blazingBone, new MagicBaseMaterialStats(200, 0f));
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
-            addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
+//            addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
             addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
             addMaterialStats(MaterialIds.ichorskin, new MagicClothMaterialStats(8, 0.05f));
             //spellbook platings
@@ -179,7 +179,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(leaf, CCModifiers.SOLAR_CHARGED);
             addDefaultTraits(hogskin, CCModifiers.THICK_SKINNED);
 			addTraits(MaterialIds.leather, MagicClothMaterialStats.ID, CCModifiers.CONSERVING);
-            addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
+//            addTraits(MaterialIds.ancientHide, MagicClothMaterialStats.ID, ModifierIds.fortified);
             addTraits(MaterialIds.ichorskin, MagicClothMaterialStats.ID, CCModifiers.ICHORSPELLS);
             addTraits(MaterialIds.wood, MagicBaseMaterialStats.ID, CCModifiers.REGROWTH);
             addTraits(MaterialIds.bamboo, MagicBaseMaterialStats.ID, CCModifiers.EXPEDIENT);
