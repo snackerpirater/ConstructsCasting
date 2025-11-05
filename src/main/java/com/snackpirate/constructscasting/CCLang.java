@@ -49,6 +49,9 @@ public class CCLang extends LanguageProvider {
 		add("pattern.constructs_casting.spellbook_plating", "Spellbook Plating");
 		add("pattern.constructs_casting.spellbook_cover", "Spellbook Cover");
 		add("pattern.constructs_casting.pages", "Pages");
+        add("pattern.constructs_casting.spellbooks", "Spellbooks");
+        add("pattern.constructs_casting.spellbooks_first_part", "Spellbook Plating or Cover");
+        add("pattern.constructs_casting.spellbooks.description", "Used to hold and cast spells. Use a Spellbook Plating for the Plated Spellbook, or a Spellbook Cover for the Traveller's Spellbook.");
         add("tool_stat.constructs_casting.extra.no_stats", "No stats");
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");

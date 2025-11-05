@@ -123,7 +123,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	@Override
 	public ItemStack getRenderTool() {
 		if (toolForRendering == null) {
-			toolForRendering = new MaterialIdNBT(List.of(MaterialIds.cobalt, MaterialIds.wood, CCMaterials.paper)).updateStack(new ItemStack(CCItems.platedSpellbook.get()));
+			toolForRendering = new MaterialIdNBT(List.of(MaterialIds.cobalt, MaterialIds.wood, CCMaterials.paper)).updateStack(this.getDefaultInstance());
 		}
 		return toolForRendering;
 	}

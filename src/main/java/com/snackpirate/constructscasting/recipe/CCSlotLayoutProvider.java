@@ -19,6 +19,7 @@ public class CCSlotLayoutProvider extends AbstractStationSlotLayoutProvider {
 	protected void addLayouts() {
 		define(ConstructsCasting.id("spellbooks"))
 				.sortIndex(SORT_ARMOR)
+                .translationKey("pattern.constructs_casting.spellbooks")
 				.icon(new Pattern(ConstructsCasting.id("spellbooks")))
 				.addInputPattern(new Pattern(ConstructsCasting.id("spellbooks_first_part")), 31, 22, Ingredient.of(CCItems.spellbookCover.get(), CCItems.spellbookPlating.get()))
 				.addInputItem(CCItems.spellbookCover.get(), 51, 34)

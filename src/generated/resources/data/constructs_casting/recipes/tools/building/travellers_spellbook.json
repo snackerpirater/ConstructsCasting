@@ -1,5 +1,6 @@
 {
   "type": "tconstruct:tool_building",
   "result": "constructs_casting:travellers_spellbook",
-  "result_count": 1
+  "result_count": 1,
+  "slot_layout": "constructs_casting:spellbooks"
 }
