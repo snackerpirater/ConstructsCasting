@@ -43,6 +43,20 @@ public class CCMaterials extends AbstractMaterialDataProvider {
     public static final MaterialId paper = createMaterial("paper");
 	public static final MaterialId leaf = createMaterial("leaf");
 
+    public static final MaterialId diamond = createMaterial("diamond"); //general SP
+    public static final MaterialId amethyst = createMaterial("amethyst"); //whatever artificer cane
+    public static final MaterialId lapisLazuli = createMaterial("lapis_lazuli"); //CDR
+
+    public static final MaterialId quartz = createMaterial("quartz"); //fire
+    public static final MaterialId emerald = createMaterial("emerald"); //evo
+    public static final MaterialId earthslimeCrystal = createMaterial("earthslime_crystal"); //nature
+    public static final MaterialId skyslimeCrystal = createMaterial("skyslime_crystal"); //lightning
+    public static final MaterialId enderslimeCrystal = createMaterial("enderslime_crystal"); //ender
+    public static final MaterialId ichorCrystal = createMaterial("ichor_crystal"); //blood
+    public static final MaterialId blueIce = createMaterial("blue_ice"); //take a fucking guess
+    public static final MaterialId glowstone = createMaterial("glowstone"); //holy
+    public static final MaterialId echoShard = createMaterial("echo_shard"); //eldritch
+
 	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
