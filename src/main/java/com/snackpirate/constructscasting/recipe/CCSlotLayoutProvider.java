@@ -12,24 +12,18 @@ public class CCSlotLayoutProvider extends AbstractStationSlotLayoutProvider {
 		super(packOutput);
 	}
 
-	/**
-	 *
-	 */
 	@Override
 	protected void addLayouts() {
 		define(ConstructsCasting.id("spellbooks"))
 				.sortIndex(SORT_ARMOR)
                 .translationKey("pattern.constructs_casting.spellbooks")
 				.icon(new Pattern(ConstructsCasting.id("spellbooks")))
-				.addInputPattern(new Pattern(ConstructsCasting.id("spellbooks_first_part")), 31, 22, Ingredient.of(CCItems.spellbookCover.get(), CCItems.spellbookPlating.get()))
-				.addInputItem(CCItems.spellbookCover.get(), 51, 34)
-				.addInputItem(CCItems.pages.get(), 22, 53)
+				.addInputPattern(new Pattern(ConstructsCasting.id("spellbooks_first_part")), 31-9, 22+9, Ingredient.of(CCItems.spellbookCover.get(), CCItems.spellbookPlating.get()))
+				.addInputItem(CCItems.spellbookCover.get(), 51-9, 34+9)
+				.addInputItem(CCItems.pages.get(), 31-9, 43+9)
 				.build();
 	}
 
-	/**
-	 * @return
-	 */
 	@Override
 	public String getName() {
 		return "Construct's Casting Station Slot Layout Provider";

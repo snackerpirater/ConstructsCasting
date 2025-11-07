@@ -14,8 +14,8 @@
       ],
       "icon": "constructs_casting:spellbooks_first_part",
       "translation_key": "pattern.constructs_casting.spellbooks_first_part",
-      "x": 31,
-      "y": 22
+      "x": 22,
+      "y": 31
     },
     {
       "filter": {
@@ -23,8 +23,8 @@
       },
       "icon": "constructs_casting:spellbook_cover",
       "translation_key": "item.constructs_casting.spellbook_cover",
-      "x": 51,
-      "y": 34
+      "x": 42,
+      "y": 43
     },
     {
       "filter": {
@@ -33,7 +33,7 @@
       "icon": "constructs_casting:pages",
       "translation_key": "item.constructs_casting.pages",
       "x": 22,
-      "y": 53
+      "y": 52
     }
   ],
   "sortIndex": 15,

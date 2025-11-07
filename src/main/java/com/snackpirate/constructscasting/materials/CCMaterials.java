@@ -44,8 +44,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId leaf = createMaterial("leaf");
 
     public static final MaterialId diamond = createMaterial("diamond"); //general SP
-    public static final MaterialId amethyst = createMaterial("amethyst"); //whatever artificer cane
-    public static final MaterialId lapisLazuli = createMaterial("lapis_lazuli"); //CDR
+    public static final MaterialId amethyst = createMaterial("amethyst"); //CDR
 
     public static final MaterialId quartz = createMaterial("quartz"); //fire
     public static final MaterialId emerald = createMaterial("emerald"); //evo
@@ -53,10 +52,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
     public static final MaterialId skyslimeCrystal = createMaterial("skyslime_crystal"); //lightning
     public static final MaterialId enderslimeCrystal = createMaterial("enderslime_crystal"); //ender
     public static final MaterialId ichorCrystal = createMaterial("ichor_crystal"); //blood
-    public static final MaterialId blueIce = createMaterial("blue_ice"); //take a fucking guess
+    public static final MaterialId blueIce = createMaterial("blue_ice"); //ice
     public static final MaterialId glowstone = createMaterial("glowstone"); //holy
     public static final MaterialId echoShard = createMaterial("echo_shard"); //eldritch
 
+	public static final List<MaterialId> crystalMaterials = List.of(diamond, amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
 	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
@@ -68,18 +68,30 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	@Override
 	protected void addMaterials() {
         addMaterial(paper, 1, 0, true);
-		addMaterial(frozenBone, 2, 0, true);
+		addMaterial(frozenBone, 2, 12, true);
         addMaterial(hogskin, 2, 0, true);
-		addMaterial(arcaneCloth, 2, 0, true);
+		addMaterial(arcaneCloth, 2, 13, true);
 		addMaterial(leaf,2,0,true);
-		addMaterial(arcanium, 3, 0, false);
-		addMaterial(exilite, 3, 0, false);
-		addMaterial(frostRod, 3, 0, true);
+		addMaterial(arcanium, 3, 15, false);
+		addMaterial(exilite, 3, 16, false);
+		addMaterial(frostRod, 3, 14, true);
 		addMaterial(rainbowSlime, 3, 0, false);
 
 //		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
 		addMaterial(dragonskin, 4, 0, true);
+
+		addMaterial(amethyst, 1, 0, true);
+		addMaterial(blueIce, 1, 0, true);
+		addMaterial(quartz, 2, 0, false);
+		addMaterial(glowstone, 2, 0, true);
+		addMaterial(earthslimeCrystal, 2, 0, true);
+		addMaterial(skyslimeCrystal, 2, 0, true);
+		addMaterial(emerald, 3, 0, false);
+		addMaterial(diamond, 4, 0, false);
+		addMaterial(enderslimeCrystal, 4, 0, true);
+		addMaterial(ichorCrystal, 4, 0, true);
+		addMaterial(echoShard, 4, 0, true);
 	}
 
 	@Override
@@ -151,9 +163,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.wood, new MagicBaseMaterialStats(100, 0));
             addMaterialStats(MaterialIds.bamboo, new MagicBaseMaterialStats(100, -0.05f));
             addMaterialStats(MaterialIds.bone, new MagicBaseMaterialStats(80, 0.1f));
-			addMaterialStats(MaterialIds.nahuatl, new MagicBaseMaterialStats(150, -0.1f));
-            addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(130, 0.1f));
-            addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(130, -0.05f));
+			addMaterialStats(MaterialIds.nahuatl, new MagicBaseMaterialStats(160, -0.1f));
+            addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(120, 0.1f));
+            addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(140, -0.05f));
             addMaterialStats(MaterialIds.blazingBone, new MagicBaseMaterialStats(200, 0f));
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
 //            addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
@@ -161,6 +173,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.ichorskin, new MagicClothMaterialStats(8, 0.05f));
             //spellbook platings
             platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
+			crystalMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.MAGIC_CRYSTAL));
 		}
 
 		@Override
@@ -213,6 +226,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(MaterialIds.copper, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ENDER_DISPULSION);
 			addTraits(MaterialIds.obsidian, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.LIGHTNING_DISPULSION);
 		}
+//		public static final List<MaterialId> crystalMaterials = List.of(diamond, amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
 
 		@Override
 		public String getName() {

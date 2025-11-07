@@ -5,11 +5,11 @@
       "parts": [
         {
           "item": "constructs_casting:spellbook_cover",
-          "scale": 0.5
+          "scale": 0.375
         },
         {
           "item": "constructs_casting:spellbook_cover",
-          "scale": 0.5
+          "scale": 0.375
         },
         "constructs_casting:pages"
       ],

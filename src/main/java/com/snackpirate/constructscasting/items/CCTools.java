@@ -53,8 +53,8 @@ public class CCTools {
 
 			define(TRAVELLERS_SPELLBOOK)
 					.module(PartStatsModule.parts()
-							.part(CCItems.spellbookCover.get(), 0.5f)
-							.part(CCItems.spellbookCover.get(), 0.5f)
+							.part(CCItems.spellbookCover.get(), 0.375f)
+							.part(CCItems.spellbookCover.get(), 0.375f)
 							.part(CCItems.pages.get())
 							.primaryPart(0)
 							.build())
