@@ -85,7 +85,7 @@ public class ConstructsCasting {
         CCModifierHooks.init();
         MaterialRegistry.getInstance().registerStatType(MagicBaseMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(MagicClothMaterialStats.TYPE, CCToolStats.MAGIC);
-        MaterialRegistry.getInstance().registerStatType(CCMaterialStats.Statless.SPELLBOOK_PLATING.getType(), MaterialRegistry.ARMOR);
+        MaterialRegistry.getInstance().registerStatType(CCMaterialStats.Statless.ADORNMENT.getType());
         NBTKeyModel.registerExtraTexture(TConstruct.getResource("creative_slot"), "affinity", ConstructsCasting.id("gui/modifiers/affinity_slot"));
     }
 
@@ -123,7 +123,6 @@ public class ConstructsCasting {
         GeneratorPartTextureJsonGenerator.StatOverride.Builder builder = new GeneratorPartTextureJsonGenerator.StatOverride.Builder();
         CCMaterials.tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
         CCMaterials.tinkerMagicMaterials.forEach((material) -> builder.add(MagicBaseMaterialStats.ID, material.getId()));
-        CCMaterials.platingMaterials.forEach((material) -> builder.add(CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), material));
         return builder.build();
     }
 

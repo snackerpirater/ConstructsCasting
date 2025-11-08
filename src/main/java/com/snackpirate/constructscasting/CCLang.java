@@ -35,7 +35,20 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
         addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
         addMaterial(CCMaterials.dragonskin, "Dragonskin", "How to read your dragon", "The might of the dragon empowers your magic while in flight.");
-        add("stat.constructs_casting.magic_cloth", "Pages");
+
+		addMaterial(CCMaterials.amethyst, "Amethyst", "They're minerals, Marie!", "Helps you cast spells faster");
+		addMaterial(CCMaterials.permafrost, "Permafrost", "Not to be confused with permafrost", "Empowers ice magic");
+		addMaterial(CCMaterials.quartz, "Nether Quartz", "Silicon dioxide", "Empowers fire magic");
+		addMaterial(CCMaterials.glowstone, "Glowstone", "Shines bright, but not like a diamond", "Empowers holy magic");
+		addMaterial(CCMaterials.earthslimeCrystal, "Earthslime", "Earthen where?", "Empowers nature magic");
+		addMaterial(CCMaterials.skyslimeCrystal, "Skyslime", "Skyward slime", "Empowers lightning magic");
+		addMaterial(CCMaterials.emerald, "Emerald", "Villagers hate this simple trick", "Empowers evocation magic");
+		addMaterial(CCMaterials.enderslimeCrystal, "Enderslime", "Smells like grape", "Empowers ender magic");
+		addMaterial(CCMaterials.ichorCrystal, "Ichor", "I hardly know her", "Empowers blood magic");
+		addMaterial(CCMaterials.echoShard, "Echo", "Echo", "Empowers eldritch magic");
+
+
+		add("stat.constructs_casting.magic_cloth", "Pages");
         add("stat.constructs_casting.magic_base", "Base");
         add("tool_stat.constructs_casting.spell_slots", "Spell Slots: ");
 		add("tool_stat.constructs_casting.spell_slots.description", "How many spells this spellbook can have.");
@@ -46,6 +59,7 @@ public class CCLang extends LanguageProvider {
         add("tool_stat.constructs_casting.spell_power", "Spell Power: ");
 		add("tool_stat.constructs_casting.spell_power.description", "Increases the power of your spells when equipped.");
         add("stat.constructs_casting.spellbook_plating", "Plating");
+		add("stat.constructs_casting.adornment", "Adornment");
 		add("pattern.constructs_casting.spellbook_plating", "Spellbook Plating");
 		add("pattern.constructs_casting.spellbook_cover", "Spellbook Cover");
 		add("pattern.constructs_casting.pages", "Pages");

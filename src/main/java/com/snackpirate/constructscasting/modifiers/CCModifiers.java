@@ -91,6 +91,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId BLOOD_DISPULSION     = new ModifierId(ConstructsCasting.MOD_ID, "blood_dispulsion");
 	public static final ModifierId EVOCATION_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "evocation_dispulsion");
 	public static final ModifierId NATURE_DISPULSION    = new ModifierId(ConstructsCasting.MOD_ID, "nature_dispulsion");
+	public static final ModifierId ELDRITCH_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_dispulsion");
 
 	public static final ModifierId ABYSSAL_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
@@ -150,6 +151,7 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(BLOOD_DISPULSION).addModule(spellDispulsionModifier(BLOOD_DISPULSION, AttributeRegistry.BLOOD_MAGIC_RESIST.get())).build();
 		buildModifier(EVOCATION_DISPULSION).addModule(spellDispulsionModifier(EVOCATION_DISPULSION, AttributeRegistry.EVOCATION_MAGIC_RESIST.get())).build();
 		buildModifier(NATURE_DISPULSION).addModule(spellDispulsionModifier(NATURE_DISPULSION, AttributeRegistry.NATURE_MAGIC_RESIST.get())).build();
+		buildModifier(ELDRITCH_DISPULSION).addModule(spellDispulsionModifier(ELDRITCH_DISPULSION, AttributeRegistry.ELDRITCH_MAGIC_RESIST.get())).build();
 
 
 		buildModifier(SPELL_PROTECTION).addModule(ProtectionModule.builder().source(DamageSourcePredicate.tag(CCDamageTypes.Tags.SPELL_BASED)).eachLevel(2.5f)).build();

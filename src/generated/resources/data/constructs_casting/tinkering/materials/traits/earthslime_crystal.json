@@ -1,0 +1,14 @@
+{
+  "perStat": {
+    "constructs_casting:adornment": [
+      {
+        "level": 1,
+        "name": "constructs_casting:nature_upgrade"
+      },
+      {
+        "level": 1,
+        "name": "constructs_casting:evocation_dispulsion"
+      }
+    ]
+  }
+}

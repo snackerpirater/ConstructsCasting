@@ -18,7 +18,8 @@
       "tconstruct:plating_boots",
       "tconstruct:plating_shield",
       "tconstruct:maille",
-      "tconstruct:armor_maille"
+      "tconstruct:armor_maille",
+      "constructs_casting:adornment"
     ],
     "transformer": {
       "type": "tconstruct:grey_to_sprite",

@@ -12,8 +12,8 @@ import java.util.List;
 
 public class CCMaterialStats {
 	public enum Statless implements IRepairableMaterialStats {
-		MAGIC_CRYSTAL("crystal"),
-		SPELLBOOK_PLATING("spellbook_plating");
+		ADORNMENT("adornment");
+//		SPELLBOOK_PLATING("spellbook_plating");
 
 
 		private static final List<Component> LOCALIZED = List.of(IMaterialStats.makeTooltip(ConstructsCasting.id("extra.no_stats")));

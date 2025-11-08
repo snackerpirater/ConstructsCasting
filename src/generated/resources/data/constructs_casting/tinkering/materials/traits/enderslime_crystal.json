@@ -1,0 +1,14 @@
+{
+  "perStat": {
+    "constructs_casting:adornment": [
+      {
+        "level": 1,
+        "name": "constructs_casting:ender_upgrade"
+      },
+      {
+        "level": 1,
+        "name": "constructs_casting:lightning_dispulsion"
+      }
+    ]
+  }
+}

@@ -15,7 +15,6 @@ import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.*;
 
@@ -25,7 +24,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold);
     public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone, MaterialIds.blazingBone, MaterialIds.necroticBone);
-    public static final List<MaterialId> platingMaterials = List.of(MaterialIds.searedStone, MaterialIds.cobalt, MaterialIds.gold, MaterialIds.iron, MaterialIds.steel, MaterialIds.pigIron, MaterialIds.copper, MaterialIds.obsidian); //basically the selection of materials for plated armor, without the overslime ones since overslime does nothing
 
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
@@ -43,7 +41,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
     public static final MaterialId paper = createMaterial("paper");
 	public static final MaterialId leaf = createMaterial("leaf");
 
-    public static final MaterialId diamond = createMaterial("diamond"); //general SP
     public static final MaterialId amethyst = createMaterial("amethyst"); //CDR
 
     public static final MaterialId quartz = createMaterial("quartz"); //fire
@@ -52,11 +49,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
     public static final MaterialId skyslimeCrystal = createMaterial("skyslime_crystal"); //lightning
     public static final MaterialId enderslimeCrystal = createMaterial("enderslime_crystal"); //ender
     public static final MaterialId ichorCrystal = createMaterial("ichor_crystal"); //blood
-    public static final MaterialId blueIce = createMaterial("blue_ice"); //ice
+    public static final MaterialId permafrost = createMaterial("permafrost"); //ice
     public static final MaterialId glowstone = createMaterial("glowstone"); //holy
     public static final MaterialId echoShard = createMaterial("echo_shard"); //eldritch
 
-	public static final List<MaterialId> crystalMaterials = List.of(diamond, amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
+	public static final List<MaterialId> crystalMaterials = List.of(amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, permafrost, glowstone, echoShard);
 	public CCMaterials(PackOutput gen) {
 		super(gen);
 	}
@@ -82,13 +79,12 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(dragonskin, 4, 0, true);
 
 		addMaterial(amethyst, 1, 0, true);
-		addMaterial(blueIce, 1, 0, true);
+		addMaterial(permafrost, 1, 0, true);
 		addMaterial(quartz, 2, 0, false);
 		addMaterial(glowstone, 2, 0, true);
 		addMaterial(earthslimeCrystal, 2, 0, true);
 		addMaterial(skyslimeCrystal, 2, 0, true);
 		addMaterial(emerald, 3, 0, false);
-		addMaterial(diamond, 4, 0, false);
 		addMaterial(enderslimeCrystal, 4, 0, true);
 		addMaterial(ichorCrystal, 4, 0, true);
 		addMaterial(echoShard, 4, 0, true);
@@ -118,7 +114,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 344, 2, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f),
 					StatlessMaterialStats.MAILLE,
-                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
+                    CCMaterialStats.Statless.ADORNMENT);
 			addMaterialStats(exilite,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
 					new HandleMaterialStats(-0.05f, -0.1f, 0.1f, 0.1f),
@@ -129,7 +125,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
 					StatlessMaterialStats.MAILLE,
-                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
+                    CCMaterialStats.Statless.ADORNMENT);
 			//TODO: temp stats, should be t4
 			addMaterialStats(cosmichalcum,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
@@ -141,7 +137,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
 					StatlessMaterialStats.MAILLE,
-                    CCMaterialStats.Statless.SPELLBOOK_PLATING);
+                    CCMaterialStats.Statless.ADORNMENT);
 
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
@@ -172,8 +168,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
             addMaterialStats(MaterialIds.ichorskin, new MagicClothMaterialStats(8, 0.05f));
             //spellbook platings
-            platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
-			crystalMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.MAGIC_CRYSTAL));
+//            platingMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.SPELLBOOK_PLATING));
+			crystalMaterials.forEach((materialId) -> addMaterialStats(materialId, CCMaterialStats.Statless.ADORNMENT));
 		}
 
 		@Override
@@ -216,17 +212,28 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.necroticBone, MagicBaseMaterialStats.ID, CCModifiers.APOPTOTIC);
             addTraits(MaterialIds.blazingBone, MagicBaseMaterialStats.ID, CCModifiers.CALORIFIC);
 
-			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.SPELL_DISPULSION);
-			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
-			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
-			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
-			addTraits(MaterialIds.iron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.HOLY_DISPULSION);
-			addTraits(MaterialIds.steel, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.NATURE_DISPULSION);
-			addTraits(MaterialIds.pigIron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.EVOCATION_DISPULSION);
-			addTraits(MaterialIds.copper, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ENDER_DISPULSION);
-			addTraits(MaterialIds.obsidian, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.LIGHTNING_DISPULSION);
+//			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.SPELL_DISPULSION);
+//			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
+//			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
+//			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
+//			addTraits(MaterialIds.iron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.HOLY_DISPULSION);
+//			addTraits(MaterialIds.steel, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.NATURE_DISPULSION);
+//			addTraits(MaterialIds.pigIron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.EVOCATION_DISPULSION);
+//			addTraits(MaterialIds.copper, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ENDER_DISPULSION);
+//			addTraits(MaterialIds.obsidian, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.LIGHTNING_DISPULSION);
+
+			addTraits(amethyst, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.COOLDOWN_UPGRADE);
+			addTraits(quartz, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.FIRE_UPGRADE, CCModifiers.ICE_DISPULSION);
+			addTraits(emerald, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.EVOCATION_UPGRADE, CCModifiers.NATURE_DISPULSION);
+			addTraits(earthslimeCrystal, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.NATURE_UPGRADE, CCModifiers.EVOCATION_DISPULSION);
+			addTraits(skyslimeCrystal, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.LIGHTNING_UPGRADE, CCModifiers.ENDER_DISPULSION);
+			addTraits(enderslimeCrystal, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ENDER_UPGRADE, CCModifiers.LIGHTNING_DISPULSION);
+			addTraits(ichorCrystal, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.BLOOD_UPGRADE, CCModifiers.HOLY_DISPULSION);
+			addTraits(permafrost, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ICE_UPGRADE, CCModifiers.FIRE_DISPULSION);
+			addTraits(glowstone, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.HOLY_UPGRADE, CCModifiers.BLOOD_DISPULSION);
+			addTraits(echoShard, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ELDRITCH_UPGRADE, CCModifiers.ELDRITCH_UPGRADE);
 		}
-//		public static final List<MaterialId> crystalMaterials = List.of(diamond, amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
+//		public static final List<MaterialId> crystalMaterials = List.of( amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
 
 		@Override
 		public String getName() {
