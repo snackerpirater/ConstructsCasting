@@ -154,6 +154,16 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                         .setIngredient(CCItems.Tags.DRAGONSCALES)
                                 .setValue(1).setNeeded(1)
                         .save(consumer, ConstructsCasting.id(materialFolder + "dragonskin"));
+		materialRecipe(consumer, CCMaterials.amethyst, Ingredient.of(Items.AMETHYST_SHARD), 1, 1, "amethyst");
+		materialRecipe(consumer, CCMaterials.permafrost, Ingredient.of(ItemRegistry.ICE_CRYSTAL.get()), 1, 1, "permafrost");
+		materialRecipe(consumer, CCMaterials.quartz, Ingredient.of(Items.QUARTZ), 1, 1, "quartz");
+		materialRecipe(consumer, CCMaterials.glowstone, Ingredient.of(Items.GLOWSTONE_DUST), 1, 1, "glowstone");
+		materialRecipe(consumer, CCMaterials.earthslimeCrystal, Ingredient.of(TinkerWorld.earthGeode.asItem()), 1, 1, "earthslime_crystal");
+		materialRecipe(consumer, CCMaterials.skyslimeCrystal, Ingredient.of(TinkerWorld.skyGeode.asItem()), 1, 1, "skyslime_crystal");
+		materialRecipe(consumer, CCMaterials.emerald, Ingredient.of(Items.EMERALD), 1, 1, "emerald");
+		materialRecipe(consumer, CCMaterials.enderslimeCrystal, Ingredient.of(TinkerWorld.enderGeode.asItem()), 1, 1, "enderslime_crystal");
+		materialRecipe(consumer, CCMaterials.ichorCrystal, Ingredient.of(TinkerWorld.ichorGeode.asItem()), 1, 1, "ichor_crystal");
+		materialRecipe(consumer, CCMaterials.echoShard, Ingredient.of(Items.ECHO_SHARD), 1, 1, "echo_shard");
 
         //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)

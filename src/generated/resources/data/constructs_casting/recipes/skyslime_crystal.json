@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "tconstruct:sky_slime_crystal"
+  },
+  "material": "constructs_casting:skyslime_crystal",
+  "needed": 1,
+  "value": 1
+}

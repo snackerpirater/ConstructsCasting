@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "minecraft:echo_shard"
+  },
+  "material": "constructs_casting:echo_shard",
+  "needed": 1,
+  "value": 1
+}

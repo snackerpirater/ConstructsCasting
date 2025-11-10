@@ -212,7 +212,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.necroticBone, MagicBaseMaterialStats.ID, CCModifiers.APOPTOTIC);
             addTraits(MaterialIds.blazingBone, MagicBaseMaterialStats.ID, CCModifiers.CALORIFIC);
 
-//			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.SPELL_DISPULSION);
+			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELL_DISPULSION);
 //			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
 //			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
 //			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
@@ -231,7 +231,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(ichorCrystal, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.BLOOD_UPGRADE, CCModifiers.HOLY_DISPULSION);
 			addTraits(permafrost, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ICE_UPGRADE, CCModifiers.FIRE_DISPULSION);
 			addTraits(glowstone, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.HOLY_UPGRADE, CCModifiers.BLOOD_DISPULSION);
-			addTraits(echoShard, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ELDRITCH_UPGRADE, CCModifiers.ELDRITCH_UPGRADE);
+			addTraits(echoShard, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.ELDRITCH_UPGRADE, CCModifiers.ELDRITCH_DISPULSION);
 		}
 //		public static final List<MaterialId> crystalMaterials = List.of( amethyst, quartz, emerald, earthslimeCrystal, skyslimeCrystal, enderslimeCrystal, ichorCrystal, blueIce, glowstone, echoShard);
 
@@ -262,6 +262,17 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 
             buildRenderInfo(paper).color(0xEEEEEE).fallbacks("cloth");
+
+			buildRenderInfo(amethyst).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(permafrost).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(quartz).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(glowstone).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(earthslimeCrystal).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(skyslimeCrystal).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(emerald).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(enderslimeCrystal).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(ichorCrystal).color(0xEEEEEE).fallbacks("crystal");
+			buildRenderInfo(echoShard).color(0xEEEEEE).fallbacks("crystal");
 		}
 
 		@Override

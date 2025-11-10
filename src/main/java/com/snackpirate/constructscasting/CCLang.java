@@ -113,6 +113,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.BLOOD_DISPULSION, "Blood Dispulsion", "Dirty haemophiles", "Grants +15% Blood Spell Resistance.");
 		addModifier(CCModifiers.EVOCATION_DISPULSION, "Evocation Dispulsion", "Hrmmm!", "Grants +15% Evocation Spell Resistance.");
 		addModifier(CCModifiers.NATURE_DISPULSION, "Nature Dispulsion", "Insert allegory for AI here", "Grants +15% Nature Spell Resistance.");
+		addModifier(CCModifiers.ELDRITCH_DISPULSION, "Eldritch Dispulsion", "Comprehending horrors", "Grants +15% Eldritch Spell Resistance.");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence", "Probably tastes like blue raspberry; good if you're short on Mana though.");
 		addFluid(CCFluids.fireEssence, "Fire Essence" ,"Subtle notes of sulfur with an ashy aftertaste; Good if you need a little more FIREpower");

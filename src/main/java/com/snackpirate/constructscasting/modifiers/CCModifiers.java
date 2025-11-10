@@ -91,11 +91,11 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId BLOOD_DISPULSION     = new ModifierId(ConstructsCasting.MOD_ID, "blood_dispulsion");
 	public static final ModifierId EVOCATION_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "evocation_dispulsion");
 	public static final ModifierId NATURE_DISPULSION    = new ModifierId(ConstructsCasting.MOD_ID, "nature_dispulsion");
-	public static final ModifierId ELDRITCH_DISPULSION = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_dispulsion");
+	public static final ModifierId ELDRITCH_DISPULSION  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_dispulsion");
 
-	public static final ModifierId ABYSSAL_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
+	public static final ModifierId ABYSSAL_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
-	public static final ModifierId AQUA_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
+	public static final ModifierId AQUA_UPGRADE         = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
 
     public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
 	//paper trait: lets you apply orb upgrades to level 4

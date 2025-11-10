@@ -1,5 +1,11 @@
 {
   "perStat": {
+    "constructs_casting:adornment": [
+      {
+        "level": 1,
+        "name": "constructs_casting:spell_dispulsion"
+      }
+    ],
     "tconstruct:armor": [
       {
         "level": 1,

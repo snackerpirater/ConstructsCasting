@@ -33,6 +33,7 @@
     "evocation_dispulsion": "#FFFFFF",
     "nature_dispulsion": "#55FF55",
     "spell_dispulsion": "#6e7278",
+    "eldritch_dispulsion": "#0f839c",
 
     "__traits__": null,
     "arcane": "#f1cdfa",
@@ -54,7 +55,14 @@
     "calorific": "#DBCC0B"
   },
   "material.constructs_casting": {
+    "__tier_1__": null,
+    "earthslime_crystal": "#01cd4e",
+    "skyslime_crystal": "#01cbcd",
+    "amethyst": "#B38EF1",
+    "permafrost": "#41b6f1",
     "__tier_2__": null,
+    "glowstone": "#fcba5d",
+    "quartz": "#EAE5DE",
     "frozen_bone": "#eaf8f9",
     "leaf": "#48B518",
     "hogskin": "#e8a074",
@@ -65,8 +73,12 @@
     "arcane_hide":"#dbbbcd",
     "exilite": "#6e7278",
     "rainbowslime": "#fc493a",
+    "emerald": "#41f384",
     "__tier_4__": null,
-    "dragonskin": "#413248"
+    "dragonskin": "#413248",
+    "enderslime_crystal": "#af4cf6",
+    "ichor_crystal": "#ff970d",
+    "echo_shard": "#0f839c"
   },
   "stat.tconstruct.slot.affinity": "#ea9999"
 }
