@@ -1,5 +1,5 @@
 {
-  "level_display": "tconstruct:no_levels",
+  "level_display": "tconstruct:default",
   "modules": [
     {
       "type": "tconstruct:attribute",
@@ -14,7 +14,22 @@
         "chest",
         "head"
       ],
+      "tool": {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:tag",
+        "tag": "constructs_casting:modifiable_magic"
+      },
       "unique": "constructs_casting.modifier.spellbound"
+    },
+    {
+      "type": "tconstruct:stat_boost",
+      "each_level": 0.05,
+      "operation": "add",
+      "stat": "constructs_casting:spell_power",
+      "tool": {
+        "type": "mantle:tag",
+        "tag": "constructs_casting:modifiable_magic"
+      }
     }
   ],
   "tooltip_display": "always"

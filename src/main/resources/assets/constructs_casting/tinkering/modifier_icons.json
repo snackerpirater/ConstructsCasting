@@ -16,5 +16,6 @@
   "constructs_casting:spellbook_strap": "constructs_casting:gui/modifiers/spellbook_strap",
   "constructs_casting:blank": "constructs_casting:gui/modifiers/blank",
   "constructs_casting:imbued": ["irons_spellbooks:item/scroll", "tconstruct:gui/modifiers/plus"],
-  "constructs_casting:expedient": ["irons_spellbooks:item/cast_time_ring", "tconstruct:gui/modifiers/plus"]
+  "constructs_casting:expedient": ["irons_spellbooks:item/cast_time_ring", "tconstruct:gui/modifiers/plus"],
+  "constructs_casting:slot_improvement":  ["irons_spellbooks:item/lesser_spell_slot_upgrade", "tconstruct:gui/modifiers/plus"]
 }

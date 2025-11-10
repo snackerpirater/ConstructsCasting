@@ -32,7 +32,7 @@ public class CCHookEvents {
                 }
             }
         }
-        CuriosApi.getCuriosInventory(event.getEntity()).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MODIFIABLE_CURIOS)).forEach(slotResult -> {
+        CuriosApi.getCuriosInventory(event.getEntity()).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MAGIC_TOOL)).forEach(slotResult -> {
             IToolStackView toolStack = ToolStack.from(slotResult.stack());
             for (ModifierEntry entry: toolStack.getModifierList()) {
                 entry.getHook(CCModifierHooks.SPELL_CAST).afterSpellCast(toolStack, entry, event.getEntity(), event.getSpellId(), event.getSchoolType(), event.getCastSource());
@@ -50,7 +50,7 @@ public class CCHookEvents {
                 }
             }
         }
-        CuriosApi.getCuriosInventory(event.getEntity()).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MODIFIABLE_CURIOS)).forEach(slotResult -> {
+        CuriosApi.getCuriosInventory(event.getEntity()).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MAGIC_TOOL)).forEach(slotResult -> {
             IToolStackView toolStack = ToolStack.from(slotResult.stack());
             for (ModifierEntry entry: toolStack.getModifierList()) {
                 if (!entry.getHook(CCModifierHooks.SPELL_CAST).beforeSpellCast(toolStack, entry, event.getEntity(), event.getSpellId(), event.getSchoolType(), event.getCastSource())) event.setCanceled(true);
@@ -77,7 +77,7 @@ public class CCHookEvents {
                 }
             }
             if (attacker instanceof Player player) {
-                CuriosApi.getCuriosInventory(player).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MODIFIABLE_CURIOS)).forEach(slotResult -> {
+                CuriosApi.getCuriosInventory(player).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MAGIC_TOOL)).forEach(slotResult -> {
 //					ConstructsCasting.LOGGER.info("change mana event 2");
                     IToolStackView toolStack = ToolStack.from(slotResult.stack());
                     for (ModifierEntry entry: toolStack.getModifierList()) {
@@ -96,7 +96,7 @@ public class CCHookEvents {
                 }
             }
             if (attacker instanceof Player player) {
-                CuriosApi.getCuriosInventory(player).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MODIFIABLE_CURIOS)).forEach(slotResult -> {
+                CuriosApi.getCuriosInventory(player).ifPresent((handler) -> handler.findCurios(stack -> stack.is(CCItems.Tags.MAGIC_TOOL)).forEach(slotResult -> {
 //					ConstructsCasting.LOGGER.info("change mana event 2");
                     IToolStackView toolStack = ToolStack.from(slotResult.stack());
                     for (ModifierEntry entry: toolStack.getModifierList()) {

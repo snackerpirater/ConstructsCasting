@@ -8,7 +8,7 @@
       "stat": "constructs_casting:max_mana",
       "tool": {
         "type": "mantle:tag",
-        "tag": "constructs_casting:magic_tool"
+        "tag": "constructs_casting:modifiable_magic"
       }
     },
     {
@@ -30,7 +30,7 @@
         "predicates": [
           {
             "type": "mantle:tag",
-            "tag": "constructs_casting:magic_tool"
+            "tag": "constructs_casting:modifiable_magic"
           },
           {
             "type": "mantle:tag",

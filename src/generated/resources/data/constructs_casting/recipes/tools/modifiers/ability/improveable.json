@@ -18,7 +18,7 @@
       "item": "irons_spellbooks:arcane_ingot"
     }
   ],
-  "result": "constructs_casting:blank",
+  "result": "constructs_casting:improvable",
   "slots": {
     "abilities": 1
   },

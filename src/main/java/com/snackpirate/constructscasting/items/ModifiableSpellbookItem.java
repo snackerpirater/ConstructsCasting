@@ -36,13 +36,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.SafeClientAccess;
 import slimeknights.mantle.client.TooltipKey;
-import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.materials.definition.MaterialId;
-import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
@@ -51,7 +47,6 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
-import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
@@ -67,8 +62,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
-import static com.snackpirate.constructscasting.modifiers.SpellSlotsModifier.TAG_HAS_SPELLS;
 
 public class ModifiableSpellbookItem extends SpellBook implements IModifiableDisplay {
 
@@ -91,11 +84,11 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	}
 
 	@Override
-	public void appendHoverText(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> lines, @NotNull TooltipFlag flag) {
+	public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> lines, TooltipFlag flag) {
 		spellbookLines(itemStack, level, lines, flag, SafeClientAccess.getTooltipKey());
 		TooltipUtil.addInformation(this, itemStack, level, lines, SafeClientAccess.getTooltipKey(), flag);
 	}
-	public void spellbookLines(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> lines, @NotNull TooltipFlag flag, TooltipKey key) {
+	public void spellbookLines( ItemStack itemStack,  Level level,  List<Component> lines,  TooltipFlag flag, TooltipKey key) {
 		if (key == TooltipKey.CONTROL || key == TooltipKey.SHIFT) return;
 		if (this.isUnique()) {
 			lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_rarity", new Object[]{Component.translatable("tooltip.irons_spellbooks.spellbook_unique").withStyle(TooltipsUtils.UNIQUE_STYLE)}).withStyle(ChatFormatting.GRAY));
@@ -114,9 +107,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 					if (MinecraftInstanceHelper.getPlayer() != null && Utils.getPlayerSpellbookStack(MinecraftInstanceHelper.getPlayer()) == itemStack && spellSelectionManager.getCurrentSelection().equipmentSlot.equals(Curios.SPELLBOOK_SLOT) && i == spellSelectionManager.getSelectionIndex()) {
 						List<MutableComponent> shiftMessage = TooltipsUtils.formatActiveSpellTooltip(itemStack, spellSelectionManager.getSelectedSpellData(), CastSource.SPELLBOOK, (LocalPlayer)player);
 						shiftMessage.remove(0);
-						TooltipsUtils.addShiftTooltip(lines, Component.literal("> ").append(spellText).withStyle(ChatFormatting.YELLOW), (List)shiftMessage.stream().map((component) -> {
-							return Component.literal(" ").append(component);
-						}).collect(Collectors.toList()));
+						TooltipsUtils.addShiftTooltip(lines, Component.literal("> ").append(spellText).withStyle(ChatFormatting.YELLOW), (List)shiftMessage.stream().map((component) -> Component.literal(" ").append(component)).collect(Collectors.toList()));
 					} else {
 						lines.add(Component.literal(" ").append(spellText.withStyle(Style.EMPTY.withColor(8947966))));
 					}
@@ -125,8 +116,6 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 		}
 	}
 
-
-    private static final MaterialId RENDER_MATERIAL = new MaterialId(TConstruct.MOD_ID, "ui_render");
 
     @Override
 	public ItemStack getRenderTool() {
@@ -260,7 +249,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	@Override
 	public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
 		TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
-		if (tool.hasTag(CCToolStats.MAGIC_TOOL)) {
+		if (tool.hasTag(CCItems.Tags.MOD_SPELLBOOKS)) {
 			builder.add(CCToolStats.MAX_MANA);
 			builder.add(CCToolStats.SPELL_POWER);
 			builder.add(CCToolStats.SPELL_SLOTS);
