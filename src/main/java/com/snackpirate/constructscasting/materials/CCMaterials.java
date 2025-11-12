@@ -114,6 +114,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 344, 2, 2, 0.1f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 484, 1, 2, 0.1f),
 					StatlessMaterialStats.MAILLE,
+					new LimbMaterialStats(380, 0.1f, -0.1f, 0.1f),
+					new GripMaterialStats(0.05f, 0.1f, 2f),
                     CCMaterialStats.Statless.ADORNMENT);
 			addMaterialStats(exilite,
 					new HeadMaterialStats(480, 7.5f, Tiers.DIAMOND, 2.5f),
@@ -125,6 +127,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
 					StatlessMaterialStats.MAILLE,
+					new LimbMaterialStats(480, -0.1f, 0.1f, -0.1f),
+					new GripMaterialStats(-0.05f, -0.1f, 2.5f),
                     CCMaterialStats.Statless.ADORNMENT);
 			//TODO: temp stats, should be t4
 			addMaterialStats(cosmichalcum,

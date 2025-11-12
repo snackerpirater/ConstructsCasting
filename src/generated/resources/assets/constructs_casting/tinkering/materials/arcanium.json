@@ -38,11 +38,12 @@
           "path": "constructs_casting:item/materials/generator/arcanium_border"
         },
         {
-          "color": "FFE1E1E1",
+          "color": "FFD0D0D0",
           "grey": 140,
           "path": "constructs_casting:item/materials/generator/arcanium"
         },
         {
+          "color": "FFE1E1E1",
           "grey": 178,
           "path": "constructs_casting:item/materials/generator/arcanium"
         },

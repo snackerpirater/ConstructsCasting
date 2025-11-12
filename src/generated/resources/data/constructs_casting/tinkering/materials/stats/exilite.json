@@ -2,6 +2,11 @@
   "stats": {
     "constructs_casting:adornment": {},
     "tconstruct:binding": {},
+    "tconstruct:grip": {
+      "accuracy": -0.1,
+      "durability": -0.05,
+      "melee_damage": 2.5
+    },
     "tconstruct:handle": {
       "durability": -0.05,
       "melee_damage": 0.1,
@@ -13,6 +18,12 @@
       "melee_attack": 2.5,
       "mining_speed": 7.5,
       "mining_tier": "minecraft:diamond"
+    },
+    "tconstruct:limb": {
+      "accuracy": -0.1,
+      "draw_speed": -0.1,
+      "durability": 480,
+      "velocity": 0.1
     },
     "tconstruct:maille": {},
     "tconstruct:plating_boots": {

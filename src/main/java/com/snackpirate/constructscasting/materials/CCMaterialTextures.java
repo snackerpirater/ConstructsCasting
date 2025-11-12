@@ -26,11 +26,11 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 				.fallbacks("metal")
 				.transformer(GreyToSpriteTransformer.builderFromBlack()
 						.addTexture( 63, arcaniumBorder,    0xFFC8C8C8)
-						.addTexture(102, arcaniumBorder)
-						.addTexture(140, arcaniumBase,      0xFFE1E1E1)
-						.addTexture(178, arcaniumBase)
+						.addTexture(102, arcaniumBorder,    0xFFFFFFFF)
+						.addTexture(140, arcaniumBase,      0xFFD0D0D0)
+						.addTexture(178, arcaniumBase,      0xFFE1E1E1)
 						.addTexture(216, arcaniumHighlight, 0xFFE1E1E1)
-						.addTexture(255, arcaniumHighlight)
+						.addTexture(255, arcaniumHighlight, 0xFFFFFFFF)
 						.build());
 		buildMaterial(CCMaterials.exilite).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
 				.fallbacks("metal")
@@ -162,7 +162,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFe2dcd3)
 						.addARGB(255, 0xFFf4f2ef)
 						.build()));
-		buildMaterial(CCMaterials.emerald).repairKit() //TODO: change third darkest texture
+		buildMaterial(CCMaterials.emerald).repairKit()
 				.statType(CCMaterialStats.Statless.ADORNMENT.getIdentifier())
 				.fallbacks("crystal")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
