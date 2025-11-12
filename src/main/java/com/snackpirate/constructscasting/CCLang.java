@@ -77,8 +77,8 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
 
 		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
-		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "One more spell!", "Allows the tool to be imbued with a spell. Disallowed on swords, since they can already be imbued.");
-		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Slimy Spellbook to function as an encyclopedia.");
+		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "One more spell!", "Allows the tool to be imbued with a spell.");
+		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Spellbook to function as an encyclopedia on right click.");
 
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
 		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
@@ -156,7 +156,9 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 
 		addItem(CCItems.wand, "Wand");
+        add("item.constructs_casting.wand.description", "The wand is a simple casting implement. It buffs spell casting, and allows you to cast spells on right click.");
 		addItem(CCItems.battlestaff, "Battlestaff");
+        add("item.constructs_casting.battlestaff.description", "The Battlestaff is a hybrid melee/magic weapon. Both melee and magic attacks will hit hard with one of these.");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
         addItem(CCItems.spellbookPlating, "Spellbook Plating");
