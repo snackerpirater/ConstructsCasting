@@ -55,7 +55,7 @@ public class AntimagicModifier extends Modifier implements MeleeDamageModifierHo
 	@Override
 	public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
 		if (target != null && isMagicUser(target) && projectile instanceof AbstractArrow arrow) {
-			arrow.setBaseDamage(arrow.getBaseDamage() + modifier.getLevel() * 2f);
+			arrow.setBaseDamage(arrow.getBaseDamage() + modifier.getLevel() / 2f);
 		}
 		return false;
 	}
