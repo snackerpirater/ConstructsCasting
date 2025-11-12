@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.ConstructsCasting;
+import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.data.PackOutput;
@@ -12,7 +13,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
 import slimeknights.mantle.data.predicate.entity.LivingEntityPredicate;
-import slimeknights.mantle.data.predicate.entity.MobTypePredicate;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
@@ -53,7 +53,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> SPELLBOOK_STRAP = MODIFIERS.register("spellbook_strap", SpellbookStrapModifier::new);
 	public static final StaticModifier<Modifier> CONSERVING = MODIFIERS.register("conserving", ConservingModifier::new);
 	public static final StaticModifier<Modifier> SOLAR_CHARGED = MODIFIERS.register("solar_charged", SolarChargedModifier::new);
-	public static final StaticModifier<Modifier> SPELL_SLOTS = MODIFIERS.register("spell_slots", SpellSlotsModifier::new);
+//	public static final StaticModifier<Modifier> SPELL_SLOTS = MODIFIERS.register("spell_slots", SpellSlotsModifier::new);
     public static final StaticModifier<Modifier> DRAGONSPELLS = MODIFIERS.register("dragonspells", DragonspellsModifier::new);
 	public static final StaticModifier<Modifier> GASHING = MODIFIERS.register("gashing", GashingModifier::new);
     public static final StaticModifier<Modifier> PUNCTURING = MODIFIERS.register("puncturing", PuncturingModifier::new);
@@ -99,13 +99,14 @@ public class CCModifiers extends AbstractModifierProvider {
 
     public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
 	//paper trait: lets you apply orb upgrades to level 4
-    public static final ModifierId IMPROVEABLE = new ModifierId(ConstructsCasting.MOD_ID, "blank");
+    public static final ModifierId IMPROVEABLE = new ModifierId(ConstructsCasting.MOD_ID, "improvable");
 	//wood magic trait: 10% mana regen
 	public static final ModifierId REGROWTH = new ModifierId(ConstructsCasting.MOD_ID, "regrowth");
     public static final ModifierId THICK_SKINNED = new ModifierId(ConstructsCasting.MOD_ID, "thick_skinned");
     public static final ModifierId EXPEDIENT = new ModifierId(ConstructsCasting.MOD_ID, "expedient");
     public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
 	public static final ModifierId RINGBEARER = new ModifierId(ConstructsCasting.MOD_ID, "ringbearer");
+    public static final ModifierId SLOT_IMPROVEMENT = new ModifierId(ConstructsCasting.MOD_ID, "slot_improvement");
     //increase SP in air
 
 	public CCModifiers(PackOutput generator) {
@@ -115,8 +116,8 @@ public class CCModifiers extends AbstractModifierProvider {
 	@Override
 	protected void addModifiers() {
 		buildModifier(ARCANE).levelDisplay(ModifierLevelDisplay.DEFAULT)
-				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(50f))
-				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.or(ToolStackPredicate.tag(CCToolStats.MAGIC_TOOL), ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).inverted()).eachLevel(25f))
+				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(50f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.or(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL), ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).inverted()).eachLevel(25f))
 				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).eachLevel(50f))
 				.build();
 
@@ -125,13 +126,17 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(ModifierRequirementsModule.builder().requireModifier(CASTING.getId(), 1).translationKey("constructs_casting.modifier.swiftcasting.requirement").build())
 				.build();
 
-		buildModifier(SPELLBOUND).addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELLBOUND).eachLevel(0.05f)).levelDisplay(ModifierLevelDisplay.NO_LEVELS).build();
+		buildModifier(SPELLBOUND)
+                .addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).uniqueFrom(SPELLBOUND).eachLevel(0.05f))
+                .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(0.05f)).build();
 		buildModifier(ANTIFROST).addModule(ConditionalMeleeDamageModule.builder().target(LivingEntityPredicate.IS_FREEZING).eachLevel(2.0f));
 		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT)
-				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCToolStats.MAGIC_TOOL).eachLevel(80f))
-				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCToolStats.MAGIC_TOOL).inverted()).eachLevel(80f))
+				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(80f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).eachLevel(80f))
 				.build();
-		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT).addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.05f)).build();
+		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT)
+                .addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.05f))
+                .addModule(StatBoostModule.add(CCToolStats.COOLDOWN_REDUCTION).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(0.05f)).build();
 		buildModifier(FIRE_UPGRADE)     .addModule(spellPowerModifier(FIRE_UPGRADE,      AttributeRegistry.FIRE_SPELL_POWER     .get())).build();
 		buildModifier(ICE_UPGRADE)      .addModule(spellPowerModifier(ICE_UPGRADE,       AttributeRegistry.ICE_SPELL_POWER      .get())).build();
 		buildModifier(LIGHTNING_UPGRADE).addModule(spellPowerModifier(LIGHTNING_UPGRADE, AttributeRegistry.LIGHTNING_SPELL_POWER.get())).build();
@@ -188,6 +193,10 @@ public class CCModifiers extends AbstractModifierProvider {
                 .addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_TOTAL).eachLevel(-0.3f))
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).eachLevel(0.15f))
                 .levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
+                .build();
+        buildModifier(SLOT_IMPROVEMENT)
+                .addModule(StatBoostModule.add(CCToolStats.SPELL_SLOTS).eachLevel(1f))
+                .levelDisplay(ModifierLevelDisplay.DEFAULT)
                 .build();
 
     }

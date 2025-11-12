@@ -3,7 +3,6 @@ package com.snackpirate.constructscasting.items;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.materials.CCMaterialStats;
-import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
@@ -90,10 +89,11 @@ public class CCItems {
 	public static class Tags extends ItemTagsProvider {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
 		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
-        public static final TagKey<Item> MODIFIABLE_SPELLCASTING = ItemTags.create(ConstructsCasting.id("modifiable_staffs"));
+        public static final TagKey<Item> MOD_STAFFS = ItemTags.create(ConstructsCasting.id("modifiable_magic/staff"));
 		public static final TagKey<Item> DRAGONSCALES = ItemTags.create(ConstructsCasting.id("dragon_scales"));
-		public static final TagKey<Item> MODIFIABLE_CURIOS = ItemTags.create(ConstructsCasting.id("modifiable_curios"));
-
+		public static final TagKey<Item> MAGIC_TOOL = ItemTags.create(ConstructsCasting.id("modifiable_magic")); //includes spellbooks, staffs, and jewelry later
+        public static final TagKey<Item> MOD_SPELLBOOKS = ItemTags.create(ConstructsCasting.id("modifiable_magic/spellbook"));
+        public static final TagKey<Item> MOD_JEWELRY = ItemTags.create(ConstructsCasting.id("modifiable_magic/jewelry"));
         public Tags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, String modId, @Nullable ExistingFileHelper existingFileHelper) {
 			super(pOutput, pLookupProvider, pBlockTags, modId, existingFileHelper);
 		}
@@ -107,6 +107,7 @@ public class CCItems {
 			}
 		}
 
+        @SuppressWarnings("unchecked")
 		@Override
 		protected void addTags(HolderLookup.Provider pProvider) {
 //			ConstructsCasting.LOGGER.info("addubg tags");
@@ -115,12 +116,13 @@ public class CCItems {
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
-			tag(TinkerTags.Items.BONUS_SLOTS).add(slimySpellbook.get()).add(platedSpellbook.get(), eldritchStaff.get(), travellersSpellbook.get());
-			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).add(slimySpellbook.get(), platedSpellbook.get(), travellersSpellbook.get());
-            tag(MODIFIABLE).addTag(MODIFIABLE_CURIOS);
-			tag(MODIFIABLE_CURIOS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
-			tag(CCToolStats.MAGIC_TOOL).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
-			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, BONUS_SLOTS, MODIFIABLE_SPELLCASTING);
+			tag(TinkerTags.Items.BONUS_SLOTS).addTags(MOD_SPELLBOOKS, MOD_STAFFS); //jewelry will probably be stat/trait-only
+			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).addTag(MOD_SPELLBOOKS);
+            tag(MOD_JEWELRY).addTags();
+			tag(MOD_SPELLBOOKS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
+			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
+            tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
+            tag(MODIFIABLE).addTag(MAGIC_TOOL);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");
             tag(DRAGONSCALES).add(ItemRegistry.DRAGONSKIN.get(), TinkerModifiers.dragonScale.asItem());

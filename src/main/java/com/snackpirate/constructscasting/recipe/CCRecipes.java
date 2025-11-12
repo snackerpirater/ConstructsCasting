@@ -426,6 +426,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())
                 .allowTraits()
                 .save(consumer, location("tools/modifiers/worktable/" + "cast_on_interact"));
+        ModifierRecipeBuilder.modifier(CCModifiers.SLOT_IMPROVEMENT)
+                .setTools(CCItems.Tags.MOD_SPELLBOOKS)
+                .addInput(ItemRegistry.LESSER_SPELL_SLOT_UPGRADE.get())
+                .setSlots(SlotType.UPGRADE, 1)
+                .setMaxLevel(6)
+                .save(consumer, location(modifierFolder + "slot_improvement"));
         }
 	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));

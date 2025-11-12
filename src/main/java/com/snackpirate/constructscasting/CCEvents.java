@@ -109,9 +109,7 @@ public class CCEvents {
 		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(entity instanceof FakePlayer)) {
 			Collection<ItemEntity> drops = event.getDrops();
 			Iterator<ItemEntity> iter = drops.iterator();
-			Inventory inventory = player.getInventory();
-			List<ItemEntity> takenSlot = new ArrayList<>();
-			while (iter.hasNext()) {
+            while (iter.hasNext()) {
 				ItemEntity itemEntity = iter.next();
 				ItemStack stack = itemEntity.getItem();
 				// find items with our soulbound tag set and move them back into the inventory, will move them over later
@@ -120,9 +118,7 @@ public class CCEvents {
 					int slot = tag.getInt(SOULBOUND_SLOT);
 					// return the tool to its requested slot if possible, remove from the drops
 					if (slot == 999) {
-						CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-							handler.setEquippedCurio("spellbook", 0, stack);
-						});
+						CuriosApi.getCuriosInventory(player).ifPresent(handler -> handler.setEquippedCurio("spellbook", 0, stack));
 						iter.remove();
 						// don't clear the tag yet, we need it one last time for player clone
 					}
@@ -195,6 +191,7 @@ public class CCEvents {
 	public static class ModClientEvents {
 		@SubscribeEvent
 		static void registerCurioRenderers(FMLClientSetupEvent e) {
+            CuriosRendererRegistry.register(CCItems.travellersSpellbook.get(), ModifiableSpellbookRenderer::new);
 			CuriosRendererRegistry.register(CCItems.slimySpellbook.get(), ModifiableSpellbookRenderer::new);
 			CuriosRendererRegistry.register(CCItems.platedSpellbook.get(), ModifiableSpellbookRenderer::new);
 		}

@@ -1,7 +1,6 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
-import com.snackpirate.constructscasting.materials.CCToolStats;
+import com.snackpirate.constructscasting.items.CCItems;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.mantle.client.TooltipKey;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.armor.EquipmentChangeModifierHook;
@@ -35,7 +33,6 @@ import java.util.UUID;
 //if it's sunny outside, +15% mana regen
 public class SolarChargedModifier extends SingleLevelModifier implements EquipmentChangeModifierHook, TooltipModifierHook, InventoryTickModifierHook {
     private static final UUID uuid = UUID.nameUUIDFromBytes("attribute.constructs_casting.solar_charged".getBytes());
-    private static final Component BOOST = Component.literal(Util.makeTranslationKey("modifier", ConstructsCasting.id("solar_charged.boost")));
     private static final int minLight = 5;
     private static final float amount = 0.15f;
     @Override
@@ -52,7 +49,7 @@ public class SolarChargedModifier extends SingleLevelModifier implements Equipme
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry entry, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
 //        ConstructsCasting.LOGGER.info("solar charged tooltip");
-        if (!tool.hasTag(CCToolStats.MAGIC_TOOL)) {
+        if (!tool.hasTag(CCItems.Tags.MAGIC_TOOL)) {
             return;
         }
         int light = 15;
@@ -61,7 +58,6 @@ public class SolarChargedModifier extends SingleLevelModifier implements Equipme
         }
         float boost = amount * (light - minLight) * entry.getEffectiveLevel() / 10;
         if (boost > 0) {
-            Modifier modifier = entry.getModifier();
             tooltip.add(applyStyle(Component.literal(Util.PERCENT_BOOST_FORMAT.format(boost) + " ").append(Component.translatable("modifier.constructs_casting.solar_charged.boost"))));
         }
     }

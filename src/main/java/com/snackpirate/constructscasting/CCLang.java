@@ -220,6 +220,7 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.CALORIFIC.getId(), "Calorific", "Hot ones, and by ones I mean spells", "Spells deal multiplied damage when you are on fire");
         add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");
         addModifier(CCModifiers.RINGBEARER, "Ringbearer", "Does it give you two more fingers?", "Allows you to wear two more rings");
+        addModifier(CCModifiers.SLOT_IMPROVEMENT, "Slot Improvement", "65%% more spell per spell!", "Grants +1 Spell Slot.");
     }
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

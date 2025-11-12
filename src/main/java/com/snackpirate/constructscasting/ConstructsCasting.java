@@ -128,9 +128,9 @@ public class ConstructsCasting {
 
 //    @SubscribeEvent
     void registerSerializers(RegisterEvent event) {
-        ConstructsCasting.LOGGER.info("register event");
+//        ConstructsCasting.LOGGER.info("register event");
         if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-            ConstructsCasting.LOGGER.info("register serializer event");
+//            ConstructsCasting.LOGGER.info("register serializer event");
             ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
         }

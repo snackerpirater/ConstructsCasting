@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:lesser_spell_slot_upgrade"
+    }
+  ],
+  "level": {
+    "max": 6
+  },
+  "result": "constructs_casting:slot_improvement",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "constructs_casting:modifiable_magic/spellbook"
+  }
+}

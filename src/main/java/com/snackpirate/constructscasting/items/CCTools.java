@@ -41,7 +41,7 @@ public class CCTools {
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
 							.slots(SlotType.UPGRADE, 5)
-                            .slots(CCModifiers.AFFINITY_SLOT, 2)
+                            .slots(SlotType.ABILITY, 1)
 							.build())
 					.module(new SetStatsModule(StatsNBT.builder()
                             .set(CCToolStats.MAX_MANA, 125)

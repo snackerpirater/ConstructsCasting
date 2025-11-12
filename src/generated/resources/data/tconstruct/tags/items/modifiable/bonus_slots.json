@@ -1,9 +1,6 @@
 {
   "values": [
-    "constructs_casting:tinkerers_spellbook",
-    "constructs_casting:plated_spellbook",
-    "constructs_casting:eldritch_staff",
-    "constructs_casting:travellers_spellbook",
-    "constructs_casting:eldritch_staff"
+    "#constructs_casting:modifiable_magic/spellbook",
+    "#constructs_casting:modifiable_magic/staff"
   ]
 }
