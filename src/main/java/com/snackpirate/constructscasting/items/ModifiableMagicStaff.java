@@ -49,7 +49,7 @@ public class ModifiableMagicStaff extends ModifiableItem {
 //		attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier("tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
 		float spBonus =
 //				ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.SPELL_POWER);
-                tool.getStats().get(CCToolStats.SPELL_POWER);
+                tool.getStats().get(CCToolStats.SPELL_POWER); //TODO: get conditional modifiers working, this method lacks entity context for some godforsaken reason
 		attributeBuilder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier(uuid, "tool.constructs_casting.spell_power_bonus", spBonus, AttributeModifier.Operation.MULTIPLY_BASE));
 		float cdBonus =
 //				ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.COOLDOWN_REDUCTION);
