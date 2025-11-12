@@ -57,16 +57,21 @@ public class CCItems {
 	public static final ItemObject<Item> eldritchStaff = ITEMS.register("eldritch_staff", () -> new ModifiableItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE), CCTools.CCToolDefinitions.ELDRITCH_STAFF));
 
     public static final ItemObject<ToolPartItem> spellbookPlating = ITEMS.register("spellbook_plating", () -> new ToolPartItem(new Item.Properties(), CCMaterialStats.Statless.ADORNMENT.getIdentifier()));
+	public static final ItemObject<ToolPartItem> facetedGem = ITEMS.register("faceted_gem", () -> new ToolPartItem(new Item.Properties(), CCMaterialStats.Statless.ADORNMENT.getIdentifier()));
 
     public static final ItemObject<ToolPartItem> pages = ITEMS.register("pages", () -> new ToolPartItem(new Item.Properties(), MagicClothMaterialStats.ID));
 
 	public static final ItemObject<ToolPartItem> spellbookCover = ITEMS.register("spellbook_cover", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
+	public static final ItemObject<ToolPartItem> wandRod = ITEMS.register("wand_rod", () -> new ToolPartItem(new Item.Properties(), MagicBaseMaterialStats.ID));
 
     public static final CastItemObject spellbookPlatingCast = ITEMS.registerCast("spellbook_plating", new Item.Properties());
+	public static final CastItemObject facetedGemCast = ITEMS.registerCast("faceted_gem", new Item.Properties());
 //	public static CreativeModeTab.DisplayItemsGenerator DISPLAY_ITEMS = (parameters, output) -> ITEMS.getEntries().forEach((regObj) -> {
 //		if (!regObj.get().getDefaultInstance().is(Tags.HIDE_CREATIVE)) output.accept(regObj.get());
 //
 //	});
+	public static final ItemObject<ModifiableMagicStaff> wand = ITEMS.register("wand", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.WAND));
+	public static final ItemObject<ModifiableMagicStaff> battlestaff = ITEMS.register("battlestaff", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.BATTLESTAFF));
 
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(potatoStewBowl);
@@ -78,12 +83,19 @@ public class CCItems {
         output.accept(spellbookPlatingCast);
 		output.accept(spellbookPlatingCast.getSand());
 		output.accept(spellbookPlatingCast.getRedSand());
+		output.accept(facetedGemCast);
+		output.accept(facetedGemCast.getSand());
+		output.accept(facetedGemCast.getRedSand());
 
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.travellersSpellbook.get(), "");
+		ToolBuildHandler.addVariants(output::accept, CCItems.wand.get(), "");
+		ToolBuildHandler.addVariants(output::accept, CCItems.battlestaff.get(), "");
         spellbookPlating.get().addVariants(output::accept, "");
         spellbookCover.get().addVariants(output::accept, "");
         pages.get().addVariants(output::accept, "");
+		wandRod.get().addVariants(output::accept, "");
+		facetedGem.get().addVariants(output::accept, "");
     }
 
 	public static class Tags extends ItemTagsProvider {
@@ -121,6 +133,8 @@ public class CCItems {
             tag(MOD_JEWELRY).addTags();
 			tag(MOD_SPELLBOOKS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
+			addToolTags(wand, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS);
+			addToolTags(battlestaff, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MELEE_PRIMARY, DURABILITY);
             tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
             tag(MODIFIABLE).addTag(MAGIC_TOOL);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());

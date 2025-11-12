@@ -3,7 +3,10 @@ package com.snackpirate.constructscasting.items;
 import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
+import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import slimeknights.tconstruct.library.client.data.material.AbstractPartSpriteProvider;
+import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
+import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class CCToolSpriteProvider extends AbstractPartSpriteProvider {
 	public CCToolSpriteProvider(String modID) {
@@ -25,8 +28,20 @@ public class CCToolSpriteProvider extends AbstractPartSpriteProvider {
 				.addPart("binding", MagicBaseMaterialStats.ID)
 				.addPart("cover", MagicBaseMaterialStats.ID)
 				.addPart("pages", MagicClothMaterialStats.ID);
+		buildTool("wand")
+				.addPart("crystal", CCMaterialStats.Statless.ADORNMENT.getIdentifier())
+				.addPart("trim", CCMaterialStats.Statless.ADORNMENT.getIdentifier())
+				.addPart("handle", MagicBaseMaterialStats.ID);
+		buildTool("battlestaff")
+				.withLarge()
+				.addPart("blade", HeadMaterialStats.ID)
+				.addPart("crystal", CCMaterialStats.Statless.ADORNMENT.getIdentifier())
+				.addPart("handle", HandleMaterialStats.ID)
+				.addPart("grip", MagicBaseMaterialStats.ID);
 		addPart("spellbook_plating", CCMaterialStats.Statless.ADORNMENT.getIdentifier());
 		addPart("spellbook_cover", MagicBaseMaterialStats.ID);
 		addPart("pages", MagicClothMaterialStats.ID);
+		addPart("wand_rod", MagicBaseMaterialStats.ID);
+		addPart("faceted_gem", CCMaterialStats.Statless.ADORNMENT.getIdentifier());
 	}
 }

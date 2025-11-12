@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.tools.definition.module.material.DefaultM
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 
 public class CCTools {
@@ -24,6 +25,8 @@ public class CCTools {
 		public static final ToolDefinition TRAVELLERS_SPELLBOOK = ToolDefinition.create(CCItems.travellersSpellbook);
 		public static final ToolDefinition PLATED_SPELLBOOK = ToolDefinition.create(CCItems.platedSpellbook);
 		public static final ToolDefinition ELDRITCH_STAFF = ToolDefinition.create(CCItems.eldritchStaff);
+		public static final ToolDefinition WAND = ToolDefinition.create(CCItems.wand);
+		public static final ToolDefinition BATTLESTAFF = ToolDefinition.create(CCItems.battlestaff);
 		public CCToolDefinitions(PackOutput generator, String modId) {
 			super(generator, modId);
 		}
@@ -91,6 +94,29 @@ public class CCTools {
 							.set(ToolStats.BLOCK_ANGLE, 50)
 							.set(ToolStats.USE_ITEM_SPEED, 0.4f).build()))
                     .module(DualOptionInteraction.INSTANCE);
+			define(WAND)
+					.smallToolStartingSlots()
+					.module(PartStatsModule.parts()
+							.part(CCItems.facetedGem)
+							.part(CCItems.facetedGem)
+							.part(CCItems.wandRod)
+							.primaryPart(0)
+							.build())
+					.module(ToolTraitsModule.builder()
+							.trait(CCModifiers.CASTING).build())
+					.module(DualOptionInteraction.INSTANCE);
+			define(BATTLESTAFF)
+					.largeToolStartingSlots()
+					.module(PartStatsModule.parts()
+							.part(TinkerToolParts.broadAxeHead)
+							.part(CCItems.facetedGem)
+							.part(CCItems.wandRod)
+							.part(TinkerToolParts.toughHandle)
+							.primaryPart(0)
+							.build())
+					.module(ToolTraitsModule.builder()
+							.trait(CCModifiers.CASTING).build())
+					.module(DualOptionInteraction.INSTANCE);
 		}
 
 		@Override

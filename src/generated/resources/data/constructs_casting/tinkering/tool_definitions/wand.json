@@ -1,0 +1,32 @@
+{
+  "modules": [
+    {
+      "type": "tconstruct:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct:part_stats",
+      "parts": [
+        "constructs_casting:faceted_gem",
+        "constructs_casting:faceted_gem",
+        "constructs_casting:wand_rod"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "constructs_casting:casting"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct:dual_option_interaction"
+    }
+  ]
+}

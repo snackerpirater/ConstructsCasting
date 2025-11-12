@@ -1,0 +1,15 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "tconstruct:item/base/axe",
+  "textures": {
+    "crystal": "constructs_casting:item/tool/wand/crystal",
+    "trim":   "constructs_casting:item/tool/wand/trim",
+    "handle":   "constructs_casting:item/tool/wand/handle"
+  },
+  "modifier_roots": [ "constructs_casting:item/wand/modifiers/" ],
+  "parts": [
+    { "name": "trim",   "index": 1 },
+    { "name": "crystal", "index": 0 },
+    { "name": "handle",   "index": 2 }
+  ]
+}
