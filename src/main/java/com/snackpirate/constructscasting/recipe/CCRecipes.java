@@ -352,6 +352,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		//plated spellbook
 		toolBuilding(consumer, CCItems.platedSpellbook.get(), "tools/building/", ConstructsCasting.id("spellbooks"));
 		toolBuilding(consumer, CCItems.travellersSpellbook.get(), "tools/building/", ConstructsCasting.id("spellbooks"));
+        toolBuilding(consumer, CCItems.wand.get(), "tools/building/", location("wand"));
+        toolBuilding(consumer, CCItems.battlestaff.get(), "tools/building/", location("battlestaff"));
 		//eldritch staff
 //		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CCItems.eldritchStaff.get())
 //				.define('s', Items.ECHO_SHARD)
@@ -409,7 +411,9 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/expedient"));
 
         partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
+        partRecipes(consumer, CCItems.facetedGem, CCItems.facetedGemCast, 1, partsFolder, castingFolder);
         uncastablePart(consumer, CCItems.spellbookCover.get(), 2, null, partsFolder);
+        uncastablePart(consumer, CCItems.wandRod.get(), 2, null, partsFolder);
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
         IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(CCModifiers.Tags.CASTING_MODIFIER);
         //To allow the sculk staff (and future staffs) to switch its casting to apply on melee,

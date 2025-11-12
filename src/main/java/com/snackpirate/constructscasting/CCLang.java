@@ -61,7 +61,9 @@ public class CCLang extends LanguageProvider {
         add("stat.constructs_casting.spellbook_plating", "Plating");
 		add("stat.constructs_casting.adornment", "Adornment");
 		add("pattern.constructs_casting.spellbook_plating", "Spellbook Plating");
+        add("pattern.constructs_casting.faceted_gem", "Faceted Gem");
 		add("pattern.constructs_casting.spellbook_cover", "Spellbook Cover");
+        add("pattern.constructs_casting.wand_rod", "Wand Rod");
 		add("pattern.constructs_casting.pages", "Pages");
         add("pattern.constructs_casting.spellbooks", "Spellbooks");
         add("pattern.constructs_casting.spellbooks_first_part", "Spellbook Plating or Cover");

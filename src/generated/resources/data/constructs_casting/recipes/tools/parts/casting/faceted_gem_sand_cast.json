@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "constructs_casting:casts/single_use/faceted_gem"
+  },
+  "cast_consumed": true,
+  "item_cost": 1,
+  "result": "constructs_casting:faceted_gem"
+}
