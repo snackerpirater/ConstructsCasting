@@ -79,7 +79,7 @@ public class CCItems {
         output.accept(exiliteIngot);
         output.accept(exiliteNugget);
         output.accept(slimySpellbook);
-        output.accept(eldritchStaff);
+//        output.accept(eldritchStaff);
 
         output.accept(spellbookPlatingCast);
         output.accept(spellbookPlatingCast.getSand());

@@ -353,15 +353,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		toolBuilding(consumer, CCItems.platedSpellbook.get(), "tools/building/", ConstructsCasting.id("spellbooks"));
 		toolBuilding(consumer, CCItems.travellersSpellbook.get(), "tools/building/", ConstructsCasting.id("spellbooks"));
 		//eldritch staff
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CCItems.eldritchStaff.get())
-				.define('s', Items.ECHO_SHARD)
-				.define('l', ItemTags.WARPED_STEMS)
-				.define('a', ItemRegistry.ARCANE_INGOT.get())
-				.pattern("sls")
-				.pattern(" a ")
-				.pattern(" l ")
-				.unlockedBy("has_item", RecipeProvider.has(Items.ECHO_SHARD))
-				.save(consumer, ConstructsCasting.id("crafting/eldritch_staff"));
+//		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CCItems.eldritchStaff.get())
+//				.define('s', Items.ECHO_SHARD)
+//				.define('l', ItemTags.WARPED_STEMS)
+//				.define('a', ItemRegistry.ARCANE_INGOT.get())
+//				.pattern("sls")
+//				.pattern(" a ")
+//				.pattern(" l ")
+//				.unlockedBy("has_item", RecipeProvider.has(Items.ECHO_SHARD))
+//				.save(consumer, ConstructsCasting.id("crafting/eldritch_staff"));
 		//slime stuff
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CCItems.wizardslimeBall.get())
 				.define('e', Items.SLIME_BALL)
