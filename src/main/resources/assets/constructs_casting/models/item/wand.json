@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "tconstruct:item/base/axe",
+  "parent": "forge:item/default-tool",
   "textures": {
     "crystal": "constructs_casting:item/tool/wand/crystal",
     "trim":   "constructs_casting:item/tool/wand/trim",

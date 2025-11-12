@@ -1,5 +1,6 @@
 {
   "values": [
-    "#constructs_casting:casts/single_use/spellbook_plating"
+    "#constructs_casting:casts/single_use/spellbook_plating",
+    "#constructs_casting:casts/single_use/faceted_gem"
   ]
 }

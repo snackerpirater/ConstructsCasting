@@ -12,8 +12,8 @@
       "parts": [
         "tconstruct:broad_axe_head",
         "constructs_casting:faceted_gem",
-        "tconstruct:tough_handle",
-        "constructs_casting:wand_rod"
+        "constructs_casting:wand_rod",
+        "tconstruct:tough_handle"
       ],
       "primary_part": 0
     },

@@ -152,6 +152,9 @@ public class CCLang extends LanguageProvider {
 		add("item.constructs_casting.plated_spellbook.description", "A heavily fortified spellbook geared towards defense rather than spell power.");
 		addItem(CCItems.slimySpellbook, "Slimy Spellbook");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
+
+		addItem(CCItems.wand, "Wand");
+		addItem(CCItems.battlestaff, "Battlestaff");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
         addItem(CCItems.spellbookPlating, "Spellbook Plating");
@@ -160,6 +163,11 @@ public class CCLang extends LanguageProvider {
 		add(CCItems.spellbookPlatingCast.getRedSand().getDescriptionId(), "Spellbook Plating Red Sand Cast");
         addItem(CCItems.spellbookCover, "Spellbook Cover");
         addItem(CCItems.pages, "Pages");
+		addItem(CCItems.facetedGem, "Faceted Gem");
+		addItem(CCItems.wandRod, "Wand Rod");
+		add(CCItems.facetedGemCast.get().getDescriptionId(), "Faceted Gem Gold Cast");
+		add(CCItems.facetedGemCast.getSand().getDescriptionId(), "Faceted Gem Sand Cast");
+		add(CCItems.facetedGemCast.getRedSand().getDescriptionId(), "Faceted Gem Red Sand Cast");
 
 		add("gui.constructs_casting.fluid.bottle", "%s Bottles");
         add("ui.constructs_casting.spellbook_has_slots", "Cannot modify, remove spells from spellbook first");

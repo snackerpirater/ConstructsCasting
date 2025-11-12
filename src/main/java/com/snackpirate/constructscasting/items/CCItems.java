@@ -133,8 +133,8 @@ public class CCItems {
             tag(MOD_JEWELRY).addTags();
 			tag(MOD_SPELLBOOKS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
 			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
-			addToolTags(wand, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS);
-			addToolTags(battlestaff, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MELEE_PRIMARY, DURABILITY);
+			addToolTags(wand,        STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MULTIPART_TOOL);
+			addToolTags(battlestaff, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MELEE_PRIMARY, DURABILITY, MULTIPART_TOOL);
             tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
             tag(MODIFIABLE).addTag(MAGIC_TOOL);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
@@ -158,6 +158,7 @@ public class CCItems {
                 this.tag(cast.getMultiUseTag()).add(cast.get());
             };
             addCast.accept(CCItems.spellbookPlatingCast);
+			addCast.accept(CCItems.facetedGemCast);
 		}
 	}
 
