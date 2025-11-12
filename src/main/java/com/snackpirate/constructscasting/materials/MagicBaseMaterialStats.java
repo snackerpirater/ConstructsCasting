@@ -49,7 +49,7 @@ public record MagicBaseMaterialStats(float maxMana, float spellPower) implements
         CCToolStats.MAX_MANA.add(builder, maxMana * scale);
         CCToolStats.SPELL_POWER.add(builder, spellPower * scale);
     }
-
+    //purely so the material displays in the name of the spellbook (e.g. Wood-Bamboo Traveller's Spellbook)
     @Override
     public int durability() {
         return 0;

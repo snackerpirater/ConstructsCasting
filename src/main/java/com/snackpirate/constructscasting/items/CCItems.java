@@ -80,22 +80,25 @@ public class CCItems {
         output.accept(exiliteNugget);
         output.accept(slimySpellbook);
         output.accept(eldritchStaff);
-        output.accept(spellbookPlatingCast);
-		output.accept(spellbookPlatingCast.getSand());
-		output.accept(spellbookPlatingCast.getRedSand());
-		output.accept(facetedGemCast);
-		output.accept(facetedGemCast.getSand());
-		output.accept(facetedGemCast.getRedSand());
 
+        output.accept(spellbookPlatingCast);
+        output.accept(spellbookPlatingCast.getSand());
+        output.accept(spellbookPlatingCast.getRedSand());
+        output.accept(facetedGemCast);
+        output.accept(facetedGemCast.getSand());
+        output.accept(facetedGemCast.getRedSand());
+
+        spellbookPlating.get().addVariants(output::accept, "");
+        facetedGem.get().addVariants(output::accept, "");
+        spellbookCover.get().addVariants(output::accept, "");
+        wandRod.get().addVariants(output::accept, "");
+        pages.get().addVariants(output::accept, "");
+
+        ToolBuildHandler.addVariants(output::accept, CCItems.travellersSpellbook.get(), "");
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
-		ToolBuildHandler.addVariants(output::accept, CCItems.travellersSpellbook.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.wand.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.battlestaff.get(), "");
-        spellbookPlating.get().addVariants(output::accept, "");
-        spellbookCover.get().addVariants(output::accept, "");
-        pages.get().addVariants(output::accept, "");
-		wandRod.get().addVariants(output::accept, "");
-		facetedGem.get().addVariants(output::accept, "");
+
     }
 
 	public static class Tags extends ItemTagsProvider {

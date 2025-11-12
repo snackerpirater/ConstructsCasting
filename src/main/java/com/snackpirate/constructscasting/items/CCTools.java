@@ -5,14 +5,17 @@ import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.PackOutput;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
+import slimeknights.tconstruct.library.materials.RandomMaterial;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.module.build.MultiplyStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.SetStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
+import slimeknights.tconstruct.library.tools.nbt.MultiplierNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
@@ -40,6 +43,11 @@ public class CCTools {
 			//Traveller's book: Mid upgrade, 6 slots
 			//Plate book: Low upgrade, high slots, defense
 			//Slimy book: High upgrade, 6 slots
+
+            RandomMaterial tier1Material = RandomMaterial.random().tier(1).build();
+            DefaultMaterialsModule defaultTwoParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material).build();
+            DefaultMaterialsModule defaultThreeParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material).build();
+            DefaultMaterialsModule defaultFourParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material, tier1Material).build();
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
@@ -65,16 +73,16 @@ public class CCTools {
 							.slots(SlotType.UPGRADE, 3)
 							.slots(SlotType.ABILITY, 1)
 							.build())
-					.module(DefaultMaterialsModule.builder().material(MaterialIds.wood).material(MaterialIds.wood).material(CCMaterials.paper).build());
+                    .module(defaultThreeParts);
 			define(PLATED_SPELLBOOK)
+                    .module(defaultThreeParts)
 					.module(PartStatsModule.parts()
 							.part(CCItems.spellbookPlating.get())
 							.part(CCItems.spellbookCover.get())
 							.part(CCItems.pages.get())
                             .primaryPart(0)
 							.build())
-                    .module(DefaultMaterialsModule.builder().material(MaterialIds.cobalt).material(MaterialIds.wood).material(CCMaterials.paper).build())
-//					.module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
+                    .module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())
@@ -96,6 +104,7 @@ public class CCTools {
                     .module(DualOptionInteraction.INSTANCE);
 			define(WAND)
 					.smallToolStartingSlots()
+                    .module(defaultThreeParts)
 					.module(PartStatsModule.parts()
 							.part(CCItems.facetedGem)
 							.part(CCItems.facetedGem)
@@ -107,6 +116,7 @@ public class CCTools {
 					.module(DualOptionInteraction.INSTANCE);
 			define(BATTLESTAFF)
 					.largeToolStartingSlots()
+                    .module(defaultFourParts)
 					.module(PartStatsModule.parts()
 							.part(TinkerToolParts.broadAxeHead)
 							.part(CCItems.facetedGem)
@@ -116,6 +126,13 @@ public class CCTools {
 							.build())
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.CASTING).build())
+                    .module(new SetStatsModule(StatsNBT.builder()
+                            .set(ToolStats.ATTACK_DAMAGE, 2f)
+                            .set(ToolStats.ATTACK_SPEED, 1.0f).build()))
+                    .module(new MultiplyStatsModule(MultiplierNBT.builder()
+                            .set(ToolStats.ATTACK_DAMAGE, 1.25f)
+                            .set(ToolStats.MINING_SPEED, 0.25f)
+                            .set(ToolStats.DURABILITY, 1.5f).build()))
 					.module(DualOptionInteraction.INSTANCE);
 		}
 
