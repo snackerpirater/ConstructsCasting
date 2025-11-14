@@ -9,6 +9,6 @@
   "level": 1,
   "result": "constructs_casting:encyclopedic",
   "tools": {
-    "item": "constructs_casting:tinkerers_spellbook"
+    "tag": "constructs_casting:modifiable_magic/spellbook"
   }
 }

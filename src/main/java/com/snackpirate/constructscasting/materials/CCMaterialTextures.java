@@ -22,7 +22,8 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 		ResourceLocation arcaniumBase = ConstructsCasting.id("item/materials/generator/arcanium");
 		ResourceLocation arcaniumBorder = ConstructsCasting.id("item/materials/generator/arcanium_border");
 		ResourceLocation arcaniumHighlight = ConstructsCasting.id("item/materials/generator/arcanium_highlight");
-		buildMaterial(CCMaterials.arcanium).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
+		buildMaterial(CCMaterials.arcanium).meleeHarvest().ranged().armor().maille().repairKit()
+//				.statType(CCMaterialStats.Statless.ADORNMENT)
 				.fallbacks("metal")
 				.transformer(GreyToSpriteTransformer.builderFromBlack()
 						.addTexture( 63, arcaniumBorder,    0xFFC8C8C8)
@@ -32,7 +33,8 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addTexture(216, arcaniumHighlight, 0xFFE1E1E1)
 						.addTexture(255, arcaniumHighlight, 0xFFFFFFFF)
 						.build());
-		buildMaterial(CCMaterials.exilite).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
+		buildMaterial(CCMaterials.exilite).meleeHarvest().ranged().armor().maille().repairKit()
+				.statType(CCMaterialStats.Statless.ADORNMENT)
 				.fallbacks("metal")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF292a2c)

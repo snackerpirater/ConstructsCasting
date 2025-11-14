@@ -145,7 +145,8 @@ public class CCFluids {
 			texture(potatoStew).textures(ResourceLocation.parse("tconstruct:fluid/food/stew/"), false, false).color(0xffe9ba61);
 			texture(poisonousPotatoStew).textures(ResourceLocation.parse("tconstruct:fluid/food/stew/"), false, false).color(0xffedea61);
 			ResourceLocation molten = ResourceLocation.parse("tconstruct:fluid/molten/");
-			texture(moltenArcanium).textures(molten,      false, false).color(0xff79c0f3);
+
+			texture(moltenArcanium).textures(ConstructsCasting.id("fluid/arcanium/"),      false, false).color(0xffffffff);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
 			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
