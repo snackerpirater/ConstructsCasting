@@ -82,7 +82,7 @@ public class CCTools {
 							.part(CCItems.pages.get())
                             .primaryPart(0)
 							.build())
-                    .module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
+//                    .module(new SetStatsModule(StatsNBT.builder().set(CCToolStats.SPELL_SLOTS, 10).build()))
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())

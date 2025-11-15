@@ -29,6 +29,7 @@ import slimeknights.mantle.registration.object.FlowingFluidObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
+import slimeknights.tconstruct.fluids.block.BurningLiquidBlock;
 import slimeknights.tconstruct.fluids.data.FluidBucketModelProvider;
 import slimeknights.tconstruct.library.modifiers.fluid.FluidEffect;
 import slimeknights.tconstruct.library.recipe.FluidValues;
@@ -49,15 +50,15 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> natureEssence = essence("nature_essence");
 
 
-	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning").type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
+	public static final FluidObject<UnplaceableFluid> liquidLightning = FLUIDS.register("liquid_lightning").bucket().type(FluidType.Properties.create().sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)).unplacable();
 
 	public static final FluidObject<UnplaceableFluid> cinderEssence = essence("cinder_essence");
 
 	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(MapColor.COLOR_ORANGE, 12).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
 	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();

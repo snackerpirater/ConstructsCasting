@@ -99,6 +99,36 @@ public class CCItems {
 		ToolBuildHandler.addVariants(output::accept, CCItems.wand.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.battlestaff.get(), "");
 
+        output.accept(CCFluids.arcaneEssence.getBucket());
+        output.accept(CCFluids.fireEssence.getBucket());
+        output.accept(CCFluids.iceEssence.getBucket());
+        output.accept(CCFluids.lightningEssence.getBucket());
+        output.accept(CCFluids.enderEssence.getBucket());
+        output.accept(CCFluids.holyEssence.getBucket());
+        output.accept(CCFluids.bloodEssence.getBucket());
+        output.accept(CCFluids.evocationEssence.getBucket());
+        output.accept(CCFluids.natureEssence.getBucket());
+        output.accept(CCFluids.liquidLightning.getBucket());
+        output.accept(CCFluids.cinderEssence.getBucket());
+        output.accept(CCFluids.potatoStew.getBucket());
+        output.accept(CCFluids.poisonousPotatoStew.getBucket());
+
+        output.accept(CCFluids.moltenArcanium.getBucket());
+        output.accept(CCFluids.moltenExilite.getBucket());
+        output.accept(CCFluids.squidInk.getBucket());
+        output.accept(CCFluids.commonInk.getBucket());
+        output.accept(CCFluids.uncommonInk.getBucket());
+        output.accept(CCFluids.rareInk.getBucket());
+        output.accept(CCFluids.epicInk.getBucket());
+        output.accept(CCFluids.legendaryInk.getBucket());
+        output.accept(CCFluids.moltenArcaneSalvage.getBucket());
+        output.accept(CCFluids.moltenCrystallizedCoral.getBucket());
+        output.accept(CCFluids.abyssalEssence.getBucket());
+        output.accept(CCFluids.gasifiedRedstone.getBucket());
+        output.accept(CCFluids.technomancyEssence.getBucket());
+        output.accept(CCFluids.moltenPearl.getBucket());
+        output.accept(CCFluids.aquaEssence.getBucket());
+
     }
 
 	public static class Tags extends ItemTagsProvider {

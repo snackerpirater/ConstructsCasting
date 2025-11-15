@@ -130,7 +130,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE,
 					new LimbMaterialStats(480, -0.1f, 0.1f, -0.1f),
 					new GripMaterialStats(-0.05f, -0.1f, 2.5f)
-					, CCMaterialStats.Statless.ADORNMENT
+//					, CCMaterialStats.Statless.ADORNMENT
 			);
 			//TODO: temp stats, should be t4
 			addMaterialStats(cosmichalcum,
@@ -142,8 +142,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 430, 6, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 374, 2, 2, 0.15f),
 					new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 514, 1, 2, 0.15f),
-					StatlessMaterialStats.MAILLE,
-                    CCMaterialStats.Statless.ADORNMENT);
+					StatlessMaterialStats.MAILLE
+                    , CCMaterialStats.Statless.ADORNMENT
+            );
 
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
@@ -203,6 +204,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(frostRod, HandleMaterialStats.ID, new ModifierEntry(CCModifiers.ICE_UPGRADE, 1));
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
+            addTraits(CCMaterials.exilite, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELL_DISPULSION);
+//
 			noTraits(rainbowSlime);
             addDefaultTraits(paper, CCModifiers.IMPROVEABLE);
 			addDefaultTraits(leaf, CCModifiers.SOLAR_CHARGED);
@@ -218,7 +221,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.necroticBone, MagicBaseMaterialStats.ID, CCModifiers.APOPTOTIC);
             addTraits(MaterialIds.blazingBone, MagicBaseMaterialStats.ID, CCModifiers.CALORIFIC);
 
-			addTraits(CCMaterials.exilite, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELL_DISPULSION);
 //			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
 //			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
 //			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
