@@ -30,9 +30,7 @@ public class EnderbenderModifier extends Modifier implements SpellOnCastHook {
     }
     @Override
     public void afterSpellCast(IToolStackView tool, ModifierEntry modifier, LivingEntity caster, String spellId, SchoolType school, CastSource castSource) {
-//        AbstractSpell spell = SpellRegistry.getSpell(spellId);
-//        ConstructsCasting.LOGGER.info("cast {}", spell.getSpellId());
-        if (validIds.contains(spellId) && !caster.hasEffect(MobEffectRegistry.EVASION.get())) {
+		if (validIds.contains(spellId) && !caster.hasEffect(MobEffectRegistry.EVASION.get())) {
             caster.addEffect(new MobEffectInstance(MobEffectRegistry.EVASION.get(), 60, modifier.getLevel()-1, false, false, true)); //(modifier level) hits to be evaded over 3 seconds
         }
     }

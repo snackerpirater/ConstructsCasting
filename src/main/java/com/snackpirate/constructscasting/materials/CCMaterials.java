@@ -221,15 +221,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.necroticBone, MagicBaseMaterialStats.ID, CCModifiers.APOPTOTIC);
             addTraits(MaterialIds.blazingBone, MagicBaseMaterialStats.ID, CCModifiers.CALORIFIC);
 
-//			addTraits(MaterialIds.searedStone, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ICE_DISPULSION);
-//			addTraits(MaterialIds.cobalt, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.FIRE_DISPULSION);
-//			addTraits(MaterialIds.gold, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.BLOOD_DISPULSION);
-//			addTraits(MaterialIds.iron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.HOLY_DISPULSION);
-//			addTraits(MaterialIds.steel, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.NATURE_DISPULSION);
-//			addTraits(MaterialIds.pigIron, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.EVOCATION_DISPULSION);
-//			addTraits(MaterialIds.copper, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.ENDER_DISPULSION);
-//			addTraits(MaterialIds.obsidian, CCMaterialStats.Statless.SPELLBOOK_PLATING.getIdentifier(), CCModifiers.LIGHTNING_DISPULSION);
-
 			addTraits(amethyst, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.COOLDOWN_UPGRADE);
 			addTraits(quartz, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.FIRE_UPGRADE, CCModifiers.ICE_DISPULSION);
 			addTraits(emerald, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.EVOCATION_UPGRADE, CCModifiers.NATURE_DISPULSION);

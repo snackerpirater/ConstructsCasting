@@ -2,13 +2,11 @@ package com.snackpirate.constructscasting.recipe;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
-import com.snackpirate.constructscasting.items.CCTools;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.crafting.Ingredient;
 import slimeknights.tconstruct.library.data.tinkering.AbstractStationSlotLayoutProvider;
 import slimeknights.tconstruct.library.recipe.partbuilder.Pattern;
 import slimeknights.tconstruct.tools.TinkerToolParts;
-import slimeknights.tconstruct.tools.TinkerTools;
 
 public class CCSlotLayoutProvider extends AbstractStationSlotLayoutProvider {
 	public CCSlotLayoutProvider(PackOutput packOutput) {

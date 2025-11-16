@@ -27,16 +27,6 @@ public class ImbuedModifier extends SingleLevelModifier implements EquipmentChan
 		}
 //	code for if i want to make imbued give >1 slot (it's kinda buggy past that)
 //		need to account for higher levels of imbued + swords getting imbued
-//		else if (ISpellContainer.get(replacement).getMaxSpellCount() < expectedSpellSlots) {
-//			var container = ISpellContainer.get(replacement);
-//			var newContainer = ISpellContainer.create(expectedSpellSlots, true, replacement.getItem() instanceof ModifiableArmorItem);
-//			if (container.getAllSpells() != null) {
-//				SpellData[] spells = container.getAllSpells();
-//				for (SpellData data : spells)
-//					if (data != null) newContainer.addSpell(data.getSpell(), data.getLevel(), false, replacement);
-//			}
-//			newContainer.save(replacement);
-//		}
 		EquipmentChangeModifierHook.super.onEquip(tool, modifier, context);
 
 

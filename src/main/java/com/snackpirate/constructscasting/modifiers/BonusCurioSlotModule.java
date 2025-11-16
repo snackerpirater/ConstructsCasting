@@ -1,7 +1,6 @@
 package com.snackpirate.constructscasting.modifiers;
 
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import slimeknights.mantle.data.loadable.primitive.IntLoadable;
 import slimeknights.mantle.data.loadable.primitive.StringLoadable;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
 import slimeknights.mantle.data.registry.GenericLoaderRegistry;
