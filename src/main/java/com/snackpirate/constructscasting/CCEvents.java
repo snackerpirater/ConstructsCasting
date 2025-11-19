@@ -4,6 +4,7 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
+import com.snackpirate.constructscasting.items.book.ArtificersGuideItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
@@ -12,6 +13,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.Font;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -41,7 +43,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
+import slimeknights.tconstruct.library.client.book.TinkerBook;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.shared.CommonsClientEvents;
 import slimeknights.tconstruct.shared.TinkerEffects;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -195,6 +199,10 @@ public class CCEvents {
 		@SubscribeEvent
 		static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 			event.registerEntityRenderer(CCEntities.SLIMEBALL_PROJECTILE.get(), SlimeballProjectileRenderer::new);
+		}
+		@SubscribeEvent
+		static void clientSetup(final FMLClientSetupEvent event) {
+			ArtificersGuideItem.ARTIFICERS_GUIDE.fontRenderer = CommonsClientEvents.unicodeFontRender();
 		}
 	}
 }

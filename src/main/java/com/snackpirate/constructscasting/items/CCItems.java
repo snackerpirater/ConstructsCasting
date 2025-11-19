@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.book.ArtificersGuideItem;
 import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
@@ -72,6 +73,8 @@ public class CCItems {
 //	});
 	public static final ItemObject<ModifiableMagicStaff> wand = ITEMS.register("wand", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.WAND));
 	public static final ItemObject<ModifiableMagicStaff> battlestaff = ITEMS.register("battlestaff", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.BATTLESTAFF));
+
+	public static final ItemObject<ArtificersGuideItem> artificersGuide = ITEMS.register("artificers_guide", () -> new ArtificersGuideItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(potatoStewBowl);

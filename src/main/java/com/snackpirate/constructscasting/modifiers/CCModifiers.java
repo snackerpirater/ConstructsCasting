@@ -131,8 +131,8 @@ public class CCModifiers extends AbstractModifierProvider {
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(0.05f)).build();
 		buildModifier(ANTIFROST).addModule(ConditionalMeleeDamageModule.builder().target(LivingEntityPredicate.IS_FREEZING).eachLevel(2.0f));
 		buildModifier(MANA_UPGRADE)     .levelDisplay(ModifierLevelDisplay.DEFAULT)
-				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(80f))
-				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).eachLevel(80f))
+				.addModule(StatBoostModule.add(CCToolStats.MAX_MANA).toolTag(CCItems.Tags.MOD_SPELLBOOKS).eachLevel(80f))
+				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(CCItems.Tags.MOD_SPELLBOOKS).inverted()).eachLevel(80f))
 				.build();
 		buildModifier(COOLDOWN_UPGRADE) .levelDisplay(ModifierLevelDisplay.DEFAULT)
                 .addModule(AttributeModule.builder(AttributeRegistry.COOLDOWN_REDUCTION.get(), AttributeModifier.Operation.MULTIPLY_BASE).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).uniqueFrom(COOLDOWN_UPGRADE).eachLevel(0.05f))
