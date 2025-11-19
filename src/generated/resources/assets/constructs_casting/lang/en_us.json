@@ -343,7 +343,7 @@
   "modifier.constructs_casting.ringbearer.description": "Allows you to wear two more rings",
   "modifier.constructs_casting.ringbearer.flavor": "Does it give you two more fingers?",
   "modifier.constructs_casting.slot_improvement": "Slot Improvement",
-  "modifier.constructs_casting.slot_improvement.description": "Grants +1 Spell Slot.",
+  "modifier.constructs_casting.slot_improvement.description": "Grants +1 Spell Slot. (Cannot exceed 15 total Spell Slots)",
   "modifier.constructs_casting.slot_improvement.flavor": "65%% more spell per spell!",
   "modifier.constructs_casting.solar_charged": "Solar Charged",
   "modifier.constructs_casting.solar_charged.boost": "Solar Charged Mana Regen",

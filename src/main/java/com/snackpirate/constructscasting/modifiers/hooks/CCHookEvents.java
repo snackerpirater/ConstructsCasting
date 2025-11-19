@@ -69,9 +69,7 @@ public class CCHookEvents {
                 IToolStackView toolStack = context.getToolInSlot(slotType);
                 if (toolStack != null && !toolStack.isBroken() && (livingAttacker.getItemBySlot(slotType).is(TinkerTags.Items.HELD) || livingAttacker.getItemBySlot(slotType).is(TinkerTags.Items.ARMOR))) {
                     for (ModifierEntry entry : toolStack.getModifierList()) {
-//                        ConstructsCasting.LOGGER.info("testing hook: {}", entry.getId());
-//                        ConstructsCasting.LOGGER.info("damage set: {}", damage[0]);
-                        damage[0] = (entry.getHook(CCModifierHooks.SPELL_DAMAGE).getSpellDamage(toolStack, entry, livingAttacker, target, event.getSpellDamageSource().spell(), damage[0]));
+						damage[0] = (entry.getHook(CCModifierHooks.SPELL_DAMAGE).getSpellDamage(toolStack, entry, livingAttacker, target, event.getSpellDamageSource().spell(), damage[0]));
 //                        ConstructsCasting.LOGGER.info("to: {}", damage[0]);
                     }
                 }
@@ -81,9 +79,7 @@ public class CCHookEvents {
 //					ConstructsCasting.LOGGER.info("change mana event 2");
                     IToolStackView toolStack = ToolStack.from(slotResult.stack());
                     for (ModifierEntry entry: toolStack.getModifierList()) {
-//                            ConstructsCasting.LOGGER.info("testing hook 2: {}", entry.getId());
-//                            ConstructsCasting.LOGGER.info("damage set 2: {}", damage[0]);
-                        damage[0] = (entry.getHook(CCModifierHooks.SPELL_DAMAGE).getSpellDamage(toolStack, entry, livingAttacker, target, event.getSpellDamageSource().spell(), damage[0]));
+						damage[0] = (entry.getHook(CCModifierHooks.SPELL_DAMAGE).getSpellDamage(toolStack, entry, livingAttacker, target, event.getSpellDamageSource().spell(), damage[0]));
 //                            ConstructsCasting.LOGGER.info("to 2: {}", damage[0]);
                     }
                 }));

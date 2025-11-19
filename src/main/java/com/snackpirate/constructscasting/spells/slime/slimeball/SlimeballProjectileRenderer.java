@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
 
 public class SlimeballProjectileRenderer extends EntityRenderer<SlimeballProjectile> {
 	private final ItemRenderer itemRenderer;
@@ -22,7 +23,7 @@ public class SlimeballProjectileRenderer extends EntityRenderer<SlimeballProject
 
 	//copy what vanilla snowballs
 	@Override
-	public void render(SlimeballProjectile entity, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
+	public void render(SlimeballProjectile entity, float entityYaw, float partialTicks, @NotNull PoseStack matrixStackIn, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
 		if (entity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
 			matrixStackIn.pushPose();
 			matrixStackIn.mulPose(this.entityRenderDispatcher.cameraOrientation());
@@ -34,7 +35,7 @@ public class SlimeballProjectileRenderer extends EntityRenderer<SlimeballProject
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SlimeballProjectile slimeballProjectile) {
+	public @NotNull ResourceLocation getTextureLocation(@NotNull SlimeballProjectile slimeballProjectile) {
 		return ConstructsCasting.id("texture/entity/slimeball_projectile.png");
 	}
 }

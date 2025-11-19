@@ -1,6 +1,5 @@
 package com.snackpirate.constructscasting.items;
 
-import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.PackOutput;
@@ -19,7 +18,6 @@ import slimeknights.tconstruct.library.tools.nbt.MultiplierNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
-import slimeknights.tconstruct.tools.data.material.MaterialIds;
 
 public class CCTools {
 	public static class CCToolDefinitions extends AbstractToolDefinitionDataProvider {
@@ -45,8 +43,7 @@ public class CCTools {
 			//Slimy book: High upgrade, 6 slots
 
             RandomMaterial tier1Material = RandomMaterial.random().tier(1).build();
-            DefaultMaterialsModule defaultTwoParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material).build();
-            DefaultMaterialsModule defaultThreeParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material).build();
+			DefaultMaterialsModule defaultThreeParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material).build();
             DefaultMaterialsModule defaultFourParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material, tier1Material).build();
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()

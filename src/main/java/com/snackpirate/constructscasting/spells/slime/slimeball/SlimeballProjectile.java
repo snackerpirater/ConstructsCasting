@@ -2,7 +2,6 @@ package com.snackpirate.constructscasting.spells.slime.slimeball;
 
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.spells.CCEntities;
-import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;

@@ -107,7 +107,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 					if (MinecraftInstanceHelper.getPlayer() != null && Utils.getPlayerSpellbookStack(MinecraftInstanceHelper.getPlayer()) == itemStack && spellSelectionManager.getCurrentSelection().equipmentSlot.equals(Curios.SPELLBOOK_SLOT) && i == spellSelectionManager.getSelectionIndex()) {
 						List<MutableComponent> shiftMessage = TooltipsUtils.formatActiveSpellTooltip(itemStack, spellSelectionManager.getSelectedSpellData(), CastSource.SPELLBOOK, (LocalPlayer)player);
 						shiftMessage.remove(0);
-						TooltipsUtils.addShiftTooltip(lines, Component.literal("> ").append(spellText).withStyle(ChatFormatting.YELLOW), (List)shiftMessage.stream().map((component) -> Component.literal(" ").append(component)).collect(Collectors.toList()));
+						TooltipsUtils.addShiftTooltip(lines, Component.literal("> ").append(spellText).withStyle(ChatFormatting.YELLOW), shiftMessage.stream().map((component) -> Component.literal(" ").append(component)).collect(Collectors.toList()));
 					} else {
 						lines.add(Component.literal(" ").append(spellText.withStyle(Style.EMPTY.withColor(8947966))));
 					}
