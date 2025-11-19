@@ -23,11 +23,13 @@ import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -75,6 +77,7 @@ public class ConstructsCasting {
         CCSpells.register(modEventBus);
         CREATIVE_TABS.register(modEventBus);
         modEventBus.register(new CCFluids());
+
     }
     public static ResourceLocation id(String name) {
         return ResourceLocation.tryBuild(MOD_ID, name);
@@ -86,7 +89,7 @@ public class ConstructsCasting {
         MaterialRegistry.getInstance().registerStatType(MagicBaseMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(MagicClothMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(CCMaterialStats.Statless.ADORNMENT.getType());
-        NBTKeyModel.registerExtraTexture(TConstruct.getResource("creative_slot"), "affinity", ConstructsCasting.id("gui/modifiers/affinity_slot"));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->NBTKeyModel.registerExtraTexture(TConstruct.getResource("creative_slot"), "affinity", ConstructsCasting.id("gui/modifiers/affinity_slot")));
     }
 
     @SubscribeEvent
