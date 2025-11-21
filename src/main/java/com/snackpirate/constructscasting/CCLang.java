@@ -30,7 +30,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
 		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
-
+        addMaterial(CCMaterials.mithril, "Mithril", "Dwarven surplus!", "Simultaneously empowers melee and magic ability.");
         addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
 		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
         addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");

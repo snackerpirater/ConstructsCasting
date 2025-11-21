@@ -27,8 +27,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
-	//armor trait: spell protection (also makes the reinforcement)
-	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
+    public static final MaterialId mithril = createMaterial("mithril");
+    //melee: Magikinetic: melee hits buff spell power
+    //armor: Spellguard: Protection melee damage buffs spell resistance, spell damage buffs melee resistance
+    //ranged: Magiballistic: Projectile hits buff spell power, spell hits buff projectile power
+    //adornment: Kinetimagic: Spell hits buff melee damage
 	public static final MaterialId arcaneCloth = createMaterial("arcane_cloth"); //trait: mana regen, maille/binding only
 	public static final MaterialId frozenBone = createMaterial("frozen_bone");
 	public static final MaterialId frostRod = createMaterial("frosted_rod");
@@ -73,6 +76,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(exilite, 3, 16, false);
 		addMaterial(frostRod, 3, 14, true);
 		addMaterial(rainbowSlime, 3, 0, false);
+        addMaterial(mithril, 4, 15, false);
 
 //		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
@@ -88,6 +92,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(enderslimeCrystal, 4, 0, true);
 		addMaterial(ichorCrystal, 4, 0, true);
 		addMaterial(echoShard, 4, 0, true);
+
 	}
 
 	@Override
@@ -145,6 +150,14 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE
                     , CCMaterialStats.Statless.ADORNMENT
             );
+            addMaterialStats(mithril,
+                    new HeadMaterialStats(1050, 7f, Tiers.NETHERITE, 2.75f),
+                    new HandleMaterialStats(0.1f, -0.15f, 0.1f, 0.05f),
+                    StatlessMaterialStats.BINDING,
+                    new LimbMaterialStats(975, 0.1f, -0.05f, -0.05f),
+                    new GripMaterialStats(0.1f, 0.05f, 2.75f),
+                    CCMaterialStats.Statless.ADORNMENT);
+            addArmorShieldStats(mithril, PlatingMaterialStats.builder().durabilityFactor(40).armor(2, 5, 7, 2).toughness(1.5f).knockbackResistance(0), StatlessMaterialStats.MAILLE);
 
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
@@ -193,6 +206,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		protected void addMaterialTraits() {
 			addDefaultTraits(arcanium, CCModifiers.ARCANE);
+            addDefaultTraits(mithril, CCModifiers.SPELLBOUND);
 
 			addTraits(cosmichalcum, MaterialRegistry.MELEE_HARVEST, CCModifiers.ENDER_UPGRADE);
 			addTraits(cosmichalcum, MaterialRegistry.ARMOR, CCModifiers.ENDER_UPGRADE);
@@ -252,6 +266,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(arcaneCloth).color(0x73abde).fallbacks("cloth");
 			buildRenderInfo(hogskin).color(0xe8a074).fallbacks("cloth", "primitive");
 			buildRenderInfo(exilite).color(0x47494b);
+            buildRenderInfo(mithril).color(0xbdf3f3).fallbacks("metal");
 			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
