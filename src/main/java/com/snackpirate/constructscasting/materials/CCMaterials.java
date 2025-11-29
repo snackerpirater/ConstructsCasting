@@ -80,11 +80,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 		addMaterial(amethyst, 1, 0, true);
 		addMaterial(permafrost, 1, 0, true);
-		addMaterial(quartz, 2, 0, false);
+		addMaterial(quartz, 2, 0, true);
 		addMaterial(glowstone, 2, 0, true);
 		addMaterial(earthslimeCrystal, 2, 0, true);
 		addMaterial(skyslimeCrystal, 2, 0, true);
-		addMaterial(emerald, 3, 0, false);
+		addMaterial(emerald, 3, 0, true);
 		addMaterial(enderslimeCrystal, 4, 0, true);
 		addMaterial(ichorCrystal, 4, 0, true);
 		addMaterial(echoShard, 4, 0, true);

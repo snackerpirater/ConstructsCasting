@@ -257,6 +257,7 @@ public class CCLang extends LanguageProvider {
 		add("fluid_type.constructs_casting." + fluid.getId().getPath(), name);
 		add("item.constructs_casting." + fluid.getId().getPath() + "_bucket", name + " Bucket");
 	}
+
 	public void addSpell(Supplier<AbstractSpell> spell, String name, String desc) {
 		add("spell.constructs_casting." + spell.get().getSpellName(), name);
 		add("spell.constructs_casting." + spell.get().getSpellName() + ".guide", desc);
