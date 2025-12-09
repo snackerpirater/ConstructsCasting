@@ -35,6 +35,7 @@ public class CCSpells {
 	}
 
 	public static final RegistryObject<AbstractSpell> FREEZE_SPELL = registerSpell(new FreezeSpell());
+	public static final RegistryObject<AbstractSpell> INVERT = registerSpell(new InvertSpell());
 //	public static final RegistryObject<AbstractSpell> SLIMEBALL_SPELL = registerSpell(new SlimeballSpell());
 
 	public static RegistryObject<AbstractSpell> registerSpell(AbstractSpell spell) {

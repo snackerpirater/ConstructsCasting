@@ -15,6 +15,7 @@ import com.snackpirate.constructscasting.recipe.CCRecipes;
 import com.snackpirate.constructscasting.recipe.CCSlotLayoutProvider;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
+import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;

@@ -183,6 +183,7 @@ public class CCLang extends LanguageProvider {
 //		addSpell(CCSpells.SLIMEBALL_SPELL, "Slimeball", "Lobs a random slimeball, capable of bouncing off of blocks and enemies alike. The higher level, the bouncier.");
 		add("ui.constructs_casting.slimeball.max_bounces", "%s Bounces");
 		add("ui.constructs_casting.enderference_anti_teleport", "Your current affliction prevents you from teleporting...");
+		addSpell(CCSpells.INVERT, "Invert", "Inverts the player's gravity for a short time. Can recast to invert back to normal.");
 //		addSpell(CCSpells.SLING_SPELL, "Sling", "Launches player in the opposite direction that they are looking.");
 
         addEffect(CCFluidEffects.MobEffects.inkyImpairment, "Inky Impairment");

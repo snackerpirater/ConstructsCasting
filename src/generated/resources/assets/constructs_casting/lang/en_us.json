@@ -389,6 +389,8 @@
   "spell.constructs_casting.freeze": "Freeze",
   "spell.constructs_casting.freeze.guide": "Rapidly cools down the targeted Casting Table or Basin, instantly finishing the casting process. Only works on molten metals.",
   "spell.constructs_casting.freeze.invalid_target": "Invalid target!",
+  "spell.constructs_casting.invert": "Invert",
+  "spell.constructs_casting.invert.guide": "Inverts the player's gravity for a short time. Can recast to invert back to normal.",
   "stat.constructs_casting.adornment": "Adornment",
   "stat.constructs_casting.magic_base": "Base",
   "stat.constructs_casting.magic_cloth": "Pages",
