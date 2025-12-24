@@ -107,5 +107,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 		public static RegistryObject<MobEffect> evocationEmpowerment = EFFECTS.register("evocation_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0x99ff9c, true).addAttributeModifier(AttributeRegistry.EVOCATION_SPELL_POWER.get(), "ecd54855-033c-4309-8866-3d567d6e15f0", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
 		public static RegistryObject<MobEffect> natureEmpowerment = EFFECTS.register("nature_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0xb0f869, true).addAttributeModifier(AttributeRegistry.NATURE_SPELL_POWER.get(), "6fdc0348-9e68-4165-9d93-43dc2fdf796e", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
 		public static RegistryObject<MobEffect> recoveryEmpowerment = EFFECTS.register("recovery_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0xede4e6, true).addAttributeModifier(AttributeRegistry.COOLDOWN_REDUCTION.get(), "6fdc0fff-9e68-4165-9d93-43dc2fdf796e", 0.15, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
+		public static RegistryObject<TinkerEffect> frostbite = EFFECTS.register("frostbite", () -> new TinkerEffect(MobEffectCategory.HARMFUL, 0x6dfff5, true));
 	}
 }

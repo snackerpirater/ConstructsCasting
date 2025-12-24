@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting;
 
 
+import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
@@ -20,6 +21,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,12 +39,15 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import slimeknights.mantle.registration.object.FluidObject;
+import slimeknights.tconstruct.common.TinkerEffect;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
 import slimeknights.tconstruct.library.client.book.TinkerBook;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -173,6 +179,22 @@ public class CCEvents {
 				}
 
 			}));
+	}
+	@SubscribeEvent
+	static void damageModifiers(LivingHurtEvent event) {
+		DamageSource source = event.getSource();
+		LivingEntity entity = event.getEntity();
+		float originalDamage = event.getAmount();
+		if (source.is(DamageTypes.FREEZE)) {
+			int level = TinkerEffect.getLevel(entity, CCFluidEffects.MobEffects.frostbite);
+			if (level > 0) {
+				originalDamage *= (float) Math.pow(2, level);
+			}
+		}
+
+		// ensure any changes made so far apply, though we may change it again
+		event.setAmount(originalDamage);
+
 	}
 
 

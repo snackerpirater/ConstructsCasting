@@ -138,7 +138,13 @@ public class CCItems {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
 		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
         public static final TagKey<Item> MOD_STAFFS = ItemTags.create(ConstructsCasting.id("modifiable_magic/staff"));
+
+
+
 		public static final TagKey<Item> DRAGONSCALES = ItemTags.create(ConstructsCasting.id("dragon_scales"));
+
+
+
 		public static final TagKey<Item> MAGIC_TOOL = ItemTags.create(ConstructsCasting.id("modifiable_magic")); //includes spellbooks, staffs, and jewelry later
         public static final TagKey<Item> MOD_SPELLBOOKS = ItemTags.create(ConstructsCasting.id("modifiable_magic/spellbook"));
         public static final TagKey<Item> MOD_JEWELRY = ItemTags.create(ConstructsCasting.id("modifiable_magic/jewelry"));

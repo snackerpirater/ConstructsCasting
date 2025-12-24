@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "minecraft:amethyst_shard"
-  },
-  "material": "constructs_casting:amethyst",
-  "needed": 1,
-  "value": 1
-}

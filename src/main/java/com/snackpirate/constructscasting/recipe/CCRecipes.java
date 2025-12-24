@@ -23,6 +23,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.fluids.FluidStack;
@@ -45,6 +46,7 @@ import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.json.predicate.modifier.ModifierPredicate;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
@@ -135,36 +137,20 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setIngredient(ItemRegistry.MAGIC_CLOTH.get())
 				.setValue(1).setNeeded(1)
 				.save(consumer, ConstructsCasting.id(materialFolder + "arcane_cloth"));
-        materialComposite(consumer, CCMaterials.paper, MaterialIds.roseGold, TinkerFluids.moltenRoseGold, FluidValues.INGOT, materialFolder + "rose_gold_pages");
-		//frozen bone
+       //frozen bone
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.FROZEN_BONE_SHARD.get()).setCast(Items.BONE, true).setFluidAndTime(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "frozen_bone"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frozenBone).setIngredient(ItemRegistry.FROZEN_BONE_SHARD.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone"));
 		MaterialFluidRecipeBuilder.material(CCMaterials.frozenBone).setInputId(MaterialIds.bone).setFluidAndTemp(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone_composite"));
 		//frosted rod
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frostRod).setIngredient(ItemRegistry.FROSTED_HELVE.get()).setValue(3).setNeeded(1).setLeftover(ItemOutput.fromItem(ItemRegistry.FROZEN_BONE_SHARD.get())).save(consumer, ConstructsCasting.id(materialFolder + "frost_rod"));
-		MaterialRecipeBuilder.materialRecipe(CCMaterials.paper)
-                        .setIngredient(Items.PAPER)
-                                .setValue(1).setNeeded(1)
-                        .save(consumer, ConstructsCasting.id(materialFolder + "paper"));
-        MaterialRecipeBuilder.materialRecipe(CCMaterials.leaf)
-                        .setIngredient(ItemTags.LEAVES)
-                                .setValue(1).setNeeded(1)
-                        .save(consumer, ConstructsCasting.id(materialFolder + "leaf"));
         MaterialRecipeBuilder.materialRecipe(CCMaterials.dragonskin)
                         .setIngredient(CCItems.Tags.DRAGONSCALES)
                                 .setValue(1).setNeeded(1)
                         .save(consumer, ConstructsCasting.id(materialFolder + "dragonskin"));
-		materialRecipe(consumer, CCMaterials.amethyst, Ingredient.of(Items.AMETHYST_SHARD), 1, 1, "amethyst");
-		materialRecipe(consumer, CCMaterials.permafrost, Ingredient.of(ItemRegistry.ICE_CRYSTAL.get()), 1, 1, "permafrost");
-		materialRecipe(consumer, CCMaterials.quartz, Ingredient.of(Items.QUARTZ), 1, 1, "quartz");
-		materialRecipe(consumer, CCMaterials.glowstone, Ingredient.of(Items.GLOWSTONE_DUST), 1, 1, "glowstone");
-		materialRecipe(consumer, CCMaterials.earthslimeCrystal, Ingredient.of(TinkerWorld.earthGeode.asItem()), 1, 1, "earthslime_crystal");
-		materialRecipe(consumer, CCMaterials.skyslimeCrystal, Ingredient.of(TinkerWorld.skyGeode.asItem()), 1, 1, "skyslime_crystal");
-		materialRecipe(consumer, CCMaterials.emerald, Ingredient.of(Items.EMERALD), 1, 1, "emerald");
-		materialRecipe(consumer, CCMaterials.enderslimeCrystal, Ingredient.of(TinkerWorld.enderGeode.asItem()), 1, 1, "enderslime_crystal");
-		materialRecipe(consumer, CCMaterials.ichorCrystal, Ingredient.of(TinkerWorld.ichorGeode.asItem()), 1, 1, "ichor_crystal");
-		materialRecipe(consumer, CCMaterials.echoShard, Ingredient.of(Items.ECHO_SHARD), 1, 1, "echo_shard");
-
+		materialRecipe(consumer, CCMaterials.permafrost, Ingredient.of(ItemRegistry.ICE_CRYSTAL.get()), 1, 1, materialFolder + "permafrost");
+		materialRecipe(consumer, CCMaterials.emerald, Ingredient.of(Items.EMERALD), 1, 1, materialFolder + "emerald");
+		materialRecipe(consumer, CCMaterials.echoShard, Ingredient.of(Items.ECHO_SHARD), 1, 1, materialFolder + "echo_shard");
+		materialMeltingCasting(consumer, MaterialIds.amethyst, TinkerFluids.moltenAmethyst, FluidValues.GEM, materialFolder);
         //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)
 				.allowCrystal()
@@ -417,13 +403,13 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
         IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(CCModifiers.Tags.CASTING_MODIFIER);
         //To allow the sculk staff (and future staffs) to switch its casting to apply on melee,
-        ModifierSetWorktableRecipeBuilder.setAdding(DualOptionInteraction.KEY)
+        ModifierSetWorktableRecipeBuilder.setAdding(InteractionSource.LEFT_CLICK.getKey())
                 .modifierPredicate(whitelist)
                 .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())
                 .allowTraits()
                 .save(consumer, location("tools/modifiers/worktable/" + "cast_on_melee"));
-        ModifierSetWorktableRecipeBuilder.setRemoving(DualOptionInteraction.KEY)
+        ModifierSetWorktableRecipeBuilder.setRemoving(InteractionSource.LEFT_CLICK.getKey())
                 .modifierPredicate(whitelist)
                 .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
                 .addInput(ItemRegistry.ARCANE_ESSENCE.get())

@@ -54,7 +54,8 @@
     "puncturing": "#D1D37A",
     "enderbender": "#8F648F",
     "apoptotic": "#4D4D4D",
-    "calorific": "#DBCC0B"
+    "calorific": "#DBCC0B",
+    "frostbite": "#eaf8f9"
   },
   "material.constructs_casting": {
     "__tier_1__": null,

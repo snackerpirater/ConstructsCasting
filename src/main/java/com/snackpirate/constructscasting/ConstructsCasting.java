@@ -127,6 +127,7 @@ public class ConstructsCasting {
         GeneratorPartTextureJsonGenerator.StatOverride.Builder builder = new GeneratorPartTextureJsonGenerator.StatOverride.Builder();
         CCMaterials.tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
         CCMaterials.tinkerMagicMaterials.forEach((material) -> builder.add(MagicBaseMaterialStats.ID, material.getId()));
+        CCMaterials.tinkerAdornMaterials.forEach((material) -> builder.add(CCMaterialStats.Statless.ADORNMENT.getIdentifier(), material.getId()));
         return builder.build();
     }
 

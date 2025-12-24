@@ -29,22 +29,13 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
 		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
+		add("material.constructs_casting.frozen_bone.ammo", "Causes the target to take 200% freezing damage for the next 5 to 10 seconds.");
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
-
-        addMaterial(CCMaterials.paper, "Paper", "Simple but effective", "No special ability, but has a lot of spell slots");
-		addMaterial(CCMaterials.leaf, "Leaf", "Time to make like a tree...", "Like all plants, it becomes more powerful in sunlight.");
-        addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
+		addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
         addMaterial(CCMaterials.dragonskin, "Dragonskin", "How to read your dragon", "The might of the dragon empowers your magic while in flight.");
 
-		addMaterial(CCMaterials.amethyst, "Amethyst", "They're minerals, Marie!", "Helps you cast spells faster");
 		addMaterial(CCMaterials.permafrost, "Permafrost", "Not to be confused with permafrost", "Empowers ice magic");
-		addMaterial(CCMaterials.quartz, "Nether Quartz", "Silicon dioxide", "Empowers fire magic");
-		addMaterial(CCMaterials.glowstone, "Glowstone", "Shines bright, but not like a diamond", "Empowers holy magic");
-		addMaterial(CCMaterials.earthslimeCrystal, "Earthslime", "Earthen where?", "Empowers nature magic");
-		addMaterial(CCMaterials.skyslimeCrystal, "Skyslime", "Skyward slime", "Empowers lightning magic");
 		addMaterial(CCMaterials.emerald, "Emerald", "Villagers hate this simple trick", "Empowers evocation magic");
-		addMaterial(CCMaterials.enderslimeCrystal, "Enderslime", "Smells like grape", "Empowers ender magic");
-		addMaterial(CCMaterials.ichorCrystal, "Ichor", "I hardly know her", "Empowers blood magic");
 		addMaterial(CCMaterials.echoShard, "Echo", "Echo", "Empowers eldritch magic");
 
 
@@ -200,6 +191,7 @@ public class CCLang extends LanguageProvider {
 		addEffect(CCFluidEffects.MobEffects.recoveryEmpowerment, "Recovery Empowerment");
         add("fluid_effect.constructs_casting.add_mana", "Adds 50 mana to the target");
         add("fluid_effect.constructs_casting.subtract", "Subtracts 50 mana from the target");
+		addEffect(CCFluidEffects.MobEffects.frostbite, "Frostbite");
 
 		addFluid(CCFluids.moltenCrystallizedCoral, "Molten Crystallized Coral", "");
 		addFluid(CCFluids.gasifiedRedstone, "Redstone", "");
@@ -234,7 +226,8 @@ public class CCLang extends LanguageProvider {
         add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");
         addModifier(CCModifiers.RINGBEARER, "Ringbearer", "Does it give you two more fingers?", "Allows you to wear two more rings");
         addModifier(CCModifiers.SLOT_IMPROVEMENT, "Slot Improvement", "65%% more spell per spell!", "Grants +1 Spell Slot. (Cannot exceed 15 total Spell Slots)");
-    }
+    	addModifier(CCModifiers.FROSTBITE, "Frostbite", "Gives me the chills", "Causes targets to temporarily take 200%% freezing damage. (Not ice magic damage)");
+	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {
 		String id = material.getPath();

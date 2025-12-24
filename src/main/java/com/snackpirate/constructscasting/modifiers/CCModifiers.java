@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.ConstructsCasting;
+import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
@@ -17,6 +18,8 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierProvider;
 import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
 import slimeknights.tconstruct.library.json.LevelingInt;
+import slimeknights.tconstruct.library.json.LevelingValue;
+import slimeknights.tconstruct.library.json.RandomLevelingValue;
 import slimeknights.tconstruct.library.json.predicate.tool.ToolStackPredicate;
 import slimeknights.tconstruct.library.json.variable.entity.EntityVariable;
 import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
@@ -31,11 +34,14 @@ import slimeknights.tconstruct.library.modifiers.modules.build.ModifierSlotModul
 import slimeknights.tconstruct.library.modifiers.modules.build.SetStatModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.StatBoostModule;
 import slimeknights.tconstruct.library.modifiers.modules.combat.ConditionalMeleeDamageModule;
+import slimeknights.tconstruct.library.modifiers.modules.combat.MobEffectModule;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.shared.TinkerEffects;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
@@ -107,7 +113,8 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
 	public static final ModifierId RINGBEARER = new ModifierId(ConstructsCasting.MOD_ID, "ringbearer");
     public static final ModifierId SLOT_IMPROVEMENT = new ModifierId(ConstructsCasting.MOD_ID, "slot_improvement");
-    //increase SP in air
+
+	public static final ModifierId FROSTBITE = new ModifierId(ConstructsCasting.MOD_ID, "frostbite");
 
 	public CCModifiers(PackOutput generator) {
 		super(generator);
@@ -198,8 +205,10 @@ public class CCModifiers extends AbstractModifierProvider {
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_SLOTS).eachLevel(1f))
                 .levelDisplay(ModifierLevelDisplay.DEFAULT)
                 .build();
+		buildModifier(FROSTBITE).priority(150).addModule(MobEffectModule.builder(CCFluidEffects.MobEffects.frostbite).time(RandomLevelingValue.random(5 * 20, 5 * 20)).chance(LevelingValue.flat(0.15f)).build());
 
-    }
+
+	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
 	}

@@ -130,7 +130,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
                 stack = new MaterialIdNBT(Arrays.asList(
                         MaterialIds.cobalt,
                         MaterialIds.wood,
-                        CCMaterials.paper
+                        MaterialIds.paper
                 )).updateStack(stack);
             }
             stack.getOrCreateTag().putBoolean(TooltipUtil.KEY_DISPLAY, true);

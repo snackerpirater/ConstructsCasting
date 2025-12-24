@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "minecraft:quartz"
-  },
-  "material": "constructs_casting:quartz",
-  "needed": 1,
-  "value": 1
-}
