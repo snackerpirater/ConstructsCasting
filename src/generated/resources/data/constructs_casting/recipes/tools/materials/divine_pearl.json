@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "irons_spellbooks:divine_pearl"
+  },
+  "material": "constructs_casting:divine_pearl",
+  "needed": 1,
+  "value": 1
+}

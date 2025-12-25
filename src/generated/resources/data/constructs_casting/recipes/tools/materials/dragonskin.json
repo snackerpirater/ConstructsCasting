@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "tag": "constructs_casting:dragon_scales"
-  },
-  "material": "constructs_casting:dragonskin",
-  "needed": 1,
-  "value": 1
-}

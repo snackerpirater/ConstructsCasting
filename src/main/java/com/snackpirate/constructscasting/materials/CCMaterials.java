@@ -16,6 +16,9 @@ import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.stats.*;
 
@@ -24,17 +27,18 @@ import java.util.List;
 public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold, MaterialIds.paper, MaterialIds.leaves);
-    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone, MaterialIds.blazingBone, MaterialIds.necroticBone);
+    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone, MaterialIds.blazingBone, MaterialIds.necroticBone, MaterialIds.dragonScale);
 	public static final List<MaterialVariantId> tinkerAdornMaterials = List.of(MaterialIds.glowstone, MaterialIds.amethyst, MaterialIds.quartz, MaterialIds.earthslime, MaterialIds.skyslime, MaterialIds.enderslime, MaterialIds.ichor);
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
 	//armor trait: spell protection (also makes the reinforcement)
 	//needs nugget/ingot/blocks, this is the stuff that makes the magehunter
 	public static final MaterialId arcaneCloth = createMaterial("arcane_cloth"); //trait: mana regen, maille/binding only
+	public static final MaterialId divinePearl = createMaterial("divine_pearl");
 	public static final MaterialId frozenBone = createMaterial("frozen_bone");
 	public static final MaterialId frostRod = createMaterial("frosted_rod");
 	public static final MaterialId hogskin = createMaterial("hogskin");
-	public static final MaterialId dragonskin = createMaterial("dragonskin");
+//	public static final MaterialId dragonskin = createMaterial("dragonskin");
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
 
 	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum");
@@ -67,6 +71,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	protected void addMaterials() {
 		addMaterial(frozenBone, 2, 12, true);
         addMaterial(hogskin, 2, 0, true);
+		addMaterial(divinePearl, 2, 0, true);
 		addMaterial(arcaneCloth, 2, 13, true);
 		addMaterial(arcanium, 3, 15, false);
 		addMaterial(exilite, 3, 16, false);
@@ -75,7 +80,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 //		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
-		addMaterial(dragonskin, 4, 0, true);
 
 		addMaterial(permafrost, 2, ORDER_REPAIR + 1, true);
 		addMaterial(emerald, 3, 0, true);
@@ -137,7 +141,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE
                     , CCMaterialStats.Statless.ADORNMENT
             );
-
+			addMaterialStats(divinePearl,
+					StatlessMaterialStats.ARROW_HEAD);
 			addMaterialStats(frozenBone,
 					new HeadMaterialStats(175, 4, Tiers.IRON, 2.5f),
 					new HandleMaterialStats(0.1f, -0.05f, -0.1f, 0.1f),
@@ -149,7 +154,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(arcaneCloth, StatlessMaterialStats.BINDING, StatlessMaterialStats.MAILLE, StatlessMaterialStats.BOWSTRING,
 					new MagicClothMaterialStats(10, 0.05f));
             addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
-			addMaterialStats(dragonskin, new MagicBaseMaterialStats(200, -0.1f));
+			addMaterialStats(MaterialIds.dragonScale, new MagicBaseMaterialStats(200, -0.1f));
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(MaterialIds.paper, new MagicClothMaterialStats(8, -0.15f));
@@ -193,8 +198,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(hogskin, CCModifiers.ARCANE);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
+			addDefaultTraits(divinePearl, ModifierIds.holy);
 			addTraits(frozenBone, StatlessMaterialStats.ARROW_SHAFT.getIdentifier(), CCModifiers.FROSTBITE);
-			addDefaultTraits(dragonskin, CCModifiers.DRAGONSPELLS);
+			addTraits(MaterialIds.dragonScale, MagicBaseMaterialStats.ID, CCModifiers.DRAGONSPELLS);
 			addTraits(frostRod, HandleMaterialStats.ID, new ModifierEntry(CCModifiers.ICE_UPGRADE, 1));
 			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
@@ -244,12 +250,12 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		protected void addMaterialRenderInfo() {
 			buildRenderInfo(arcanium).color(0x73abde);
 			buildRenderInfo(arcaneCloth).color(0x73abde).fallbacks("cloth");
+			buildRenderInfo(divinePearl).color(0xfecbe6).fallbacks("crystal");
 			buildRenderInfo(hogskin).color(0xe8a074).fallbacks("cloth", "primitive");
 			buildRenderInfo(exilite).color(0x47494b);
 			buildRenderInfo(frozenBone).color(0xd0e5e4).fallbacks("bone", "rock");
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
-            buildRenderInfo(dragonskin).color(0x413248).fallbacks("rock", "primitive");
 
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 

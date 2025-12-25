@@ -32,8 +32,7 @@ public class CCLang extends LanguageProvider {
 		add("material.constructs_casting.frozen_bone.ammo", "Causes the target to take 200% freezing damage for the next 5 to 10 seconds.");
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
 		addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
-        addMaterial(CCMaterials.dragonskin, "Dragonskin", "How to read your dragon", "The might of the dragon empowers your magic while in flight.");
-
+		addMaterial(CCMaterials.divinePearl, "Divine Pearl", "The power of god and anime","Gives +0.75 projectile power against undead per level");
 		addMaterial(CCMaterials.permafrost, "Permafrost", "Not to be confused with permafrost", "Empowers ice magic");
 		addMaterial(CCMaterials.emerald, "Emerald", "Villagers hate this simple trick", "Empowers evocation magic");
 		addMaterial(CCMaterials.echoShard, "Echo", "Echo", "Empowers eldritch magic");
@@ -226,7 +225,7 @@ public class CCLang extends LanguageProvider {
         add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");
         addModifier(CCModifiers.RINGBEARER, "Ringbearer", "Does it give you two more fingers?", "Allows you to wear two more rings");
         addModifier(CCModifiers.SLOT_IMPROVEMENT, "Slot Improvement", "65%% more spell per spell!", "Grants +1 Spell Slot. (Cannot exceed 15 total Spell Slots)");
-    	addModifier(CCModifiers.FROSTBITE, "Frostbite", "Gives me the chills", "Causes targets to temporarily take 200%% freezing damage. (Not ice magic damage)");
+    	addModifier(CCModifiers.FROSTBITE, "Frostbite", "Gives me the chills", "Causes targets to temporarily take 200% freezing damage. (Not ice magic damage)");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

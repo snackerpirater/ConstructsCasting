@@ -143,13 +143,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialFluidRecipeBuilder.material(CCMaterials.frozenBone).setInputId(MaterialIds.bone).setFluidAndTemp(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone_composite"));
 		//frosted rod
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frostRod).setIngredient(ItemRegistry.FROSTED_HELVE.get()).setValue(3).setNeeded(1).setLeftover(ItemOutput.fromItem(ItemRegistry.FROZEN_BONE_SHARD.get())).save(consumer, ConstructsCasting.id(materialFolder + "frost_rod"));
-        MaterialRecipeBuilder.materialRecipe(CCMaterials.dragonskin)
-                        .setIngredient(CCItems.Tags.DRAGONSCALES)
+        MaterialRecipeBuilder.materialRecipe(MaterialIds.dragonScale)
+                        .setIngredient(ItemRegistry.DRAGONSKIN.get())
                                 .setValue(1).setNeeded(1)
-                        .save(consumer, ConstructsCasting.id(materialFolder + "dragonskin"));
+                        .save(consumer, ConstructsCasting.id(materialFolder + "dragon_scale"));
 		materialRecipe(consumer, CCMaterials.permafrost, Ingredient.of(ItemRegistry.ICE_CRYSTAL.get()), 1, 1, materialFolder + "permafrost");
 		materialRecipe(consumer, CCMaterials.emerald, Ingredient.of(Items.EMERALD), 1, 1, materialFolder + "emerald");
 		materialRecipe(consumer, CCMaterials.echoShard, Ingredient.of(Items.ECHO_SHARD), 1, 1, materialFolder + "echo_shard");
+		materialRecipe(consumer, CCMaterials.divinePearl, Ingredient.of(ItemRegistry.DIVINE_PEARL.get()), 1, 1, materialFolder + "divine_pearl");
 		materialMeltingCasting(consumer, MaterialIds.amethyst, TinkerFluids.moltenAmethyst, FluidValues.GEM, materialFolder);
         //casting ability
 		ModifierRecipeBuilder.modifier(CCModifiers.CASTING)

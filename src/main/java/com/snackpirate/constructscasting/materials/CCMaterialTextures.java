@@ -54,6 +54,16 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFcaeafc)
 						.addARGB(255, 0xFFfcfcfc)
 						.build()));
+		buildMaterial(CCMaterials.divinePearl).arrowHead()
+						.fallbacks("crystal")
+								.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+										.addARGB(63,  0xFF54398a)
+										.addARGB(102, 0xFF6f4fab)
+										.addARGB(140, 0xFF8d6acc)
+										.addARGB(178, 0xFFe9b115)
+										.addARGB(216, 0xFFfad64a)
+										.addARGB(255, 0xFFfbf7b7)
+										.build()));
 		buildMaterial(CCMaterials.hogskin).repairKit().statType(MagicClothMaterialStats.ID)
 				.fallbacks("cloth", "primitive")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
@@ -64,16 +74,6 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFe8a074)
 						.addARGB(255, 0xFFf2ba9a)
 						.build()));
-        buildMaterial(CCMaterials.dragonskin).repairKit().statType(MagicBaseMaterialStats.ID)
-                        .fallbacks("rock", "primitive")
-                                .transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
-                                        .addARGB(63,  0xFF000000)
-                                        .addARGB(102, 0xFF141216)
-                                        .addARGB(140, 0xFF1a181c)
-                                        .addARGB(178, 0xFF27202b)
-                                        .addARGB(216, 0xFF322835)
-                                        .addARGB(255, 0xFF413248)
-                                        .build()));
 		buildMaterial(CCMaterials.frozenBone).meleeHarvest().statType(StatlessMaterialStats.BINDING.getIdentifier(), MagicBaseMaterialStats.ID).repairKit()
 				.fallbacks("bone", "rock")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
