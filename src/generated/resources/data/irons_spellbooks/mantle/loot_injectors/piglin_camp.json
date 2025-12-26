@@ -31,7 +31,7 @@
             }
           ],
           "name": "constructs_casting:flamberge",
-          "weight": 3
+          "weight": 2
         }
       ],
       "name": "pool1"

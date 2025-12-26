@@ -169,7 +169,7 @@ public class CCTools {
 					.module(new SetStatsModule(StatsNBT.builder()
 							.set(ToolStats.ATTACK_DAMAGE, 2.5f)
 							.set(ToolStats.ATTACK_SPEED, 1.0f)
-							.set(ToolStats.BLOCK_AMOUNT, 10).build()))
+							.set(ToolStats.BLOCK_AMOUNT, 15).build()))
 					.module(new MultiplyStatsModule(MultiplierNBT.builder()
 							.set(ToolStats.ATTACK_DAMAGE, 1.25f)
 							.set(ToolStats.MINING_SPEED, 0.25f)

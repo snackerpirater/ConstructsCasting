@@ -24,12 +24,12 @@ public class CCLootInjections extends AbstractLootTableInjectionProvider {
 		AddToolDataFunction.Builder ancientToolData3 = AddToolDataFunction.builder().addMaterial(random).addMaterial(random).addMaterial(random);
 		LootTableInjection.Builder burialLoot = inject("burial_loot", IronsSpellbooks.id("chests/battleground/burial_loot"))
 				.addToPool("main", LootItem.lootTableItem(CCItems.flamberge.get())
-						.setWeight(12) // about as often as both diamond swords
+						.setWeight(12)
 						.apply(ancientToolData3)
 						.build());
 		inject("piglin_camp", IronsSpellbooks.id("chests/battleground/piglin_camp"))
 				.addToPool("pool1", LootItem.lootTableItem(CCItems.flamberge.get())
-						.setWeight(2) // bit more common than an iron sword
+						.setWeight(2)
 						.apply(ancientToolData3)
 						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.1f, 0.9f)))
 						.build());
