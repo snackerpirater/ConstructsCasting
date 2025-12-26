@@ -1,6 +1,7 @@
 {
   "values": [
     "#constructs_casting:modifiable_magic/spellbook",
-    "#constructs_casting:modifiable_magic/staff"
+    "#constructs_casting:modifiable_magic/staff",
+    "constructs_casting:flamberge"
   ]
 }

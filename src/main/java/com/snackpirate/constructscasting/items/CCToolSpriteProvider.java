@@ -6,6 +6,7 @@ import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import slimeknights.tconstruct.library.client.data.material.AbstractPartSpriteProvider;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
 public class CCToolSpriteProvider extends AbstractPartSpriteProvider {
 	public CCToolSpriteProvider(String modID) {
@@ -37,6 +38,11 @@ public class CCToolSpriteProvider extends AbstractPartSpriteProvider {
 				.addPart("crystal", CCMaterialStats.Statless.ADORNMENT.getIdentifier())
 				.addPart("handle", HandleMaterialStats.ID)
 				.addPart("grip", MagicBaseMaterialStats.ID);
+		buildTool("flamberge")
+				.withLarge()
+				.addHead("blade")
+				.addPart("guard", PlatingMaterialStats.LEGGINGS.getId())
+				.addHandle("handle");
 		addPart("spellbook_plating", CCMaterialStats.Statless.ADORNMENT.getIdentifier());
 		addPart("spellbook_cover", MagicBaseMaterialStats.ID);
 		addPart("pages", MagicClothMaterialStats.ID);

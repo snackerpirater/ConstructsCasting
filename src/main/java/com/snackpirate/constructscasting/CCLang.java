@@ -150,6 +150,7 @@ public class CCLang extends LanguageProvider {
         add("item.constructs_casting.wand.description", "The wand is a simple casting implement. It buffs spell casting, and allows you to cast spells on right click.");
 		addItem(CCItems.battlestaff, "Battlestaff");
         add("item.constructs_casting.battlestaff.description", "The Battlestaff is a hybrid melee/magic weapon. Both melee and magic attacks will hit hard with one of these.");
+		addItem(CCItems.flamberge, "Flamberge");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
         addItem(CCItems.spellbookPlating, "Spellbook Plating");

@@ -81,7 +81,7 @@ public class CastingModifier extends NoLevelsModifier implements GeneralInteract
 
     @Override
     public Component getDisplayName(IToolStackView tool, ModifierEntry entry, @Nullable RegistryAccess access) {
-        return DualOptionInteraction.formatModifierName(tool, this, super.getDisplayName(tool, entry, access));
+        return InteractionSource.formatModifierName(tool, this, super.getDisplayName(tool, entry, access));
     }
 
 	@Override

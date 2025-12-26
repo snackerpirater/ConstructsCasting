@@ -47,6 +47,7 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.module.display.ToolNameHook;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
@@ -75,7 +76,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 
     @Override
     public Component getName(ItemStack stack) {
-        return TooltipUtil.getDisplayName(stack, getToolDefinition());
+        return ToolNameHook.getName(getToolDefinition(), stack);
     }
 
 	@Override

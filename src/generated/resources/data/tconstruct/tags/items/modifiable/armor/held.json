@@ -2,6 +2,7 @@
   "values": [
     "constructs_casting:eldritch_staff",
     "constructs_casting:wand",
-    "constructs_casting:battlestaff"
+    "constructs_casting:battlestaff",
+    "constructs_casting:flamberge"
   ]
 }

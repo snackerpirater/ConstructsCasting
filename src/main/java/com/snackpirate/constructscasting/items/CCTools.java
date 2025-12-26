@@ -4,23 +4,30 @@ import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.ToolActions;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.materials.RandomMaterial;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
-import slimeknights.tconstruct.library.tools.definition.module.build.MultiplyStatsModule;
-import slimeknights.tconstruct.library.tools.definition.module.build.SetStatsModule;
-import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
-import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
+import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
+import slimeknights.tconstruct.library.tools.definition.module.ToolModule;
+import slimeknights.tconstruct.library.tools.definition.module.build.*;
 import slimeknights.tconstruct.library.tools.definition.module.display.StatTypesToolNameModule;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.MaterialStatsModule;
+import slimeknights.tconstruct.library.tools.definition.module.material.MaterialTraitsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
+import slimeknights.tconstruct.library.tools.definition.module.mining.IsEffectiveModule;
+import slimeknights.tconstruct.library.tools.definition.module.mining.MiningSpeedModifierModule;
 import slimeknights.tconstruct.library.tools.nbt.MultiplierNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
-import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+import slimeknights.tconstruct.tools.stats.*;
 
 import java.util.Set;
 
@@ -33,6 +40,7 @@ public class CCTools {
 		public static final ToolDefinition ELDRITCH_STAFF = ToolDefinition.create(CCItems.eldritchStaff);
 		public static final ToolDefinition WAND = ToolDefinition.create(CCItems.wand);
 		public static final ToolDefinition BATTLESTAFF = ToolDefinition.create(CCItems.battlestaff);
+		public static final ToolDefinition FLAMBERGE = ToolDefinition.create(CCItems.flamberge);
 		public CCToolDefinitions(PackOutput generator, String modId) {
 			super(generator, modId);
 		}
@@ -47,9 +55,11 @@ public class CCTools {
 			//Plate book: Low upgrade, high slots, defense
 			//Slimy book: High upgrade, 6 slots
 
+			RandomMaterial anyMaterial = RandomMaterial.random().allowHidden().build();
             RandomMaterial tier1Material = RandomMaterial.random().tier(1).build();
 			DefaultMaterialsModule defaultThreeParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material).build();
             DefaultMaterialsModule defaultFourParts = DefaultMaterialsModule.builder().material(tier1Material, tier1Material, tier1Material, tier1Material).build();
+			DefaultMaterialsModule ancientThreeParts = DefaultMaterialsModule.builder().material(anyMaterial, anyMaterial, anyMaterial).build();
 			define(SLIMY_SPELLBOOK)
 					.module(ToolSlotsModule.builder()
 							//match slimesuit, but w/o abilities since what's the point?
@@ -138,6 +148,41 @@ public class CCTools {
                             .set(ToolStats.DURABILITY, 1.5f).build()))
 					.module(new StatTypesToolNameModule(Set.of(HeadMaterialStats.ID, CCMaterialStats.Statless.ADORNMENT.getIdentifier())))
 					.module(DualOptionInteraction.INSTANCE).build();
+
+			ToolModule[] swordHarvest = {
+					IsEffectiveModule.tag(TinkerTags.Blocks.MINABLE_WITH_SWORD),
+					MiningSpeedModifierModule.blocks(7.5f, Blocks.COBWEB)
+			};
+			define(FLAMBERGE)
+					.module(MaterialStatsModule.stats()
+							.stat(HeadMaterialStats.ID)
+							.stat(PlatingMaterialStats.LEGGINGS)
+							.stat(HandleMaterialStats.ID)
+							.build())
+					.module(ancientThreeParts)
+					.module(new MaterialTraitsModule(PlatingMaterialStats.LEGGINGS.getId(), 1), ToolHooks.REBALANCED_TRAIT)
+					.module(ToolSlotsModule.builder()
+							.slots(SlotType.ABILITY, 1)
+							.slots(SlotType.UPGRADE, 2)
+							.slots(SlotType.DEFENSE, 2)
+							.build())
+					.module(new SetStatsModule(StatsNBT.builder()
+							.set(ToolStats.ATTACK_DAMAGE, 2.5f)
+							.set(ToolStats.ATTACK_SPEED, 1.0f)
+							.set(ToolStats.BLOCK_AMOUNT, 10).build()))
+					.module(new MultiplyStatsModule(MultiplierNBT.builder()
+							.set(ToolStats.ATTACK_DAMAGE, 1.25f)
+							.set(ToolStats.MINING_SPEED, 0.25f)
+							.set(ToolStats.DURABILITY, 2f)
+							.set(ToolStats.DRAW_SPEED, 1.5f)
+							.build()))
+					.module(ToolTraitsModule.builder()
+							.trait(TinkerModifiers.springing, 1)
+							.build())
+					// behavior
+					.module(ToolActionsModule.of(ToolActions.SWORD_DIG))
+					.module(swordHarvest)
+					.build();
 		}
 
 		@Override
