@@ -45,7 +45,6 @@ import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.json.predicate.modifier.ModifierPredicate;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
@@ -56,7 +55,6 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.worktable.ModifierSetWorktableRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.TinkerMaterials;
@@ -374,12 +372,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(CCFluids.rareInk.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
 
-		Ingredient rebalancedCommon = Ingredient.of(TinkerModifiers.dragonScale, Blocks.GILDED_BLACKSTONE);
+		Ingredient rebalancedCommon = Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get());
 
 		SwappableModifierRecipeBuilder.modifier(ModifierIds.rebalanced, CCModifiers.AFFINITY_SLOT.getName())
 				.setTools(TinkerTags.Items.BONUS_SLOTS)
 				.addInput(rebalancedCommon)
-				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.addInput(Items.END_CRYSTAL)
 				.addInput(rebalancedCommon)
 				.addInput(Items.AMETHYST_BLOCK)
 				.addInput(Items.AMETHYST_BLOCK)
@@ -454,7 +452,5 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.allowCrystal()
 				.setLevelRange(4, 5)
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
-
 	}
-
 }
