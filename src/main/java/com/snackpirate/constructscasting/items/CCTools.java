@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.items;
 
+import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import net.minecraft.data.PackOutput;
@@ -11,6 +12,7 @@ import slimeknights.tconstruct.library.tools.definition.module.build.MultiplySta
 import slimeknights.tconstruct.library.tools.definition.module.build.SetStatsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolSlotsModule;
 import slimeknights.tconstruct.library.tools.definition.module.build.ToolTraitsModule;
+import slimeknights.tconstruct.library.tools.definition.module.display.StatTypesToolNameModule;
 import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.library.tools.definition.module.material.DefaultMaterialsModule;
 import slimeknights.tconstruct.library.tools.definition.module.material.PartStatsModule;
@@ -18,6 +20,9 @@ import slimeknights.tconstruct.library.tools.nbt.MultiplierNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+
+import java.util.Set;
 
 public class CCTools {
 	public static class CCToolDefinitions extends AbstractToolDefinitionDataProvider {
@@ -83,8 +88,8 @@ public class CCTools {
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 1)
 							.build())
-//					.module(ToolTraitsModule.builder().trait(CCModifiers.SPELL_SLOTS.getId()).build())
-            ;
+					.module(new StatTypesToolNameModule(Set.of(CCMaterialStats.Statless.ADORNMENT.getIdentifier())))
+					.build();
 			define(ELDRITCH_STAFF)
 					.module(ToolSlotsModule.builder()
 							.slots(SlotType.UPGRADE, 3)
@@ -110,6 +115,7 @@ public class CCTools {
 							.build())
 					.module(ToolTraitsModule.builder()
 							.trait(CCModifiers.CASTING).build())
+					.module(new StatTypesToolNameModule(Set.of(CCMaterialStats.Statless.ADORNMENT.getIdentifier())))
 					.module(DualOptionInteraction.INSTANCE);
 			define(BATTLESTAFF)
 					.largeToolStartingSlots()
@@ -130,7 +136,8 @@ public class CCTools {
                             .set(ToolStats.ATTACK_DAMAGE, 1.25f)
                             .set(ToolStats.MINING_SPEED, 0.25f)
                             .set(ToolStats.DURABILITY, 1.5f).build()))
-					.module(DualOptionInteraction.INSTANCE);
+					.module(new StatTypesToolNameModule(Set.of(HeadMaterialStats.ID, CCMaterialStats.Statless.ADORNMENT.getIdentifier())))
+					.module(DualOptionInteraction.INSTANCE).build();
 		}
 
 		@Override

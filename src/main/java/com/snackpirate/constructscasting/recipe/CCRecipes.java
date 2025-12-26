@@ -23,7 +23,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.CompoundIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.fluids.FluidStack;
@@ -59,7 +58,6 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBui
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.worktable.ModifierSetWorktableRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.tools.definition.module.interaction.DualOptionInteraction;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.TinkerMaterials;
 import slimeknights.tconstruct.shared.block.SlimeType;
@@ -246,6 +244,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(Items.APPLE)
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
+				.setTools(TinkerTags.Items.BONUS_SLOTS)
 				.setSlots(SlotType.ABILITY, 1)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/improveable"));
         ModifierRecipeBuilder.modifier(CCModifiers.RINGBEARER)
@@ -404,19 +403,19 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);
         IJsonPredicate<ModifierId> whitelist = ModifierPredicate.tag(CCModifiers.Tags.CASTING_MODIFIER);
         //To allow the sculk staff (and future staffs) to switch its casting to apply on melee,
-        ModifierSetWorktableRecipeBuilder.setAdding(InteractionSource.LEFT_CLICK.getKey())
-                .modifierPredicate(whitelist)
-                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
-                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
-                .allowTraits()
-                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_melee"));
-        ModifierSetWorktableRecipeBuilder.setRemoving(InteractionSource.LEFT_CLICK.getKey())
-                .modifierPredicate(whitelist)
-                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
-                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
-                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
-                .allowTraits()
-                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_interact"));
+//        ModifierSetWorktableRecipeBuilder.setAdding(InteractionSource.LEFT_CLICK.getKey())
+//                .modifierPredicate(whitelist)
+//                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
+//                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+//                .allowTraits()
+//                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_melee"));
+//        ModifierSetWorktableRecipeBuilder.setRemoving(InteractionSource.LEFT_CLICK.getKey())
+//                .modifierPredicate(whitelist)
+//                .setTools(TinkerTags.Items.INTERACTABLE_DUAL)
+//                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+//                .addInput(ItemRegistry.ARCANE_ESSENCE.get())
+//                .allowTraits()
+//                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_interact"));
         ModifierRecipeBuilder.modifier(CCModifiers.SLOT_IMPROVEMENT)
                 .setTools(TinkerTags.Items.BONUS_SLOTS)
                 .setTools(CCItems.Tags.MOD_SPELLBOOKS)

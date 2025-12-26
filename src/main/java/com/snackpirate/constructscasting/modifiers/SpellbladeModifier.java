@@ -26,7 +26,6 @@ public class SpellbladeModifier extends NoLevelsModifier implements MeleeHitModi
 		super.registerHooks(hookBuilder);
 		hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
 		hookBuilder.addModule(ModifierRequirementsModule.builder().requireModifier(CCModifiers.IMBUED.getId(), 1).translationKey("constructs_casting.modifier.spellblade.requirement").build());
-
 	}
 
     @Override
