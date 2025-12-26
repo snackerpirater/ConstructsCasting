@@ -1,0 +1,11 @@
+{
+  "tool": "constructs_casting:wand",
+  "text": [
+    { "text": "The wand is a simple casting implement. It buffs spell casting, and allows you to cast spells on right click." }
+  ],
+  "properties": [
+    "Casting",
+    "3 Upgrade Slots",
+    "1 Ability Slot"
+  ]
+}

@@ -159,7 +159,6 @@ public class CCItems {
 		private void addToolTags(ItemLike tool, TagKey<Item>... tags) {
 			Item item = tool.asItem();
 			for (TagKey<Item> tag : tags) {
-//				ConstructsCasting.LOGGER.info("adding tool tag {}", tag.toString());
 				this.tag(tag).add(item);
 			}
 		}
@@ -177,12 +176,12 @@ public class CCItems {
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).addTag(MOD_SPELLBOOKS);
             tag(MOD_JEWELRY).addTags();
 			tag(MOD_SPELLBOOKS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
-			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
+			addToolTags(eldritchStaff.get(),    DURABILITY, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
 			addToolTags(wand,        STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MULTIPART_TOOL);
 			addToolTags(battlestaff, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MELEE_PRIMARY, DURABILITY, MULTIPART_TOOL);
 
 
-			addToolTags(flamberge, HELD_ARMOR, MULTIPART_TOOL, DURABILITY, HARVEST, MELEE_PRIMARY, INTERACTABLE_RIGHT, SWORD, BROAD_TOOLS, BONUS_SLOTS, ItemTags.SWORDS, ANCIENT_TOOLS);
+			addToolTags(flamberge, HELD_ARMOR, MULTIPART_TOOL, DURABILITY, HARVEST, MELEE_PRIMARY, INTERACTABLE_RIGHT, SWORD, BONUS_SLOTS, ItemTags.SWORDS, ANCIENT_TOOLS);
 
 			tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
             tag(MODIFIABLE).addTag(MAGIC_TOOL);

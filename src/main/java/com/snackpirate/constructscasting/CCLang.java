@@ -80,6 +80,7 @@ public class CCLang extends LanguageProvider {
 		add("modifier.constructs_casting.antifrost.attack_damage", "Antifrost Damage");
 		addModifier(CCModifiers.SPELLBOUND, "Spellbound", "Jack of all trades!", "Grants +5% power to all types of spells.");
 		addModifier(CCModifiers.SPELLBOOK_STRAP.getId(), "Spellbook Strap", "Twice the spells, twice the fun!", "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.");
+		addModifier(CCModifiers.REINSCRIBED, "Reinscribed", "Oops, All Ink!", "Inks a new upgrade slot onto the tool!");
 
 		addModifier(CCModifiers.MANA_UPGRADE, "Mana Upgrade", "Mana-rific!", "Grants +80 max mana.");
 		addModifier(CCModifiers.COOLDOWN_UPGRADE, "Cooldown Upgrade", "I am speed!", "Grants +5% Cooldown Reduction.");
@@ -151,6 +152,7 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.battlestaff, "Battlestaff");
         add("item.constructs_casting.battlestaff.description", "The Battlestaff is a hybrid melee/magic weapon. Both melee and magic attacks will hit hard with one of these.");
 		addItem(CCItems.flamberge, "Flamberge");
+		add("item.constructs_casting.flamberge.description", "The Flamberge is a weapon primarily focused on defense and mobility. Grants armor points when held and allows for a quick dash.");
 //		addItem(CCItems.arcaniumApple, "Arcanium Apple");
 
         addItem(CCItems.spellbookPlating, "Spellbook Plating");

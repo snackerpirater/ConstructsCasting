@@ -253,6 +253,15 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .setTools(TinkerTags.Items.CHESTPLATES)
                 .setMaxLevel(1)
                 .save(consumer, ConstructsCasting.id(modifierFolder + "ability/ringbearer"));
+		ModifierRecipeBuilder.modifier(CCModifiers.REINSCRIBED)
+				.addInput(ItemRegistry.INK_COMMON.get())
+				.addInput(ItemRegistry.INK_UNCOMMON.get())
+				.addInput(ItemRegistry.INK_RARE.get())
+				.addInput(ItemRegistry.INK_EPIC.get())
+				.addInput(ItemRegistry.INK_LEGENDARY.get())
+				.setTools(TinkerTags.Items.BONUS_SLOTS)
+				.setMaxLevel(1)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/reinscribed"));
 		//elemental power upgrades
 		incrementalModifierRecipe(CCModifiers.MANA_UPGRADE,      ItemRegistry.MANA_RUNE.get(),      ItemRegistry.MANA_UPGRADE_ORB.get(),      "mana_upgrade");
 		incrementalModifierRecipe(CCModifiers.COOLDOWN_UPGRADE,  ItemRegistry.COOLDOWN_RUNE.get(),  ItemRegistry.COOLDOWN_UPGRADE_ORB.get(),  "cooldown_upgrade");
