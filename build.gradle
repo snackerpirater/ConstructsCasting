@@ -37,11 +37,20 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
         }
+        client2 {
+            parent runs.client
+            args '--username', 'Dev2'
+        }
+
 
         server {
             property 'forge.enabledGameTestNamespaces', mod_id
             args '--nogui'
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
         }
         gameTestServer {
             property 'forge.enabledGameTestNamespaces', mod_id

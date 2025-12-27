@@ -76,7 +76,7 @@ public class CCItems {
 	public static final ItemObject<ModifiableMagicStaff> wand = ITEMS.register("wand", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.WAND));
 	public static final ItemObject<ModifiableMagicStaff> battlestaff = ITEMS.register("battlestaff", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.BATTLESTAFF));
 	public static final ItemObject<ModifiableSwordItem> flamberge = ITEMS.register("flamberge", () -> new ModifiableSwordItem(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.FLAMBERGE));
-	public static final ItemObject<ArtificersGuideItem> artificersGuide = ITEMS.register("artificers_guide", () -> new ArtificersGuideItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+//	public static final ItemObject<ArtificersGuideItem> artificersGuide = ITEMS.register("artificers_guide", () -> new ArtificersGuideItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(potatoStewBowl);
