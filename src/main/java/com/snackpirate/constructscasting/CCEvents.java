@@ -12,9 +12,11 @@ import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProject
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
+import io.redspace.ironsspellbooks.registries.FluidRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -45,6 +47,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerEffect;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -69,17 +72,36 @@ public class CCEvents {
 	static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
 		itemPouring(event, stack, ItemRegistry.LIGHTNING_BOTTLE.get(), CCFluids.liquidLightning, 250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_COMMON.get(),       CCFluids.commonInk,       250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_UNCOMMON.get(),     CCFluids.uncommonInk,     250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_RARE.get(),         CCFluids.rareInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_EPIC.get(),         CCFluids.epicInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_LEGENDARY.get(),    CCFluids.legendaryInk,    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_COMMON.get(),       FluidRegistry.COMMON_INK.get(),  250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_UNCOMMON.get(),     FluidRegistry.UNCOMMON_INK.get(),     250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_RARE.get(),         FluidRegistry.RARE_INK.get(),         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_EPIC.get(),         FluidRegistry.EPIC_INK.get(),         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_LEGENDARY.get(),    FluidRegistry.LEGENDARY_INK.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.BLOOD_VIAL.get(), FluidRegistry.BLOOD.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.ICE_VENOM_VIAL.get(), FluidRegistry.ICE_VENOM_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.TIMELESS_SLURRY.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_HEALING_POTION.get(), FluidRegistry.GREATER_HEALING_ELIXIR_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+
+		itemPouring(event, stack, ItemRegistry.INVISIBILITY_ELIXIR.get(), FluidRegistry.INVISIBILITY_ELIXIR_FLUID.get(),                250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_INVISIBILITY_ELIXIR.get(), FluidRegistry.GREATER_INVISIBILITY_ELIXIR_FLUID.get(),250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.EVASION_ELIXIR.get(), FluidRegistry.EVASION_ELIXIR_FLUID.get(),                          250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_EVASION_ELIXIR.get(), FluidRegistry.GREATER_EVASION_ELIXIR_FLUID.get(),          250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.OAKSKIN_ELIXIR.get(), FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(),                  250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_OAKSKIN_ELIXIR.get(), FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(),          250, Items.GLASS_BOTTLE.getDefaultInstance());
 	}
 	public static void itemPouring(AttachCapabilitiesEvent<ItemStack> event, ItemStack itemStack, Item input, FluidObject<? extends Fluid> fluidObject, int amount, ItemStack output) {
 		if (itemStack.getItem().equals(input)) {
 			event.addCapability(
 					fluidObject.getId(),
 					new ConstantFluidContainerWrapper(new FluidStack(fluidObject.get(), amount), itemStack, output)
+			);
+		}
+	}
+	public static void itemPouring(AttachCapabilitiesEvent<ItemStack> event, ItemStack itemStack, Item input, Fluid fluidObject, int amount, ItemStack output) {
+		if (itemStack.getItem().equals(input)) {
+			event.addCapability(
+					ConstructsCasting.id("pouring_capability_" + ForgeRegistries.ITEMS.getKey(input).getPath()),
+					new ConstantFluidContainerWrapper(new FluidStack(fluidObject, amount), itemStack, output)
 			);
 		}
 	}

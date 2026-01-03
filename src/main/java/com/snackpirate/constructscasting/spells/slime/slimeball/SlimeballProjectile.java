@@ -25,6 +25,7 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class SlimeballProjectile extends AbstractMagicProjectile implements IEntityAdditionalSpawnData {
 	private static final EntityDataAccessor<Integer> BOUNCES = SynchedEntityData.defineId(SlimeballProjectile.class, EntityDataSerializers.INT);
@@ -55,13 +56,8 @@ public class SlimeballProjectile extends AbstractMagicProjectile implements IEnt
 	}
 
 	@Override
-	public Optional<SoundEvent> getImpactSound() {
-		return getBounces() == 0 ? Optional.of(SoundEvents.SLIME_BLOCK_BREAK) : Optional.of(SoundEvents.SLIME_SQUISH);
-	}
-
-	@Override
-	protected void doImpactSound(SoundEvent sound) {
-		level().playSound(null, getX(), getY(), getZ(), sound, SoundSource.NEUTRAL, 2, 1.2f + Utils.random.nextFloat() * .2f);
+	public Optional<Supplier<SoundEvent>> getImpactSound() {
+		return getBounces() == 0 ? Optional.of(() -> SoundEvents.SLIME_BLOCK_BREAK) : Optional.of(() -> SoundEvents.SLIME_SQUISH);
 	}
 
 	@Override
@@ -129,7 +125,6 @@ public class SlimeballProjectile extends AbstractMagicProjectile implements IEnt
 
 	@Override
 	protected void defineSynchedData() {
-		super.defineSynchedData();
 		this.entityData.define(BOUNCES, 1);
 	}
 

@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:epic_ink",
+    "irons_spellbooks:epic_ink",
     {
       "id": "create_wizardry:epic_ink",
       "required": false

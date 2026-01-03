@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting.modifiers;
 
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
+import io.redspace.ironsspellbooks.api.spells.ISpellContainerMutable;
 import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -23,7 +24,7 @@ public class ImbuedModifier extends SingleLevelModifier implements EquipmentChan
 		ItemStack replacement = context.getReplacement();
 		if (!ISpellContainer.isSpellContainer(replacement)) {
 			var container = ISpellContainer.create(1, true, replacement.getItem() instanceof ModifiableArmorItem);
-			container.save(replacement);
+			ISpellContainer.set(replacement, container);
 		}
 //	code for if i want to make imbued give >1 slot (it's kinda buggy past that)
 //		need to account for higher levels of imbued + swords getting imbued

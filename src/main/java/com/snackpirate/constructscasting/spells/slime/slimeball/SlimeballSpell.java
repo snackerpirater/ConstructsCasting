@@ -14,7 +14,6 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-@AutoSpellConfig
 public class SlimeballSpell extends AbstractSpell {
 
 	private final DefaultConfig defaultConfig = new DefaultConfig()

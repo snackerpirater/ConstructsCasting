@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.fluids;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.registries.FluidRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -244,12 +245,12 @@ public class CCFluids {
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
 			tag(TagKey.create(ResourceKey.createRegistryKey(ResourceLocation.parse("forge:fluid_type")),ResourceLocation.parse("forge:ink"))).add(squidInk.get());
-			tag(ink("common")).add(commonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:common_ink"));
-			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:uncommon_ink"));
-			tag(ink("rare")).add(rareInk.get()).addOptional(ResourceLocation.parse("create_wizardry:rare_ink"));
-			tag(ink("epic")).add(epicInk.get()).addOptional(ResourceLocation.parse("create_wizardry:epic_ink"));
-			tag(ink("legendary")).add(legendaryInk.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
-			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
+			tag(ink("common")).add(commonInk.get(), FluidRegistry.COMMON_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:common_ink"));
+			tag(ink("uncommon")).add(uncommonInk.get(), FluidRegistry.UNCOMMON_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:uncommon_ink"));
+			tag(ink("rare")).add(rareInk.get(), FluidRegistry.RARE_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:rare_ink"));
+			tag(ink("epic")).add(epicInk.get(), FluidRegistry.EPIC_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:epic_ink"));
+			tag(ink("legendary")).add(legendaryInk.get(), FluidRegistry.LEGENDARY_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
+			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get(), FluidRegistry.BLOOD.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
 			//tooltips
 			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get()).add(moltenArcaneSalvage.get());
 			tag(BOTTLE_TOOLTIP)
@@ -272,7 +273,14 @@ public class CCFluids {
 					.add(legendaryInk.get())
 					.add(abyssalEssence.get())
 					.add(aquaEssence.get())
-					.add(technomancyEssence.get());
+					.add(technomancyEssence.get())
+					.add(FluidRegistry.COMMON_INK.get(), FluidRegistry.UNCOMMON_INK.get(), FluidRegistry.RARE_INK.get(), FluidRegistry.EPIC_INK.get(), FluidRegistry.LEGENDARY_INK.get())
+					.add(FluidRegistry.ICE_VENOM_FLUID.get(), FluidRegistry.BLOOD.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get())
+					.add(FluidRegistry.POTION_FLUID.get(),
+							FluidRegistry.INVISIBILITY_ELIXIR_FLUID.get(), FluidRegistry.GREATER_INVISIBILITY_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_HEALING_ELIXIR_FLUID.get(), FluidRegistry.OAKSKIN_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(), FluidRegistry.EVASION_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_EVASION_ELIXIR_FLUID.get());
 			tag(MantleTags.Fluids.SOUP).add(potatoStew.get()).add(poisonousPotatoStew.get());
 			tag(TinkerTags.Fluids.SLIME_TOOLTIPS).add(moltenPearl.get());
 			tag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS).add(moltenCrystallizedCoral.get());

@@ -19,6 +19,22 @@
     "constructs_casting:legendary_ink",
     "constructs_casting:abyssal_essence",
     "constructs_casting:aqua_essence",
-    "constructs_casting:technomancy_essence"
+    "constructs_casting:technomancy_essence",
+    "irons_spellbooks:common_ink",
+    "irons_spellbooks:uncommon_ink",
+    "irons_spellbooks:rare_ink",
+    "irons_spellbooks:epic_ink",
+    "irons_spellbooks:legendary_ink",
+    "irons_spellbooks:ice_venom",
+    "irons_spellbooks:blood",
+    "irons_spellbooks:timeless_slurry",
+    "irons_spellbooks:potion",
+    "irons_spellbooks:invisibility_elixir",
+    "irons_spellbooks:greater_invisibility_elixir",
+    "irons_spellbooks:greater_healing_elixir",
+    "irons_spellbooks:oakskin_elixir",
+    "irons_spellbooks:greater_oakskin_elixir",
+    "irons_spellbooks:evasion_elixir",
+    "irons_spellbooks:greater_evasion_elixir"
   ]
 }

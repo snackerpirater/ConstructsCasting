@@ -19,7 +19,6 @@ import slimeknights.tconstruct.shared.TinkerEffects;
 
 import java.util.List;
 
-@AutoSpellConfig
 public class InvertSpell extends AbstractSpell {
 
 	private final DefaultConfig defaultConfig = new DefaultConfig()

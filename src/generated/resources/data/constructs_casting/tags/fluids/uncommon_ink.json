@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:uncommon_ink",
+    "irons_spellbooks:uncommon_ink",
     {
       "id": "create_wizardry:uncommon_ink",
       "required": false

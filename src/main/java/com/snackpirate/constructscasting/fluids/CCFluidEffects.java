@@ -4,9 +4,9 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.network.ClientboundSyncMana;
+import io.redspace.ironsspellbooks.network.SyncManaPacket;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
-import io.redspace.ironsspellbooks.setup.Messages;
+import io.redspace.ironsspellbooks.setup.PacketDistributor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.level.ServerPlayer;
@@ -69,7 +69,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 			MagicData playerMagicData = MagicData.getPlayerMagicData(living);
 			playerMagicData.addMana(-50 * level.value());
 			if (living instanceof ServerPlayer serverPlayer) {
-				Messages.sendToPlayer(new ClientboundSyncMana(playerMagicData), serverPlayer);
+				PacketDistributor.sendToPlayer(serverPlayer, new SyncManaPacket(playerMagicData));
 			}
 		}
 		return level.value();
@@ -81,7 +81,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 			MagicData playerMagicData = MagicData.getPlayerMagicData(living);
 			playerMagicData.addMana(10 * level.value());
 			if (living instanceof ServerPlayer serverPlayer) {
-				Messages.sendToPlayer(new ClientboundSyncMana(playerMagicData), serverPlayer);
+				PacketDistributor.sendToPlayer(serverPlayer, new SyncManaPacket(playerMagicData));
 			}
 		}
 		return level.value();

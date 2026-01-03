@@ -12,7 +12,7 @@
   ],
   "result": {
     "amount": 250,
-    "fluid": "constructs_casting:common_ink"
+    "fluid": "irons_spellbooks:common_ink"
   },
   "temperature": 300
 }

@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:common_ink",
+    "irons_spellbooks:common_ink",
     {
       "id": "create_wizardry:common_ink",
       "required": false

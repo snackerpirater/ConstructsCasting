@@ -75,10 +75,12 @@ public class CCSpells {
 		public static final RegistryObject<SchoolType> SLIME = registerSchool(new SchoolType(SLIME_LOC,
 				CCItems.Tags.SLIME_FOCUS,
 				Component.translatable("school.constructs_casting.slime").withStyle(Style.EMPTY.withColor(0x119c3b)),
-				LazyOptional.of(Attributes.SLIME_POWER::get),
-				LazyOptional.of(Attributes.SLIME_RESIST::get),
-				LazyOptional.of(() -> CCSounds.SLIME_CAST.get()),
-				CCDamageTypes.SLIME_MAGIC
+				Attributes.SLIME_POWER,
+				Attributes.SLIME_RESIST,
+				() -> CCSounds.SLIME_CAST.get(),
+				CCDamageTypes.SLIME_MAGIC,
+				false,
+				true
 		));
 
 		private static RegistryObject<SchoolType> registerSchool(SchoolType schoolType) {

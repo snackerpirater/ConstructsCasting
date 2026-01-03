@@ -1,0 +1,11 @@
+{
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 250,
+    "fluid": "irons_spellbooks:rare_ink"
+  },
+  "input": {
+    "item": "minecraft:glass_bottle"
+  },
+  "result": "irons_spellbooks:rare_ink"
+}

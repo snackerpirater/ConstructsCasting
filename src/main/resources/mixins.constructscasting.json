@@ -7,7 +7,6 @@
     "UtilsMixin"
   ],
   "client": [
-    "ActiveSpellOverlayMixin",
     "ManaBarOverlayMixin"
   ],
   "injectors": {

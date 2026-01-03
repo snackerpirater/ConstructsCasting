@@ -24,6 +24,8 @@ import slimeknights.tconstruct.tools.stats.*;
 
 import java.util.List;
 
+import static net.minecraft.world.item.Tiers.NETHERITE;
+
 public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold, MaterialIds.paper, MaterialIds.leaves);
@@ -41,6 +43,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 //	public static final MaterialId dragonskin = createMaterial("dragonskin");
 	public static final MaterialId rainbowSlime = createMaterial("rainbowslime");
 
+	public static final MaterialId mithril = createMaterial("mithril");
+	public static final MaterialId pyrium = createMaterial("pyrium");
 	public static final MaterialId cosmichalcum = createMaterial("cosmichalcum");
 
 //    public static final MaterialId paper = createMaterial("paper");
@@ -84,6 +88,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		addMaterial(permafrost, 2, ORDER_REPAIR + 1, true);
 		addMaterial(emerald, 3, 0, true);
 		addMaterial(echoShard, 4, 0, true);
+
+		addMaterial(mithril, 4, ORDER_GENERAL + 7, false);
+		addMaterial(pyrium, 4, ORDER_GENERAL + 8, false);
 	}
 
 	@Override
@@ -141,6 +148,33 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.MAILLE
                     , CCMaterialStats.Statless.ADORNMENT
             );
+			//based on cinderslime stats
+			//general material
+			addMaterialStats(mithril,
+					new HeadMaterialStats(1350, 7f, NETHERITE, 2.5f),
+					HandleMaterialStats.multipliers().durability(1.2f).miningSpeed(1.1f).attackSpeed(1.1f).attackDamage(0.8f).build(),
+					new LimbMaterialStats(1350, 0.1f, -0.15f, 0.1f),
+					new GripMaterialStats(0.20f, 0.05f, 2.5f),
+					StatlessMaterialStats.BINDING,
+					CCMaterialStats.Statless.ADORNMENT
+			);
+			addArmorShieldStats(mithril,
+					PlatingMaterialStats.builder().durabilityFactor(45).armor(2, 5, 7, 2).knockbackResistance(0f),
+					StatlessMaterialStats.MAILLE
+			);
+			//damage focused
+			addMaterialStats(pyrium,
+					new HeadMaterialStats(1271, 6.0f, NETHERITE, 3.25f),
+					HandleMaterialStats.multipliers().durability(0.9f).miningSpeed(0.85f).attackSpeed(0.90f).attackDamage(1.2f).build(),
+					new LimbMaterialStats(1271, -0.2f, 0.2f, -0.05f),
+					new GripMaterialStats(-0.10f, -0.05f, 3.25f),
+					StatlessMaterialStats.BINDING,
+					CCMaterialStats.Statless.ADORNMENT
+			);
+			addArmorShieldStats(pyrium,
+					PlatingMaterialStats.builder().durabilityFactor(40).armor(2, 5, 6, 2).knockbackResistance(0f),
+					StatlessMaterialStats.MAILLE
+			);
 			addMaterialStats(divinePearl,
 					StatlessMaterialStats.ARROW_HEAD);
 			addMaterialStats(frozenBone,
@@ -194,6 +228,9 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 			addTraits(cosmichalcum, MaterialRegistry.MELEE_HARVEST, CCModifiers.ENDER_UPGRADE);
 			addTraits(cosmichalcum, MaterialRegistry.ARMOR, CCModifiers.ENDER_UPGRADE);
+
+			addDefaultTraits(mithril, CCModifiers.SPELLBOUND);
+			addDefaultTraits(pyrium, CCModifiers.FIRE_UPGRADE);
 
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(hogskin, CCModifiers.ARCANE);
@@ -257,6 +294,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(rainbowSlime).color(0xFFFF00);
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
 
+			buildRenderInfo(mithril).color(0xbdf3f3).fallbacks("metal");
+			buildRenderInfo(pyrium).color(0xd6af39).fallbacks("metal");
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 
 			buildRenderInfo(permafrost).color(0xEEEEEE).fallbacks("crystal");

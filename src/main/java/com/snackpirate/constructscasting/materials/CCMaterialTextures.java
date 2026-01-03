@@ -107,6 +107,26 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addTexture(255, rainbowSlimeHighlight)
 						.build());
 
+		buildMaterial(CCMaterials.mithril).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
+				.fallbacks("metal")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF335160)
+						.addARGB(102, 0xFF496c84)
+						.addARGB(140, 0xFF7dacaf)
+						.addARGB(178, 0xFF99cdd9)
+						.addARGB(216, 0xFFbdf3f3)
+						.addARGB(255, 0xFFdcfffe)
+						.build()));
+		buildMaterial(CCMaterials.pyrium).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
+				.fallbacks("metal")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF491b10)
+						.addARGB(102, 0xFF733c25)
+						.addARGB(140, 0xFF9c5e2c)
+						.addARGB(178, 0xFFb9892e)
+						.addARGB(216, 0xFFd6af39)
+						.addARGB(255, 0xFFe8e895)
+						.build()));
 
 		ResourceLocation cosmiBase = ConstructsCasting.id("item/materials/generator/cosmichalcum");
 		ResourceLocation cosmiBorder = ConstructsCasting.id("item/materials/generator/cosmichalcum_border");
