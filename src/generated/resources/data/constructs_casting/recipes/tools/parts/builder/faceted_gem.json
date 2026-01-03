@@ -1,6 +1,7 @@
 {
   "type": "tconstruct:part_builder",
-  "cost": 1,
+  "allow_uncraftable": true,
+  "cost": 2,
   "pattern": "constructs_casting:faceted_gem",
   "pattern_item": [
     {

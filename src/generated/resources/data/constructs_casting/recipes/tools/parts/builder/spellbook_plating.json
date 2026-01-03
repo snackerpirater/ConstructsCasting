@@ -1,5 +1,6 @@
 {
   "type": "tconstruct:part_builder",
+  "allow_uncraftable": true,
   "cost": 2,
   "pattern": "constructs_casting:spellbook_plating",
   "pattern_item": [

@@ -57,6 +57,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.partbuilder.PartRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.TinkerMaterials;
@@ -406,8 +407,24 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .setMaxLevel(3)
                 .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/expedient"));
 
-        partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
-        partRecipes(consumer, CCItems.facetedGem, CCItems.facetedGemCast, 1, partsFolder, castingFolder);
+//        partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
+//        partRecipes(consumer, CCItems.facetedGem, CCItems.facetedGemCast, 1, partsFolder, castingFolder);
+		partCasting(consumer, CCItems.facetedGem.get(), CCItems.facetedGemCast, 1, castingFolder);
+		PartRecipeBuilder.partRecipe(CCItems.facetedGem.get())
+				.setPattern(id(CCItems.facetedGem.get()))
+				.setPatternItem(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.DEFAULT_PATTERNS), Ingredient.of(CCItems.facetedGemCast.get())))
+				.setCost(2)
+				.setAllowUncraftable(true) //means you can make arcanium and mithril gems in the part builder, i don't really care
+				.save(consumer, location(partsFolder + "builder/" + id(CCItems.facetedGem.get()).getPath()));
+
+		partCasting(consumer, CCItems.spellbookPlating.get(), CCItems.spellbookPlatingCast, 2, castingFolder);
+		PartRecipeBuilder.partRecipe(CCItems.spellbookPlating.get())
+				.setPattern(id(CCItems.spellbookPlating.get()))
+				.setPatternItem(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.DEFAULT_PATTERNS), Ingredient.of(CCItems.spellbookPlatingCast.get())))
+				.setCost(2)
+				.setAllowUncraftable(true)
+				.save(consumer, location(partsFolder + "builder/" + id(CCItems.spellbookPlating.get()).getPath()));
+
         uncastablePart(consumer, CCItems.spellbookCover.get(), 2, null, partsFolder);
         uncastablePart(consumer, CCItems.wandRod.get(), 2, null, partsFolder);
         uncastablePart(consumer, CCItems.pages.get(), 3, null, partsFolder);

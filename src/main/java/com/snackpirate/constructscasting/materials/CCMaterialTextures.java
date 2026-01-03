@@ -112,7 +112,7 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF335160)
 						.addARGB(102, 0xFF496c84)
-						.addARGB(140, 0xFF7dacaf)
+						.addARGB(140, 0xFF7db8b7)
 						.addARGB(178, 0xFF99cdd9)
 						.addARGB(216, 0xFFbdf3f3)
 						.addARGB(255, 0xFFdcfffe)
