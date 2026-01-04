@@ -86,7 +86,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 //		addMaterial(hogskin, 3, 0, true);
 
 		addMaterial(permafrost, 2, ORDER_REPAIR + 1, true);
-		addMaterial(emerald, 1, 0, true);
+		addMaterial(emerald, 2, ORDER_REPAIR + 2, true);
 		addMaterial(echoShard, 4, 0, true);
 
 		addMaterial(mithril, 4, ORDER_GENERAL + 7, false);

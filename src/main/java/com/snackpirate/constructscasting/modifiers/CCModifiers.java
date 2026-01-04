@@ -224,15 +224,12 @@ public class CCModifiers extends AbstractModifierProvider {
 	}
 	public static class Tags extends AbstractModifierTagProvider {
 
-        public static final TagKey<Modifier> CASTING_MODIFIER = ModifierManager.getTag(ConstructsCasting.id("casting_modifier"));
-
 		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
 			super(packOutput, modId, existingFileHelper);
 		}
 
 		@Override
 		protected void addTags() {
-            tag(CASTING_MODIFIER).add(CASTING.getId());
 			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
 			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, EXPEDIENT).addOptional(AQUA_UPGRADE, ABYSSAL_UPGRADE, TECHNOMANCY_UPGRADE);
 			tag(TinkerTags.Modifiers.BONUS_SLOTLESS).add(REINSCRIBED);
