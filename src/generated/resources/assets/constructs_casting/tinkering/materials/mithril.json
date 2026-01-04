@@ -22,40 +22,39 @@
       "constructs_casting:adornment"
     ],
     "transformer": {
-      "type": "tconstruct:recolor_sprite",
-      "color_mapping": {
-        "type": "tconstruct:grey_to_color",
-        "palette": [
-          {
-            "color": "FF000000",
-            "grey": 0
-          },
-          {
-            "color": "FF335160",
-            "grey": 63
-          },
-          {
-            "color": "FF496C84",
-            "grey": 102
-          },
-          {
-            "color": "FF7DB8B7",
-            "grey": 140
-          },
-          {
-            "color": "FF99CDD9",
-            "grey": 178
-          },
-          {
-            "color": "FFBDF3F3",
-            "grey": 216
-          },
-          {
-            "color": "FFDCFFFE",
-            "grey": 255
-          }
-        ]
-      }
+      "type": "tconstruct:animated_sprite",
+      "frames": 8,
+      "meta": "constructs_casting:item/materials/generator/mithril/frames",
+      "palette": [
+        {
+          "color": "FF000000",
+          "grey": 0
+        },
+        {
+          "grey": 63,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_63"
+        },
+        {
+          "grey": 102,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_102"
+        },
+        {
+          "grey": 140,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_140"
+        },
+        {
+          "grey": 178,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_178"
+        },
+        {
+          "grey": 216,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_216"
+        },
+        {
+          "grey": 255,
+          "path": "constructs_casting:item/materials/generator/mithril/mithril_255"
+        }
+      ]
     }
   }
 }

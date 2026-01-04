@@ -152,8 +152,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			//general material
 			addMaterialStats(mithril,
 					new HeadMaterialStats(1350, 7f, NETHERITE, 2.5f),
-					HandleMaterialStats.multipliers().durability(1.2f).miningSpeed(1.1f).attackSpeed(1.1f).attackDamage(0.8f).build(),
-					new LimbMaterialStats(1350, 0.1f, -0.15f, 0.1f),
+					HandleMaterialStats.multipliers().durability(1.15f).miningSpeed(1.05f).attackSpeed(1.05f).attackDamage(0.95f).build(),
+					new LimbMaterialStats(1350, 0.1f, -0.1f, 0.05f),
 					new GripMaterialStats(0.20f, 0.05f, 2.5f),
 					StatlessMaterialStats.BINDING,
 					CCMaterialStats.Statless.ADORNMENT

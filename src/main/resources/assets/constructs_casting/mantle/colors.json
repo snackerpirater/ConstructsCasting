@@ -83,7 +83,9 @@
     "dragonskin": "#413248",
     "enderslime_crystal": "#af4cf6",
     "ichor_crystal": "#ff970d",
-    "echo_shard": "#0f839c"
+    "echo_shard": "#0f839c",
+    "mithril": "#bdf3f3",
+    "pyrium": "#d6af39"
   },
   "stat.tconstruct.slot.affinity": "#ea9999"
 }

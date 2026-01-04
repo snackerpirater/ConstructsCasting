@@ -10,8 +10,18 @@
     "constructs_casting:blood_upgrade",
     "constructs_casting:nature_upgrade",
     "constructs_casting:eldritch_upgrade",
-    "constructs_casting:technomancy_upgrade",
-    "constructs_casting:abyssal_upgrade",
-    "constructs_casting:expedient"
+    "constructs_casting:expedient",
+    {
+      "id": "constructs_casting:aqua_upgrade",
+      "required": false
+    },
+    {
+      "id": "constructs_casting:abyssal_upgrade",
+      "required": false
+    },
+    {
+      "id": "constructs_casting:technomancy_upgrade",
+      "required": false
+    }
   ]
 }

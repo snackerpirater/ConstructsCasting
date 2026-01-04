@@ -13,7 +13,6 @@ import slimeknights.mantle.fluid.transfer.AbstractFluidContainerTransferProvider
 import slimeknights.mantle.fluid.transfer.FillFluidContainerTransfer;
 import slimeknights.mantle.recipe.helper.ItemOutput;
 import slimeknights.mantle.recipe.ingredient.FluidIngredient;
-import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 
 public class CCFluidTransfer extends AbstractFluidContainerTransferProvider {
