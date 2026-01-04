@@ -1,4 +1,5 @@
 {
+  "constructs_casting.modifier.spellblade.requirement": "Requires Imbued to apply.",
   "constructs_casting.modifier.swiftcasting.requirement": "Requires the Casting ability to be applied first.",
   "effect.constructs_casting.blood_empowerment": "Blood Empowerment",
   "effect.constructs_casting.ender_empowerment": "Ender Empowerment",
@@ -348,7 +349,6 @@
   "modifier.constructs_casting.spellblade": "Spellblade",
   "modifier.constructs_casting.spellblade.description": "Hitting an enemy casts the spell imbued on the tool.",
   "modifier.constructs_casting.spellblade.flavor": "Strike!",
-  "modifier.constructs_casting.spellblade.requirement": "Requires Imbued to apply.",
   "modifier.constructs_casting.spellbook_strap": "Spellbook Strap",
   "modifier.constructs_casting.spellbook_strap.description": "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory.",
   "modifier.constructs_casting.spellbook_strap.flavor": "Twice the spells, twice the fun!",
