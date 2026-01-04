@@ -295,7 +295,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)
 				.save(aConsumer, ConstructsCasting.id(alloyFolder + "holy_essence"));
 
-		essenceRecipe(CCFluids.bloodEssence,     TinkerFluids.meatSoup       .getLocalTag(),250, "blood_essence"    );
+		essenceRecipe(CCFluids.bloodEssence,     CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS,250, "blood_essence"    );
 		essenceRecipe(CCFluids.evocationEssence, TinkerFluids.moltenEmerald  .getLocalTag(),100, "evocation_essence");
 		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       50, "nature_essence"   );
 		//rune casting
