@@ -58,8 +58,12 @@ public class CCFluids {
 	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 2f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 3f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenMithril = FLUIDS.register("molten_mithril").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 15, 10, 3f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenPyrium = FLUIDS.register("molten_pyrium").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 5f)).flowing();
+
+
 	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();
@@ -81,6 +85,7 @@ public class CCFluids {
 	//molten pearl i guess
 	public static final FluidObject<UnplaceableFluid> moltenPearl = essence("molten_pearl");
 	public static final FluidObject<UnplaceableFluid> aquaEssence = essence("aqua_essence");
+
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
@@ -150,6 +155,8 @@ public class CCFluids {
 
 			texture(moltenArcanium).textures(ConstructsCasting.id("fluid/arcanium/"),      false, false).color(0xffffffff);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
+			texture(moltenMithril).root(molten).color(0xff99cdd9).overlay().camera();
+			texture(moltenPyrium).root(molten).color(0xffd6af39).overlay().camera();
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
 			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
 			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);
@@ -252,7 +259,7 @@ public class CCFluids {
 			tag(ink("legendary")).add(legendaryInk.get(), FluidRegistry.LEGENDARY_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
 			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get(), FluidRegistry.BLOOD.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
 			//tooltips
-			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get()).add(moltenArcaneSalvage.get());
+			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get(), moltenExilite.get(), moltenArcaneSalvage.get(), moltenMithril.get(), moltenPyrium.get());
 			tag(BOTTLE_TOOLTIP)
 					.add(arcaneEssence.get())
 					.add(cinderEssence.get())

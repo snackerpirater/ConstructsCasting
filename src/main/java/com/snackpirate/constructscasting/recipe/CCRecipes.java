@@ -337,10 +337,10 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		inkFillingRecipe(ItemRegistry.INK_LEGENDARY.get(), CCFluids.Tags.ink("legendary"), "legendary");
 
 		MeltingRecipeBuilder.melting(Ingredient.of(Items.INK_SAC), new FluidStack(CCFluids.squidInk.get(), FluidValues.BOTTLE), 300, 8).save(consumer, ConstructsCasting.id("smeltery/melting/ink"));
-		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.COMMON_INK.get(),    250), 300).addInput(CCFluids.squidInk.get(),                   750).addInput(CCFluids.arcaneEssence.get(), 500).save(consumer, ConstructsCasting.id(alloyFolder + "common_ink"));
+		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.COMMON_INK.get(),    250), 300).addInput(CCFluids.squidInk.get(),               250).addInput(CCFluids.arcaneEssence.get(), 500).save(consumer, ConstructsCasting.id(alloyFolder + "common_ink"));
 		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.UNCOMMON_INK.get(),  250), 300).addInput(CCFluids.Tags.ink("common"),   750).addInput(TinkerFluids.moltenCopper  .getCommonTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "uncommon_ink"));
 		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.RARE_INK.get(),      250), 300).addInput(CCFluids.Tags.ink("uncommon"), 750).addInput(TinkerFluids.moltenIron    .getCommonTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "rare_ink"));
-		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.EPIC_INK.get(),      250), 300).addInput(CCFluids.Tags.ink("rare"), 	   750).addInput(TinkerFluids.moltenGold    .getCommonTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
+		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.EPIC_INK.get(),      250), 300).addInput(CCFluids.Tags.ink("rare"), 	 750).addInput(TinkerFluids.moltenGold    .getCommonTag(), FluidValues.INGOT).save(consumer, ConstructsCasting.id(alloyFolder + "epic_ink"));
 		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.LEGENDARY_INK.get(), 250), 300).addInput(CCFluids.Tags.ink("epic"),     750).addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)  .save(consumer, ConstructsCasting.id(alloyFolder + "legendary_ink"));
 
 		//slimy spellbook!
