@@ -74,8 +74,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 	@Override
 	protected void addMaterials() {
 		addMaterial(frozenBone, 2, 12, true);
-        addMaterial(hogskin, 2, 0, true);
-		addMaterial(divinePearl, 2, 0, true);
+        addMaterial(hogskin, 2, 13, true);
+		addMaterial(divinePearl, 2, 14, true);
 		addMaterial(arcaneCloth, 2, 13, true);
 		addMaterial(arcanium, 3, 15, false);
 		addMaterial(exilite, 3, 16, false);
@@ -86,7 +86,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 //		addMaterial(hogskin, 3, 0, true);
 
 		addMaterial(permafrost, 2, ORDER_REPAIR + 1, true);
-		addMaterial(emerald, 3, 0, true);
+		addMaterial(emerald, 1, 0, true);
 		addMaterial(echoShard, 4, 0, true);
 
 		addMaterial(mithril, 4, ORDER_GENERAL + 7, false);
