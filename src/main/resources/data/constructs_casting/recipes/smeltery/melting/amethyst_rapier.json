@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "ingredient": {
+    "item": "irons_spellbooks:amethyst_rapier"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_amethyst",
+    "amount": 200,
+    "unit_size": 10
+  },
+  "temperature": 950,
+  "time": 65,
+  "byproducts": [
+    {
+      "tag": "forge:molten_iron",
+      "amount": 220
+    }
+  ]
+}

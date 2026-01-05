@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:portal_frame"
+  },
+  "result": {
+    "fluid": "constructs_casting:molten_mithril",
+    "amount": 90
+  },
+  "temperature": 1175,
+  "time": 71,
+  "byproducts": [
+    {
+      "fluid": "constructs_casting:molten_arcanium",
+      "amount": 180
+    },
+    {
+      "tag": "forge:ender",
+      "amount": 125
+    }
+  ]
+}

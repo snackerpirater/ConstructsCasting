@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:alchemist_cauldron"
+  },
+  "result": {
+    "fluid": "constructs_casting:cinder_essence",
+    "amount": 250
+  },
+  "temperature": 1175,
+  "time": 71,
+  "byproducts": [
+    {
+      "tag": "forge:molten_iron",
+      "amount": 990
+    },
+    {
+      "fluid": "constructs_casting:arcane_essence",
+      "amount": 500
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:brazier_soul"
+  },
+  "result": {
+    "tag": "forge:molten_iron",
+    "amount": 30
+  },
+  "temperature": 800,
+  "time": 60
+}
