@@ -126,6 +126,24 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_SALVAGE.get()), new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT), 1175,20).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_salvage/ingot"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.ARCANE_SALVAGE.get()).setFluidAndTime(new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "arcane_salvage_multi"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.ARCANE_SALVAGE.get()).setFluidAndTime(new FluidStack(CCFluids.moltenArcaneSalvage.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "arcane_salvage_single"));
+
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MITHRIL_ORE_BLOCK_ITEM.get()), new FluidStack(CCFluids.moltenMithril.get(), 6*FluidValues.NUGGET), 1175, 80).save(consumer, location(meltingFolder + "mithril/ore"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MITHRIL_ORE_DEEPSLATE_BLOCK_ITEM.get()), new FluidStack(CCFluids.moltenMithril.get(), 6*FluidValues.NUGGET), 1175, 80).save(consumer, location(meltingFolder + "mithril/deepslate_ore"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.RAW_MITHRIL.get()), new FluidStack(CCFluids.moltenMithril.get(), 3*FluidValues.NUGGET), 1175, 40).save(consumer, location(meltingFolder + "mithril/raw"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MITHRIL_SCRAP.get()), new FluidStack(CCFluids.moltenMithril.get(), 2*FluidValues.NUGGET), 1175, 40).save(consumer, location(meltingFolder + "mithril/scrap"));
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MITHRIL_INGOT.get()), new FluidStack(CCFluids.moltenMithril.get(), FluidValues.INGOT), 1175, 60).save(consumer, location(meltingFolder + "mithril/ingot"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MITHRIL_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenMithril.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "mithril/ingot_multi_use"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MITHRIL_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenMithril.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "mithril/ingot_single_use"));
+		materialMeltingCasting(consumer, CCMaterials.mithril, CCFluids.moltenMithril, FluidValues.INGOT, materialFolder);
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "mithril/ingot"));
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_SCRAP.get()).setValue(1).setNeeded(4).save(consumer, location(materialFolder + "mithril/scrap"));
+
+		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT), 1175, 60).save(consumer, location(meltingFolder + "pyrium/ingot"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_multi_use"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_single_use"));
+		materialMeltingCasting(consumer, CCMaterials.pyrium, CCFluids.moltenPyrium, FluidValues.INGOT, materialFolder);
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(ItemRegistry.PYRIUM_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "pyrium/ingot"));
+
 		// arcane cloth making
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MAGIC_CLOTH.get())
 				.setCast(Items.COBWEB.asItem(), true)

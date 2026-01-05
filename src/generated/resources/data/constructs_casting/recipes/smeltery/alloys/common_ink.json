@@ -2,7 +2,7 @@
   "type": "tconstruct:alloy",
   "inputs": [
     {
-      "amount": 750,
+      "amount": 250,
       "fluid": "constructs_casting:squid_ink"
     },
     {

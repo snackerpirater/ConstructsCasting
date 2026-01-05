@@ -129,6 +129,8 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.moltenArcanium, "Molten Arcanium", "Definitely tastes like blue raspberry; good for any sort of magic");
 		addFluid(CCFluids.moltenExilite, "Molten Exilite", "Most effective against mages and other magic users.");
 		addFluid(CCFluids.moltenArcaneSalvage, "Molten Arcane Salvage", "Allows you to cast spells faster");
+		addFluid(CCFluids.moltenMithril, "Molten Mithril", "Allows you to cast spells faster");
+		addFluid(CCFluids.moltenPyrium, "Molten Pyrium", "Weakens the target's fire magic");
 
 		addFluid(CCFluids.squidInk, "Squid Ink", "Keep it out of your eyes!");
 		addFluid(CCFluids.commonInk, "Common Ink", "Weakens the target's magic");

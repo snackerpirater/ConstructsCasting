@@ -1,0 +1,8 @@
+{
+  "camera": "tconstruct:fluid/molten/camera",
+  "camera_opacity": 0.1,
+  "color": "FF99CDD9",
+  "flowing": "tconstruct:fluid/molten/flowing",
+  "overlay": "tconstruct:fluid/molten/overlay",
+  "still": "tconstruct:fluid/molten/still"
+}

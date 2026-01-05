@@ -7,11 +7,14 @@ import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.linux.Stat;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialRenderInfoProvider;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
+import slimeknights.tconstruct.library.data.tinkering.AbstractMaterialTagProvider;
+import slimeknights.tconstruct.library.data.tinkering.AbstractModifierTagProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
@@ -306,6 +309,27 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 		@Override
 		public String getName() {
 			return "Construct's Casting Material Render Info";
+		}
+	}
+	public static class Tags extends AbstractMaterialTagProvider {
+
+		public Tags(PackOutput packOutput, String modId, ExistingFileHelper existingFileHelper) {
+			super(packOutput, modId, existingFileHelper);
+		}
+
+		@Override
+		protected void addTags() {
+			tag(TinkerTags.Materials.GENERAL).add(arcanium, arcaneCloth, mithril, frostRod);
+			tag(TinkerTags.Materials.MELEE).add(exilite, pyrium, frozenBone);
+			tag(TinkerTags.Materials.EXCLUDE_FROM_LOOT).add(pyrium); //pyrium is exclusively gated to tyros
+			tag(TinkerTags.Materials.BLAZING_BLOOD).add(mithril);
+			tag(TinkerTags.Materials.DISTANT).add(pyrium);
+			tag(TinkerTags.Materials.NETHER_GATED).add(hogskin, pyrium);
+		}
+
+		@Override
+		public String getName() {
+			return "Construct's Casting Material Tags Provider";
 		}
 	}
 }

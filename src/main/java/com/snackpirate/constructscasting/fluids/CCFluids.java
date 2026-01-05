@@ -155,8 +155,8 @@ public class CCFluids {
 
 			texture(moltenArcanium).textures(ConstructsCasting.id("fluid/arcanium/"),      false, false).color(0xffffffff);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
-			texture(moltenMithril).root(molten).color(0xff99cdd9).overlay().camera();
-			texture(moltenPyrium).root(molten).color(0xffd6af39).overlay().camera();
+			texture(moltenMithril).root(molten).still().flowing().color(0xff99cdd9).overlay().camera();
+			texture(moltenPyrium).root(molten).still().flowing().color(0xffd6af39).overlay().camera();
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
 			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
 			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);

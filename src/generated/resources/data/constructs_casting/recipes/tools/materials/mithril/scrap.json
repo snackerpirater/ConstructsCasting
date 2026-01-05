@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "irons_spellbooks:mithril_scrap"
+  },
+  "material": "constructs_casting:mithril",
+  "needed": 4,
+  "value": 1
+}

@@ -108,6 +108,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(output, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(output));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
+        gen.addProvider(server, new CCMaterials.Tags(output, MOD_ID, fileHelper));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
         gen.addProvider(server, new CCSlotLayoutProvider(output));

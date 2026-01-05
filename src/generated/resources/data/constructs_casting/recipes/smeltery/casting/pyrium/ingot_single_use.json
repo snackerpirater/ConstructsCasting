@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/single_use/ingot"
+  },
+  "cast_consumed": true,
+  "cooling_time": 71,
+  "fluid": {
+    "amount": 90,
+    "fluid": "constructs_casting:molten_pyrium"
+  },
+  "result": "irons_spellbooks:pyrium_ingot"
+}
