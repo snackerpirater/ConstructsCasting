@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "constructs_casting:spellbook_plating",
+  "pattern_item": {
+    "tag": "tconstruct:casts/red_sand"
+  },
+  "result": "constructs_casting:spellbook_plating_red_sand_cast"
+}

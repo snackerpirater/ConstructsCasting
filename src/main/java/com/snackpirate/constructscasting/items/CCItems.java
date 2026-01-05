@@ -121,6 +121,8 @@ public class CCItems {
 
         output.accept(CCFluids.moltenArcanium.getBucket());
         output.accept(CCFluids.moltenExilite.getBucket());
+		output.accept(CCFluids.moltenMithril.getBucket());
+		output.accept(CCFluids.moltenPyrium.getBucket());
         output.accept(CCFluids.squidInk.getBucket());
         output.accept(CCFluids.commonInk.getBucket());
         output.accept(CCFluids.uncommonInk.getBucket());

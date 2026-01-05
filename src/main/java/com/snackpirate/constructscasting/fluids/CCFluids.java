@@ -60,8 +60,8 @@ public class CCFluids {
 
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 2f)).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 3f)).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenMithril = FLUIDS.register("molten_mithril").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 15, 10, 3f)).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenPyrium = FLUIDS.register("molten_pyrium").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 5f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenMithril = FLUIDS.register("molten_mithril").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 15, 10, 3f)).commonTag(null).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenPyrium = FLUIDS.register("molten_pyrium").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 5f)).commonTag(null).flowing();
 
 
 	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink")   .bucket().unplacable();
@@ -155,8 +155,8 @@ public class CCFluids {
 
 			texture(moltenArcanium).textures(ConstructsCasting.id("fluid/arcanium/"),      false, false).color(0xffffffff);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
-			texture(moltenMithril).root(molten).still().flowing().color(0xff99cdd9).overlay().camera();
-			texture(moltenPyrium).root(molten).still().flowing().color(0xffd6af39).overlay().camera();
+			texture(moltenMithril).root(molten).still().flowing().color(0xffacf4f9).overlay().camera();
+			texture(moltenPyrium).root(molten).still().flowing().color(0xffe5a028).overlay().camera();
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
 			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
 			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);
@@ -234,6 +234,8 @@ public class CCFluids {
 		protected void addTags(HolderLookup.Provider provider) {
 			tag(MOLTEN_ARCANIUM).add(moltenArcanium.get());
 			tag(MOLTEN_EXILITE).add(moltenExilite.get());
+			tag(FluidTags.create(ConstructsCasting.id("molten_mithril"))).add(moltenMithril.get());
+			tag(FluidTags.create(ConstructsCasting.id("molten_pyrium"))).add(moltenPyrium.get());
             tag(MOLTEN_ARCANE_SALVAGE).add(moltenArcaneSalvage.get());
 			tag(POTATO_STEW).add(potatoStew.get());
 			tag(POISONOUS_POTATO_STEW).add(poisonousPotatoStew.get());
