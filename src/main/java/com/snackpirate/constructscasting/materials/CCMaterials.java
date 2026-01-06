@@ -236,7 +236,6 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(pyrium, CCModifiers.FIRE_UPGRADE);
 
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
-			addDefaultTraits(hogskin, CCModifiers.ARCANE);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
 			addDefaultTraits(divinePearl, ModifierIds.holy);
 			addTraits(frozenBone, StatlessMaterialStats.ARROW_SHAFT.getIdentifier(), CCModifiers.FROSTBITE);

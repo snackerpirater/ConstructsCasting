@@ -460,7 +460,6 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 //                .allowTraits()
 //                .save(consumer, location("tools/modifiers/worktable/" + "cast_on_interact"));
         ModifierRecipeBuilder.modifier(CCModifiers.SLOT_IMPROVEMENT)
-                .setTools(TinkerTags.Items.BONUS_SLOTS)
                 .setTools(CCItems.Tags.MOD_SPELLBOOKS)
                 .addInput(ItemRegistry.LESSER_SPELL_SLOT_UPGRADE.get())
                 .setSlots(SlotType.UPGRADE, 1)
