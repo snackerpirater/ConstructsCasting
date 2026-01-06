@@ -2,10 +2,6 @@
   "default": [
     {
       "level": 1,
-      "name": "constructs_casting:arcane"
-    },
-    {
-      "level": 1,
       "name": "constructs_casting:thick_skinned"
     }
   ]

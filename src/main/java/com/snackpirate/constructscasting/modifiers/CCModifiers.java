@@ -128,9 +128,9 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(AttributeModule.builder(AttributeRegistry.MAX_MANA.get(), AttributeModifier.Operation.ADDITION).tool(ToolStackPredicate.tag(TinkerTags.Items.ARMOR)).eachLevel(50f))
 				.build();
 
-		buildModifier(SWIFTCASTING).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
-                .addModule(SetStatModule.set(ToolStats.USE_ITEM_SPEED).value(1.8f))
-				.addModule(ModifierRequirementsModule.builder().requireModifier(CASTING.getId(), 1).translationKey("constructs_casting.modifier.swiftcasting.requirement").build())
+		buildModifier(SWIFTCASTING).levelDisplay(ModifierLevelDisplay.DEFAULT)
+                .addModule(AttributeModule.builder(AttributeRegistry.CASTING_MOVESPEED.get(), AttributeModifier.Operation.MULTIPLY_BASE)
+						.tooltipStyle(AttributeModule.TooltipStyle.ATTRIBUTE).amount(0.2f, 0.2f))
 				.build();
 
 		buildModifier(SPELLBOUND)
@@ -235,7 +235,8 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.BONUS_SLOTLESS).add(REINSCRIBED);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);
-			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId()).add(SWIFTCASTING);
+			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId());
+			tag(TinkerTags.Modifiers.BOOT_UPGRADES).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());
 			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
             tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER);

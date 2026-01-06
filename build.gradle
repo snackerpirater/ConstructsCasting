@@ -145,6 +145,7 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
     // COMPAT *****************************************************************************************************
 
+      runtimeOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7413465")
 //    runtimeOnly fg.deobf("curse.maven:azurelib-817423:6849107")
 //    runtimeOnly fg.deobf("curse.maven:lionfish-api-1001614:5922047")
 //    runtimeOnly fg.deobf("curse.maven:lendercataclysm-551586:6849032")

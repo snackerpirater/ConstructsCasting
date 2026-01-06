@@ -185,14 +185,22 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ModifierRecipeBuilder.modifier(CCModifiers.SWIFTCASTING)
 				.allowCrystal()
 				.exactLevel(1)
-				.setSlots(SlotType.ABILITY, 1)
-				.setTools(TinkerTags.Items.STAFFS)
-				.addInput(ItemRegistry.MAGIC_CLOTH.get())
-				.addInput(ItemRegistry.MITHRIL_INGOT.get())
-				.addInput(ItemRegistry.MAGIC_CLOTH.get())
+				.setSlots(SlotType.UPGRADE, 1)
+				.setTools(TinkerTags.Items.BOOTS)
+				.addInput(ItemRegistry.MITHRIL_WEAVE.get())
+				.addInput(ItemRegistry.DIVINE_SOULSHARD.get())
 				.addInput(Items.RABBIT_FOOT)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/swiftcasting_1"));
+		ModifierRecipeBuilder.modifier(CCModifiers.SWIFTCASTING)
+				.disallowCrystal()
+				.setMinLevel(2)
+				.setMaxLevel(3)
+				.setSlots(SlotType.UPGRADE, 1)
+				.setTools(TinkerTags.Items.BOOTS)
+				.addInput(Items.FEATHER)
 				.addInput(Items.RABBIT_FOOT)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/swiftcasting"));
+				.addInput(Items.FEATHER)
+				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/swiftcasting"));
 		//spell prot
 		ItemCastingRecipeBuilder.tableRecipe(CCItems.exiliteReinforcement.get())
 				.setCast(TinkerTables.pattern.get(), true)

@@ -1,28 +1,20 @@
 {
-  "level_display": "tconstruct:single_level",
+  "level_display": "tconstruct:default",
   "modules": [
     {
-      "type": "tconstruct:set_stat",
-      "stat": "tconstruct:use_item_speed",
-      "value": 1.8
-    },
-    {
-      "type": "tconstruct:requirements",
-      "display_modifiers": [
-        {
-          "level": 1,
-          "name": "constructs_casting:casting"
-        }
-      ],
-      "requirement": {
-        "type": "tconstruct:has_modifier",
-        "check": "all",
-        "modifier": {
-          "type": "tconstruct:single",
-          "modifier": "constructs_casting:casting"
-        }
-      },
-      "translation_key": "constructs_casting.modifier.swiftcasting.requirement"
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:casting_movespeed",
+      "each_level": 0.2,
+      "flat": 0.2,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
     }
   ],
   "tooltip_display": "always"

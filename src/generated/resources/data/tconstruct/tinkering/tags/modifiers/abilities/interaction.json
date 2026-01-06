@@ -1,6 +1,5 @@
 {
   "values": [
-    "constructs_casting:casting",
-    "constructs_casting:swiftcasting"
+    "constructs_casting:casting"
   ]
 }

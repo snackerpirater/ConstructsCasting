@@ -66,7 +66,7 @@ public class CCLang extends LanguageProvider {
         add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
-		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Allows the user to retain their full movement speed while casting spells.");
+		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Lets you move faster when casting spells");
 		addModifier(CCModifiers.SPELLBLADE.getId(), "Spellblade", "Strike!", "Hitting an enemy casts the spell imbued on the tool.");
 		add("constructs_casting.modifier.spellblade.requirement", "Requires Imbued to apply.");
 
