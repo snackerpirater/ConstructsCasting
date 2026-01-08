@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "traveloptics:aqua_rune"
+    },
+    {
+      "item": "traveloptics:aqua_upgrade_orb"
+    },
+    {
+      "item": "traveloptics:aqua_rune"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "traveloptics"
+    }
+  ],
+  "level": {
+    "max": 5,
+    "min": 4
+  },
+  "result": "constructs_casting:aqua_upgrade",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

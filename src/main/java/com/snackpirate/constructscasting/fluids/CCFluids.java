@@ -86,6 +86,8 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> moltenPearl = essence("molten_pearl");
 	public static final FluidObject<UnplaceableFluid> aquaEssence = essence("aqua_essence");
 
+	public static final FluidObject<UnplaceableFluid> soundEssence = essence("sound_essence");
+
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
@@ -173,6 +175,7 @@ public class CCFluids {
 			texture(abyssalEssence).textures(potion, false, false).color(0xff6400fc);
 			texture(technomancyEssence).textures(potion, false, false).color(0xffb1bcc3);
 			texture(aquaEssence).textures(potion, false, false).color(0xff56aada);
+			texture(soundEssence).root(potion).still().flowing().color(0xff37f1aa);
 		}
 
 		@Override
@@ -283,6 +286,7 @@ public class CCFluids {
 					.add(abyssalEssence.get())
 					.add(aquaEssence.get())
 					.add(technomancyEssence.get())
+					.add(soundEssence.get())
 					.add(FluidRegistry.COMMON_INK.get(), FluidRegistry.UNCOMMON_INK.get(), FluidRegistry.RARE_INK.get(), FluidRegistry.EPIC_INK.get(), FluidRegistry.LEGENDARY_INK.get())
 					.add(FluidRegistry.ICE_VENOM_FLUID.get(), FluidRegistry.BLOOD.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get())
 					.add(FluidRegistry.POTION_FLUID.get(),

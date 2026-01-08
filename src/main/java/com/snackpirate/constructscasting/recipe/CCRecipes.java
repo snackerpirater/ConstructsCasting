@@ -144,6 +144,9 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		materialMeltingCasting(consumer, CCMaterials.pyrium, CCFluids.moltenPyrium, FluidValues.INGOT, materialFolder);
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(ItemRegistry.PYRIUM_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "pyrium/ingot"));
 
+		materialMeltingCasting(consumer, MaterialIds.quartz, TinkerFluids.moltenQuartz, FluidValues.GEM, materialFolder); //to permit casting of quartz faceted gem/spellbook
+
+
 		// arcane cloth making
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MAGIC_CLOTH.get())
 				.setCast(Items.COBWEB.asItem(), true)
@@ -229,8 +232,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
         ModifierRecipeBuilder.modifier(CCModifiers.SPELLBLADE)
                 .allowCrystal()
                 .exactLevel(1)
-                .setSlots(SlotType.UPGRADE, 1)
-				//i can't imagine spellblade being that useful, plus imbued is already an ability
+                .setSlots(SlotType.UPGRADE, 1) //i can't imagine spellblade being that useful, plus imbued is already an ability
                 .setTools(Ingredient.of(TinkerTags.Items.HELD))
                 .setMaxLevel(1)
                 .addInput(TinkerMaterials.steel.getIngotTag())

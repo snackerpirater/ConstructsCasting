@@ -7,7 +7,6 @@ import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,7 +24,6 @@ import slimeknights.tconstruct.library.json.variable.entity.EntityVariable;
 import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.modifiers.impl.BasicModifier;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
@@ -37,9 +35,6 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.shared.TinkerEffects;
-import slimeknights.tconstruct.tools.data.ModifierIds;
 
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
@@ -100,6 +95,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId ABYSSAL_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE         = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
+	public static final ModifierId SOUND_UPGRADE       =  new ModifierId(ConstructsCasting.MOD_ID, "sound_upgrade");
 
     public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
 	//paper trait: lets you apply orb upgrades to level 4
@@ -153,7 +149,6 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(EVOCATION_UPGRADE).addModule(spellPowerModifier(EVOCATION_UPGRADE, AttributeRegistry.EVOCATION_SPELL_POWER.get())).build();
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
 		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
-
 		buildModifier(SPELL_DISPULSION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_DISPULSION).eachLevel(0.075f));
 		buildModifier(FIRE_DISPULSION).addModule(spellDispulsionModifier(FIRE_DISPULSION, AttributeRegistry.FIRE_MAGIC_RESIST.get())).build();
 		buildModifier(ICE_DISPULSION).addModule(spellDispulsionModifier(ICE_DISPULSION, AttributeRegistry.ICE_MAGIC_RESIST.get())).build();
@@ -241,7 +236,6 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.MELEE_ABILITIES).add(SPELLBLADE.getId());
             tag(TinkerTags.Modifiers.CHESTPLATE_ABILITIES).add(RINGBEARER);
 		}
-
 		@Override
 		public String getName() {
 			return "Construct's Casting Modifier Tags";

@@ -1,13 +1,13 @@
 {
   "condition": {
     "type": "forge:mod_loaded",
-    "modid": "cataclysm_spellbooks"
+    "modid": "alshanex_familiars"
   },
   "level_display": "tconstruct:default",
   "modules": [
     {
       "type": "tconstruct:attribute",
-      "attribute": "cataclysm_spellbooks:abyssal_spell_power",
+      "attribute": "alshanex_familiars:sound_spell_power",
       "each_level": 0.05,
       "operation": "multiply_base",
       "slots": [
@@ -18,7 +18,7 @@
         "chest",
         "head"
       ],
-      "unique": "constructs_casting.modifier.abyssal_upgrade"
+      "unique": "constructs_casting.modifier.sound_upgrade"
     }
   ],
   "tooltip_display": "always"

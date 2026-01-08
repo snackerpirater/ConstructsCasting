@@ -100,6 +100,7 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ABYSSAL_UPGRADE, "Abyssal Upgrade", "Not to be confused with Aqua", "Grants +5% Abyssal Spell Power.");
 		addModifier(CCModifiers.TECHNOMANCY_UPGRADE, "Technomancy Upgrade", "Hackerman", "Grants +5% Technomancy Spell Power.");
 		addModifier(CCModifiers.AQUA_UPGRADE, "Aqua Upgrade", "Not to be confused with Abyssal", "Grants +5% Aqua Spell Power.");
+		addModifier(CCModifiers.SOUND_UPGRADE, "Sound Upgrade", "Sounds alright", "Grants +5% Sound Spell Power");
 
 		addModifier(CCModifiers.SPELL_DISPULSION, "Spell Dispulsion", "Not to be confused with Spell Protection", "Grants +7.5% Spell Resistance");
 		addModifier(CCModifiers.FIRE_DISPULSION, "Fire Dispulsion", "The power of the sun in the palm of my hand", "Grants +15% Fire Spell Resistance.");
@@ -208,6 +209,7 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.abyssalEssence, "Abyssal Essence", "");
 		addFluid(CCFluids.technomancyEssence, "Technomancy Essence", "");
 		addFluid(CCFluids.aquaEssence, "Aqua Essence", "");
+		addFluid(CCFluids.soundEssence, "Sound Essence", "");
 
 	    add("item.tconstruct.creative_slot.affinity", "Creative Affinity Slot");
         add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");

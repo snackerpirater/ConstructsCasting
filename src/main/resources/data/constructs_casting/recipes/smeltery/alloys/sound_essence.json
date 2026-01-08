@@ -11,18 +11,18 @@
     },
     {
       "amount": 90,
-      "tag": "forge:molten_copper"
+      "tag": "forge:molten_iron"
     }
   ],
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "cataclysm_spellbooks"
+      "modid": "alshanex_familiars"
     }
   ],
   "result": {
     "amount": 250,
-    "fluid": "constructs_casting:technomancy_essence"
+    "fluid": "constructs_casting:sound_essence"
   },
   "temperature": 700
 }
