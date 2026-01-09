@@ -22,6 +22,10 @@
     {
       "id": "constructs_casting:technomancy_upgrade",
       "required": false
+    },
+    {
+      "id": "constructs_casting:sound_upgrade",
+      "required": false
     }
   ]
 }

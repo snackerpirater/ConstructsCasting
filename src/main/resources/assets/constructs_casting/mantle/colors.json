@@ -57,7 +57,9 @@
     "enderbender": "#8F648F",
     "apoptotic": "#4D4D4D",
     "calorific": "#DBCC0B",
-    "frostbite": "#eaf8f9"
+    "frostbite": "#eaf8f9",
+    "combustive": "#da9809",
+    "heatwave": "#da9809"
   },
   "material.constructs_casting": {
     "__tier_1__": null,
@@ -86,7 +88,7 @@
     "ichor_crystal": "#ff970d",
     "echo_shard": "#0f839c",
     "mithril": "#bdf3f3",
-    "pyrium": "#d6af39"
+    "pyrium": "#da9809"
   },
   "stat.tconstruct.slot.affinity": "#ea9999"
 }

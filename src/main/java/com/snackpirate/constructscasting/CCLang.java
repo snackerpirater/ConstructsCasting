@@ -5,6 +5,7 @@ import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.modifiers.CombustiveModule;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.minecraft.data.PackOutput;
@@ -29,7 +30,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
 		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
 		addMaterial(CCMaterials.mithril, "Mithril", "<Insert elvish here>", "Using the tool returns mana!");
-		addMaterial(CCMaterials.pyrium, "Pyrium", "Tyrian fury", "Makes your enemies more susceptible to fire");
+		addMaterial(CCMaterials.pyrium, "Pyrium", "The might of Tyros himself", "Tool is prone to fiery explosions");
 
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
 		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
@@ -112,6 +113,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.EVOCATION_DISPULSION, "Evocation Dispulsion", "Hrmmm!", "Grants +15% Evocation Spell Resistance.");
 		addModifier(CCModifiers.NATURE_DISPULSION, "Nature Dispulsion", "Insert allegory for AI here", "Grants +15% Nature Spell Resistance.");
 		addModifier(CCModifiers.ELDRITCH_DISPULSION, "Eldritch Dispulsion", "Comprehending horrors", "Grants +15% Eldritch Spell Resistance.");
+
+		addModifier(CCModifiers.COMBUSTIVE, "Combustive", "Boom, boom, boom", "Dealing damage can cause fiery explosions");
 
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence", "Probably tastes like blue raspberry; good if you're short on Mana though.");
 		addFluid(CCFluids.fireEssence, "Fire Essence" ,"Subtle notes of sulfur with an ashy aftertaste; Good if you need a little more FIREpower");

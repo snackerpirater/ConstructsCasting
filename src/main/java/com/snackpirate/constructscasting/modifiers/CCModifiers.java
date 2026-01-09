@@ -6,6 +6,8 @@ import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -35,6 +37,7 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.definition.module.mining.MaxTierModule;
 
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
@@ -61,6 +64,11 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final StaticModifier<Modifier> CALORIFIC = MODIFIERS.register("calorific", CalorificModifier::new);
 //	public static final StaticModifier<RingbearerModifier> RINGBEARER = MODIFIERS.register("ringbearer", RingbearerModifier::new);
     public static final ModifierId ARCANE = new ModifierId(ConstructsCasting.MOD_ID, "arcane");
+	public static final ModifierId COMBUSTIVE = new ModifierId(ConstructsCasting.MOD_ID, "combustive"); //pyrium melee/ranged: hits have a chance to apply immolation stacks
+	public static final ModifierId HEATSHIELD = new ModifierId(ConstructsCasting.MOD_ID, "heatshield"); //pyrium armor: fire damage increases protection?
+
+	public static final ModifierId SORCEROUS = new ModifierId(ConstructsCasting.MOD_ID, "sorcerous"); //mithril melee/ranged: hits have a chance to return mana
+	public static final ModifierId MANA_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "mana_protection"); //mithril armor: consumes mana on hit for percent protection
 
 	public static final ModifierId SWIFTCASTING = new ModifierId(ConstructsCasting.MOD_ID, "swiftcasting");
 	public static final ModifierId SPELLBOUND = new ModifierId(ConstructsCasting.MOD_ID, "spellbound");
@@ -95,7 +103,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId ABYSSAL_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE         = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
-	public static final ModifierId SOUND_UPGRADE       =  new ModifierId(ConstructsCasting.MOD_ID, "sound_upgrade");
+	public static final ModifierId SOUND_UPGRADE        =  new ModifierId(ConstructsCasting.MOD_ID, "sound_upgrade");
 
     public static final SlotType AFFINITY_SLOT = SlotType.getOrCreate("affinity");
 	//paper trait: lets you apply orb upgrades to level 4
@@ -204,7 +212,10 @@ public class CCModifiers extends AbstractModifierProvider {
 		ModifierSlotModule UPGRADE = ModifierSlotModule.slot(SlotType.UPGRADE).eachLevel(1);
 		buildModifier(REINSCRIBED).tooltipDisplay(BasicModifier.TooltipDisplay.TINKER_STATION).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).addModule(UPGRADE);
 
-
+		buildModifier(COMBUSTIVE)
+				.addModule(new CombustiveModule(new LevelingValue(0.25f, 0.25f))) //1 -> 6 hits, 2 -> 4 hits, 3 -> 3 hits, 4 -> 2.4, 5 -> 2
+				.addModule(new RarityModule(CinderousRarity.CINDEROUS_RARITY))
+				.build(); //manyullyn takes 5 hits to max out, so around 5 hits for an explosion would be nice
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);
@@ -226,7 +237,7 @@ public class CCModifiers extends AbstractModifierProvider {
 		@Override
 		protected void addTags() {
 			tag(TinkerTags.Modifiers.DUAL_INTERACTION).add(CASTING.getId());
-			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, EXPEDIENT).addOptional(AQUA_UPGRADE, ABYSSAL_UPGRADE, TECHNOMANCY_UPGRADE);
+			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, EXPEDIENT).addOptional(AQUA_UPGRADE, ABYSSAL_UPGRADE, TECHNOMANCY_UPGRADE, SOUND_UPGRADE);
 			tag(TinkerTags.Modifiers.BONUS_SLOTLESS).add(REINSCRIBED);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
             tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);

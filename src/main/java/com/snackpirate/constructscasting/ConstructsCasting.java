@@ -9,6 +9,7 @@ import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.*;
 import com.snackpirate.constructscasting.modifiers.BonusCurioSlotModule;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import com.snackpirate.constructscasting.modifiers.CombustiveModule;
 import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.recipe.*;
@@ -142,6 +143,7 @@ public class ConstructsCasting {
 //            ConstructsCasting.LOGGER.info("register serializer event");
             ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("combustive"), CombustiveModule.LOADER);
         }
     }
 }

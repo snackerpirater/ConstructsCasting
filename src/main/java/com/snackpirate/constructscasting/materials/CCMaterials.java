@@ -233,7 +233,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(cosmichalcum, MaterialRegistry.ARMOR, CCModifiers.ENDER_UPGRADE);
 
 			addDefaultTraits(mithril, CCModifiers.SPELLBOUND);
-			addDefaultTraits(pyrium, CCModifiers.FIRE_UPGRADE);
+			addDefaultTraits(pyrium, CCModifiers.COMBUSTIVE);
+			addTraits(pyrium, MaterialRegistry.ARMOR,CCModifiers.HEATSHIELD);
 
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);
