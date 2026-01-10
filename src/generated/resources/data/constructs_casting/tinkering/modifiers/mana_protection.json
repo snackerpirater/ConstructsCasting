@@ -1,0 +1,19 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "constructs_casting:mana_protection",
+      "mana_per_damage": {
+        "flat": 4.0
+      },
+      "max_damage_reduction": {
+        "each_level": 0.04
+      }
+    },
+    {
+      "type": "tconstruct:rarity",
+      "rarity": "rare"
+    }
+  ],
+  "tooltip_display": "always"
+}

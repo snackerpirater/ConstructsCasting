@@ -7,10 +7,7 @@ import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCToolSpriteProvider;
 import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.*;
-import com.snackpirate.constructscasting.modifiers.BonusCurioSlotModule;
-import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import com.snackpirate.constructscasting.modifiers.CombustiveModule;
-import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
+import com.snackpirate.constructscasting.modifiers.*;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.recipe.*;
 import com.snackpirate.constructscasting.spells.CCEntities;
@@ -144,6 +141,7 @@ public class ConstructsCasting {
             ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("combustive"), CombustiveModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
         }
     }
 }

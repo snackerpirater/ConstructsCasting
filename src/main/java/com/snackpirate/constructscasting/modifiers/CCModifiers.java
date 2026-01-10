@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.mantle.data.predicate.damage.DamageSourcePredicate;
@@ -216,6 +217,10 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(new CombustiveModule(new LevelingValue(0.25f, 0.25f))) //1 -> 6 hits, 2 -> 4 hits, 3 -> 3 hits, 4 -> 2.4, 5 -> 2
 				.addModule(new RarityModule(CinderousRarity.CINDEROUS_RARITY))
 				.build(); //manyullyn takes 5 hits to max out, so around 5 hits for an explosion would be nice
+		buildModifier(MANA_PROTECTION)
+				.addModule(new ManaProtectionModule(LevelingValue.flat(4), LevelingValue.eachLevel(0.04f)))
+				.addModule(new RarityModule(Rarity.RARE))
+				.build();
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);

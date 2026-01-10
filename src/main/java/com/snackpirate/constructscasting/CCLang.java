@@ -19,6 +19,7 @@ import java.util.function.Supplier;
 public class CCLang extends LanguageProvider {
 
 
+
 	public CCLang(PackOutput output, String modid, String locale) {
 		super(output, modid, locale);
 	}
@@ -26,17 +27,19 @@ public class CCLang extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 		add("itemGroup.constructs_casting.constructs_casting", "Construct's Casting");
-		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Gives the wielder +25 max mana per part.");
-		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals greater damage to magic-wielding enemies.");
+		addMaterial(CCMaterials.arcanium, "Arcanium", "Yer a wizard, Harry!", "Grants +25 Max Mana per level.");
+		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals +2 damage per level to summons and entities with magic capabilities beyond average.");
+		addMaterialTraits(CCMaterials.exilite, "Grants +0.5 projectile power per level against summons and entities with magic capabilities beyond average.", "Grants +10% protection per level against spell (NOT magic) damage.");
 		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
-		addMaterial(CCMaterials.mithril, "Mithril", "<Insert elvish here>", "Using the tool returns mana!");
-		addMaterial(CCMaterials.pyrium, "Pyrium", "The might of Tyros himself", "Tool is prone to fiery explosions");
-
-		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Empowers the wielder with greater spell power.");
-		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals greater damage to frozen enemies");
+		addMaterial(CCMaterials.mithril, "Mithril", "The pride of Moria", "Dealing damage has a 15% chance per level to restore mana (amount scales with damage dealt).");
+		addMaterialTraits(CCMaterials.mithril, "Dealing damage has a 30% chance per level to restore mana (amount scales with damage dealt).", "Consumes up to 4 mana on hit to reduce incoming damage by 1% per mana consumed (up to 4%)."); //8 levels = 32% total, 12 = 48%
+		addMaterial(CCMaterials.pyrium, "Pyrium", "The might of Tyros himself", "Dealing damage has a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.");
+		addMaterialTraits(CCMaterials.pyrium, "Dealing damage has a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.", "");
+		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Grants +7.5% Spell Power.");
+		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals +2 damage per level to frozen enemies");
 		add("material.constructs_casting.frozen_bone.ammo", "Causes the target to take 200% freezing damage for the next 5 to 10 seconds.");
-		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Empowers ice-based magic");
-		addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "The skin adapts to its environment, providing different buffs depending on the temperature");
+		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Grants +5% Ice Spell Power");
+		addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "Grants up to 10% Spell Power in hot biomes and 20% Cooldown Reduction in cold biomes.");
 		addMaterial(CCMaterials.divinePearl, "Divine Pearl", "The power of god and anime","Gives +0.75 projectile power against undead per level");
 		addMaterial(CCMaterials.permafrost, "Permafrost", "Not to be confused with permafrost", "Empowers ice magic");
 		addMaterial(CCMaterials.emerald, "Emerald", "Villagers hate this simple trick", "Empowers evocation magic");
@@ -64,7 +67,6 @@ public class CCLang extends LanguageProvider {
         add("pattern.constructs_casting.spellbooks_first_part", "Spellbook Plating or Cover");
         add("pattern.constructs_casting.spellbooks.description", "Used to hold and cast spells. Use a Spellbook Plating for the Plated Spellbook, or a Spellbook Cover for the Traveller's Spellbook.");
         add("tool_stat.constructs_casting.extra.no_stats", "No stats");
-        add("material.constructs_casting.exilite.armor", "Protects against damage inflicted by spells.");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Lets you move faster when casting spells");
@@ -115,7 +117,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ELDRITCH_DISPULSION, "Eldritch Dispulsion", "Comprehending horrors", "Grants +15% Eldritch Spell Resistance.");
 
 		addModifier(CCModifiers.COMBUSTIVE, "Combustive", "Boom, boom, boom", "Dealing damage can cause fiery explosions");
-
+		addModifier(CCModifiers.MANA_PROTECTION, "Mana Protection", "Blocks event the most orcish of spears", "Exchanges mana for some protection");
+		add("modifier.constructs_casting.mana_protection.resistance", "Mana Resistance");
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence", "Probably tastes like blue raspberry; good if you're short on Mana though.");
 		addFluid(CCFluids.fireEssence, "Fire Essence" ,"Subtle notes of sulfur with an ashy aftertaste; Good if you need a little more FIREpower");
 		addFluid(CCFluids.iceEssence, "Ice Essence", "The active ingredient in Gatorade Frost; useful if you want to chill out");
@@ -224,7 +227,7 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 10%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
-        addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under sunlight.");
+        addModifier(CCModifiers.SOLAR_CHARGED.getId(), "Solar Charged", "The best green thing!", "Empowers Mana Regeneration while under the sun, up to +15% in full light.");
         add("modifier.constructs_casting.solar_charged.boost", "Solar Charged Mana Regen");
         addModifier(CCModifiers.THICK_SKINNED, "Thick-Skinned", "You monster", "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.");
         add("modifier.constructs_casting.thick_skinned.spell_power", "Thick-Skinned Spell Power");
@@ -250,12 +253,24 @@ public class CCLang extends LanguageProvider {
 		if (!desc.isEmpty())
 			add("material.constructs_casting." + id + ".encyclopedia", desc);
 	}
+	public void addMaterialTraits(MaterialId material, String ranged, String armor) {
+		String id = material.getPath();
+		if (!ranged.isEmpty())
+			add("material.constructs_casting." + id + ".ranged", ranged);
+		if (!armor.isEmpty())
+			add("material.constructs_casting." + id + ".armor", armor);
+	}
 
 	public void addModifier(ModifierId modifier, String name, String flavour, String desc) {
 		String id = modifier.getPath();
 		add("modifier.constructs_casting." + id, name);
 		add("modifier.constructs_casting." + id + ".flavor", flavour);
 		add("modifier.constructs_casting." + id + ".description", desc);
+	}
+	public void addModifierDetailed(ModifierId modifier, String name, String flavor, String desc, String encyclopedia) {
+		String id = modifier.getPath();
+		addModifier(modifier, name, flavor, desc);
+		add("modifier.constructs_casting." + id, encyclopedia);
 	}
 
 	public void addFluid(FluidObject<?> fluid, String name, String effect) {

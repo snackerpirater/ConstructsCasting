@@ -59,7 +59,8 @@
     "calorific": "#DBCC0B",
     "frostbite": "#eaf8f9",
     "combustive": "#da9809",
-    "heatwave": "#da9809"
+    "heatwave": "#da9809",
+    "mana_protection": "#bdf3f3"
   },
   "material.constructs_casting": {
     "__tier_1__": null,
