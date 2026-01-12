@@ -362,7 +362,7 @@
   "modifier.constructs_casting.solar_charged.description": "Empowers Mana Regeneration while under the sun, up to +15% in full light.",
   "modifier.constructs_casting.solar_charged.flavor": "The best green thing!",
   "modifier.constructs_casting.sorcerous": "Sorcerous",
-  "modifier.constructs_casting.sorcerous.description": "Hits have a 25% chance per level to restore mana, which scales with damage dealt.",
+  "modifier.constructs_casting.sorcerous.description": "Dealing damage has a chance to restore mana",
   "modifier.constructs_casting.sorcerous.flavor": "Witches hate this simple trick!",
   "modifier.constructs_casting.sound_upgrade": "Sound Upgrade",
   "modifier.constructs_casting.sound_upgrade.description": "Grants +5% Sound Spell Power",

@@ -162,7 +162,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					CCMaterialStats.Statless.ADORNMENT
 			);
 			addArmorShieldStats(mithril,
-					PlatingMaterialStats.builder().durabilityFactor(45).armor(2, 5, 7, 2).knockbackResistance(0f),
+					PlatingMaterialStats.builder().durabilityFactor(45).armor(2, 5, 7, 2).knockbackResistance(0.05f).toughness(1.5f),
 					StatlessMaterialStats.MAILLE
 			);
 			//damage focused
