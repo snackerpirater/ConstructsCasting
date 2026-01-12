@@ -4,8 +4,8 @@
     "item": "irons_spellbooks:arcane_salvage"
   },
   "result": {
-    "amount": 90,
-    "fluid": "constructs_casting:molten_arcane_salvage"
+    "amount": 30,
+    "fluid": "constructs_casting:molten_mithril"
   },
   "temperature": 1175,
   "time": 20

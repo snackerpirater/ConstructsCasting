@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import java.util.List;
 
 public class CCMaterialStats {
-	public enum Statless implements IRepairableMaterialStats {
+	public enum Statless implements IMaterialStats{
 		ADORNMENT("adornment");
 //		SPELLBOOK_PLATING("spellbook_plating");
 
@@ -42,11 +42,6 @@ public class CCMaterialStats {
 		@Override
 		public void apply(ModifierStatsBuilder builder, float scale) {}
 
-        //because material-named tools (e.g "Cobalt Plated Spell Book) relies on repair mats
-        @Override
-        public int durability() {
-            return 0;
-        }
 
-    }
+	}
 }

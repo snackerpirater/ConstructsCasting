@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:rare_ink",
+    "irons_spellbooks:rare_ink",
     {
       "id": "create_wizardry:rare_ink",
       "required": false

@@ -4,6 +4,7 @@
       "max_mana": 100.0,
       "spell_power": 0.05
     },
+    "tconstruct:arrow_shaft": {},
     "tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": 0.1,

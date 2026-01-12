@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.fluids;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.registries.FluidRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -57,8 +58,12 @@ public class CCFluids {
 	public static FlowingFluidObject<ForgeFlowingFluid> potatoStew = FLUIDS.register("potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 	public static FlowingFluidObject<ForgeFlowingFluid> poisonousPotatoStew = FLUIDS.register("poisonous_potato_stew").type(cool().temperature(400)).bucket().block(MapColor.WATER, 0).flowing();
 
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
-	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 4f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenArcanium = FLUIDS.register("molten_arcanium").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 2f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenExilite = FLUIDS.register("molten_exilite").type(hot()).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 3f)).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenMithril = FLUIDS.register("molten_mithril").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 15, 10, 3f)).commonTag(null).flowing();
+	public static FlowingFluidObject<ForgeFlowingFluid> moltenPyrium = FLUIDS.register("molten_pyrium").type(hot().temperature(1475)).bucket().block(BurningLiquidBlock.createBurning(MapColor.COLOR_ORANGE, 12, 10, 5f)).commonTag(null).flowing();
+
+
 	public static final FluidObject<UnplaceableFluid> squidInk =     FLUIDS.register("squid_ink")    .type(cool().temperature(100)).commonTag("ink")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> commonInk =    FLUIDS.register("common_ink")   .type(cool().temperature(100)).commonTag("ink/common")   .bucket().unplacable();
 	public static final FluidObject<UnplaceableFluid> uncommonInk =  FLUIDS.register("uncommon_ink") .type(cool().temperature(100)).commonTag("ink/uncommon") .bucket().unplacable();
@@ -80,6 +85,9 @@ public class CCFluids {
 	//molten pearl i guess
 	public static final FluidObject<UnplaceableFluid> moltenPearl = essence("molten_pearl");
 	public static final FluidObject<UnplaceableFluid> aquaEssence = essence("aqua_essence");
+
+	public static final FluidObject<UnplaceableFluid> soundEssence = essence("sound_essence");
+
 
 	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
@@ -149,6 +157,8 @@ public class CCFluids {
 
 			texture(moltenArcanium).textures(ConstructsCasting.id("fluid/arcanium/"),      false, false).color(0xffffffff);
 			texture(moltenExilite) .textures(molten,      false, false).color(0xff5a5b5c);
+			texture(moltenMithril).root(molten).still().flowing().color(0xffacf4f9).overlay().camera();
+			texture(moltenPyrium).root(molten).still().flowing().color(0xffe5a028).overlay().camera();
 			texture(moltenArcaneSalvage).textures(molten, false, false).color(0xffffffff);
 			ResourceLocation inky = ResourceLocation.parse("tconstruct:fluid/slime/venom/");
 			texture(squidInk)	   .textures(inky, false, false).color(0xff180030);
@@ -165,6 +175,7 @@ public class CCFluids {
 			texture(abyssalEssence).textures(potion, false, false).color(0xff6400fc);
 			texture(technomancyEssence).textures(potion, false, false).color(0xffb1bcc3);
 			texture(aquaEssence).textures(potion, false, false).color(0xff56aada);
+			texture(soundEssence).root(potion).still().flowing().color(0xff37f1aa);
 		}
 
 		@Override
@@ -226,6 +237,8 @@ public class CCFluids {
 		protected void addTags(HolderLookup.Provider provider) {
 			tag(MOLTEN_ARCANIUM).add(moltenArcanium.get());
 			tag(MOLTEN_EXILITE).add(moltenExilite.get());
+			tag(FluidTags.create(ConstructsCasting.id("molten_mithril"))).add(moltenMithril.get());
+			tag(FluidTags.create(ConstructsCasting.id("molten_pyrium"))).add(moltenPyrium.get());
             tag(MOLTEN_ARCANE_SALVAGE).add(moltenArcaneSalvage.get());
 			tag(POTATO_STEW).add(potatoStew.get());
 			tag(POISONOUS_POTATO_STEW).add(poisonousPotatoStew.get());
@@ -244,14 +257,14 @@ public class CCFluids {
 			tag(essenceOf("nature")).add(natureEssence.get());
 			tag(ink("squid")).add(squidInk.get());
 			tag(TagKey.create(ResourceKey.createRegistryKey(ResourceLocation.parse("forge:fluid_type")),ResourceLocation.parse("forge:ink"))).add(squidInk.get());
-			tag(ink("common")).add(commonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:common_ink"));
-			tag(ink("uncommon")).add(uncommonInk.get()).addOptional(ResourceLocation.parse("create_wizardry:uncommon_ink"));
-			tag(ink("rare")).add(rareInk.get()).addOptional(ResourceLocation.parse("create_wizardry:rare_ink"));
-			tag(ink("epic")).add(epicInk.get()).addOptional(ResourceLocation.parse("create_wizardry:epic_ink"));
-			tag(ink("legendary")).add(legendaryInk.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
-			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
+			tag(ink("common")).add(commonInk.get(), FluidRegistry.COMMON_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:common_ink"));
+			tag(ink("uncommon")).add(uncommonInk.get(), FluidRegistry.UNCOMMON_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:uncommon_ink"));
+			tag(ink("rare")).add(rareInk.get(), FluidRegistry.RARE_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:rare_ink"));
+			tag(ink("epic")).add(epicInk.get(), FluidRegistry.EPIC_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:epic_ink"));
+			tag(ink("legendary")).add(legendaryInk.get(), FluidRegistry.LEGENDARY_INK.get()).addOptional(ResourceLocation.parse("create_wizardry:legendary_ink"));
+			tag(BLOOD_ESSENCE_INGREDIENTS).add(TinkerFluids.meatSoup.get(), FluidRegistry.BLOOD.get()).addOptional(ResourceLocation.parse("create_wizardry:blood"));
 			//tooltips
-			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get()).add(moltenExilite.get()).add(moltenArcaneSalvage.get());
+			tag(TinkerTags.Fluids.METAL_TOOLTIPS).add(moltenArcanium.get(), moltenExilite.get(), moltenArcaneSalvage.get(), moltenMithril.get(), moltenPyrium.get());
 			tag(BOTTLE_TOOLTIP)
 					.add(arcaneEssence.get())
 					.add(cinderEssence.get())
@@ -272,7 +285,15 @@ public class CCFluids {
 					.add(legendaryInk.get())
 					.add(abyssalEssence.get())
 					.add(aquaEssence.get())
-					.add(technomancyEssence.get());
+					.add(technomancyEssence.get())
+					.add(soundEssence.get())
+					.add(FluidRegistry.COMMON_INK.get(), FluidRegistry.UNCOMMON_INK.get(), FluidRegistry.RARE_INK.get(), FluidRegistry.EPIC_INK.get(), FluidRegistry.LEGENDARY_INK.get())
+					.add(FluidRegistry.ICE_VENOM_FLUID.get(), FluidRegistry.BLOOD.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get())
+					.add(FluidRegistry.POTION_FLUID.get(),
+							FluidRegistry.INVISIBILITY_ELIXIR_FLUID.get(), FluidRegistry.GREATER_INVISIBILITY_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_HEALING_ELIXIR_FLUID.get(), FluidRegistry.OAKSKIN_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(), FluidRegistry.EVASION_ELIXIR_FLUID.get(),
+							FluidRegistry.GREATER_EVASION_ELIXIR_FLUID.get());
 			tag(MantleTags.Fluids.SOUP).add(potatoStew.get()).add(poisonousPotatoStew.get());
 			tag(TinkerTags.Fluids.SLIME_TOOLTIPS).add(moltenPearl.get());
 			tag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS).add(moltenCrystallizedCoral.get());

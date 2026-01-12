@@ -1,0 +1,26 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:common_ink"
+    },
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    },
+    {
+      "item": "irons_spellbooks:rare_ink"
+    },
+    {
+      "item": "irons_spellbooks:epic_ink"
+    },
+    {
+      "item": "irons_spellbooks:legendary_ink"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:reinscribed",
+  "tools": {
+    "tag": "tconstruct:modifiable/bonus_slots"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:entity_melting",
+  "damage": 2,
+  "entity": {
+    "type": "irons_spellbooks:dead_king"
+  },
+  "result": {
+    "amount": 50,
+    "fluid": "irons_spellbooks:rare_ink"
+  }
+}

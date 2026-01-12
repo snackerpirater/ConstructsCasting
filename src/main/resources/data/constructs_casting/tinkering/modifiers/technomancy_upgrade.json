@@ -1,4 +1,8 @@
 {
+  "condition": {
+    "type": "forge:mod_loaded",
+    "modid": "cataclysm_spellbooks"
+  },
   "level_display": "tconstruct:default",
   "modules": [
     {

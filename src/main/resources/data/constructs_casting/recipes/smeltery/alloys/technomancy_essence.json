@@ -8,6 +8,10 @@
     {
       "amount": 90,
       "fluid": "constructs_casting:gasified_redstone"
+    },
+    {
+      "amount": 90,
+      "tag": "forge:molten_copper"
     }
   ],
   "conditions": [

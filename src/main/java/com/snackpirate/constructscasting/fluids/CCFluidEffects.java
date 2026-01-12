@@ -4,9 +4,9 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.network.ClientboundSyncMana;
+import io.redspace.ironsspellbooks.network.SyncManaPacket;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
-import io.redspace.ironsspellbooks.setup.Messages;
+import io.redspace.ironsspellbooks.setup.PacketDistributor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.level.ServerPlayer;
@@ -69,7 +69,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 			MagicData playerMagicData = MagicData.getPlayerMagicData(living);
 			playerMagicData.addMana(-50 * level.value());
 			if (living instanceof ServerPlayer serverPlayer) {
-				Messages.sendToPlayer(new ClientboundSyncMana(playerMagicData), serverPlayer);
+				PacketDistributor.sendToPlayer(serverPlayer, new SyncManaPacket(playerMagicData));
 			}
 		}
 		return level.value();
@@ -81,7 +81,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 			MagicData playerMagicData = MagicData.getPlayerMagicData(living);
 			playerMagicData.addMana(10 * level.value());
 			if (living instanceof ServerPlayer serverPlayer) {
-				Messages.sendToPlayer(new ClientboundSyncMana(playerMagicData), serverPlayer);
+				PacketDistributor.sendToPlayer(serverPlayer, new SyncManaPacket(playerMagicData));
 			}
 		}
 		return level.value();
@@ -107,5 +107,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 		public static RegistryObject<MobEffect> evocationEmpowerment = EFFECTS.register("evocation_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0x99ff9c, true).addAttributeModifier(AttributeRegistry.EVOCATION_SPELL_POWER.get(), "ecd54855-033c-4309-8866-3d567d6e15f0", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
 		public static RegistryObject<MobEffect> natureEmpowerment = EFFECTS.register("nature_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0xb0f869, true).addAttributeModifier(AttributeRegistry.NATURE_SPELL_POWER.get(), "6fdc0348-9e68-4165-9d93-43dc2fdf796e", 0.15, AttributeModifier.Operation.MULTIPLY_BASE));
 		public static RegistryObject<MobEffect> recoveryEmpowerment = EFFECTS.register("recovery_empowerment", () -> new TinkerEffect(MobEffectCategory.BENEFICIAL, 0xede4e6, true).addAttributeModifier(AttributeRegistry.COOLDOWN_REDUCTION.get(), "6fdc0fff-9e68-4165-9d93-43dc2fdf796e", 0.15, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
+		public static RegistryObject<TinkerEffect> frostbite = EFFECTS.register("frostbite", () -> new TinkerEffect(MobEffectCategory.HARMFUL, 0x6dfff5, true));
 	}
 }

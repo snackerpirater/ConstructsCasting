@@ -2,15 +2,11 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import io.redspace.ironsspellbooks.api.spells.CastSource;
-import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
-import io.redspace.ironsspellbooks.api.spells.SpellData;
-import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.compat.Curios;
 import io.redspace.ironsspellbooks.item.SpellBook;
@@ -47,6 +43,7 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.module.display.ToolNameHook;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
@@ -69,13 +66,13 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	private ItemStack toolForRendering;
 
 	public ModifiableSpellbookItem(Properties prop, int slots, ToolDefinition definition) {
-		super(slots, SpellRarity.EPIC, prop);
+		super();
 		this.definition = definition;
 	}
 
     @Override
     public Component getName(ItemStack stack) {
-        return TooltipUtil.getDisplayName(stack, getToolDefinition());
+        return ToolNameHook.getName(getToolDefinition(), stack);
     }
 
 	@Override
@@ -91,19 +88,19 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 	public void spellbookLines( ItemStack itemStack,  Level level,  List<Component> lines,  TooltipFlag flag, TooltipKey key) {
 		if (key == TooltipKey.CONTROL || key == TooltipKey.SHIFT) return;
 		if (this.isUnique()) {
-			lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_rarity", new Object[]{Component.translatable("tooltip.irons_spellbooks.spellbook_unique").withStyle(TooltipsUtils.UNIQUE_STYLE)}).withStyle(ChatFormatting.GRAY));
+			lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_rarity", Component.translatable("tooltip.irons_spellbooks.spellbook_unique").withStyle(TooltipsUtils.UNIQUE_STYLE)).withStyle(ChatFormatting.GRAY));
 		}
 
 		Player player = MinecraftInstanceHelper.getPlayer();
 		if (player != null && ISpellContainer.isSpellContainer(itemStack)) {
 			ISpellContainer spellList = ISpellContainer.get(itemStack);
-			List<SpellData> activeSpellSlots = spellList.getActiveSpells();
+			List<SpellSlot> activeSpellSlots = spellList.getActiveSpells();
 			if (!activeSpellSlots.isEmpty()) {
 				lines.add(Component.translatable("tooltip.irons_spellbooks.spellbook_tooltip").withStyle(ChatFormatting.GRAY));
 				SpellSelectionManager spellSelectionManager = ClientMagicData.getSpellSelectionManager();
 
 				for(int i = 0; i < activeSpellSlots.size(); ++i) {
-					MutableComponent spellText = TooltipsUtils.getTitleComponent((SpellData)activeSpellSlots.get(i), (LocalPlayer)player).setStyle(Style.EMPTY);
+					MutableComponent spellText = TooltipsUtils.getTitleComponent(activeSpellSlots.get(i).spellData(), (LocalPlayer)player).setStyle(Style.EMPTY);
 					if (MinecraftInstanceHelper.getPlayer() != null && Utils.getPlayerSpellbookStack(MinecraftInstanceHelper.getPlayer()) == itemStack && spellSelectionManager.getCurrentSelection().equipmentSlot.equals(Curios.SPELLBOOK_SLOT) && i == spellSelectionManager.getSelectionIndex()) {
 						List<MutableComponent> shiftMessage = TooltipsUtils.formatActiveSpellTooltip(itemStack, spellSelectionManager.getSelectedSpellData(), CastSource.SPELLBOOK, (LocalPlayer)player);
 						shiftMessage.remove(0);
@@ -130,7 +127,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
                 stack = new MaterialIdNBT(Arrays.asList(
                         MaterialIds.cobalt,
                         MaterialIds.wood,
-                        CCMaterials.paper
+                        MaterialIds.paper
                 )).updateStack(stack);
             }
             stack.getOrCreateTag().putBoolean(TooltipUtil.KEY_DISPLAY, true);
@@ -269,12 +266,12 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 
 		if (!ISpellContainer.isSpellContainer(itemStack)) {
 			ISpellContainer spellContainer = ISpellContainer.create(spells, true, true);
-			spellContainer.save(itemStack);
+			ISpellContainer.set(itemStack, spellContainer);
 //			ConstructsCasting.LOGGER.info("spells 2: {}", spells);
 		} else if (ISpellContainer.get(itemStack).getMaxSpellCount() != spells) {
-            ISpellContainer spellContainer = ISpellContainer.get(itemStack);
+            ISpellContainerMutable spellContainer = ISpellContainer.get(itemStack).mutableCopy();
             spellContainer.setMaxSpellCount(spells);
-            spellContainer.save(itemStack);
+			ISpellContainer.set(itemStack, spellContainer.toImmutable());
         }
 
 //		super.initializeSpellContainer(itemStack);

@@ -2,6 +2,8 @@
   "values": [
     "constructs_casting:molten_arcanium",
     "constructs_casting:molten_exilite",
-    "constructs_casting:molten_arcane_salvage"
+    "constructs_casting:molten_arcane_salvage",
+    "constructs_casting:molten_mithril",
+    "constructs_casting:molten_pyrium"
   ]
 }

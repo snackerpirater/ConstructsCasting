@@ -1,0 +1,11 @@
+{
+  "type": "mantle:empty_item",
+  "fluid": {
+    "amount": 250,
+    "fluid": "constructs_casting:poisonous_potato_stew"
+  },
+  "input": {
+    "item": "constructs_casting:poisonous_potato_stew"
+  },
+  "result": "minecraft:bowl"
+}

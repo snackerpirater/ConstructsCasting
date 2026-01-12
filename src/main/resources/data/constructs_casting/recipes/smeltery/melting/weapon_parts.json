@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "irons_spellbooks:weapon_parts"
+  },
+  "result": {
+    "fluid": "constructs_casting:molten_mithril",
+    "amount": 270
+  },
+  "temperature": 1175,
+  "time": 71,
+  "byproducts": [
+    {
+      "fluid": "constructs_casting:molten_arcanium",
+      "amount": 180
+    }
+  ]
+}

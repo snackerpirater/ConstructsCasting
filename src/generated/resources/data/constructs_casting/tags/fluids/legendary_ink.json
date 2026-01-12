@@ -1,6 +1,7 @@
 {
   "values": [
     "constructs_casting:legendary_ink",
+    "irons_spellbooks:legendary_ink",
     {
       "id": "create_wizardry:legendary_ink",
       "required": false

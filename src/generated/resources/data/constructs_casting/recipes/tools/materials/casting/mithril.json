@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "constructs_casting:molten_mithril"
+  },
+  "output": "constructs_casting:mithril",
+  "temperature": 1175
+}

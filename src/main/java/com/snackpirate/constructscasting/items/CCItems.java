@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.book.ArtificersGuideItem;
 import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
@@ -32,6 +33,8 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.shared.TinkerFood;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -72,6 +75,8 @@ public class CCItems {
 //	});
 	public static final ItemObject<ModifiableMagicStaff> wand = ITEMS.register("wand", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.WAND));
 	public static final ItemObject<ModifiableMagicStaff> battlestaff = ITEMS.register("battlestaff", () -> new ModifiableMagicStaff(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.BATTLESTAFF));
+	public static final ItemObject<ModifiableSwordItem> flamberge = ITEMS.register("flamberge", () -> new ModifiableSwordItem(new Item.Properties().stacksTo(1), CCTools.CCToolDefinitions.FLAMBERGE));
+//	public static final ItemObject<ArtificersGuideItem> artificersGuide = ITEMS.register("artificers_guide", () -> new ArtificersGuideItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(potatoStewBowl);
@@ -98,6 +103,7 @@ public class CCItems {
         ToolBuildHandler.addVariants(output::accept, CCItems.platedSpellbook.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.wand.get(), "");
 		ToolBuildHandler.addVariants(output::accept, CCItems.battlestaff.get(), "");
+		ToolBuildHandler.addVariants(output::accept, CCItems.flamberge.get(), "");
 
         output.accept(CCFluids.arcaneEssence.getBucket());
         output.accept(CCFluids.fireEssence.getBucket());
@@ -115,6 +121,8 @@ public class CCItems {
 
         output.accept(CCFluids.moltenArcanium.getBucket());
         output.accept(CCFluids.moltenExilite.getBucket());
+		output.accept(CCFluids.moltenMithril.getBucket());
+		output.accept(CCFluids.moltenPyrium.getBucket());
         output.accept(CCFluids.squidInk.getBucket());
         output.accept(CCFluids.commonInk.getBucket());
         output.accept(CCFluids.uncommonInk.getBucket());
@@ -135,7 +143,13 @@ public class CCItems {
 		public static final TagKey<Item> SLIME_FOCUS = ItemTags.create(ConstructsCasting.id("slime_focus"));
 		public static final TagKey<Item> HIDE_CREATIVE = ItemTags.create(ConstructsCasting.id("hide_creative"));
         public static final TagKey<Item> MOD_STAFFS = ItemTags.create(ConstructsCasting.id("modifiable_magic/staff"));
+
+
+
 		public static final TagKey<Item> DRAGONSCALES = ItemTags.create(ConstructsCasting.id("dragon_scales"));
+
+
+
 		public static final TagKey<Item> MAGIC_TOOL = ItemTags.create(ConstructsCasting.id("modifiable_magic")); //includes spellbooks, staffs, and jewelry later
         public static final TagKey<Item> MOD_SPELLBOOKS = ItemTags.create(ConstructsCasting.id("modifiable_magic/spellbook"));
         public static final TagKey<Item> MOD_JEWELRY = ItemTags.create(ConstructsCasting.id("modifiable_magic/jewelry"));
@@ -147,7 +161,6 @@ public class CCItems {
 		private void addToolTags(ItemLike tool, TagKey<Item>... tags) {
 			Item item = tool.asItem();
 			for (TagKey<Item> tag : tags) {
-//				ConstructsCasting.LOGGER.info("adding tool tag {}", tag.toString());
 				this.tag(tag).add(item);
 			}
 		}
@@ -165,10 +178,15 @@ public class CCItems {
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).addTag(MOD_SPELLBOOKS);
             tag(MOD_JEWELRY).addTags();
 			tag(MOD_SPELLBOOKS).add(platedSpellbook.get(), slimySpellbook.get(), travellersSpellbook.get());
-			addToolTags(eldritchStaff.get(),    DURABILITY, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
+			tag(TOOL_PARTS).add(spellbookPlating.get(), facetedGem.get(), spellbookCover.get(), wandRod.get(), pages.get());
+			addToolTags(eldritchStaff.get(),    DURABILITY, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, AOE, DYEABLE, EMBELLISHMENT_WOOD, MOD_STAFFS);
 			addToolTags(wand,        STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MULTIPART_TOOL);
 			addToolTags(battlestaff, STAFFS, SPECIAL_TOOLS, HELD_ARMOR, INTERACTABLE_DUAL, MOD_STAFFS, MELEE_PRIMARY, DURABILITY, MULTIPART_TOOL);
-            tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
+
+
+			addToolTags(flamberge, HELD_ARMOR, MULTIPART_TOOL, DURABILITY, HARVEST, MELEE_PRIMARY, INTERACTABLE_RIGHT, SWORD, BONUS_SLOTS, ItemTags.SWORDS, ANCIENT_TOOLS);
+
+			tag(MAGIC_TOOL).addTags(MOD_SPELLBOOKS, MOD_STAFFS, MOD_JEWELRY);
             tag(MODIFIABLE).addTag(MAGIC_TOOL);
 			tag(HIDE_CREATIVE).add(slimeRune.get(), wizardslimeBall.get(), travellersSpellbook.get(), pages.get(), spellbookCover.get(), spellbookPlating.get());
 //			ConstructsCasting.LOGGER.info("addubg tags finish");

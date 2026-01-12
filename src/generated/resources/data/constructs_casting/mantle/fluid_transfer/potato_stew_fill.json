@@ -1,0 +1,11 @@
+{
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 250,
+    "tag": "constructs_casting:potato_stew"
+  },
+  "input": {
+    "item": "minecraft:bowl"
+  },
+  "result": "constructs_casting:potato_stew"
+}

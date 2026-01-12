@@ -3,13 +3,13 @@
   "allow_crystal": true,
   "inputs": [
     {
-      "item": "irons_spellbooks:arcane_salvage"
+      "item": "irons_spellbooks:mithril_ingot"
     },
     {
       "tag": "tconstruct:modifiable/melee/sword"
     },
     {
-      "item": "irons_spellbooks:arcane_salvage"
+      "item": "irons_spellbooks:mithril_ingot"
     },
     {
       "item": "irons_spellbooks:mana_upgrade_orb"

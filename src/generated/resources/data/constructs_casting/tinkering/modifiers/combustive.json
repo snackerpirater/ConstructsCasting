@@ -1,0 +1,17 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "constructs_casting:combustive",
+      "chance": {
+        "each_level": 0.25,
+        "flat": 0.25
+      }
+    },
+    {
+      "type": "tconstruct:rarity",
+      "rarity": "irons_spellbooks_cinderous"
+    }
+  ],
+  "tooltip_display": "always"
+}

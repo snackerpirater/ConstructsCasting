@@ -1,0 +1,23 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "tconstruct:item/base/tall",
+  "large": true,
+  "textures": {
+    "blade": "constructs_casting:item/tool/flamberge/blade",
+    "guard":   "constructs_casting:item/tool/flamberge/guard",
+    "handle":   "constructs_casting:item/tool/flamberge/handle",
+
+    "large_blade": "constructs_casting:item/tool/flamberge/large/blade",
+    "large_guard":   "constructs_casting:item/tool/flamberge/large/guard",
+    "large_handle":   "constructs_casting:item/tool/flamberge/large/handle"
+  },
+  "modifier_roots": {
+    "small": ["constructs_casting:item/flamberge/modifiers/"],
+    "large": ["constructs_casting:item/flamberge/large/modifiers/"]
+  },
+  "parts": [
+    { "name": "blade",   "index": 0 },
+    { "name": "guard", "index": 1 },
+    { "name": "handle",   "index": 2 }
+  ]
+}

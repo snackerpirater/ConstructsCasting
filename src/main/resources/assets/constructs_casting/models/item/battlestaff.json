@@ -1,7 +1,8 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "tconstruct:item/base/staff",
+  "parent": "tconstruct:item/base/tall",
   "large": true,
+  "large_offset": [-10, 10],
   "textures": {
     "blade": "constructs_casting:item/tool/battlestaff/blade",
     "crystal":   "constructs_casting:item/tool/battlestaff/crystal",

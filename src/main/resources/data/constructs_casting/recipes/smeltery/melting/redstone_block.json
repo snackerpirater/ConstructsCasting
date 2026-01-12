@@ -3,6 +3,12 @@
   "ingredient": {
     "item": "minecraft:redstone_block"
   },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
   "result": {
     "amount": 810,
     "fluid": "constructs_casting:gasified_redstone"

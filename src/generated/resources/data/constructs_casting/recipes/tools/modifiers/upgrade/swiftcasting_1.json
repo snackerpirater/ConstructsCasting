@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:mithril_weave"
+    },
+    {
+      "item": "irons_spellbooks:divine_soulshard"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  ],
+  "level": 1,
+  "result": "constructs_casting:swiftcasting",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/boots"
+  }
+}

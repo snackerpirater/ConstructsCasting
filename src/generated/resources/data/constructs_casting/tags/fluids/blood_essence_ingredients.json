@@ -1,6 +1,7 @@
 {
   "values": [
     "tconstruct:meat_soup",
+    "irons_spellbooks:blood",
     {
       "id": "create_wizardry:blood",
       "required": false

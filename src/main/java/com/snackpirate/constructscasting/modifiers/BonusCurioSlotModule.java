@@ -3,7 +3,6 @@ package com.snackpirate.constructscasting.modifiers;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import slimeknights.mantle.data.loadable.primitive.StringLoadable;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
-import slimeknights.mantle.data.registry.GenericLoaderRegistry;
 import slimeknights.tconstruct.library.json.LevelingInt;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -25,7 +24,7 @@ public record BonusCurioSlotModule(String slotIdentifier, LevelingInt amount, St
 			BonusCurioSlotModule::new
 	);
 	@Override
-	public RecordLoadable<? extends GenericLoaderRegistry.IHaveLoader> getLoader() {
+	public RecordLoadable<? extends ModifierModule> getLoader() {
 		return LOADER;
 	}
 

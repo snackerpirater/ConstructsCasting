@@ -7,14 +7,12 @@ import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCToolSpriteProvider;
 import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.*;
-import com.snackpirate.constructscasting.modifiers.BonusCurioSlotModule;
-import com.snackpirate.constructscasting.modifiers.CCModifiers;
-import com.snackpirate.constructscasting.modifiers.SpellbookStrapModule;
+import com.snackpirate.constructscasting.modifiers.*;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
-import com.snackpirate.constructscasting.recipe.CCRecipes;
-import com.snackpirate.constructscasting.recipe.CCSlotLayoutProvider;
+import com.snackpirate.constructscasting.recipe.*;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -107,6 +105,7 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(output, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(output));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
+        gen.addProvider(server, new CCMaterials.Tags(output, MOD_ID, fileHelper));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
         gen.addProvider(server, new CCSlotLayoutProvider(output));
@@ -116,6 +115,9 @@ public class ConstructsCasting {
         gen.addProvider(server, new CCFluids.Tags(output, provider, MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(output, MOD_ID));
         gen.addProvider(server, new CCRecipes(output));
+        gen.addProvider(server, new CCFluidTransfer(output, MOD_ID));
+        gen.addProvider(server, new CCMobEquipment(output, MOD_ID));
+        gen.addProvider(server, new CCLootInjections(output, IronsSpellbooks.MODID));
         gen.addProvider(server, new CCFluidEffects(output, ConstructsCasting.MOD_ID));
         gen.addProvider(server, new CCLang(output, ConstructsCasting.MOD_ID, "en_us"));
         gen.addProvider(server, new CCDamageTypes.Tags(output, provider, MOD_ID, fileHelper));
@@ -126,6 +128,7 @@ public class ConstructsCasting {
         GeneratorPartTextureJsonGenerator.StatOverride.Builder builder = new GeneratorPartTextureJsonGenerator.StatOverride.Builder();
         CCMaterials.tinkerClothMaterials.forEach((material) -> builder.add(MagicClothMaterialStats.ID, material.getId()));
         CCMaterials.tinkerMagicMaterials.forEach((material) -> builder.add(MagicBaseMaterialStats.ID, material.getId()));
+        CCMaterials.tinkerAdornMaterials.forEach((material) -> builder.add(CCMaterialStats.Statless.ADORNMENT.getIdentifier(), material.getId()));
         return builder.build();
     }
 
@@ -136,6 +139,9 @@ public class ConstructsCasting {
 //            ConstructsCasting.LOGGER.info("register serializer event");
             ModifierModule.LOADER.register(ConstructsCasting.id("spellbook_strap"), SpellbookStrapModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("combustive"), CombustiveModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("mana_on_hit"), ManaOnHitModule.LOADER);
         }
     }
 }

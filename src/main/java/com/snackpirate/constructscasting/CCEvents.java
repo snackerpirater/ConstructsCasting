@@ -1,23 +1,30 @@
 package com.snackpirate.constructscasting;
 
 
+import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
+import com.snackpirate.constructscasting.items.book.ArtificersGuideItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.player.ClientMagicData;
+import io.redspace.ironsspellbooks.registries.FluidRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.Font;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,14 +41,20 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.mantle.registration.object.FluidObject;
+import slimeknights.tconstruct.common.TinkerEffect;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
+import slimeknights.tconstruct.library.client.book.TinkerBook;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.shared.CommonsClientEvents;
 import slimeknights.tconstruct.shared.TinkerEffects;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -59,17 +72,36 @@ public class CCEvents {
 	static void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
 		itemPouring(event, stack, ItemRegistry.LIGHTNING_BOTTLE.get(), CCFluids.liquidLightning, 250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_COMMON.get(),       CCFluids.commonInk,       250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_UNCOMMON.get(),     CCFluids.uncommonInk,     250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_RARE.get(),         CCFluids.rareInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_EPIC.get(),         CCFluids.epicInk,         250, Items.GLASS_BOTTLE.getDefaultInstance());
-		itemPouring(event, stack, ItemRegistry.INK_LEGENDARY.get(),    CCFluids.legendaryInk,    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_COMMON.get(),       FluidRegistry.COMMON_INK.get(),  250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_UNCOMMON.get(),     FluidRegistry.UNCOMMON_INK.get(),     250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_RARE.get(),         FluidRegistry.RARE_INK.get(),         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_EPIC.get(),         FluidRegistry.EPIC_INK.get(),         250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.INK_LEGENDARY.get(),    FluidRegistry.LEGENDARY_INK.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.BLOOD_VIAL.get(), FluidRegistry.BLOOD.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.ICE_VENOM_VIAL.get(), FluidRegistry.ICE_VENOM_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.TIMELESS_SLURRY.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_HEALING_POTION.get(), FluidRegistry.GREATER_HEALING_ELIXIR_FLUID.get(),    250, Items.GLASS_BOTTLE.getDefaultInstance());
+
+		itemPouring(event, stack, ItemRegistry.INVISIBILITY_ELIXIR.get(), FluidRegistry.INVISIBILITY_ELIXIR_FLUID.get(),                250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_INVISIBILITY_ELIXIR.get(), FluidRegistry.GREATER_INVISIBILITY_ELIXIR_FLUID.get(),250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.EVASION_ELIXIR.get(), FluidRegistry.EVASION_ELIXIR_FLUID.get(),                          250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_EVASION_ELIXIR.get(), FluidRegistry.GREATER_EVASION_ELIXIR_FLUID.get(),          250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.OAKSKIN_ELIXIR.get(), FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(),                  250, Items.GLASS_BOTTLE.getDefaultInstance());
+		itemPouring(event, stack, ItemRegistry.GREATER_OAKSKIN_ELIXIR.get(), FluidRegistry.GREATER_OAKSKIN_ELIXIR_FLUID.get(),          250, Items.GLASS_BOTTLE.getDefaultInstance());
 	}
 	public static void itemPouring(AttachCapabilitiesEvent<ItemStack> event, ItemStack itemStack, Item input, FluidObject<? extends Fluid> fluidObject, int amount, ItemStack output) {
 		if (itemStack.getItem().equals(input)) {
 			event.addCapability(
 					fluidObject.getId(),
 					new ConstantFluidContainerWrapper(new FluidStack(fluidObject.get(), amount), itemStack, output)
+			);
+		}
+	}
+	public static void itemPouring(AttachCapabilitiesEvent<ItemStack> event, ItemStack itemStack, Item input, Fluid fluidObject, int amount, ItemStack output) {
+		if (itemStack.getItem().equals(input)) {
+			event.addCapability(
+					ConstructsCasting.id("pouring_capability_" + ForgeRegistries.ITEMS.getKey(input).getPath()),
+					new ConstantFluidContainerWrapper(new FluidStack(fluidObject, amount), itemStack, output)
 			);
 		}
 	}
@@ -170,6 +202,22 @@ public class CCEvents {
 
 			}));
 	}
+	@SubscribeEvent
+	static void damageModifiers(LivingHurtEvent event) {
+		DamageSource source = event.getSource();
+		LivingEntity entity = event.getEntity();
+		float originalDamage = event.getAmount();
+		if (source.is(DamageTypes.FREEZE)) {
+			int level = TinkerEffect.getLevel(entity, CCFluidEffects.MobEffects.frostbite);
+			if (level > 0) {
+				originalDamage *= (float) Math.pow(2, level);
+			}
+		}
+
+		// ensure any changes made so far apply, though we may change it again
+		event.setAmount(originalDamage);
+
+	}
 
 
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -195,6 +243,10 @@ public class CCEvents {
 		@SubscribeEvent
 		static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 			event.registerEntityRenderer(CCEntities.SLIMEBALL_PROJECTILE.get(), SlimeballProjectileRenderer::new);
+		}
+		@SubscribeEvent
+		static void clientSetup(final FMLClientSetupEvent event) {
+			ArtificersGuideItem.ARTIFICERS_GUIDE.fontRenderer = CommonsClientEvents.unicodeFontRender();
 		}
 	}
 }

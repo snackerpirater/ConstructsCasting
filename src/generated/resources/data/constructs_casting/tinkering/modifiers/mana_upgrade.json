@@ -8,7 +8,7 @@
       "stat": "constructs_casting:max_mana",
       "tool": {
         "type": "mantle:tag",
-        "tag": "constructs_casting:modifiable_magic"
+        "tag": "constructs_casting:modifiable_magic/spellbook"
       }
     },
     {
@@ -27,7 +27,7 @@
       "tool": {
         "type": "mantle:inverted",
         "inverted_type": "mantle:tag",
-        "tag": "constructs_casting:modifiable_magic"
+        "tag": "constructs_casting:modifiable_magic/spellbook"
       }
     }
   ],

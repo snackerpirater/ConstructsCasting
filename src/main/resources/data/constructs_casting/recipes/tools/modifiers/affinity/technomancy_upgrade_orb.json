@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "cataclysm_spellbooks:technomancy_rune"
+    },
+    {
+      "item": "cataclysm_spellbooks:technomancy_upgrade_orb"
+    },
+    {
+      "item": "cataclysm_spellbooks:technomancy_rune"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
+  "level": {
+    "max": 5,
+    "min": 4
+  },
+  "result": "constructs_casting:technomancy",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

@@ -3,6 +3,12 @@
   "ingredient": {
     "item": "cataclysm:crystallized_coral"
   },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cataclysm_spellbooks"
+    }
+  ],
   "result": {
     "amount": 100,
     "fluid": "constructs_casting:molten_crystallized_coral"

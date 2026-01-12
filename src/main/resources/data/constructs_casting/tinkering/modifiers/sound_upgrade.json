@@ -1,0 +1,25 @@
+{
+  "condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alshanex_familiars"
+  },
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "alshanex_familiars:sound_spell_power",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "unique": "constructs_casting.modifier.sound_upgrade"
+    }
+  ],
+  "tooltip_display": "always"
+}

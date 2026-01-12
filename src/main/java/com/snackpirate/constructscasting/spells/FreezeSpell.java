@@ -25,7 +25,6 @@ import slimeknights.tconstruct.smeltery.block.entity.CastingBlockEntity;
 
 import java.util.Optional;
 
-@AutoSpellConfig
 public class FreezeSpell extends AbstractSpell {
 	private final ResourceLocation id = ConstructsCasting.id("freeze");
 
