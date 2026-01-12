@@ -31,10 +31,10 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.exilite, "Exilite", "#1 Wizard Hater", "Deals +2 damage per level to summons and entities with magic capabilities beyond average.");
 		addMaterialTraits(CCMaterials.exilite, "Grants +0.5 projectile power per level against summons and entities with magic capabilities beyond average.", "Grants +10% protection per level against spell (NOT magic) damage.");
 		addMaterial(CCMaterials.cosmichalcum, "Cosmichalcum", "Template flavor text", "Template description");
-		addMaterial(CCMaterials.mithril, "Mithril", "The pride of Moria", "Dealing damage has a 15% chance per level to restore mana (amount scales with damage dealt).");
-		addMaterialTraits(CCMaterials.mithril, "Dealing damage has a 30% chance per level to restore mana (amount scales with damage dealt).", "Consumes up to 4 mana on hit to reduce incoming damage by 1% per mana consumed (up to 4%)."); //8 levels = 32% total, 12 = 48%
-		addMaterial(CCMaterials.pyrium, "Pyrium", "The might of Tyros himself", "Dealing damage has a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.");
-		addMaterialTraits(CCMaterials.pyrium, "Dealing damage has a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.", "");
+		addMaterial(CCMaterials.mithril, "Mithril", "The pride of Moria", "Dealing damage has a 25% chance per level to restore mana (amount scales with damage dealt).");
+		addMaterialTraits(CCMaterials.mithril, "Dealing damage has a 25% chance per level to restore mana (amount scales with damage dealt).", "Consumes mana on hit to reduce incoming damage by 4% per level; the amount of mana consumed scales with the damage negated"); //8 levels = 32% total, 12 = 48%
+		addMaterial(CCMaterials.pyrium, "Pyrium", "The might of Tyros himself", "Critical hits have a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.");
+		addMaterialTraits(CCMaterials.pyrium, "Landing shots has a 50% chance (+25% chance per additional level) to inflict one stack of Immolation on the target; reaching three stacks of Immolation on a target causes a fiery explosion.", "");
 		addMaterial(CCMaterials.arcaneCloth, "Arcane Cloth", "Mage essential!", "Grants +7.5% Spell Power.");
 		addMaterial(CCMaterials.frozenBone, "Frozen Bone", "Ice, ice, baby", "Deals +2 damage per level to frozen enemies");
 		add("material.constructs_casting.frozen_bone.ammo", "Causes the target to take 200% freezing damage for the next 5 to 10 seconds.");
@@ -73,7 +73,6 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.SPELLBLADE.getId(), "Spellblade", "Strike!", "Hitting an enemy casts the spell imbued on the tool.");
 		add("constructs_casting.modifier.spellblade.requirement", "Requires Imbued to apply.");
 
-		add("constructs_casting.modifier.swiftcasting.requirement", "Requires the Casting ability to be applied first.");
 		addModifier(CCModifiers.IMBUED.getId(), "Imbued", "One more spell!", "Allows the tool to be imbued with a spell.");
 		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Spellbook to function as an encyclopedia on right click.");
 
@@ -119,6 +118,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.COMBUSTIVE, "Combustive", "Boom, boom, boom", "Dealing damage can cause fiery explosions");
 		addModifier(CCModifiers.MANA_PROTECTION, "Mana Protection", "Blocks event the most orcish of spears", "Exchanges mana for some protection");
 		add("modifier.constructs_casting.mana_protection.resistance", "Mana Resistance");
+		addModifier(CCModifiers.SORCEROUS, "Sorcerous", "Witches hate this simple trick!", "Dealing damage has a chance to restore mana");
+
 		addFluid(CCFluids.arcaneEssence, "Arcane Essence", "Probably tastes like blue raspberry; good if you're short on Mana though.");
 		addFluid(CCFluids.fireEssence, "Fire Essence" ,"Subtle notes of sulfur with an ashy aftertaste; Good if you need a little more FIREpower");
 		addFluid(CCFluids.iceEssence, "Ice Essence", "The active ingredient in Gatorade Frost; useful if you want to chill out");

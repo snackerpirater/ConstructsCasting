@@ -1,0 +1,19 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "constructs_casting:mana_on_hit",
+      "chance": {
+        "each_level": 0.25
+      },
+      "mana_per_damage": {
+        "flat": 3.0
+      }
+    },
+    {
+      "type": "tconstruct:rarity",
+      "rarity": "rare"
+    }
+  ],
+  "tooltip_display": "always"
+}

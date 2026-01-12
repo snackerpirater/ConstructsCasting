@@ -221,6 +221,10 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(new ManaProtectionModule(LevelingValue.flat(4), LevelingValue.eachLevel(0.04f)))
 				.addModule(new RarityModule(Rarity.RARE))
 				.build();
+		buildModifier(SORCEROUS)
+				.addModule(new ManaOnHitModule(LevelingValue.flat(3), LevelingValue.eachLevel(0.25f)))
+				.addModule(new RarityModule(Rarity.RARE))
+				.build();
 	}
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(modifier).eachLevel(0.05f);

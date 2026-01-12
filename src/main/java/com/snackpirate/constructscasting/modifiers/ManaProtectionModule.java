@@ -2,9 +2,13 @@ package com.snackpirate.constructscasting.modifiers;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.network.SyncManaPacket;
+import io.redspace.ironsspellbooks.setup.PacketDistributor;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
 import slimeknights.mantle.client.TooltipKey;
@@ -48,13 +52,19 @@ public record ManaProtectionModule(LevelingValue manaPerDamage, LevelingValue ma
 	public float modifyDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
 		if (SlotInChargeModule.isInCharge(context.getTinkerData(), SLOT_KEY, slotType)) { //only run once across all pieces of armor
 			int level = SlotInChargeModule.getLevel(context.getTinkerData(), SLOT_KEY, slotType);
-			float reductionMult = Math.min(1 - maxDamageReduction.compute(level), (float) context.getEntity().getAttributeValue(TinkerAttributes.PROTECTION_CAP.get())); //90, 95
+			LivingEntity entity = context.getEntity();
+			float reductionMult = Math.min(1 - maxDamageReduction.compute(level), (float) entity.getAttributeValue(TinkerAttributes.PROTECTION_CAP.get())); //90, 95
 			//reduction mult is 0.68
 			float damageToBlock = Math.min(amount, amount * (1-reductionMult));
 			float manaConsumed = damageToBlock * manaPerDamage.compute(level);
-			ConstructsCasting.LOGGER.info("incoming damage: {}\nreduction multiplier: {}\nreduction amount: {}\n mana consumed: {}", amount, reductionMult, damageToBlock, manaConsumed);
-			if (manaConsumed <= MagicData.getPlayerMagicData(context.getEntity()).getMana()) { //would be nice if we didn't have enough mana then reduction would be scaled down, but i don't care
-				MagicData.getPlayerMagicData(context.getEntity()).addMana(-manaConsumed);
+
+//			ConstructsCasting.LOGGER.info("incoming damage: {}\nreduction multiplier: {}\nreduction amount: {}\n mana consumed: {}", amount, reductionMult, damageToBlock, manaConsumed);
+
+			if (manaConsumed <= MagicData.getPlayerMagicData(entity).getMana()) { //would be nice if we didn't have enough mana then reduction would be scaled down, but i don't care
+				MagicData.getPlayerMagicData(entity).addMana(-manaConsumed);
+				if (entity instanceof ServerPlayer sp) {
+					PacketDistributor.sendToPlayer(sp, new SyncManaPacket(MagicData.getPlayerMagicData(entity)));
+				}
 				return amount * reductionMult;
 			}
 		}

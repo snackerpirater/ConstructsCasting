@@ -13,7 +13,6 @@ import com.snackpirate.constructscasting.recipe.*;
 import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.CCSpells;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -142,6 +141,7 @@ public class ConstructsCasting {
             ModifierModule.LOADER.register(ConstructsCasting.id("bonus_curio_slots"), BonusCurioSlotModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("combustive"), CombustiveModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("mana_on_hit"), ManaOnHitModule.LOADER);
         }
     }
 }

@@ -19,7 +19,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.shared.TinkerAttributes;
 
 import java.util.List;
 
@@ -34,12 +33,13 @@ public record CombustiveModule(LevelingValue chance) implements ModifierModule, 
 	public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
 		float ran = context.getAttacker().getRandom().nextFloat();
 		float chance = this.chance.compute(modifier.getLevel());
-		if (context.getLivingTarget() != null && context.isCritical()) {
+		LivingEntity target = context.getLivingTarget();
+		if (target != null && context.isCritical()) {
 			if (ran < chance) {
-				ImmolateEffect.addImmolateStack(context.getLivingTarget(), context.getAttacker());
+				ImmolateEffect.addImmolateStack(target, context.getAttacker());
 			}
 			if (chance > 1 && ran < chance-1) {
-				ImmolateEffect.addImmolateStack(context.getLivingTarget(), context.getAttacker());
+				ImmolateEffect.addImmolateStack(target, context.getAttacker());
 			}
 		}
 	}
