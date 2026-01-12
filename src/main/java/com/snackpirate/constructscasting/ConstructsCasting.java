@@ -87,7 +87,7 @@ public class ConstructsCasting {
         MaterialRegistry.getInstance().registerStatType(MagicBaseMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(MagicClothMaterialStats.TYPE, CCToolStats.MAGIC);
         MaterialRegistry.getInstance().registerStatType(CCMaterialStats.Statless.ADORNMENT.getType());
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->NBTKeyModel.registerExtraTexture(TConstruct.getResource("creative_slot"), "affinity", ConstructsCasting.id("gui/modifiers/affinity_slot")));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> NBTKeyModel.registerExtraTexture(TConstruct.getResource("creative_slot"), "affinity", ConstructsCasting.id("gui/modifiers/affinity_slot")));
     }
 
     @SubscribeEvent

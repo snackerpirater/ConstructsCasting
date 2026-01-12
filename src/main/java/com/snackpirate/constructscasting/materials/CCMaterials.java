@@ -174,10 +174,11 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					StatlessMaterialStats.BINDING,
 					CCMaterialStats.Statless.ADORNMENT
 			);
-			addArmorShieldStats(pyrium,
-					PlatingMaterialStats.builder().durabilityFactor(40).armor(2, 5, 6, 2).knockbackResistance(0f),
-					StatlessMaterialStats.MAILLE
-			);
+            //until i can find a good trait for pyrium
+//			addArmorShieldStats(pyrium,
+//					PlatingMaterialStats.builder().durabilityFactor(40).armor(2, 5, 6, 2).knockbackResistance(0f),
+//					StatlessMaterialStats.MAILLE
+//			);
 			addMaterialStats(divinePearl,
 					StatlessMaterialStats.ARROW_HEAD);
 			addMaterialStats(frozenBone,
@@ -234,8 +235,10 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 			addDefaultTraits(mithril, CCModifiers.SORCEROUS);
 			addTraits(mithril, MaterialRegistry.ARMOR, CCModifiers.MANA_PROTECTION);
+            addTraits(mithril, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELLBOUND);
 			addDefaultTraits(pyrium, CCModifiers.COMBUSTIVE);
 			addTraits(pyrium, MaterialRegistry.ARMOR, CCModifiers.HEATSHIELD);
+            addTraits(pyrium, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.FIRE_SPECIALIZATION);
 
 			addDefaultTraits(arcaneCloth, CCModifiers.SPELLBOUND);
 			addDefaultTraits(frozenBone, CCModifiers.ANTIFROST);

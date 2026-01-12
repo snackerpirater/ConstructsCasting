@@ -39,6 +39,8 @@
     "spell_dispulsion": "#6e7278",
     "eldritch_dispulsion": "#0f839c",
 
+    "fire_specialization": "#FFAA00",
+
     "__traits__": null,
     "arcane": "#f1cdfa",
     "antimagic": "#6e7278",

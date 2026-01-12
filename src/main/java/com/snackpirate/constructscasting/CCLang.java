@@ -115,6 +115,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.NATURE_DISPULSION, "Nature Dispulsion", "Insert allegory for AI here", "Grants +15% Nature Spell Resistance.");
 		addModifier(CCModifiers.ELDRITCH_DISPULSION, "Eldritch Dispulsion", "Comprehending horrors", "Grants +15% Eldritch Spell Resistance.");
 
+        addModifier(CCModifiers.FIRE_SPECIALIZATION, "Fire Specialization", "Buffs fire magic, but at what cost?", "Grants +10% Fire Spell Power, at the cost of -10% General Spell Power");
+
 		addModifier(CCModifiers.COMBUSTIVE, "Combustive", "Boom, boom, boom", "Dealing damage can cause fiery explosions");
 		addModifier(CCModifiers.MANA_PROTECTION, "Mana Protection", "Blocks event the most orcish of spears", "Exchanges mana for some protection");
 		add("modifier.constructs_casting.mana_protection.resistance", "Mana Resistance");

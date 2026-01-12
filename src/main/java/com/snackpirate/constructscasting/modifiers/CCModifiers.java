@@ -101,6 +101,8 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId NATURE_DISPULSION    = new ModifierId(ConstructsCasting.MOD_ID, "nature_dispulsion");
 	public static final ModifierId ELDRITCH_DISPULSION  = new ModifierId(ConstructsCasting.MOD_ID, "eldritch_dispulsion");
 
+    public static final ModifierId FIRE_SPECIALIZATION  = new ModifierId(ConstructsCasting.MOD_ID, "fire_specialization");
+
 	public static final ModifierId ABYSSAL_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE         = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
@@ -158,7 +160,8 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(EVOCATION_UPGRADE).addModule(spellPowerModifier(EVOCATION_UPGRADE, AttributeRegistry.EVOCATION_SPELL_POWER.get())).build();
 		buildModifier(NATURE_UPGRADE)   .addModule(spellPowerModifier(NATURE_UPGRADE,    AttributeRegistry.NATURE_SPELL_POWER   .get())).build();
 		buildModifier(ELDRITCH_UPGRADE) .addModule(spellPowerModifier(ELDRITCH_UPGRADE,  AttributeRegistry.ELDRITCH_SPELL_POWER .get())).build();
-		buildModifier(SPELL_DISPULSION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_DISPULSION).eachLevel(0.075f));
+
+        buildModifier(SPELL_DISPULSION).addModule(AttributeModule.builder(AttributeRegistry.SPELL_RESIST, AttributeModifier.Operation.MULTIPLY_BASE).uniqueFrom(SPELL_DISPULSION).eachLevel(0.075f));
 		buildModifier(FIRE_DISPULSION).addModule(spellDispulsionModifier(FIRE_DISPULSION, AttributeRegistry.FIRE_MAGIC_RESIST.get())).build();
 		buildModifier(ICE_DISPULSION).addModule(spellDispulsionModifier(ICE_DISPULSION, AttributeRegistry.ICE_MAGIC_RESIST.get())).build();
 		buildModifier(LIGHTNING_DISPULSION).addModule(spellDispulsionModifier(LIGHTNING_DISPULSION, AttributeRegistry.LIGHTNING_MAGIC_RESIST.get())).build();
@@ -169,6 +172,8 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(NATURE_DISPULSION).addModule(spellDispulsionModifier(NATURE_DISPULSION, AttributeRegistry.NATURE_MAGIC_RESIST.get())).build();
 		buildModifier(ELDRITCH_DISPULSION).addModule(spellDispulsionModifier(ELDRITCH_DISPULSION, AttributeRegistry.ELDRITCH_MAGIC_RESIST.get())).build();
 
+        buildModifier(FIRE_SPECIALIZATION).addModule(AttributeModule.builder(AttributeRegistry.FIRE_SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.2f)) //+0.1 fire spell, -0.1 everything else in absolution
+                        .addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(-0.1f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL);
 
 		buildModifier(SPELL_PROTECTION).addModule(ProtectionModule.builder().source(DamageSourcePredicate.tag(CCDamageTypes.Tags.SPELL_BASED)).eachLevel(2.5f)).build();
 //		buildModifier(SPELLBOOK_STRAP).priority(95)

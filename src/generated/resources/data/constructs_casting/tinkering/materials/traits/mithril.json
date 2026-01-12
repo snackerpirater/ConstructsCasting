@@ -6,6 +6,12 @@
     }
   ],
   "perStat": {
+    "constructs_casting:adornment": [
+      {
+        "level": 1,
+        "name": "constructs_casting:spellbound"
+      }
+    ],
     "tconstruct:armor": [
       {
         "level": 1,
