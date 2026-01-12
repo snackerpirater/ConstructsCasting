@@ -254,7 +254,7 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.GENERAL_UPGRADES).add(MANA_UPGRADE, COOLDOWN_UPGRADE, FIRE_UPGRADE, ICE_UPGRADE, LIGHTNING_UPGRADE, ENDER_UPGRADE, HOLY_UPGRADE, BLOOD_UPGRADE, NATURE_UPGRADE, ELDRITCH_UPGRADE, EXPEDIENT).addOptional(AQUA_UPGRADE, ABYSSAL_UPGRADE, TECHNOMANCY_UPGRADE, SOUND_UPGRADE);
 			tag(TinkerTags.Modifiers.BONUS_SLOTLESS).add(REINSCRIBED);
 			tag(TinkerTags.Modifiers.PROTECTION_DEFENSE).add(SPELL_PROTECTION);
-            tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE);
+            tag(TinkerTags.Modifiers.GENERAL_ABILITIES).add(IMPROVEABLE, IMBUED);
 			tag(TinkerTags.Modifiers.INTERACTION_ABILITIES).add(CASTING.getId());
 			tag(TinkerTags.Modifiers.BOOT_UPGRADES).add(SWIFTCASTING);
 			tag(TinkerTags.Modifiers.LEGGING_ABILITIES).add(SPELLBOOK_STRAP.getId());

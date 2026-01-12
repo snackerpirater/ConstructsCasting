@@ -397,6 +397,7 @@
   "modifier.constructs_casting.thick_skinned.description": "Increases spell power and cooldowns in hot biomes, reduces spell power and cooldowns in cold biomes.",
   "modifier.constructs_casting.thick_skinned.flavor": "You monster",
   "modifier.constructs_casting.thick_skinned.spell_power": "Thick-Skinned Spell Power",
+  "modifier.tconstruct.embellishment.constructs_casting:rainbowslime": "Rainbowslime",
   "modifier.tconstruct.rebalanced.affinity": "Affinity",
   "pattern.constructs_casting.faceted_gem": "Faceted Gem",
   "pattern.constructs_casting.pages": "Pages",

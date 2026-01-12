@@ -68,7 +68,8 @@ public class CCLang extends LanguageProvider {
         add("pattern.constructs_casting.spellbooks.description", "Used to hold and cast spells. Use a Spellbook Plating for the Plated Spellbook, or a Spellbook Cover for the Traveller's Spellbook.");
         add("tool_stat.constructs_casting.extra.no_stats", "No stats");
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
-		addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
+		add("modifier.tconstruct.embellishment.constructs_casting:rainbowslime", "Rainbowslime");
+        addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
 		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Lets you move faster when casting spells");
 		addModifier(CCModifiers.SPELLBLADE.getId(), "Spellblade", "Strike!", "Hitting an enemy casts the spell imbued on the tool.");
 		add("constructs_casting.modifier.spellblade.requirement", "Requires Imbued to apply.");
