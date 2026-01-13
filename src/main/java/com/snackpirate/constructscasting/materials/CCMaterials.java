@@ -302,7 +302,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			buildRenderInfo(frostRod).color(0xc8ecec).fallbacks("metal", "primitive");
 
 			buildRenderInfo(mithril).color(0xbdf3f3).fallbacks("metal");
-			buildRenderInfo(pyrium).color(0xd6af39).fallbacks("metal");
+			buildRenderInfo(pyrium).color(0xd6af39).fallbacks("metal").luminosity(15);
 			buildRenderInfo(cosmichalcum).color(0x111081).fallbacks("metal");
 
 			buildRenderInfo(permafrost).color(0xEEEEEE).fallbacks("crystal");

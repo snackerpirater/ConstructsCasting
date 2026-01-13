@@ -321,7 +321,7 @@
   "modifier.constructs_casting.ichorspells.description": "Increases Spell Power by 15% in exchange for -30% mana regeneration",
   "modifier.constructs_casting.ichorspells.flavor": "You are filled with ichor... and determination I guess",
   "modifier.constructs_casting.imbued": "Imbued",
-  "modifier.constructs_casting.imbued.description": "Allows the tool to be imbued with a spell.",
+  "modifier.constructs_casting.imbued.description": "Allows the tool to be imbued with a spell. (Hold/equip the tool to load the Imbue slot!)",
   "modifier.constructs_casting.imbued.flavor": "One more spell!",
   "modifier.constructs_casting.improvable": "Improvable",
   "modifier.constructs_casting.improvable.description": "Adds two bonus Affinity slots to the tool.",

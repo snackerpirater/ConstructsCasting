@@ -126,7 +126,8 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addTexture(255, ConstructsCasting.id("item/materials/generator/mithril/mithril_255"))
 						.animated(ConstructsCasting.id("item/materials/generator/mithril/frames"), 8))
 		;
-		buildMaterial(CCMaterials.pyrium).meleeHarvest().ranged().armor().maille().repairKit().statType(CCMaterialStats.Statless.ADORNMENT)
+		buildMaterial(CCMaterials.pyrium).meleeHarvest().ranged().armor().maille().repairKit()
+//				.statType(CCMaterialStats.Statless.ADORNMENT)
 				.fallbacks("metal")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
 						.addARGB(63,  0xFF491b10)
