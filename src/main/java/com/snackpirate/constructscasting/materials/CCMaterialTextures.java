@@ -74,6 +74,16 @@ public class CCMaterialTextures extends AbstractMaterialSpriteProvider {
 						.addARGB(216, 0xFFe8a074)
 						.addARGB(255, 0xFFf2ba9a)
 						.build()));
+		buildMaterial(CCMaterials.bloodyVellum).repairKit().statType(MagicClothMaterialStats.ID)
+				.fallbacks("cloth", "primitive")
+				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()
+						.addARGB(63,  0xFF420000)
+						.addARGB(102, 0xFF5b0716)
+						.addARGB(140, 0xFF722037)
+						.addARGB(178, 0xFF8c2538)
+						.addARGB(216, 0xFF9d3347)
+						.addARGB(255, 0xFFb74c60)
+						.build()));
 		buildMaterial(CCMaterials.frozenBone).meleeHarvest().statType(StatlessMaterialStats.BINDING.getIdentifier(), MagicBaseMaterialStats.ID).repairKit()
 				.fallbacks("bone", "rock")
 				.transformer(new RecolorSpriteTransformer(GreyToColorMapping.builderFromBlack()

@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "irons_spellbooks:hogskin"
+  },
+  "cast_consumed": true,
+  "cooling_time": 10,
+  "fluid": {
+    "amount": 1000,
+    "tag": "constructs_casting:blood_essence_ingredients"
+  },
+  "result": "irons_spellbooks:bloody_vellum"
+}

@@ -40,6 +40,7 @@ public class CCLang extends LanguageProvider {
 		add("material.constructs_casting.frozen_bone.ammo", "Causes the target to take 200% freezing damage for the next 5 to 10 seconds.");
 		addMaterial(CCMaterials.frostRod, "Frosted", "Cold, cold heart", "Grants +5% Ice Spell Power");
 		addMaterial(CCMaterials.hogskin, "Hogskin", "Unsanitary, but still useful", "Grants up to 10% Spell Power in hot biomes and 20% Cooldown Reduction in cold biomes.");
+		addMaterial(CCMaterials.bloodyVellum, "Bloody Vellum", "Even less sanitary, but even more useful", "Consumes 1 heart when summoning an entity to grant +15% Summon Damage.");
 		addMaterial(CCMaterials.divinePearl, "Divine Pearl", "The power of god and anime","Gives +0.75 projectile power against undead per level");
 		addMaterial(CCMaterials.permafrost, "Permafrost", "Not to be confused with permafrost", "Empowers ice magic");
 		addMaterial(CCMaterials.emerald, "Emerald", "Villagers hate this simple trick", "Empowers evocation magic");
@@ -247,6 +248,7 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.RINGBEARER, "Ringbearer", "Does it give you two more fingers?", "Allows you to wear two more rings");
         addModifier(CCModifiers.SLOT_IMPROVEMENT, "Slot Improvement", "65%% more spell per spell!", "Grants +1 Spell Slot. (Cannot exceed 15 total Spell Slots)");
     	addModifier(CCModifiers.FROSTBITE, "Frostbite", "Gives me the chills", "Causes targets to temporarily take 200% freezing damage. (Not ice magic damage)");
+		addModifier(CCModifiers.BLOODTHIRSTY, "Bloodthirsty", "Blood for the blood god", "Increases summon damage, but at what cost?");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

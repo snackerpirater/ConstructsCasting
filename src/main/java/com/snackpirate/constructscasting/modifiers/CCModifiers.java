@@ -6,9 +6,11 @@ import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Rarity;
@@ -39,6 +41,10 @@ import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.definition.module.mining.MaxTierModule;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
 
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.MULTIPLIER;
 import static slimeknights.tconstruct.library.json.math.ModifierFormula.VALUE;
@@ -118,6 +124,7 @@ public class CCModifiers extends AbstractModifierProvider {
     public static final ModifierId ICHORSPELLS = new ModifierId(ConstructsCasting.MOD_ID, "ichorspells");
 	public static final ModifierId RINGBEARER = new ModifierId(ConstructsCasting.MOD_ID, "ringbearer");
     public static final ModifierId SLOT_IMPROVEMENT = new ModifierId(ConstructsCasting.MOD_ID, "slot_improvement");
+	public static final ModifierId BLOODTHIRSTY = new ModifierId(ConstructsCasting.MOD_ID, "bloodthirsty");
 
 	public static final ModifierId FROSTBITE = new ModifierId(ConstructsCasting.MOD_ID, "frostbite");
 
@@ -217,7 +224,17 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(FROSTBITE).priority(150).addModule(MobEffectModule.builder(CCFluidEffects.MobEffects.frostbite).time(RandomLevelingValue.random(5 * 20, 5 * 20)).chance(LevelingValue.flat(0.15f)).build());
 		ModifierSlotModule UPGRADE = ModifierSlotModule.slot(SlotType.UPGRADE).eachLevel(1);
 		buildModifier(REINSCRIBED).tooltipDisplay(BasicModifier.TooltipDisplay.TINKER_STATION).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL).addModule(UPGRADE);
+		List<ResourceLocation> summonSpells = Stream.of( //hardcoded because FUCK YOU
+				"irons_spellbooks:summon_swords",
+				"irons_spellbooks:summon_polar_bear",
+				"irons_spellbooks:summon_vex",
+				"irons_spellbooks:raise_dead"
 
+		).map(ResourceLocation::parse).toList();
+		buildModifier(BLOODTHIRSTY).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
+				.addModule(new SelfDamageOnCastModule(summonSpells, LevelingValue.eachLevel(2)))
+				.addModule(AttributeModule.builder(AttributeRegistry.SUMMON_DAMAGE, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f))
+				.build();
 		buildModifier(COMBUSTIVE)
 				.addModule(new CombustiveModule(new LevelingValue(0.25f, 0.25f))) //1 -> 6 hits, 2 -> 4 hits, 3 -> 3 hits, 4 -> 2.4, 5 -> 2
 				.addModule(new RarityModule(CinderousRarity.CINDEROUS_RARITY))

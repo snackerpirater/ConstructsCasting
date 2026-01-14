@@ -65,7 +65,7 @@ public record ManaOnHitModule(LevelingValue manaPerDamage, LevelingValue chance)
 
 	@Override
 	public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
-		if (attacker == null) return notBlocked;
+		if (attacker == null) return false;
 		float ran = attacker.getRandom().nextFloat();
 		float chance = this.chance.compute(modifier.getLevel());
 		if (target != null) {
@@ -77,7 +77,7 @@ public record ManaOnHitModule(LevelingValue manaPerDamage, LevelingValue chance)
 				addManaToAttacker(attacker, manaToAdd);
 			}
 		}
-		return notBlocked;
+		return false;
 	}
 	private static void addManaToAttacker(LivingEntity attacker, float mana) {
 		MagicData.getPlayerMagicData(attacker).addMana(mana);

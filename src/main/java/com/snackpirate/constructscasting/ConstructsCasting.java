@@ -142,6 +142,7 @@ public class ConstructsCasting {
             ModifierModule.LOADER.register(ConstructsCasting.id("combustive"), CombustiveModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_on_hit"), ManaOnHitModule.LOADER);
+            ModifierModule.LOADER.register(ConstructsCasting.id("self_damage_cast"), SelfDamageOnCastModule.LOADER);
         }
     }
 }

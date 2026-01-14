@@ -1,0 +1,10 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "amount": 500,
+    "tag": "constructs_casting:blood_essence_ingredients"
+  },
+  "input": "constructs_casting:hogskin",
+  "output": "constructs_casting:bloody_vellum",
+  "temperature": 300
+}

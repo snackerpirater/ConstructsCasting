@@ -1,0 +1,32 @@
+{
+  "level_display": "tconstruct:single_level",
+  "modules": [
+    {
+      "type": "constructs_casting:self_damage_cast",
+      "health_depleted": {
+        "each_level": 2.0
+      },
+      "spell_filter": [
+        "irons_spellbooks:summon_swords",
+        "irons_spellbooks:summon_polar_bear",
+        "irons_spellbooks:summon_vex",
+        "irons_spellbooks:raise_dead"
+      ]
+    },
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:summon_damage",
+      "each_level": 0.15,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    }
+  ],
+  "tooltip_display": "always"
+}
