@@ -166,7 +166,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.frozenBone).setIngredient(ItemRegistry.FROZEN_BONE_SHARD.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone"));
 		MaterialFluidRecipeBuilder.material(CCMaterials.frozenBone).setInputId(MaterialIds.bone).setFluidAndTemp(new FluidStack(CCFluids.iceEssence.get(), 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(materialFolder + "frozen_bone_composite"));
 		//bloody vellum
-		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.BLOODY_VELLUM.get()).setCast(ItemRegistry.HOGSKIN.get(), true).setCoolingTime(10).setFluid(FluidIngredient.of(CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS, 4*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "bloody_vellum"));
+		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.BLOODY_VELLUM.get()).setCast(ItemRegistry.HOGSKIN.get(), true).setCoolingTime(10).setFluid(FluidIngredient.of(CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS, 2*FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "bloody_vellum"));
 		MaterialFluidRecipeBuilder.material(CCMaterials.bloodyVellum).setInputId(CCMaterials.hogskin).setTemperature(300).setFluid(CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS, 2*FluidValues.BOTTLE).save(consumer, ConstructsCasting.id(materialFolder + "bloody_vellum_composite"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.bloodyVellum)
 				.setIngredient(ItemRegistry.BLOODY_VELLUM.get())
