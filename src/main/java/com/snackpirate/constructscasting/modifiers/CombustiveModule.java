@@ -34,7 +34,7 @@ public record CombustiveModule(LevelingValue chance) implements ModifierModule, 
 		float ran = context.getAttacker().getRandom().nextFloat();
 		float chance = this.chance.compute(modifier.getLevel());
 		LivingEntity target = context.getLivingTarget();
-		if (target != null && context.isCritical()) {
+		if (target != null && (context.isCritical() || context.isProjectile())) {
 			if (ran < chance) {
 				ImmolateEffect.addImmolateStack(target, context.getAttacker());
 			}
