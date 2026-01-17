@@ -444,7 +444,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CULTIST.get()), new FluidStack(CCFluids.bloodEssence.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(FluidRegistry.RARE_INK.get(), 50)).save(consumer);
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.FIRE_BOSS.get()), new FluidStack(CCFluids.moltenArcanium.get(), 30)).save(consumer);
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.FIRE_BOSS.get()), new FluidStack(CCFluids.moltenPyrium.get(), 10)).save(consumer);
 
 		Ingredient rebalancedCommon = Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get());
 
@@ -524,6 +524,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
+				.checkTraitLevel()
 				.useSalvageMax()
 				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_rune"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune"));
@@ -532,6 +533,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
+				.checkTraitLevel()
 				.useSalvageMax()
 				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_orb"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
@@ -539,6 +541,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(runeItem)
 				.addInput(orbItem)
 				.addInput(runeItem)
+				.checkTraitLevel()
 				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
 				.allowCrystal()
 				.setLevelRange(4, 5)

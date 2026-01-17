@@ -2,6 +2,7 @@
   "type": "tconstruct:incremental_modifier",
   "allow_crystal": true,
   "amount_per_item": 1,
+  "check_trait_level": true,
   "input": {
     "item": "irons_spellbooks:lightning_rune"
   },

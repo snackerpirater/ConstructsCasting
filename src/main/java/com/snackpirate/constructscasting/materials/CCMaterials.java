@@ -238,7 +238,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 			addDefaultTraits(mithril, CCModifiers.SORCEROUS);
 			addTraits(mithril, MaterialRegistry.ARMOR, CCModifiers.MANA_PROTECTION);
-            addTraits(mithril, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELLBOUND);
+            addTraits(mithril, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.MANA_UPGRADE);
 			addDefaultTraits(pyrium, CCModifiers.COMBUSTIVE);
 			addTraits(pyrium, MaterialRegistry.ARMOR, CCModifiers.HEATSHIELD);
             addTraits(pyrium, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.FIRE_SPECIALIZATION);

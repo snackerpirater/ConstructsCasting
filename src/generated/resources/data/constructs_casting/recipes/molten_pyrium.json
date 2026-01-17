@@ -5,7 +5,7 @@
     "type": "irons_spellbooks:fire_boss"
   },
   "result": {
-    "amount": 30,
-    "fluid": "constructs_casting:molten_arcanium"
+    "amount": 10,
+    "fluid": "constructs_casting:molten_pyrium"
   }
 }
