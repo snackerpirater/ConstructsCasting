@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "level": {
+    "max": 5,
+    "min": 4
+  },
+  "modifier": "constructs_casting:fire_upgrade",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  }
+}

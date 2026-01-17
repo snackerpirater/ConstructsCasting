@@ -227,6 +227,7 @@ public class CCLang extends LanguageProvider {
         add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");
         add("stat.tconstruct.slot.display.affinity", "affinity");
 		add("modifier.tconstruct.rebalanced.affinity", "Affinity");
+		add("recipe.tconstruct.remove_modifier.affinity", "Extract Affinity");
 
 
 		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");

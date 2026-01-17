@@ -3,7 +3,9 @@ package com.snackpirate.constructscasting.recipe;
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.CCMaterials;
+import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.registries.EntityRegistry;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CompoundIngredient;
+import net.minecraftforge.common.crafting.DifferenceIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,6 +40,7 @@ import slimeknights.mantle.recipe.helper.ItemOutput;
 import slimeknights.mantle.recipe.helper.LoadableRecipeSerializer;
 import slimeknights.mantle.recipe.ingredient.EntityIngredient;
 import slimeknights.mantle.recipe.ingredient.FluidIngredient;
+import slimeknights.mantle.recipe.ingredient.SizedIngredient;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -45,6 +49,7 @@ import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.json.predicate.modifier.ModifierPredicate;
+import slimeknights.tconstruct.library.json.predicate.modifier.SlotTypeModifierPredicate;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
@@ -54,6 +59,7 @@ import slimeknights.tconstruct.library.recipe.casting.material.MaterialFluidReci
 import slimeknights.tconstruct.library.recipe.entitymelting.EntityMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.ModifierSalvage;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
@@ -65,8 +71,11 @@ import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
+import slimeknights.tconstruct.tools.recipe.ExtractModifierRecipe;
+import slimeknights.tconstruct.tools.recipe.ModifierRemovalRecipeBuilder;
 import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.function.Consumer;
@@ -287,6 +296,19 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setTools(TinkerTags.Items.BONUS_SLOTS)
 				.setSlots(SlotType.ABILITY, 1)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/improveable"));
+		IJsonPredicate<ModifierId> extractBlacklist = ModifierPredicate.tag(TinkerTags.Modifiers.EXTRACT_MODIFIER_BLACKLIST).inverted();
+		for (boolean dagger : new boolean[]{false, true}) {
+			String suffix = dagger ? "_dagger" : "";
+			SizedIngredient tools = dagger ? SizedIngredient.fromItems(2, TinkerTools.dagger) : SizedIngredient.of(DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.UNSALVAGABLE)));
+			ModifierRemovalRecipeBuilder.removal()
+					.setTools(tools)
+					.slotName(CCModifiers.AFFINITY_SLOT)
+					.addInput(Items.AMETHYST_SHARD)
+					.addInput(Items.WET_SPONGE)
+					.addLeftover(Items.SPONGE)
+					.modifierPredicate(ModifierPredicate.and(extractBlacklist, new SlotTypeModifierPredicate(CCModifiers.AFFINITY_SLOT)))
+					.save(consumer, location(modifierFolder + "extract/affinity" + suffix));
+		}
         ModifierRecipeBuilder.modifier(CCModifiers.RINGBEARER)
                 .addInput(Ingredient.of(getItemTag("curios", "ring")))
                 .addInput(getItemTag("forge", "ingots/steel"))
@@ -502,12 +524,16 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
+				.useSalvageMax()
+				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_rune"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune"));
 		ModifierRecipeBuilder.modifier(modifier)
 				.addInput(orbItem)
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
 				.setMaxLevel(3)
+				.useSalvageMax()
+				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_orb"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb"));
 		ModifierRecipeBuilder.modifier(modifier)
 				.addInput(runeItem)
@@ -516,6 +542,8 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
 				.allowCrystal()
 				.setLevelRange(4, 5)
+				.useSalvageMax()
+				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_affinity"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
 	}
 }
