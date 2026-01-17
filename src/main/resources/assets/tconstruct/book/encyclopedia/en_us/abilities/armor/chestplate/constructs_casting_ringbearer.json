@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:ringbearer",
+  "text": [
+    {
+      "text": "Allows you to wear two more rings."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 1 level",
+    "Requires 1 ability slot"
+  ]
+}

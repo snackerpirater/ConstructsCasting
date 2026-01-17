@@ -1,0 +1,14 @@
+{
+  "modifier_id": "constructs_casting:spellblade",
+  "text": [
+    {
+      "text": "Hitting an enemy casts the spell imbued on the tool."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 1 level",
+    "Requires 1 ability slot",
+    "Requires Imbued to apply"
+  ]
+}

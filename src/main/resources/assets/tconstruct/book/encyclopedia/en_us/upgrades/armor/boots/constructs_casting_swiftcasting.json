@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:swiftcasting",
+  "text": [
+    {
+      "text": "Increases movement speed while casting spells by 40% (+20% per additional level)."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 3 levels",
+    "Requires 1 upgrade slot per level"
+  ]
+}

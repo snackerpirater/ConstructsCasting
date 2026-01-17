@@ -72,7 +72,7 @@ public class CCLang extends LanguageProvider {
 		addMaterial(CCMaterials.rainbowSlime, "Rainbowslime", "How are you seeing this?", "Happy pride month!");
 		add("modifier.tconstruct.embellishment.constructs_casting:rainbowslime", "Rainbowslime");
         addModifier(CCModifiers.CASTING.getId(), "Casting", "Not for fish, unfortunately.", "Allows the tool to cast spells on right click.");
-		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Lets you move faster when casting spells");
+		addModifier(CCModifiers.SWIFTCASTING, "Swiftcasting", "Run 'n' Gun!", "Increases movement speed while casting spells by 40% (+20% per additional level).");
 		addModifier(CCModifiers.SPELLBLADE.getId(), "Spellblade", "Strike!", "Hitting an enemy casts the spell imbued on the tool.");
 		add("constructs_casting.modifier.spellblade.requirement", "Requires Imbued to apply.");
 
@@ -160,9 +160,11 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
 		addItem(CCItems.travellersSpellbook, "Traveller's Spellbook");
+		add("item.constructs_casting.travellers_spellbook.description", "A lighter spellbook more inclined towards unique traits rather than raw power or defense. Equip in Spellbook Slot to (re)load Spell Slots for inscription.");
 		addItem(CCItems.platedSpellbook, "Plated Spellbook");
-		add("item.constructs_casting.plated_spellbook.description", "A heavily fortified spellbook geared towards defense rather than spell power.");
+		add("item.constructs_casting.plated_spellbook.description", "A heavily fortified spellbook geared towards defense rather than spell power. Equip in Spellbook Slot to (re)load Spell Slots for inscription.");
 		addItem(CCItems.slimySpellbook, "Slimy Spellbook");
+		add("item.constructs_casting.tinkerers_spellbook.description", "A moist spellbook which possesses great upgrade potential, but lacks raw power/defense. Equip in Spellbook Slot to (re)load Spell Slots for inscription.");
 		addItem(CCItems.eldritchStaff, "Sculk Staff");
 
 		addItem(CCItems.wand, "Wand");

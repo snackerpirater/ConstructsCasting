@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:spellbook_strap",
+  "text": [
+    {
+      "text": "Interacting with the leggings allows swapping your spellbook with another one in the leggings' inventory."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 1 level",
+    "Requires 1 ability slot"
+  ]
+}

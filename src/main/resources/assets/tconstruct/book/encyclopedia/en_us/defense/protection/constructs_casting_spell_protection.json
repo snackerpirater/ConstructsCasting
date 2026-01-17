@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:spell_protection",
+  "text": [
+    {
+      "text": "Grants +10% resistance against spell damage (different from magic damage). Caps at 80% across the whole set, or 8 levels."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Can apply levels incrementally",
+    "Requires 1 defense slot per level"
+  ]
+}
