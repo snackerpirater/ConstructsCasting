@@ -50,6 +50,7 @@ public class CCItems {
 	public static final ItemObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64)));
 	public static final ItemObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64)));
 
+	public static final ItemObject<Item> arcaneNugget = ITEMS.register("arcane_nugget", () -> new Item(new Item.Properties().stacksTo(65)));
 	public static final ItemObject<Item> mithrilNugget = ITEMS.register("mithril_nugget", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
 	public static final ItemObject<Item> pyriumNugget = ITEMS.register("pyrium_nugget", () -> new Item(new Item.Properties().stacksTo(64).rarity(CinderousRarity.CINDEROUS_RARITY)));
 
@@ -87,6 +88,7 @@ public class CCItems {
         output.accept(poisonousPotatoStewBowl);
         output.accept(exiliteIngot);
         output.accept(exiliteNugget);
+		output.accept(arcaneNugget);
 		output.accept(mithrilNugget);
 		output.accept(pyriumNugget);
         output.accept(slimySpellbook);
@@ -183,6 +185,7 @@ public class CCItems {
 
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/mithril"))).add(mithrilNugget.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/pyrium"))).add(pyriumNugget.get());
+			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/arcane"))).add(arcaneNugget.get());
 
 			tag(TinkerTags.Items.BONUS_SLOTS).addTags(MOD_SPELLBOOKS, MOD_STAFFS); //jewelry will probably be stat/trait-only
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).addTag(MOD_SPELLBOOKS);

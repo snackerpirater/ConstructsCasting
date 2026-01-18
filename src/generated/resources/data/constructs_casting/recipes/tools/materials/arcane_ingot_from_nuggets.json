@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "constructs_casting:arcane_ingot",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/arcane"
+    },
+    "*": {
+      "item": "constructs_casting:arcane_nugget"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "item": "irons_spellbooks:arcane_ingot"
+  },
+  "show_notification": true
+}

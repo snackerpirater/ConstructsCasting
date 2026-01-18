@@ -161,6 +161,7 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
+		addItem(CCItems.arcaneNugget, "Arcane Nugget");
 		addItem(CCItems.mithrilNugget, "Mithril Nugget");
 		addItem(CCItems.pyriumNugget, "Pyrium Nugget");
 
