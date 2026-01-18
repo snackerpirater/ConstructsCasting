@@ -18,7 +18,6 @@
       "operation": "addition",
       "slots": [
         "mainhand",
-        "offhand",
         "feet",
         "legs",
         "chest",

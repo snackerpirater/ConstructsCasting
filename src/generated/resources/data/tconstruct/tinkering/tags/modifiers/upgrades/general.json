@@ -2,30 +2,7 @@
   "values": [
     "constructs_casting:mana_upgrade",
     "constructs_casting:cooldown_upgrade",
-    "constructs_casting:fire_upgrade",
-    "constructs_casting:ice_upgrade",
-    "constructs_casting:lightning_upgrade",
-    "constructs_casting:ender_upgrade",
-    "constructs_casting:holy_upgrade",
-    "constructs_casting:blood_upgrade",
-    "constructs_casting:nature_upgrade",
-    "constructs_casting:eldritch_upgrade",
     "constructs_casting:expedient",
-    {
-      "id": "constructs_casting:aqua_upgrade",
-      "required": false
-    },
-    {
-      "id": "constructs_casting:abyssal_upgrade",
-      "required": false
-    },
-    {
-      "id": "constructs_casting:technomancy_upgrade",
-      "required": false
-    },
-    {
-      "id": "constructs_casting:sound_upgrade",
-      "required": false
-    }
+    "constructs_casting:dummy_spell_power_upgrade"
   ]
 }

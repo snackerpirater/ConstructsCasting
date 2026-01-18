@@ -26,6 +26,6 @@
     "upgrades": 1
   },
   "tools": {
-    "tag": "tconstruct:modifiable"
+    "tag": "tconstruct:modifiable/held"
   }
 }

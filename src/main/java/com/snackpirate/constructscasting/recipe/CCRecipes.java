@@ -471,6 +471,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .addInput(Items.COPPER_INGOT)
                 .addInput(Items.COPPER_INGOT)
                 .addInput(Items.COPPER_INGOT)
+				.setTools(TinkerTags.Items.HELD)
                 .setSlots(SlotType.UPGRADE, 1)
                 .setMaxLevel(3)
                 .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/expedient"));
@@ -526,10 +527,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink,FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(aConsumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
 	}
 	public static void incrementalModifierRecipe(ModifierId modifier, ItemLike runeItem, ItemLike orbItem, String id) {
+		Ingredient multiuse = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.SINGLE_USE));
 		IncrementalModifierRecipeBuilder.modifier(modifier)
 				.setInput(runeItem, 1, 16)
 				.setSlots(SlotType.UPGRADE, 1)
 				.allowCrystal()
+				.setTools(multiuse)
 				.setMaxLevel(3)
 				.checkTraitLevel()
 				.useSalvageMax()
@@ -538,6 +541,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ModifierRecipeBuilder.modifier(modifier)
 				.addInput(orbItem)
 				.setSlots(SlotType.UPGRADE, 1)
+				.setTools(multiuse)
 				.allowCrystal()
 				.setMaxLevel(3)
 				.checkTraitLevel()
@@ -548,6 +552,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(runeItem)
 				.addInput(orbItem)
 				.addInput(runeItem)
+				.setTools(multiuse)
 				.checkTraitLevel()
 				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
 				.allowCrystal()
@@ -555,5 +560,34 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.useSalvageMax()
 				.saveSalvage(aConsumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_affinity"))
 				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
+
+
+		IncrementalModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+				.setInput(runeItem, 1, 16)
+				.setSlots(SlotType.UPGRADE, 1)
+				.disallowCrystal()
+				.setTools(multiuse)
+				.setMaxLevel(3)
+				.checkTraitLevel()
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune_dummy"));
+		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+				.addInput(orbItem)
+				.setSlots(SlotType.UPGRADE, 1)
+				.setTools(multiuse)
+				.disallowCrystal()
+				.setMaxLevel(3)
+				.checkTraitLevel()
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb_dummy"));
+		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+				.addInput(runeItem)
+				.addInput(orbItem)
+				.addInput(runeItem)
+				.setTools(multiuse)
+				.checkTraitLevel()
+				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
+				.disallowCrystal()
+				.setLevelRange(4, 5)
+				.save(aConsumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb_dummy"));
+
 	}
 }

@@ -1,0 +1,33 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": false,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:holy_rune"
+    },
+    {
+      "item": "irons_spellbooks:holy_upgrade_orb"
+    },
+    {
+      "item": "irons_spellbooks:holy_rune"
+    }
+  ],
+  "level": {
+    "max": 5,
+    "min": 4
+  },
+  "result": "constructs_casting:dummy_spell_power_upgrade",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
+  }
+}

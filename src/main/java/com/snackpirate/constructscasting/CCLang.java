@@ -107,6 +107,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.AQUA_UPGRADE, "Aqua Upgrade", "Not to be confused with Abyssal", "Grants +5% Aqua Spell Power.");
 		addModifier(CCModifiers.SOUND_UPGRADE, "Sound Upgrade", "Sounds alright", "Grants +5% Sound Spell Power");
 
+		addModifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE, "Elemental Magic Upgrade", "Mage essential!", "Grants +5% Spell Power to a specific school of magic");
+
 		addModifier(CCModifiers.SPELL_DISPULSION, "Spell Dispulsion", "Not to be confused with Spell Protection", "Grants +7.5% Spell Resistance");
 		addModifier(CCModifiers.FIRE_DISPULSION, "Fire Dispulsion", "The power of the sun in the palm of my hand", "Grants +15% Fire Spell Resistance.");
 		addModifier(CCModifiers.ICE_DISPULSION, "Ice Dispulsion", "Ice to meet you", "Grants +15% Ice Spell Resistance.");

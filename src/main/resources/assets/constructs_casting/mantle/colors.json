@@ -8,6 +8,7 @@
     "ringbearer": "#acebfa",
 
     "__tool_upgrades__": null,
+    "dummy_spell_power_upgrade": "#B3BEC5",
     "mana_upgrade": "#79c0f3",
     "fire_upgrade": "#FFAA00",
     "ice_upgrade": "#d0f9ff",

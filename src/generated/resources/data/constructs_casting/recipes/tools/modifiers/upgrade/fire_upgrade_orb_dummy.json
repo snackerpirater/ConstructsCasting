@@ -1,0 +1,26 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": false,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:fire_upgrade_orb"
+    }
+  ],
+  "level": {
+    "max": 3
+  },
+  "result": "constructs_casting:dummy_spell_power_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
+  }
+}
