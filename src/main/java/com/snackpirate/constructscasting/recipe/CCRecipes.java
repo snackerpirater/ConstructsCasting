@@ -150,6 +150,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		materialMeltingCasting(consumer, CCMaterials.mithril, CCFluids.moltenMithril, FluidValues.INGOT, materialFolder);
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "mithril/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_SCRAP.get()).setValue(1).setNeeded(4).save(consumer, location(materialFolder + "mithril/scrap"));
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(CCItems.mithrilNugget.get()).setValue(1).setNeeded(9).save(consumer, location(materialFolder + "mithril/nugget"));
 		nuggetCasting(consumer, CCFluids.moltenMithril, CCItems.mithrilNugget, materialFolder);
 		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.MITHRIL_INGOT.get(), "nugget", CCItems.mithrilNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/mithril")), materialFolder);
 
@@ -158,6 +159,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_single_use"));
 		materialMeltingCasting(consumer, CCMaterials.pyrium, CCFluids.moltenPyrium, FluidValues.INGOT, materialFolder);
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(ItemRegistry.PYRIUM_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "pyrium/ingot"));
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(CCItems.pyriumNugget.get()).setValue(1).setNeeded(9).save(consumer, location(materialFolder + "pyrium/nugget"));
 		nuggetCasting(consumer, CCFluids.moltenPyrium, CCItems.pyriumNugget.get(), castingFolder + "pyrium_nugget");
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.pyriumNugget), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.NUGGET), 1175, 6).save(consumer, location(meltingFolder + "pyrium/nugget"));
 		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.PYRIUM_INGOT.get(), "nugget", CCItems.pyriumNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/pyrium")), materialFolder);

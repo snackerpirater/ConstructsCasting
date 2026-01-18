@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "constructs_casting:mithril_nugget"
+  },
+  "material": "constructs_casting:mithril",
+  "needed": 9,
+  "value": 1
+}
