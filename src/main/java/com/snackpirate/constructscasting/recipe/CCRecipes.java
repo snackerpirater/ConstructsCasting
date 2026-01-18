@@ -16,6 +16,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -34,6 +35,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.data.predicate.IJsonPredicate;
 import slimeknights.mantle.fluid.UnplaceableFluid;
+import slimeknights.mantle.recipe.data.ICommonRecipeHelper;
 import slimeknights.mantle.recipe.data.IRecipeHelper;
 import slimeknights.mantle.recipe.helper.FluidOutput;
 import slimeknights.mantle.recipe.helper.ItemOutput;
@@ -80,7 +82,7 @@ import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.function.Consumer;
 
-public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper, IToolRecipeHelper {
+public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper, IToolRecipeHelper, ICommonRecipeHelper {
 
     public CCRecipes(PackOutput output) {
 		super(output);
@@ -146,12 +148,17 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		materialMeltingCasting(consumer, CCMaterials.mithril, CCFluids.moltenMithril, FluidValues.INGOT, materialFolder);
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "mithril/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_SCRAP.get()).setValue(1).setNeeded(4).save(consumer, location(materialFolder + "mithril/scrap"));
+		nuggetCasting(consumer, CCFluids.moltenMithril, CCItems.mithrilNugget, materialFolder);
+		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.MITHRIL_INGOT.get(), "nugget", CCItems.mithrilNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/mithril")), materialFolder);
 
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT), 1175, 60).save(consumer, location(meltingFolder + "pyrium/ingot"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_multi_use"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getSingleUseTag(), true).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_single_use"));
 		materialMeltingCasting(consumer, CCMaterials.pyrium, CCFluids.moltenPyrium, FluidValues.INGOT, materialFolder);
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(ItemRegistry.PYRIUM_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "pyrium/ingot"));
+		nuggetCasting(consumer, CCFluids.moltenPyrium, CCItems.pyriumNugget.get(), castingFolder + "pyrium_nugget");
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.pyriumNugget), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.NUGGET), 1175, 6).save(consumer, location(meltingFolder + "pyrium/nugget"));
+		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.PYRIUM_INGOT.get(), "nugget", CCItems.pyriumNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/pyrium")), materialFolder);
 
 		materialMeltingCasting(consumer, MaterialIds.quartz, TinkerFluids.moltenQuartz, FluidValues.GEM, materialFolder); //to permit casting of quartz faceted gem/spellbook
 

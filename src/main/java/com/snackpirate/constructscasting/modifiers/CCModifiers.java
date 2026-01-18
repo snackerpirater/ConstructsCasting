@@ -228,8 +228,18 @@ public class CCModifiers extends AbstractModifierProvider {
 				"irons_spellbooks:summon_swords",
 				"irons_spellbooks:summon_polar_bear",
 				"irons_spellbooks:summon_vex",
-				"irons_spellbooks:raise_dead"
-
+				"irons_spellbooks:raise_dead",
+				"cataclysm_spellbooks:conjure_coral_golem",
+				"cataclysm_spellbooks:conjure_coralssus",
+				"cataclysm_spellbooks:conjure_clawdian",
+				"cataclysm_spellbooks:conjure_koboldiator",
+				"cataclysm_spellbooks:conjure_koboleton",
+				"cataclysm_spellbooks:thoths_witness",
+				"cataclysm_spellbooks:conjure_thrall",
+				"cataclysm_spellbooks:conjure_amethyst_crab",
+				"cataclysm_spellbooks:dos_swarm",
+				"cataclysm_spellbooks:construct_watchers",
+				"cataclysm_spellbooks:construct_prowler"
 		).map(ResourceLocation::parse).toList();
 		buildModifier(BLOODTHIRSTY).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL)
 				.addModule(new SelfDamageOnCastModule(summonSpells, LevelingValue.eachLevel(2)))

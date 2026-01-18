@@ -159,6 +159,9 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
+		addItem(CCItems.mithrilNugget, "Mithril Nugget");
+		addItem(CCItems.pyriumNugget, "Pyrium Nugget");
+
 		addItem(CCItems.travellersSpellbook, "Traveller's Spellbook");
 		add("item.constructs_casting.travellers_spellbook.description", "A lighter spellbook more inclined towards unique traits rather than raw power or defense. Equip in Spellbook Slot to (re)load Spell Slots for inscription.");
 		addItem(CCItems.platedSpellbook, "Plated Spellbook");
@@ -213,7 +216,7 @@ public class CCLang extends LanguageProvider {
 		addEffect(CCFluidEffects.MobEffects.natureEmpowerment, "Nature Empowerment");
 		addEffect(CCFluidEffects.MobEffects.recoveryEmpowerment, "Recovery Empowerment");
         add("fluid_effect.constructs_casting.add_mana", "Adds 50 mana to the target");
-        add("fluid_effect.constructs_casting.subtract", "Subtracts 50 mana from the target");
+        add("fluid_effect.constructs_casting.deplete_mana", "Subtracts 50 mana from the target");
 		addEffect(CCFluidEffects.MobEffects.frostbite, "Frostbite");
 
 		addFluid(CCFluids.moltenCrystallizedCoral, "Molten Crystallized Coral", "");

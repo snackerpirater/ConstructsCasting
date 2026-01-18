@@ -1,25 +1,13 @@
 package com.snackpirate.constructscasting.modifiers;
 
-import com.snackpirate.constructscasting.ConstructsCasting;
-import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.modifiers.hooks.CCModifierHooks;
 import com.snackpirate.constructscasting.modifiers.hooks.SpellOnCastHook;
-import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Items;
-import slimeknights.mantle.data.loadable.array.ArrayLoadable;
-import slimeknights.mantle.data.loadable.mapping.CollectionLoadable;
-import slimeknights.mantle.data.loadable.mapping.ListLoadable;
 import slimeknights.mantle.data.loadable.primitive.ResourceLocationLoadable;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
-import slimeknights.mantle.util.TagHelper;
 import slimeknights.tconstruct.library.json.LevelingValue;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;

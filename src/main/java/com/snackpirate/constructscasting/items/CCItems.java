@@ -7,6 +7,7 @@ import com.snackpirate.constructscasting.materials.CCMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicBaseMaterialStats;
 import com.snackpirate.constructscasting.materials.MagicClothMaterialStats;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -49,6 +50,9 @@ public class CCItems {
 	public static final ItemObject<Item> exiliteIngot = ITEMS.register("exilite_ingot", () -> new Item(new Item.Properties().stacksTo(64)));
 	public static final ItemObject<Item> exiliteNugget = ITEMS.register("exilite_nugget", () -> new Item(new Item.Properties().stacksTo(64)));
 
+	public static final ItemObject<Item> mithrilNugget = ITEMS.register("mithril_nugget", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
+	public static final ItemObject<Item> pyriumNugget = ITEMS.register("pyrium_nugget", () -> new Item(new Item.Properties().stacksTo(64).rarity(CinderousRarity.CINDEROUS_RARITY)));
+
 	public static final ItemObject<Item> wizardslimeBall = ITEMS.register("wizardslime_ball", () -> new Item(new Item.Properties().stacksTo(64)));
 	public static final ItemObject<Item> slimeRune = ITEMS.register("slime_rune", () -> new Item(new Item.Properties().stacksTo(64)));
 
@@ -83,6 +87,8 @@ public class CCItems {
         output.accept(poisonousPotatoStewBowl);
         output.accept(exiliteIngot);
         output.accept(exiliteNugget);
+		output.accept(mithrilNugget);
+		output.accept(pyriumNugget);
         output.accept(slimySpellbook);
 //        output.accept(eldritchStaff);
 
@@ -174,6 +180,10 @@ public class CCItems {
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
+
+			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/mithril"))).add(mithrilNugget.get());
+			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/pyrium"))).add(pyriumNugget.get());
+
 			tag(TinkerTags.Items.BONUS_SLOTS).addTags(MOD_SPELLBOOKS, MOD_STAFFS); //jewelry will probably be stat/trait-only
 			tag(ItemTags.create(ResourceLocation.parse("curios:spellbook"))).addTag(MOD_SPELLBOOKS);
             tag(MOD_JEWELRY).addTags();

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "constructs_casting:mithril_ingot",
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/mithril"
+    },
+    "*": {
+      "item": "constructs_casting:mithril_nugget"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "item": "irons_spellbooks:mithril_ingot"
+  },
+  "show_notification": true
+}

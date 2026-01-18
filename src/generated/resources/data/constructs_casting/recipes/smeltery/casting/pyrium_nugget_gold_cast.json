@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/nugget"
+  },
+  "cooling_time": 24,
+  "fluid": {
+    "amount": 10,
+    "tag": "constructs_casting:molten_pyrium"
+  },
+  "result": "constructs_casting:pyrium_nugget"
+}
