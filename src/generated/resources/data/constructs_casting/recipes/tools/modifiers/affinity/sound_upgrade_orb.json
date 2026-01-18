@@ -1,6 +1,13 @@
 {
   "type": "tconstruct:modifier",
   "allow_crystal": true,
+  "check_trait_level": true,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alshanex_familiars"
+    }
+  ],
   "inputs": [
     {
       "item": "alshanex_familiars:sound_rune"
@@ -12,12 +19,6 @@
       "item": "alshanex_familiars:sound_rune"
     }
   ],
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "alshanex_familiars"
-    }
-  ],
   "level": {
     "max": 5,
     "min": 4
@@ -27,6 +28,12 @@
     "affinity": 1
   },
   "tools": {
-    "tag": "tconstruct:modifiable"
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "traveloptics"
+    }
+  ],
+  "level": {
+    "max": 3
+  },
+  "modifier": "constructs_casting:aqua_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
+  }
+}

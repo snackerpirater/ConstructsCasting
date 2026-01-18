@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:incremental_modifier",
+  "allow_crystal": false,
+  "amount_per_item": 1,
+  "check_trait_level": true,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alshanex_familiars"
+    }
+  ],
+  "input": {
+    "item": "alshanex_familiars:sound_rune"
+  },
+  "level": {
+    "max": 3
+  },
+  "needed_per_level": 16,
+  "result": "constructs_casting:dummy_spell_power_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
+  }
+}

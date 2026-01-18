@@ -1,15 +1,16 @@
 {
   "type": "tconstruct:modifier",
   "allow_crystal": true,
-  "inputs": [
-    {
-      "item": "traveloptics:aqua_upgrade_orb"
-    }
-  ],
+  "check_trait_level": true,
   "conditions": [
     {
       "type": "forge:mod_loaded",
       "modid": "traveloptics"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "traveloptics:aqua_upgrade_orb"
     }
   ],
   "level": {
@@ -20,6 +21,12 @@
     "upgrades": 1
   },
   "tools": {
-    "tag": "tconstruct:modifiable"
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable/single_use"
+    }
   }
 }

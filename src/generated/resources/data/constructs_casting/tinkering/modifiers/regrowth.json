@@ -8,7 +8,6 @@
       "operation": "multiply_base",
       "slots": [
         "mainhand",
-        "offhand",
         "feet",
         "legs",
         "chest",
