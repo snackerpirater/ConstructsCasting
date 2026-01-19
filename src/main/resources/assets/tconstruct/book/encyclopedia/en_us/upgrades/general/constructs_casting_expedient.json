@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:expedient",
+  "text": [
+    {
+      "text": "Decreases spell Cast Time Reduction by 10% per level, reducing the charge-up time for instant spells and allowing for continuous spells to be cast for longer."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 3 levels",
+    "Requires 1 upgrade slot per level"
+  ]
+}

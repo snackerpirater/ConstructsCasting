@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:mana_upgrade",
+  "text": [
+    {
+      "text": "Increases Max Mana by +80 per level."
+    }
+  ],
+  "more_text_space": false,
+  "effects": [
+    "First 3 levels require 1 Upgrade Orb or 16 Runes, consuming upgrade slots",
+    "Next 2 levels require 1 Upgrade Orb and 2 Runes, consuming affinity slots"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:cooldown_upgrade",
+  "text": [
+    {
+      "text": "Increases spell Cooldown Reduction by 5% per level, reducing the intermission time between casting spells"
+    }
+  ],
+  "more_text_space": false,
+  "effects": [
+    "First 3 levels require 1 Upgrade Orb or 16 Runes, consuming upgrade slots",
+    "Next 2 levels require 1 Upgrade Orb and 2 Runes, consuming affinity slots"
+  ]
+}

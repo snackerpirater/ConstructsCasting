@@ -1,0 +1,13 @@
+{
+  "modifier_id": "constructs_casting:dummy_spell_power_upgrade",
+  "text": [
+    {
+      "text": "Increases Spell Power for a given school of magic (specified by the Upgrade Orbs/Runes) by 5% per level."
+    }
+  ],
+  "more_text_space": false,
+  "effects": [
+    "First 3 levels require 1 Upgrade Orb or 16 Runes, consuming upgrade slots",
+    "Next 2 levels require 1 Upgrade Orb and 2 Runes, consuming affinity slots"
+  ]
+}
