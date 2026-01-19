@@ -22,11 +22,13 @@ public class ManaBarOverlayMixin {
 		if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ModifiableItem) {
 			doIt = (ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.CASTING.getId()) > 0 ||
 								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.ARCANE) > 0 ||
+								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.SORCEROUS) > 0 ||
 								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.MANA_UPGRADE) > 0);
 		}
 		else if (player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ModifiableItem) {
 			doIt = (ModifierUtil.getModifierLevel(offHandItem, CCModifiers.CASTING.getId()) > 0 ||
 								ModifierUtil.getModifierLevel(offHandItem, CCModifiers.ARCANE) > 0 ||
+								ModifierUtil.getModifierLevel(mainHandItem, CCModifiers.SORCEROUS) > 0 ||
 								ModifierUtil.getModifierLevel(offHandItem, CCModifiers.MANA_UPGRADE) > 0);
 		}
 		if (doIt) cir.setReturnValue(doIt);
