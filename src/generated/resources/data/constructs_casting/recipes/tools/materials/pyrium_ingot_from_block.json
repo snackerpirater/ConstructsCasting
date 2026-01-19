@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "constructs_casting:pyrium_ingot",
+  "ingredients": [
+    {
+      "item": "constructs_casting:pyrium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "irons_spellbooks:pyrium_ingot"
+  }
+}

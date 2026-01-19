@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "constructs_casting:exilite_ingot",
+  "ingredients": [
+    {
+      "item": "constructs_casting:exilite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "constructs_casting:exilite_ingot"
+  }
+}

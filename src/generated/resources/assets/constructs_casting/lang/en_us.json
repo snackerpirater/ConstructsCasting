@@ -1,4 +1,8 @@
 {
+  "block.constructs_casting.arcane_block": "Block Of Arcanium",
+  "block.constructs_casting.exilite_block": "Block Of Exilite",
+  "block.constructs_casting.mithril_block": "Block Of Mithril",
+  "block.constructs_casting.pyrium_block": "Block Of Pyrium",
   "constructs_casting.modifier.spellblade.requirement": "Requires Imbued to apply.",
   "effect.constructs_casting.blood_empowerment": "Blood Empowerment",
   "effect.constructs_casting.ender_empowerment": "Ender Empowerment",

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:casting_basin",
+  "cooling_time": 214,
+  "fluid": {
+    "amount": 810,
+    "tag": "constructs_casting:molten_mithril"
+  },
+  "result": "constructs_casting:mithril_block"
+}

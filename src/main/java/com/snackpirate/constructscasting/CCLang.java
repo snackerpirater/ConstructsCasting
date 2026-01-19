@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting;
 
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCBlocks;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCMaterials;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -157,12 +158,16 @@ public class CCLang extends LanguageProvider {
 		addItem(CCItems.potatoStewBowl, "Potato Stew");
 		addItem(CCItems.poisonousPotatoStewBowl, "Poisonous Potato Stew");
 
+		addItem(CCBlocks.exiliteBlock::asItem, "Block Of Exilite");
 		addItem(CCItems.exiliteIngot, "Exilite Ingot");
 		addItem(CCItems.exiliteNugget, "Exilite Nugget");
 		addItem(CCItems.exiliteReinforcement, "Exilite Reinforcement");
 
+		addItem(CCBlocks.arcaneBlock::asItem, "Block Of Arcanium");
 		addItem(CCItems.arcaneNugget, "Arcane Nugget");
+		addItem(CCBlocks.mithrilBlock::asItem, "Block Of Mithril");
 		addItem(CCItems.mithrilNugget, "Mithril Nugget");
+		addItem(CCBlocks.pyriumBlock::asItem, "Block Of Pyrium");
 		addItem(CCItems.pyriumNugget, "Pyrium Nugget");
 
 		addItem(CCItems.travellersSpellbook, "Traveller's Spellbook");

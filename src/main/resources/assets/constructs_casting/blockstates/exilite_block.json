@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "constructs_casting:block/exilite_block"
+    }
+  }
+}

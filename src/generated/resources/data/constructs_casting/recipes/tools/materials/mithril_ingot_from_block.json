@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "constructs_casting:mithril_ingot",
+  "ingredients": [
+    {
+      "item": "constructs_casting:mithril_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "irons_spellbooks:mithril_ingot"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "constructs_casting:mithril_block"
+  },
+  "result": {
+    "amount": 810,
+    "fluid": "constructs_casting:molten_mithril"
+  },
+  "temperature": 1175,
+  "time": 214
+}

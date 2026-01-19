@@ -3,6 +3,7 @@ package com.snackpirate.constructscasting;
 import com.mojang.logging.LogUtils;
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCBlocks;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCToolSpriteProvider;
 import com.snackpirate.constructscasting.items.CCTools;
@@ -17,10 +18,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -37,6 +40,7 @@ import org.slf4j.Logger;
 import slimeknights.mantle.client.model.NBTKeyModel;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.common.data.loot.BlockLootTableProvider;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
@@ -44,6 +48,9 @@ import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(ConstructsCasting.MOD_ID)
@@ -69,16 +76,16 @@ public class ConstructsCasting {
         CCFluids.FLUIDS.register(modEventBus);
         CCFluidEffects.MobEffects.register(modEventBus);
         CCItems.ITEMS.register(modEventBus);
+        CCBlocks.BLOCKS.register(modEventBus);
         CCRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         CCSounds.register(modEventBus);
         CCEntities.register(modEventBus);
         CCSpells.register(modEventBus);
         CREATIVE_TABS.register(modEventBus);
         modEventBus.register(new CCFluids());
-
     }
     public static ResourceLocation id(String name) {
-        return ResourceLocation.tryBuild(MOD_ID, name);
+        return Objects.requireNonNull(ResourceLocation.tryBuild(MOD_ID, name));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -109,12 +116,15 @@ public class ConstructsCasting {
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
         gen.addProvider(server, new CCSlotLayoutProvider(output));
-        gen.addProvider(server, new CCItems.Tags(output, provider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()), MOD_ID, fileHelper));
+        CCBlocks.Tags blockTags = new CCBlocks.Tags(output, provider, MOD_ID, fileHelper);
+        gen.addProvider(server, blockTags);
+        gen.addProvider(server, new CCItems.Tags(output, provider, blockTags.contentsGetter(), MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.CCFluidTextures(output, MOD_ID));
         gen.addProvider(server, new CCFluids.CCBucketModels(output, MOD_ID));
         gen.addProvider(server, new CCFluids.Tags(output, provider, MOD_ID, fileHelper));
         gen.addProvider(server, new CCFluids.Tags.CCFluidTooltipProvider(output, MOD_ID));
         gen.addProvider(server, new CCRecipes(output));
+        gen.addProvider(server, new CCLootTableProvider(output));
         gen.addProvider(server, new CCFluidTransfer(output, MOD_ID));
         gen.addProvider(server, new CCMobEquipment(output, MOD_ID));
         gen.addProvider(server, new CCLootInjections(output, IronsSpellbooks.MODID));

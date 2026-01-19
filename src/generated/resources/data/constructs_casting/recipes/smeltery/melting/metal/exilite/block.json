@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "constructs_casting:exilite_block"
+  },
+  "result": {
+    "amount": 810,
+    "fluid": "constructs_casting:molten_exilite"
+  },
+  "temperature": 700,
+  "time": 171
+}

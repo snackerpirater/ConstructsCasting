@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "constructs_casting:block/pyrium_block"
+  }
+}

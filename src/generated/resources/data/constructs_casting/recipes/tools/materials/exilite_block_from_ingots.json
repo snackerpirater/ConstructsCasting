@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "constructs_casting:exilite_block",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/exilite"
+    },
+    "*": {
+      "item": "constructs_casting:exilite_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "item": "constructs_casting:exilite_block"
+  },
+  "show_notification": true
+}

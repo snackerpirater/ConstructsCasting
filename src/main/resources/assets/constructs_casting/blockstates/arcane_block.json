@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "constructs_casting:block/arcane_block"
+    }
+  }
+}

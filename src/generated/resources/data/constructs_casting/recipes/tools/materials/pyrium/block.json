@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "constructs_casting:pyrium_block"
+  },
+  "material": "constructs_casting:pyrium",
+  "needed": 1,
+  "value": 9
+}

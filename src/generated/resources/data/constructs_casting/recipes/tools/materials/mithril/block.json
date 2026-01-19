@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "constructs_casting:mithril_block"
+  },
+  "material": "constructs_casting:mithril",
+  "needed": 1,
+  "value": 9
+}

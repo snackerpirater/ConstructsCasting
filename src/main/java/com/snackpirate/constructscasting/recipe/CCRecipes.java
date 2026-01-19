@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.recipe;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
+import com.snackpirate.constructscasting.items.CCBlocks;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.items.CCTools;
 import com.snackpirate.constructscasting.materials.CCMaterials;
@@ -52,6 +53,7 @@ import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.SmelteryRecipeBuilder;
 import slimeknights.tconstruct.library.json.predicate.modifier.ModifierPredicate;
 import slimeknights.tconstruct.library.json.predicate.modifier.SlotTypeModifierPredicate;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
@@ -94,7 +96,6 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 
 	public static final RegistryObject<RecipeSerializer<ScrollMeltingRecipe>> scrollMeltingSerializer = RECIPE_SERIALIZERS.register("scroll_melting", () -> LoadableRecipeSerializer.of(ScrollMeltingRecipe.LOADER));
 
-	private static Consumer<FinishedRecipe> aConsumer;
 	private static final String castingFolder = "smeltery/casting/";
 	private static final String alloyFolder = "smeltery/alloys/";
 	private static final String materialFolder = "tools/materials/";
@@ -109,7 +110,6 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-		aConsumer = consumer;
 		//arcanium making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_INGOT.get()), new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.INGOT), 800, 30)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "arcane/ingot"));
@@ -126,6 +126,11 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.arcaneNugget), new FluidStack(CCFluids.moltenArcanium.get(), FluidValues.NUGGET), 1175, 6).save(consumer, location(meltingFolder + "arcane/nugget"));
 		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.ARCANE_INGOT.get(), "nugget", CCItems.arcaneNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/arcane")), materialFolder);
 
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.arcanium).setIngredient(CCBlocks.arcaneBlock).setValue(9).setNeeded(1).save(consumer, location(materialFolder + "arcane/block"));
+		ItemCastingRecipeBuilder.basinRecipe(CCBlocks.arcaneBlock).setFluidAndTime(CCFluids.moltenArcanium, FluidValues.METAL_BLOCK).save(consumer, location(castingFolder + "arcane/block"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCBlocks.arcaneBlock), CCFluids.moltenArcanium, FluidValues.METAL_BLOCK).save(consumer, location(meltingFolder + "arcane/block"));
+		packingRecipe(consumer, RecipeCategory.MISC, "block", CCBlocks.arcaneBlock.get(), "ingot", ItemRegistry.ARCANE_INGOT.get(), ItemTags.create(ResourceLocation.parse("forge:ingots/arcane")), materialFolder);
+
 		//exilite making
 		materialMeltingCasting(consumer, CCMaterials.exilite, CCFluids.moltenExilite, FluidValues.INGOT, materialFolder);
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.exiliteIngot.get()), new FluidStack(CCFluids.moltenExilite.get(), FluidValues.INGOT), 800, 30).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/ingot"));
@@ -140,6 +145,13 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteIngot.get()).setValue(1).setNeeded(1).save(consumer, ConstructsCasting.id(materialFolder + "exilite/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCItems.exiliteNugget.get()).setValue(1).setNeeded(9).save(consumer, ConstructsCasting.id(materialFolder + "exilite/nugget"));
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.MAGEHUNTER.get()), new FluidStack(CCFluids.moltenExilite.get(), 2*FluidValues.INGOT), 700, 30).setDamagable(25).save(consumer, ConstructsCasting.id(meltingFolder + "exilite/magehunter"));
+
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.exilite).setIngredient(CCBlocks.exiliteBlock).setValue(9).setNeeded(1).save(consumer, location(materialFolder + "exiilte/block"));
+		ItemCastingRecipeBuilder.basinRecipe(CCBlocks.exiliteBlock).setFluidAndTime(CCFluids.moltenExilite, FluidValues.METAL_BLOCK).save(consumer, location(castingFolder + "exilite/block"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCBlocks.exiliteBlock), CCFluids.moltenExilite, FluidValues.METAL_BLOCK).save(consumer, location(meltingFolder + "exilite/block"));
+		packingRecipe(consumer, RecipeCategory.MISC, "block", CCBlocks.exiliteBlock.get(), "ingot", CCItems.exiliteIngot, ItemTags.create(ResourceLocation.parse("forge:ingots/exilite")), materialFolder);
+
+
 		//arcane salvage making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_DEBRIS_BLOCK_ITEM.get()), new FluidStack(CCFluids.moltenMithril.get(), 6*FluidValues.NUGGET), 1175,40).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_salvage/ore"));
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_SALVAGE.get()), new FluidStack(CCFluids.moltenMithril.get(), 3*FluidValues.NUGGET), 1175,20).save(consumer, ConstructsCasting.id(meltingFolder + "arcane_salvage/ingot"));
@@ -157,8 +169,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_INGOT.get()).setValue(1).setNeeded(1).save(consumer, location(materialFolder + "mithril/ingot"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(ItemRegistry.MITHRIL_SCRAP.get()).setValue(1).setNeeded(4).save(consumer, location(materialFolder + "mithril/scrap"));
 		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(CCItems.mithrilNugget.get()).setValue(1).setNeeded(9).save(consumer, location(materialFolder + "mithril/nugget"));
-		nuggetCasting(consumer, CCFluids.moltenMithril, CCItems.mithrilNugget, materialFolder);
+		nuggetCasting(consumer, CCFluids.moltenMithril, CCItems.mithrilNugget, castingFolder);
+		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.mithrilNugget), CCFluids.moltenMithril, FluidValues.NUGGET).save(consumer, location(meltingFolder + "mithril/nugget"));
 		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.MITHRIL_INGOT.get(), "nugget", CCItems.mithrilNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/mithril")), materialFolder);
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.mithril).setIngredient(CCBlocks.mithrilBlock).setValue(9).setNeeded(1).save(consumer, location(materialFolder + "mithril/block"));
+		ItemCastingRecipeBuilder.basinRecipe(CCBlocks.mithrilBlock).setFluidAndTime(CCFluids.moltenMithril, FluidValues.METAL_BLOCK).save(consumer, location(castingFolder + "mithril/block"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCBlocks.mithrilBlock), CCFluids.moltenMithril, FluidValues.METAL_BLOCK).save(consumer, location(meltingFolder + "mithril/block"));
+		packingRecipe(consumer, RecipeCategory.MISC, "block", CCBlocks.mithrilBlock.get(), "ingot", ItemRegistry.MITHRIL_INGOT.get(), ItemTags.create(ResourceLocation.parse("forge:ingots/mithril")), materialFolder);
+
 
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT), 1175, 60).save(consumer, location(meltingFolder + "pyrium/ingot"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.PYRIUM_INGOT.get()).setFluidAndTime(new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.INGOT)).setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false).save(consumer, ConstructsCasting.id(castingFolder + "pyrium/ingot_multi_use"));
@@ -169,6 +187,12 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		nuggetCasting(consumer, CCFluids.moltenPyrium, CCItems.pyriumNugget.get(), castingFolder + "pyrium_nugget");
 		MeltingRecipeBuilder.melting(Ingredient.of(CCItems.pyriumNugget), new FluidStack(CCFluids.moltenPyrium.get(), FluidValues.NUGGET), 1175, 6).save(consumer, location(meltingFolder + "pyrium/nugget"));
 		packingRecipe(consumer, RecipeCategory.MISC, "ingot", ItemRegistry.PYRIUM_INGOT.get(), "nugget", CCItems.pyriumNugget, ItemTags.create(ResourceLocation.parse("forge:nuggets/pyrium")), materialFolder);
+
+		MaterialRecipeBuilder.materialRecipe(CCMaterials.pyrium).setIngredient(CCBlocks.pyriumBlock).setValue(9).setNeeded(1).save(consumer, location(materialFolder + "pyrium/block"));
+		ItemCastingRecipeBuilder.basinRecipe(CCBlocks.pyriumBlock).setFluidAndTime(CCFluids.moltenPyrium, FluidValues.METAL_BLOCK).save(consumer, location(castingFolder + "pyrium/block"));
+		MeltingRecipeBuilder.melting(Ingredient.of(CCBlocks.pyriumBlock), CCFluids.moltenPyrium, FluidValues.METAL_BLOCK).save(consumer, location(meltingFolder + "pyrium/block"));
+		packingRecipe(consumer, RecipeCategory.MISC, "block", CCBlocks.pyriumBlock.get(), "ingot", ItemRegistry.PYRIUM_INGOT.get(), ItemTags.create(ResourceLocation.parse("forge:ingots/pyrium")), materialFolder);
+
 
 		materialMeltingCasting(consumer, MaterialIds.quartz, TinkerFluids.moltenQuartz, FluidValues.GEM, materialFolder); //to permit casting of quartz faceted gem/spellbook
 
@@ -367,29 +391,29 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.CINDER_ESSENCE.get()), new FluidStack(CCFluids.cinderEssence.get(), 250), 1175, 5)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "cinder_essence"));
 		ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.CINDER_ESSENCE.get()).setFluidAndTime(new FluidStack(CCFluids.cinderEssence.get(), FluidValues.BOTTLE)).save(consumer, ConstructsCasting.id(castingFolder + "cinder_essence_casting"));
-		essenceRecipe(CCFluids.fireEssence,      TinkerFluids.blazingBlood   .getLocalTag(),100, "fire_essence"     );
-		essenceRecipe(CCFluids.iceEssence,       TinkerFluids.powderedSnow.getCommonTag(),   250, "ice_essence"     );
-		essenceRecipe(CCFluids.lightningEssence, CCFluids.Tags.LIQUID_LIGHTNING,            250, "lightning_essence");
-		essenceRecipe(CCFluids.enderEssence,     TinkerFluids.moltenEnder    .getLocalTag(),250, "ender_essence"    );
+		essenceRecipe(consumer, CCFluids.fireEssence,      TinkerFluids.blazingBlood   .getLocalTag(),100, "fire_essence"     );
+		essenceRecipe(consumer, CCFluids.iceEssence,       TinkerFluids.powderedSnow.getCommonTag(),   250, "ice_essence"     );
+		essenceRecipe(consumer, CCFluids.lightningEssence, CCFluids.Tags.LIQUID_LIGHTNING,            250, "lightning_essence");
+		essenceRecipe(consumer, CCFluids.enderEssence,     TinkerFluids.moltenEnder    .getLocalTag(),250, "ender_essence"    );
 
 		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(CCFluids.holyEssence.get(), FluidValues.BOTTLE), 700)
 				.addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE)
 				.addInput(TinkerFluids.moltenGold.getLocalTag(), FluidValues.INGOT)
 				.addInput(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)
-				.save(aConsumer, ConstructsCasting.id(alloyFolder + "holy_essence"));
+				.save(consumer, ConstructsCasting.id(alloyFolder + "holy_essence"));
 
-		essenceRecipe(CCFluids.bloodEssence,     CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS,250, "blood_essence"    );
-		essenceRecipe(CCFluids.evocationEssence, TinkerFluids.moltenEmerald  .getLocalTag(),100, "evocation_essence");
-		essenceRecipe(CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       50, "nature_essence"   );
+		essenceRecipe(consumer, CCFluids.bloodEssence,     CCFluids.Tags.BLOOD_ESSENCE_INGREDIENTS,250, "blood_essence"    );
+		essenceRecipe(consumer, CCFluids.evocationEssence, TinkerFluids.moltenEmerald  .getLocalTag(),100, "evocation_essence");
+		essenceRecipe(consumer, CCFluids.natureEssence,    CCFluids.Tags.POISONOUS_POTATO_STEW,       50, "nature_essence"   );
 		//rune casting
-		runeCastingRecipe(CCFluids.fireEssence,      ItemRegistry.FIRE_RUNE.get(),           "fire_rune");
-		runeCastingRecipe(CCFluids.iceEssence,       ItemRegistry.ICE_RUNE.get(),             "ice_rune");
-		runeCastingRecipe(CCFluids.lightningEssence, ItemRegistry.LIGHTNING_RUNE.get(), "lightning_rune");
-		runeCastingRecipe(CCFluids.enderEssence,     ItemRegistry.ENDER_RUNE.get(),         "ender_rune");
-		runeCastingRecipe(CCFluids.holyEssence,      ItemRegistry.HOLY_RUNE.get(),           "holy_rune");
-		runeCastingRecipe(CCFluids.bloodEssence,     ItemRegistry.BLOOD_RUNE.get(),         "blood_rune");
-		runeCastingRecipe(CCFluids.evocationEssence, ItemRegistry.EVOCATION_RUNE.get(), "evocation_rune");
-		runeCastingRecipe(CCFluids.natureEssence,    ItemRegistry.NATURE_RUNE.get(),       "nature_rune");
+		runeCastingRecipe(consumer, CCFluids.fireEssence,      ItemRegistry.FIRE_RUNE.get(),           "fire_rune");
+		runeCastingRecipe(consumer, CCFluids.iceEssence,       ItemRegistry.ICE_RUNE.get(),             "ice_rune");
+		runeCastingRecipe(consumer, CCFluids.lightningEssence, ItemRegistry.LIGHTNING_RUNE.get(), "lightning_rune");
+		runeCastingRecipe(consumer, CCFluids.enderEssence,     ItemRegistry.ENDER_RUNE.get(),         "ender_rune");
+		runeCastingRecipe(consumer, CCFluids.holyEssence,      ItemRegistry.HOLY_RUNE.get(),           "holy_rune");
+		runeCastingRecipe(consumer, CCFluids.bloodEssence,     ItemRegistry.BLOOD_RUNE.get(),         "blood_rune");
+		runeCastingRecipe(consumer, CCFluids.evocationEssence, ItemRegistry.EVOCATION_RUNE.get(), "evocation_rune");
+		runeCastingRecipe(consumer, CCFluids.natureEssence,    ItemRegistry.NATURE_RUNE.get(),       "nature_rune");
 
 		//tater stuff
 		MeltingRecipeBuilder.melting(Ingredient.of(Items.POTATO), new FluidStack(CCFluids.potatoStew.get(), 50), 100, 8)
@@ -413,11 +437,11 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 		//divinity
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.DIVINE_PEARL.get()), FluidOutput.fromTag(TinkerFluids.moltenGold.getLocalTag(), FluidValues.INGOT), 700, 12).addByproduct(FluidOutput.fromTag(TinkerFluids.moltenAmethyst.getLocalTag(), FluidValues.GEM)).save(consumer);
 		//ink
-		inkFillingRecipe(ItemRegistry.INK_COMMON.get(), CCFluids.Tags.ink("common"), "common");
-		inkFillingRecipe(ItemRegistry.INK_UNCOMMON.get(), CCFluids.Tags.ink("uncommon"), "uncommon");
-		inkFillingRecipe(ItemRegistry.INK_RARE.get(), CCFluids.Tags.ink("rare"), "rare");
-		inkFillingRecipe(ItemRegistry.INK_EPIC.get(), CCFluids.Tags.ink("epic"), "epic");
-		inkFillingRecipe(ItemRegistry.INK_LEGENDARY.get(), CCFluids.Tags.ink("legendary"), "legendary");
+		inkFillingRecipe(consumer, ItemRegistry.INK_COMMON.get(), CCFluids.Tags.ink("common"), "common");
+		inkFillingRecipe(consumer, ItemRegistry.INK_UNCOMMON.get(), CCFluids.Tags.ink("uncommon"), "uncommon");
+		inkFillingRecipe(consumer, ItemRegistry.INK_RARE.get(), CCFluids.Tags.ink("rare"), "rare");
+		inkFillingRecipe(consumer, ItemRegistry.INK_EPIC.get(), CCFluids.Tags.ink("epic"), "epic");
+		inkFillingRecipe(consumer, ItemRegistry.INK_LEGENDARY.get(), CCFluids.Tags.ink("legendary"), "legendary");
 
 		MeltingRecipeBuilder.melting(Ingredient.of(Items.INK_SAC), new FluidStack(CCFluids.squidInk.get(), FluidValues.BOTTLE), 300, 8).save(consumer, ConstructsCasting.id("smeltery/melting/ink"));
 		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(FluidRegistry.COMMON_INK.get(),    250), 300).addInput(CCFluids.squidInk.get(),               250).addInput(CCFluids.arcaneEssence.get(), 500).save(consumer, ConstructsCasting.id(alloyFolder + "common_ink"));
@@ -532,14 +556,14 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .setMaxLevel(6)
                 .save(consumer, location(modifierFolder + "slot_improvement"));
         }
-	public static void runeCastingRecipe(FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
-		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(aConsumer, ConstructsCasting.id(castingFolder + recipeId));
+	public static void runeCastingRecipe(Consumer<FinishedRecipe> consumer, FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
+		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));
 	}
-	public static void essenceRecipe(FluidObject<?> essence, TagKey<Fluid> alloyIngredient, int amount, String recipeId) {
-		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient, amount).save(aConsumer, ConstructsCasting.id(alloyFolder + recipeId));
+	public static void essenceRecipe(Consumer<FinishedRecipe> consumer, FluidObject<?> essence, TagKey<Fluid> alloyIngredient, int amount, String recipeId) {
+		AlloyRecipeBuilder.alloy(FluidOutput.fromFluid(essence.get(), FluidValues.BOTTLE), 700).addInput(CCFluids.arcaneEssence.get(), FluidValues.BOTTLE).addInput(alloyIngredient, amount).save(consumer, ConstructsCasting.id(alloyFolder + recipeId));
 	}
-	public static void inkFillingRecipe(Item inkBottle, TagKey<Fluid> ink, String rarity) {
-		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink,FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(aConsumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
+	public static void inkFillingRecipe(Consumer<FinishedRecipe> consumer, Item inkBottle, TagKey<Fluid> ink, String rarity) {
+		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink,FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
 	}
 	public static void incrementalModifierRecipe(Consumer<FinishedRecipe> consumer, ModifierId modifier, Ingredient runeItem, Ingredient orbItem, String id) {
 		Ingredient multiuse = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.SINGLE_USE));

@@ -86,10 +86,14 @@ public class CCItems {
     public static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.accept(potatoStewBowl);
         output.accept(poisonousPotatoStewBowl);
+		output.accept(CCBlocks.exiliteBlock);
         output.accept(exiliteIngot);
         output.accept(exiliteNugget);
+		output.accept(CCBlocks.arcaneBlock);
 		output.accept(arcaneNugget);
+		output.accept(CCBlocks.mithrilBlock);
 		output.accept(mithrilNugget);
+		output.accept(CCBlocks.pyriumBlock);
 		output.accept(pyriumNugget);
         output.accept(slimySpellbook);
 //        output.accept(eldritchStaff);
@@ -180,6 +184,8 @@ public class CCItems {
 //			tag(SLIME_FOCUS).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("school_focus"))).add(wizardslimeBall.get());
 //			tag(ItemTags.create(IronsSpellbooks.id("inscribed_rune"))).add(slimeRune.get());
+			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/arcane"))).add(ItemRegistry.ARCANE_INGOT.get());
+
 			tag(ItemTags.create(ResourceLocation.parse("forge:ingots/exilite"))).add(exiliteIngot.get());
 			tag(ItemTags.create(ResourceLocation.parse("forge:nuggets/exilite"))).add(exiliteNugget.get());
 
