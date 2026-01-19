@@ -4,8 +4,8 @@
     {
       "type": "constructs_casting:combustive",
       "chance": {
-        "each_level": 0.25,
-        "flat": 0.25
+        "each_level": 0.2,
+        "flat": 0.3
       }
     },
     {

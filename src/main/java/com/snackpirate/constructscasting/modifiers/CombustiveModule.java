@@ -1,5 +1,6 @@
 package com.snackpirate.constructscasting.modifiers;
 
+import com.snackpirate.constructscasting.ConstructsCasting;
 import io.redspace.ironsspellbooks.effect.ImmolateEffect;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -23,7 +24,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import java.util.List;
 
 public record CombustiveModule(LevelingValue chance) implements ModifierModule, MonsterMeleeHitModifierHook, MeleeHitModifierHook, ProjectileHitModifierHook {
-	public static final List<ModuleHook<?>> HOOKS = HookProvider.<CombustiveModule>defaultHooks(ModifierHooks.MELEE_HIT, ModifierHooks.MONSTER_MELEE_HIT);
+	public static final List<ModuleHook<?>> HOOKS = HookProvider.<CombustiveModule>defaultHooks(ModifierHooks.MELEE_HIT, ModifierHooks.MONSTER_MELEE_HIT, ModifierHooks.PROJECTILE_HIT);
 	public static final RecordLoadable<CombustiveModule> LOADER = RecordLoadable.create(
 			LevelingValue.LOADABLE.requiredField("chance", CombustiveModule::chance),
 			CombustiveModule::new
@@ -60,7 +61,9 @@ public record CombustiveModule(LevelingValue chance) implements ModifierModule, 
 
 	@Override
 	public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target, boolean notBlocked) {
+//		ConstructsCasting.LOGGER.info("projectile hit");
 		if (notBlocked && attacker != null && target != null) {
+//			ConstructsCasting.LOGGER.info("projectile hit 2");
 			float ran = attacker.getRandom().nextFloat();
 			float chance = this.chance.compute(modifier.getLevel());
 			if (ran < chance) {
@@ -70,7 +73,7 @@ public record CombustiveModule(LevelingValue chance) implements ModifierModule, 
 				ImmolateEffect.addImmolateStack(target, attacker);
 			}
 		}
-		return notBlocked;
+		return false;
 	}
 
 	@Override

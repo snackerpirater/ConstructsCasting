@@ -51,6 +51,7 @@ public class CCBlocks {
 			tag(BlockTags.NEEDS_IRON_TOOL).add(arcaneBlock.get(), exiliteBlock.get());
 			tag(BlockTags.NEEDS_DIAMOND_TOOL).add(mithrilBlock.get(), pyriumBlock.get());
 			tag(net.minecraftforge.common.Tags.Blocks.STORAGE_BLOCKS).add(arcaneBlock.get(), exiliteBlock.get(), pyriumBlock.get(), mithrilBlock.get());
+			tag(BlockTags.BEACON_BASE_BLOCKS).add(arcaneBlock.get(), exiliteBlock.get(), pyriumBlock.get(), mithrilBlock.get());
 		}
 	}
 }

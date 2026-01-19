@@ -109,7 +109,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId ABYSSAL_UPGRADE      = new ModifierId(ConstructsCasting.MOD_ID, "abyssal_upgrade");
 	public static final ModifierId TECHNOMANCY_UPGRADE  = new ModifierId(ConstructsCasting.MOD_ID, "technomancy_upgrade");
 	public static final ModifierId AQUA_UPGRADE         = new ModifierId(ConstructsCasting.MOD_ID, "aqua_upgrade");
-	public static final ModifierId SOUND_UPGRADE        =  new ModifierId(ConstructsCasting.MOD_ID, "sound_upgrade");
+	public static final ModifierId SOUND_UPGRADE        = new ModifierId(ConstructsCasting.MOD_ID, "sound_upgrade");
 
 	public static final ModifierId DUMMY_SPELL_POWER_UPGRADE = new ModifierId(ConstructsCasting.MOD_ID, "dummy_spell_power_upgrade");
 
@@ -144,7 +144,7 @@ public class CCModifiers extends AbstractModifierProvider {
 
 		buildModifier(SWIFTCASTING).levelDisplay(ModifierLevelDisplay.DEFAULT)
                 .addModule(AttributeModule.builder(AttributeRegistry.CASTING_MOVESPEED.get(), AttributeModifier.Operation.MULTIPLY_BASE)
-						.tooltipStyle(AttributeModule.TooltipStyle.ATTRIBUTE).amount(0.2f, 0.2f))
+					.tooltipStyle(AttributeModule.TooltipStyle.ATTRIBUTE).amount(0.2f, 0.2f))
 				.build();
 
 		buildModifier(SPELLBOUND)
@@ -250,7 +250,7 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(AttributeModule.builder(AttributeRegistry.SUMMON_DAMAGE, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.15f))
 				.build();
 		buildModifier(COMBUSTIVE)
-				.addModule(new CombustiveModule(new LevelingValue(0.25f, 0.25f))) //1 -> 6 hits, 2 -> 4 hits, 3 -> 3 hits, 4 -> 2.4, 5 -> 2
+				.addModule(new CombustiveModule(new LevelingValue(0.3f, 0.2f))) //1 -> 6 hits, 2 -> 4 hits, 3 -> 3 hits, 4 -> 2.4, 5 -> 2
 				.addModule(new RarityModule(CinderousRarity.CINDEROUS_RARITY))
 				.build(); //manyullyn takes 5 hits to max out, so around 5 hits for an explosion would be nice
 		buildModifier(MANA_PROTECTION)
