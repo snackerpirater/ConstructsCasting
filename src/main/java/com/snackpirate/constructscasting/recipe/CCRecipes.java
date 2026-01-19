@@ -480,17 +480,18 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.unlockedBy("has_item", RecipeProvider.has(TinkerCommons.slimeball.get(SlimeType.ENDER)))
 				.save(consumer, ConstructsCasting.id("crafting/wizardslime_ball"));
 
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.APOTHECARIST.get()), new FluidStack(CCFluids.natureEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.PYROMANCER.get()), new FluidStack(CCFluids.fireEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CRYOMANCER.get()), new FluidStack(CCFluids.iceEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.PRIEST.get()), new FluidStack(CCFluids.holyEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.ARCHEVOKER.get()), new FluidStack(CCFluids.evocationEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.NECROMANCER.get()), new FluidStack(CCFluids.arcaneEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.KEEPER.get()), new FluidStack(CCFluids.cinderEssence.get(), 25)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CULTIST.get()), new FluidStack(CCFluids.bloodEssence.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(FluidRegistry.RARE_INK.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer);
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.FIRE_BOSS.get()), new FluidStack(CCFluids.moltenPyrium.get(), 10)).save(consumer);
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.APOTHECARIST.get()), new FluidStack(CCFluids.natureEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/apothecarist"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.PYROMANCER.get()), new FluidStack(CCFluids.fireEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/pyromancer"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CRYOMANCER.get()), new FluidStack(CCFluids.iceEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/cryomancer"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.PRIEST.get()), new FluidStack(CCFluids.holyEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/priest"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.ARCHEVOKER.get()), new FluidStack(CCFluids.evocationEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/archevoker"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.NECROMANCER.get()), new FluidStack(CCFluids.arcaneEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/necromancer"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.KEEPER.get()), new FluidStack(CCFluids.cinderEssence.get(), 25)).save(consumer, location("smeltery/melting/entity/keeper"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.CULTIST.get()), new FluidStack(CCFluids.bloodEssence.get(), 50)).save(consumer, location("smeltery/melting/entity/cultist"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.DEAD_KING.get()), new FluidStack(FluidRegistry.RARE_INK.get(), 50)).save(consumer, location("smeltery/melting/entity/dead_king"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityType.SQUID), new FluidStack(CCFluids.squidInk.get(), 50)).save(consumer, location("smeltery/melting/entity/squid"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.FIRE_BOSS.get()), new FluidStack(CCFluids.moltenPyrium.get(), 10)).save(consumer, location("smeltery/melting/entity/tyros"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(EntityRegistry.ICE_SPIDER.get()), new FluidStack(FluidRegistry.ICE_VENOM_FLUID.get(), 50)).save(consumer, location("smeltery/melting/entity/ice_spider"));
 
 		Ingredient rebalancedCommon = Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get());
 
