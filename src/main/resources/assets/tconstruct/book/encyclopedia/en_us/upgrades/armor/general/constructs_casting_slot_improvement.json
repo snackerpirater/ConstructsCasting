@@ -1,0 +1,14 @@
+{
+  "modifier_id": "constructs_casting:slot_improvement",
+  "text": [
+    {
+      "text": "Grants +1 Spell Slot to the spellbook, allowing more spells to be cast from the Spellbook at once. Equip Spellbook in slot to reload Spell Slots."
+    }
+  ],
+  "more_text_space": true,
+  "effects": [
+    "Maximum of 6 levels",
+    "Number of Spell Slots cannot exceed 15",
+    "Requires 1 upgrade slot per level"
+  ]
+}

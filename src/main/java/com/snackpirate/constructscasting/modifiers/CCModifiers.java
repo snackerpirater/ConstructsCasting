@@ -295,6 +295,7 @@ public class CCModifiers extends AbstractModifierProvider {
 			tag(TinkerTags.Modifiers.HIDDEN_FROM_RECIPE_VIEWERS).add(DUMMY_SPELL_POWER_UPGRADE);
 			tag(TinkerTags.Modifiers.EXTRACT_MODIFIER_BLACKLIST).add(DUMMY_SPELL_POWER_UPGRADE);
 			tag(TinkerTags.Modifiers.BLOCK_WHILE_CHARGING).add(CASTING.getId());
+            tag(TinkerTags.Modifiers.GENERAL_ARMOR_UPGRADES).add(SLOT_IMPROVEMENT);
 		}
 		@Override
 		public String getName() {
