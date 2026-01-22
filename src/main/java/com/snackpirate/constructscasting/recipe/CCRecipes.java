@@ -361,21 +361,21 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setMaxLevel(1)
 				.save(consumer, ConstructsCasting.id(modifierFolder + "slotless/reinscribed"));
 		//elemental power upgrades
-		incrementalModifierRecipe(consumer, CCModifiers.MANA_UPGRADE,      Ingredient.of(ItemRegistry.MANA_RUNE.get()),      Ingredient.of(ItemRegistry.MANA_UPGRADE_ORB.get()),      "mana_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.COOLDOWN_UPGRADE,  Ingredient.of(ItemRegistry.COOLDOWN_RUNE.get()),  Ingredient.of(ItemRegistry.COOLDOWN_UPGRADE_ORB.get()),  "cooldown_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.FIRE_UPGRADE,      Ingredient.of(ItemRegistry.FIRE_RUNE.get()),      Ingredient.of(ItemRegistry.FIRE_UPGRADE_ORB.get()),      "fire_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.ICE_UPGRADE,       Ingredient.of(ItemRegistry.ICE_RUNE.get()),       Ingredient.of(ItemRegistry.ICE_UPGRADE_ORB.get()),       "ice_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.LIGHTNING_UPGRADE, Ingredient.of(ItemRegistry.LIGHTNING_RUNE.get()), Ingredient.of(ItemRegistry.LIGHTNING_UPGRADE_ORB.get()), "lightning_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.ENDER_UPGRADE,     Ingredient.of(ItemRegistry.ENDER_RUNE.get()),     Ingredient.of(ItemRegistry.ENDER_UPGRADE_ORB.get()),     "ender_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.HOLY_UPGRADE,      Ingredient.of(ItemRegistry.HOLY_RUNE.get()),      Ingredient.of(ItemRegistry.HOLY_UPGRADE_ORB.get()),      "holy_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.BLOOD_UPGRADE,     Ingredient.of(ItemRegistry.BLOOD_RUNE.get()),     Ingredient.of(ItemRegistry.BLOOD_UPGRADE_ORB.get()),     "blood_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.EVOCATION_UPGRADE, Ingredient.of(ItemRegistry.EVOCATION_RUNE.get()), Ingredient.of(ItemRegistry.EVOCATION_UPGRADE_ORB.get()), "evocation_upgrade");
-		incrementalModifierRecipe(consumer, CCModifiers.NATURE_UPGRADE,    Ingredient.of(ItemRegistry.NATURE_RUNE.get()),    Ingredient.of(ItemRegistry.NATURE_UPGRADE_ORB.get()),    "nature_upgrade");
+		incrementalModifierRecipe(consumer, CCModifiers.MANA_UPGRADE,      Ingredient.of(ItemRegistry.MANA_RUNE.get()),      Ingredient.of(ItemRegistry.MANA_UPGRADE_ORB.get()),      "mana_upgrade", false);
+		incrementalModifierRecipe(consumer, CCModifiers.COOLDOWN_UPGRADE,  Ingredient.of(ItemRegistry.COOLDOWN_RUNE.get()),  Ingredient.of(ItemRegistry.COOLDOWN_UPGRADE_ORB.get()),  "cooldown_upgrade", false);
+		incrementalModifierRecipe(consumer, CCModifiers.FIRE_UPGRADE,      Ingredient.of(ItemRegistry.FIRE_RUNE.get()),      Ingredient.of(ItemRegistry.FIRE_UPGRADE_ORB.get()),      "fire_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.ICE_UPGRADE,       Ingredient.of(ItemRegistry.ICE_RUNE.get()),       Ingredient.of(ItemRegistry.ICE_UPGRADE_ORB.get()),       "ice_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.LIGHTNING_UPGRADE, Ingredient.of(ItemRegistry.LIGHTNING_RUNE.get()), Ingredient.of(ItemRegistry.LIGHTNING_UPGRADE_ORB.get()), "lightning_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.ENDER_UPGRADE,     Ingredient.of(ItemRegistry.ENDER_RUNE.get()),     Ingredient.of(ItemRegistry.ENDER_UPGRADE_ORB.get()),     "ender_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.HOLY_UPGRADE,      Ingredient.of(ItemRegistry.HOLY_RUNE.get()),      Ingredient.of(ItemRegistry.HOLY_UPGRADE_ORB.get()),      "holy_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.BLOOD_UPGRADE,     Ingredient.of(ItemRegistry.BLOOD_RUNE.get()),     Ingredient.of(ItemRegistry.BLOOD_UPGRADE_ORB.get()),     "blood_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.EVOCATION_UPGRADE, Ingredient.of(ItemRegistry.EVOCATION_RUNE.get()), Ingredient.of(ItemRegistry.EVOCATION_UPGRADE_ORB.get()), "evocation_upgrade", true);
+		incrementalModifierRecipe(consumer, CCModifiers.NATURE_UPGRADE,    Ingredient.of(ItemRegistry.NATURE_RUNE.get()),    Ingredient.of(ItemRegistry.NATURE_UPGRADE_ORB.get()),    "nature_upgrade", true);
 
-		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("cataclysm_spellbook")), CCModifiers.ABYSSAL_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:abyssal_rune")), ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:abyssal_upgrade_orb")), "abyssal_upgrade");
-		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("cataclysm_spellbook")), CCModifiers.TECHNOMANCY_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:technomancy_rune")), ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:technomancy_upgrade_orb")), "technomancy_upgrade");
-		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("traveloptics")), CCModifiers.AQUA_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("traveloptics:aqua_rune")), ItemNameIngredient.from(ResourceLocation.parse("traveloptics:aqua_upgrade_orb")), "aqua_upgrade");
-		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("alshanex_familiars")), CCModifiers.SOUND_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("alshanex_familiars:sound_rune")), ItemNameIngredient.from(ResourceLocation.parse("alshanex_familiars:sound_upgrade_orb")), "sound_upgrade");
+		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("cataclysm_spellbook")), CCModifiers.ABYSSAL_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:abyssal_rune")), ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:abyssal_upgrade_orb")), "abyssal_upgrade", true);
+		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("cataclysm_spellbook")), CCModifiers.TECHNOMANCY_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:technomancy_rune")), ItemNameIngredient.from(ResourceLocation.parse("cataclysm_spellbooks:technomancy_upgrade_orb")), "technomancy_upgrade", true);
+		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("traveloptics")), CCModifiers.AQUA_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("traveloptics:aqua_rune")), ItemNameIngredient.from(ResourceLocation.parse("traveloptics:aqua_upgrade_orb")), "aqua_upgrade", true);
+		incrementalModifierRecipe(withCondition(consumer, new ModLoadedCondition("alshanex_familiars")), CCModifiers.SOUND_UPGRADE, ItemNameIngredient.from(ResourceLocation.parse("alshanex_familiars:sound_rune")), ItemNameIngredient.from(ResourceLocation.parse("alshanex_familiars:sound_upgrade_orb")), "sound_upgrade", true);
 		//essence making
 		MeltingRecipeBuilder.melting(Ingredient.of(ItemRegistry.ARCANE_ESSENCE.get()), new FluidStack(CCFluids.arcaneEssence.get(), 250), 100, 5)
 				.save(consumer, ConstructsCasting.id(meltingFolder + "arcane_essence"));
@@ -560,7 +560,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	public static void inkFillingRecipe(Consumer<FinishedRecipe> consumer, Item inkBottle, TagKey<Fluid> ink, String rarity) {
 		ItemCastingRecipeBuilder.tableRecipe(inkBottle).setFluid(ink,FluidValues.BOTTLE).setCast(Items.GLASS_BOTTLE, true).setCoolingTime(1).save(consumer, ConstructsCasting.id(castingFolder + "ink_" + rarity));
 	}
-	public static void incrementalModifierRecipe(Consumer<FinishedRecipe> consumer, ModifierId modifier, Ingredient runeItem, Ingredient orbItem, String id) {
+	public static void incrementalModifierRecipe(Consumer<FinishedRecipe> consumer, ModifierId modifier, Ingredient runeItem, Ingredient orbItem, String id, boolean isSpellPower) {
 		Ingredient multiuse = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.SINGLE_USE));
 		Ingredient none = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.MODIFIABLE));
 		IncrementalModifierRecipeBuilder.modifier(modifier)
@@ -595,29 +595,30 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.saveSalvage(consumer, ConstructsCasting.id(modifierFolder + "salvage/" + id + "_affinity"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb"));
 
-		IncrementalModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
-				.setInput(runeItem, 1, 16)
-				.setSlots(SlotType.UPGRADE, 1)
-				.disallowCrystal()
-				.setTools(none)
-				.checkTraitLevel()
-				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_rune_dummy"));
-		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
-				.addInput(orbItem)
-				.setSlots(SlotType.UPGRADE, 1)
-				.setTools(none)
-				.disallowCrystal()
-				.checkTraitLevel()
-				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_orb_dummy"));
-		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
-				.addInput(runeItem)
-				.addInput(orbItem)
-				.addInput(runeItem)
-				.setTools(none)
-				.checkTraitLevel()
-				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
-				.disallowCrystal()
-				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_affinity_orb_dummy"));
-
+        if (isSpellPower) {
+            IncrementalModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+                    .setInput(runeItem, 1, 16)
+                    .setSlots(SlotType.UPGRADE, 1)
+                    .disallowCrystal()
+                    .setTools(none)
+                    .checkTraitLevel()
+                    .save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_rune_dummy"));
+            ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+                    .addInput(orbItem)
+                    .setSlots(SlotType.UPGRADE, 1)
+                    .setTools(none)
+                    .disallowCrystal()
+                    .checkTraitLevel()
+                    .save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_orb_dummy"));
+            ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
+                    .addInput(runeItem)
+                    .addInput(orbItem)
+                    .addInput(runeItem)
+                    .setTools(none)
+                    .checkTraitLevel()
+                    .setSlots(CCModifiers.AFFINITY_SLOT, 1)
+                    .disallowCrystal()
+                    .save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_affinity_orb_dummy"));
+        }
 	}
 }
