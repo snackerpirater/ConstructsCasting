@@ -548,6 +548,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .addInput(ItemRegistry.LESSER_SPELL_SLOT_UPGRADE.get())
                 .setSlots(SlotType.UPGRADE, 1)
                 .setMaxLevel(6)
+                .saveSalvage(consumer, location(modifierFolder + "salvage/slot_improvement"))
                 .save(consumer, location(modifierFolder + "slot_improvement"));
         }
 	public static void runeCastingRecipe(Consumer<FinishedRecipe> consumer, FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
