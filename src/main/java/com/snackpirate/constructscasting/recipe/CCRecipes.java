@@ -561,6 +561,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	}
 	public static void incrementalModifierRecipe(Consumer<FinishedRecipe> consumer, ModifierId modifier, Ingredient runeItem, Ingredient orbItem, String id) {
 		Ingredient multiuse = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.SINGLE_USE));
+		Ingredient none = DifferenceIngredient.of(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(TinkerTags.Items.MODIFIABLE));
 		IncrementalModifierRecipeBuilder.modifier(modifier)
 				.setInput(runeItem, 1, 16)
 				.setSlots(SlotType.UPGRADE, 1)
@@ -597,28 +598,25 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setInput(runeItem, 1, 16)
 				.setSlots(SlotType.UPGRADE, 1)
 				.disallowCrystal()
-				.setTools(multiuse)
-				.setMaxLevel(3)
+				.setTools(none)
 				.checkTraitLevel()
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_rune_dummy"));
+				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_rune_dummy"));
 		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
 				.addInput(orbItem)
 				.setSlots(SlotType.UPGRADE, 1)
-				.setTools(multiuse)
+				.setTools(none)
 				.disallowCrystal()
-				.setMaxLevel(3)
 				.checkTraitLevel()
-				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/" + id + "_orb_dummy"));
+				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_orb_dummy"));
 		ModifierRecipeBuilder.modifier(CCModifiers.DUMMY_SPELL_POWER_UPGRADE)
 				.addInput(runeItem)
 				.addInput(orbItem)
 				.addInput(runeItem)
-				.setTools(multiuse)
+				.setTools(none)
 				.checkTraitLevel()
 				.setSlots(CCModifiers.AFFINITY_SLOT, 1)
 				.disallowCrystal()
-				.setLevelRange(4, 5)
-				.save(consumer, ConstructsCasting.id(modifierFolder + "affinity/" + id + "_orb_dummy"));
+				.save(consumer, ConstructsCasting.id(modifierFolder + "dummy_recipe/" + id + "_affinity_orb_dummy"));
 
 	}
 }

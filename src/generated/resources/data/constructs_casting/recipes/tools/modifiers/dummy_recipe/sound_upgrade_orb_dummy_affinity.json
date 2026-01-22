@@ -1,0 +1,35 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": false,
+  "check_trait_level": true,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alshanex_familiars"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "alshanex_familiars:sound_rune"
+    },
+    {
+      "item": "alshanex_familiars:sound_upgrade_orb"
+    },
+    {
+      "item": "alshanex_familiars:sound_rune"
+    }
+  ],
+  "result": "constructs_casting:dummy_spell_power_upgrade",
+  "slots": {
+    "affinity": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable"
+    }
+  }
+}

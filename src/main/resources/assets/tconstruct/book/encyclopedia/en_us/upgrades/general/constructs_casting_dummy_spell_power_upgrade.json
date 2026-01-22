@@ -2,7 +2,7 @@
   "modifier_id": "constructs_casting:dummy_spell_power_upgrade",
   "text": [
     {
-      "text": "Increases Spell Power for a given school of magic (specified by the Upgrade Orbs/Runes) by 5% per level."
+      "text": "Increases Spell Power for a given school of magic (specified by the Upgrade Orbs/Runes) by 5% per level. Can be applied to any non-disposable tool/armor."
     }
   ],
   "more_text_space": false,

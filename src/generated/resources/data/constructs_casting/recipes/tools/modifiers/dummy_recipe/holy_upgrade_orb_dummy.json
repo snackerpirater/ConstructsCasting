@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": false,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "irons_spellbooks:holy_upgrade_orb"
+    }
+  ],
+  "result": "constructs_casting:dummy_spell_power_upgrade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "type": "forge:difference",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "subtracted": {
+      "tag": "tconstruct:modifiable"
+    }
+  }
+}
