@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.json.variable.entity.EntityVariable;
 import slimeknights.tconstruct.library.json.variable.stat.EntityConditionalStatVariable;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
 import slimeknights.tconstruct.library.modifiers.impl.BasicModifier;
 import slimeknights.tconstruct.library.modifiers.modules.armor.ProtectionModule;
 import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModule;
@@ -182,7 +183,12 @@ public class CCModifiers extends AbstractModifierProvider {
 		buildModifier(NATURE_DISPULSION).addModule(spellDispulsionModifier(NATURE_DISPULSION, AttributeRegistry.NATURE_MAGIC_RESIST.get())).build();
 		buildModifier(ELDRITCH_DISPULSION).addModule(spellDispulsionModifier(ELDRITCH_DISPULSION, AttributeRegistry.ELDRITCH_MAGIC_RESIST.get())).build();
 
-        buildModifier(FIRE_SPECIALIZATION).addModule(AttributeModule.builder(AttributeRegistry.FIRE_SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).eachLevel(0.2f)) //+0.1 fire spell, -0.1 everything else in absolution
+        buildModifier(FIRE_SPECIALIZATION)
+				.addModule(AttributeModule.builder(AttributeRegistry.FIRE_SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).exactLevel(1).flat(0.23f))
+
+				.addModule(AttributeModule.builder(AttributeRegistry.FIRE_SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).exactLevel(2).flat(0.50f))
+
+				.addModule(AttributeModule.builder(AttributeRegistry.FIRE_SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).exactLevel(3).flat(0.85f))
 				.addModule(new RarityModule(CinderousRarity.CINDEROUS_RARITY))
 				.addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).eachLevel(-0.1f)).levelDisplay(ModifierLevelDisplay.SINGLE_LEVEL);
 
