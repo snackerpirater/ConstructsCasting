@@ -56,8 +56,12 @@ import slimeknights.tconstruct.library.client.book.TinkerBook;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.shared.CommonsClientEvents;
 import slimeknights.tconstruct.shared.TinkerEffects;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+import top.theillusivec4.curios.api.event.CurioDropsEvent;
+import top.theillusivec4.curios.api.event.DropRulesEvent;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.Collection;
@@ -118,90 +122,94 @@ public class CCEvents {
 			}
 		}
 	}
-	@SubscribeEvent
-	static void soulboundSpellbookDeath(LivingDeathEvent event) {
-		LivingEntity entity = event.getEntity();
-		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(player instanceof FakePlayer)) {
-			// start with the hotbar, must be soulbound or soul belt
-			CuriosApi.getCuriosInventory(player).ifPresent((handler) -> {
-				ItemStack spellbook = handler.getCurios().get("spellbook").getStacks().getStackInSlot(0);
-				if (!spellbook.isEmpty() && (ModifierUtil.checkVolatileFlag(spellbook, SOULBOUND))) {
-					spellbook.getOrCreateTag().putInt(SOULBOUND_SLOT, 999 /*a great idea*/);
-			}
-		});
-		}
-	}
-	@SubscribeEvent
-	static void soulboundSpellbookDrop(LivingDropsEvent event) {
-		// only care about real players with keep inventory off
-		LivingEntity entity = event.getEntity();
-		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(entity instanceof FakePlayer)) {
-			Collection<ItemEntity> drops = event.getDrops();
-			Iterator<ItemEntity> iter = drops.iterator();
-            while (iter.hasNext()) {
-				ItemEntity itemEntity = iter.next();
-				ItemStack stack = itemEntity.getItem();
-				// find items with our soulbound tag set and move them back into the inventory, will move them over later
-				CompoundTag tag = stack.getTag();
-				if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
-					int slot = tag.getInt(SOULBOUND_SLOT);
-					// return the tool to its requested slot if possible, remove from the drops
-					if (slot == 999) {
-						CuriosApi.getCuriosInventory(player).ifPresent(handler -> handler.setEquippedCurio("spellbook", 0, stack));
-						iter.remove();
-						// don't clear the tag yet, we need it one last time for player clone
-					}
-				}
-				// handle items that did not get their requested slot last, to ensure they don't take someone else's slot while being added to a default
-//			for (ItemEntity itemEntity : takenSlot) {
+    @SubscribeEvent
+    static void soulboundSpellbooks(DropRulesEvent event) {
+        event.addOverride((stack) -> (stack.is(CCItems.Tags.MOD_SPELLBOOKS) && ModifierUtil.getModifierLevel(stack, ModifierIds.soulbound) > 0), ICurio.DropRule.ALWAYS_KEEP);
+    }
+//	@SubscribeEvent
+//	static void soulboundSpellbookDeath(LivingDeathEvent event) {
+//		LivingEntity entity = event.getEntity();
+//		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(player instanceof FakePlayer)) {
+//			// start with the hotbar, must be soulbound or soul belt
+//			CuriosApi.getCuriosInventory(player).ifPresent((handler) -> {
+//				ItemStack spellbook = handler.getCurios().get("spellbook").getStacks().getStackInSlot(0);
+//				if (!spellbook.isEmpty() && (ModifierUtil.checkVolatileFlag(spellbook, SOULBOUND))) {
+//					spellbook.getOrCreateTag().putInt(SOULBOUND_SLOT, 999 /*a great idea*/);
+//			}
+//		});
+//		}
+//	}
+//	@SubscribeEvent
+//	static void soulboundSpellbookDrop(LivingDropsEvent event) {
+//		// only care about real players with keep inventory off
+//		LivingEntity entity = event.getEntity();
+//		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(entity instanceof FakePlayer)) {
+//			Collection<ItemEntity> drops = event.getDrops();
+//			Iterator<ItemEntity> iter = drops.iterator();
+//            while (iter.hasNext()) {
+//				ItemEntity itemEntity = iter.next();
 //				ItemStack stack = itemEntity.getItem();
-//				if (!inventory.add(stack)) {
-//					// last resort, somehow we just cannot put the stack anywhere, so drop it on the ground
-//					// this should never happen, but better to be safe
-//					// ditch the soulbound slot tag, to prevent item stacking issues
+//				// find items with our soulbound tag set and move them back into the inventory, will move them over later
+//				CompoundTag tag = stack.getTag();
+//				if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
+//					int slot = tag.getInt(SOULBOUND_SLOT);
+//					// return the tool to its requested slot if possible, remove from the drops
+//					if (slot == 999) {
+//						CuriosApi.getCuriosInventory(player).ifPresent(handler -> handler.setEquippedCurio("spellbook", 0, stack));
+//						iter.remove();
+//						// don't clear the tag yet, we need it one last time for player clone
+//					}
+//				}
+//				// handle items that did not get their requested slot last, to ensure they don't take someone else's slot while being added to a default
+////			for (ItemEntity itemEntity : takenSlot) {
+////				ItemStack stack = itemEntity.getItem();
+////				if (!inventory.add(stack)) {
+////					// last resort, somehow we just cannot put the stack anywhere, so drop it on the ground
+////					// this should never happen, but better to be safe
+////					// ditch the soulbound slot tag, to prevent item stacking issues
+////					CompoundTag tag = stack.getTag();
+////					if (tag != null) {
+////						tag.remove(SOULBOUND_SLOT);
+////						if (tag.isEmpty()) {
+////							stack.setTag(null);
+////						}
+////					}
+////					drops.add(itemEntity);
+////				}
+////			}
+//			}
+//		}
+//	}
+//	@SubscribeEvent
+//	static void soulboundSpellbookClone(PlayerEvent.Clone event) {
+//		if (!event.isWasDeath()) {
+//			return;
+//		}
+//		Player original = event.getOriginal();
+//		Player clone = event.getEntity();
+//		// inventory already copied
+//		if (clone.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) || original.isSpectator()) {
+//			return;
+//		}
+//		// find items with the soulbound tag set and move them over
+//		LazyOptional<ICuriosItemHandler> originalInv = CuriosApi.getCuriosInventory(original);
+//		LazyOptional<ICuriosItemHandler> cloneInv = CuriosApi.getCuriosInventory(clone);
+//			originalInv.ifPresent((handler) -> handler.findCurio("spellbook", 0).ifPresent(slotResult -> {
+//				ItemStack stack = slotResult.stack();
+//				if (!stack.isEmpty()) {
 //					CompoundTag tag = stack.getTag();
-//					if (tag != null) {
+//					if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
+//						cloneInv.ifPresent(handler2 -> handler2.setEquippedCurio("spellbook", 0, stack));
+//						// remove the slot tag, clear the tag if needed
 //						tag.remove(SOULBOUND_SLOT);
 //						if (tag.isEmpty()) {
 //							stack.setTag(null);
 //						}
 //					}
-//					drops.add(itemEntity);
 //				}
-//			}
-			}
-		}
-	}
-	@SubscribeEvent
-	static void soulboundSpellbookClone(PlayerEvent.Clone event) {
-		if (!event.isWasDeath()) {
-			return;
-		}
-		Player original = event.getOriginal();
-		Player clone = event.getEntity();
-		// inventory already copied
-		if (clone.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) || original.isSpectator()) {
-			return;
-		}
-		// find items with the soulbound tag set and move them over
-		LazyOptional<ICuriosItemHandler> originalInv = CuriosApi.getCuriosInventory(original);
-		LazyOptional<ICuriosItemHandler> cloneInv = CuriosApi.getCuriosInventory(clone);
-			originalInv.ifPresent((handler) -> handler.findCurio("spellbook", 0).ifPresent(slotResult -> {
-				ItemStack stack = slotResult.stack();
-				if (!stack.isEmpty()) {
-					CompoundTag tag = stack.getTag();
-					if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
-						cloneInv.ifPresent(handler2 -> handler2.setEquippedCurio("spellbook", 0, stack));
-						// remove the slot tag, clear the tag if needed
-						tag.remove(SOULBOUND_SLOT);
-						if (tag.isEmpty()) {
-							stack.setTag(null);
-						}
-					}
-				}
-
-			}));
-	}
+//
+//			}));
+//	}
 	@SubscribeEvent
 	static void damageModifiers(LivingHurtEvent event) {
 		DamageSource source = event.getSource();

@@ -129,7 +129,7 @@ dependencies {
     implementation fg.deobf("io.redspace:irons_spellbooks:${irons_spells_version}")
 
     // GECKOLIB ***************************************************************************************************
-    runtimeOnly fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
 
     // CAELUS *****************************************************************************************************
     runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}")
