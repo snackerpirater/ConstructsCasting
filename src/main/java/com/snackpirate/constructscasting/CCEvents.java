@@ -114,7 +114,8 @@ public class CCEvents {
 	@SubscribeEvent
 	static void enderferenceAntiSpell(SpellPreCastEvent event) {
 		Player entity = event.getEntity();
-		if (entity.hasEffect(TinkerEffects.enderference.get())) {String spellId = event.getSpellId();
+		if (entity.hasEffect(TinkerEffects.enderference.get())) {
+            String spellId = event.getSpellId();
 			if (spellId.equals("irons_spellbooks:teleport") || spellId.equals("irons_spellbooks:blood_step") || spellId.equals("irons_spellbooks:frost_step")) {
 				entity.level().playSound(null, entity.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.NEUTRAL, 2f, 0.2f + Utils.random.nextFloat() * .2f);
 				entity.displayClientMessage(Component.translatable("ui.constructs_casting.enderference_anti_teleport").withStyle(ChatFormatting.RED), true);
@@ -227,17 +228,16 @@ public class CCEvents {
 
 	}
 
-
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 	public static class ForgeClientEvents {
-		@SubscribeEvent
-		static void swiftcastingHandleInput(MovementInputUpdateEvent event) {
-			if (ClientMagicData.isCasting() &&
-					ModifierUtil.getModifierLevel(event.getEntity().getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.SWIFTCASTING) > 0) {
-				event.getInput().leftImpulse *= 5;
-				event.getInput().forwardImpulse *= 5;
-			}
-		}
+//		@SubscribeEvent
+//		static void swiftcastingHandleInput(MovementInputUpdateEvent event) {
+//			if (ClientMagicData.isCasting() &&
+//					ModifierUtil.getModifierLevel(event.getEntity().getItemInHand(InteractionHand.MAIN_HAND), CCModifiers.SWIFTCASTING) > 0) {
+//				event.getInput().leftImpulse *= 5;
+//				event.getInput().forwardImpulse *= 5;
+//			}
+//		}
 
 	}
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
