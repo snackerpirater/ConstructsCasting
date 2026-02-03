@@ -4,11 +4,39 @@
     {
       "type": "tconstruct:attribute",
       "attribute": "irons_spellbooks:fire_spell_power",
-      "each_level": 0.2,
+      "flat": 0.23,
+      "modifier_level": 1,
       "operation": "multiply_base",
       "slots": [
         "mainhand",
-        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    },
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:fire_spell_power",
+      "flat": 0.5,
+      "modifier_level": 2,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    },
+    {
+      "type": "tconstruct:attribute",
+      "attribute": "irons_spellbooks:fire_spell_power",
+      "flat": 0.85,
+      "modifier_level": 3,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
         "feet",
         "legs",
         "chest",
