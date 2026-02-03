@@ -29,8 +29,5 @@ public class ImbuedModifier extends SingleLevelModifier implements EquipmentChan
 //	code for if i want to make imbued give >1 slot (it's kinda buggy past that)
 //		need to account for higher levels of imbued + swords getting imbued
 		EquipmentChangeModifierHook.super.onEquip(tool, modifier, context);
-
-
 	}
-
 }

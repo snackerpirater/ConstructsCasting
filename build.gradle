@@ -141,7 +141,11 @@ dependencies {
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
 
     // JEI ********************************************************************************************************
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
+
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    // at runtime, use the full JEI jar
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 //    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
     // COMPAT *****************************************************************************************************
 

@@ -89,13 +89,13 @@ public class CCFluids {
 	public static final FluidObject<UnplaceableFluid> soundEssence = essence("sound_essence");
 
 
-	public static FluidObject<UnplaceableFluid> getInkFluidForRarity(SpellRarity rarity) {
+	public static Fluid getInkFluidForRarity(SpellRarity rarity) {
 		return switch (rarity) {
-			case UNCOMMON -> uncommonInk;
-			case RARE -> rareInk;
-			case EPIC -> epicInk;
-			case LEGENDARY -> legendaryInk;
-			default -> commonInk;
+			case UNCOMMON -> FluidRegistry.UNCOMMON_INK.get();
+			case RARE -> FluidRegistry.RARE_INK.get();
+			case EPIC -> FluidRegistry.EPIC_INK.get();
+			case LEGENDARY -> FluidRegistry.LEGENDARY_INK.get();
+			default -> FluidRegistry.COMMON_INK.get();
 		};
 	}
 	public static FluidObject<UnplaceableFluid> essence(String name) {
