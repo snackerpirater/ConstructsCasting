@@ -43,6 +43,7 @@ public class CCJeiPlugin implements IModPlugin {
 	private static Stream<MeltingRecipe> getScrollRecipes(IVanillaRecipeFactory vanillaRecipeFactory) {
 		return Arrays.stream(SpellRarity.values()).flatMap(
 				rarity -> SchoolRegistry.REGISTRY.get().getValues().stream().map(schoolType -> recipeForRarityAndSchool(rarity, schoolType))); //whatthefuck
+//        return SpellRegistry.getEnabledSpells().stream().flatMap(spell -> IntStream.rangeClosed(spell.getMinLevel(), spell.getMaxLevel()).mapToObj(level -> recipeForSpellAndLevel(spell, level)));
 	}
 	private static ItemStack getScrollStack(ItemStack stack, AbstractSpell spell, int spellLevel) {
 		var scrollStack = stack.copy();
@@ -51,11 +52,20 @@ public class CCJeiPlugin implements IModPlugin {
 	}
 	private static MeltingRecipe recipeForRarityAndSchool(SpellRarity spellRarity, SchoolType school) {
 		var scrollStack = new ItemStack(ItemRegistry.SCROLL.get());
-		Stream<ItemStack> scrolls = SpellRegistry.getEnabledSpells().stream().flatMap( //is iterated through for every rarity*school combo, consider making better?
+		Stream<ItemStack> scrolls = SpellRegistry.getEnabledSpells().stream().flatMap( //is iterated through for every rarity*school combo, consider making better? not sure if iterating through each spell * level would be better
 				spell -> IntStream.rangeClosed(spell.getMinLevel(), spell.getMaxLevel())
 						.filter(spellLevel -> spell.getRarity(spellLevel) == spellRarity && spell.getSchoolType().equals(school))
 						.mapToObj(i -> getScrollStack(scrollStack, spell, i)));
 		FluidStack ink = new FluidStack(InkItem.getInkForRarity(spellRarity).fluid().get(), 125);
 		return new MeltingRecipe(ConstructsCasting.id("test"), "scroll_melting", Ingredient.of(scrolls), FluidOutput.fromStack(ink), 700, 20, List.of(FluidOutput.fromFluid(ScrollMeltingRecipe.schoolToEssence(school).get(), 100)));
 	}
+    //makes a recipe page for every single spell and level, no bueno
+//    private static MeltingRecipe recipeForSpellAndLevel(AbstractSpell spell, int level) {
+//        ItemStack scroll = new ItemStack(ItemRegistry.SCROLL.get());
+//        scroll = getScrollStack(scroll, spell, level);
+//        SchoolType school = spell.getSchoolType();
+//        FluidStack ink = new FluidStack(InkItem.getInkForRarity(spell.getRarity(level)).fluid().get(), 125);
+//        return new MeltingRecipe(ConstructsCasting.id("test"), "scroll_melting", Ingredient.of(scroll), FluidOutput.fromStack(ink), 700, 20, List.of(FluidOutput.fromFluid(ScrollMeltingRecipe.schoolToEssence(school).get(), 100)));
+//
+//    }
 }

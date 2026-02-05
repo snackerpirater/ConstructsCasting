@@ -4,6 +4,7 @@ package com.snackpirate.constructscasting;
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
+import com.snackpirate.constructscasting.items.ModifiableSpellbookItem;
 import com.snackpirate.constructscasting.items.ModifiableSpellbookRenderer;
 import com.snackpirate.constructscasting.items.book.ArtificersGuideItem;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
@@ -227,6 +228,29 @@ public class CCEvents {
 		event.setAmount(originalDamage);
 
 	}
+    @SubscribeEvent
+    static void initSpellbooks(PlayerEvent.ItemCraftedEvent event) {
+//        ConstructsCasting.LOGGER.info("crafted {}", event.getCrafting().getDisplayName().getString());
+        ItemStack crafted = event.getCrafting();
+//        if (crafted.is(CCItems.Tags.MOD_SPELLBOOKS)) {
+//            ((ModifiableSpellbookItem) crafted.getItem()).initializeSpellContainer(crafted);
+//        } else if (crafted.is(Items.AIR)) {
+//            int shiftClickSlot = event.getEntity().getInventory().getFreeSlot() - 1;
+//            ItemStack shiftClickedItem = event.getEntity().getInventory().getItem(shiftClickSlot);
+//            ConstructsCasting.LOGGER.info("crafted: {}", shiftClickedItem.getDisplayName().getString());
+//            ((ModifiableSpellbookItem) shiftClickedItem.getItem()).initializeSpellContainer(shiftClickedItem);
+//        }
+        ItemStack toInitialize;
+        if (crafted.is(Items.AIR)) { //means we shift clicked
+            int shiftClickSlot = Math.max(event.getEntity().getInventory().getFreeSlot() - 1, 0);
+            ConstructsCasting.LOGGER.info("shift clicked slot {}", shiftClickSlot);
+            toInitialize = event.getEntity().getInventory().getItem(shiftClickSlot);
+        } else toInitialize = event.getCrafting();
+        if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
+            ConstructsCasting.LOGGER.info("initializing {}", toInitialize.getDisplayName().getString());
+            ((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
+        }
+    }
 
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 	public static class ForgeClientEvents {

@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.materials.CCToolStats;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -57,6 +59,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -147,12 +150,14 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 
 	}
 
-	@Override
-	public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
-		ToolStack.ensureInitialized(pStack, getToolDefinition());
-	}
+//	@Override
+//	public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
+//        ConstructsCasting.LOGGER.info("on crafted by");
+//        this.initializeSpellContainer(pStack);
+//		ToolStack.ensureInitialized(pStack, getToolDefinition());
+//	}
 
-	@Override
+    @Override
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
         ToolStack tool = ToolStack.from(stack);
@@ -242,6 +247,7 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
 		}
         this.initializeSpellContainer(stack);
 	}
+
 
 	@Override
 	public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
