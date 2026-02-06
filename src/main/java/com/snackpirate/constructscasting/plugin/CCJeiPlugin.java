@@ -36,8 +36,8 @@ public class CCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(@NotNull IRecipeRegistration register) {
-		register.addRecipes(TConstructJEIConstants.MELTING, getScrollRecipes(register.getVanillaRecipeFactory()).toList());
-		register.addRecipes(TConstructJEIConstants.FOUNDRY, getScrollRecipes(register.getVanillaRecipeFactory()).toList());
+		register.addRecipes(TConstructJEIConstants.MELTING, getScrollRecipes(register.getVanillaRecipeFactory()).filter(recipe -> !recipe.getInput().isEmpty()).toList());
+		register.addRecipes(TConstructJEIConstants.FOUNDRY, getScrollRecipes(register.getVanillaRecipeFactory()).filter(recipe -> !recipe.getInput().isEmpty()).toList());
 	}
 
 	private static Stream<MeltingRecipe> getScrollRecipes(IVanillaRecipeFactory vanillaRecipeFactory) {

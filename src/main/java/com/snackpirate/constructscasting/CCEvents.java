@@ -28,6 +28,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -240,17 +241,31 @@ public class CCEvents {
 //            ConstructsCasting.LOGGER.info("crafted: {}", shiftClickedItem.getDisplayName().getString());
 //            ((ModifiableSpellbookItem) shiftClickedItem.getItem()).initializeSpellContainer(shiftClickedItem);
 //        }
-        ItemStack toInitialize;
         if (crafted.is(Items.AIR)) { //means we shift clicked
-            int shiftClickSlot = Math.max(event.getEntity().getInventory().getFreeSlot() - 1, 0);
-            ConstructsCasting.LOGGER.info("shift clicked slot {}", shiftClickSlot);
-            toInitialize = event.getEntity().getInventory().getItem(shiftClickSlot);
-        } else toInitialize = event.getCrafting();
-        if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
-            ConstructsCasting.LOGGER.info("initializing {}", toInitialize.getDisplayName().getString());
-            ((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
-        }
+			for (int i = lastOccupiedSlot(event.getEntity().getInventory()); i < event.getEntity().getInventory().items.size(); i++) {
+				ItemStack toInitialize = event.getEntity().getInventory().items.get(i);
+				ConstructsCasting.LOGGER.info("shift initializing {}, {}", i, toInitialize.getDisplayName().getString());
+				if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
+					((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
+				}
+			}
+        } else {
+			ItemStack toInitialize = event.getCrafting();
+			if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
+				((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
+			}
+		}
     }
+	private static int lastOccupiedSlot(Inventory inv) {
+		for(int i = inv.items.size()-1; i >= 0; --i) {
+			if (inv.items.get(i).isEmpty()) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
 
 	@Mod.EventBusSubscriber(modid = ConstructsCasting.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 	public static class ForgeClientEvents {
