@@ -57,7 +57,7 @@ public class CCJeiPlugin implements IModPlugin {
 						.filter(spellLevel -> spell.getRarity(spellLevel) == spellRarity && spell.getSchoolType().equals(school))
 						.mapToObj(i -> getScrollStack(scrollStack, spell, i)));
 		FluidStack ink = new FluidStack(InkItem.getInkForRarity(spellRarity).fluid().get(), 125);
-		return new MeltingRecipe(ConstructsCasting.id("test"), "scroll_melting", Ingredient.of(scrolls), FluidOutput.fromStack(ink), 700, 20, List.of(FluidOutput.fromFluid(ScrollMeltingRecipe.schoolToEssence(school).get(), 100)));
+		return new MeltingRecipe(ConstructsCasting.id("test"), "scroll_melting", Ingredient.of(scrolls), FluidOutput.fromStack(ink), 700, 20, List.of(FluidOutput.fromFluid(ScrollMeltingRecipe.schoolToEssence(school).get(), 100)), false);
 	}
     //makes a recipe page for every single spell and level, no bueno
 //    private static MeltingRecipe recipeForSpellAndLevel(AbstractSpell spell, int level) {
