@@ -2,7 +2,7 @@
   "type": "tconstruct:remove_modifier",
   "inputs": [
     {
-      "item": "minecraft:amethyst_shard"
+      "item": "irons_spellbooks:shriving_stone"
     },
     {
       "item": "minecraft:wet_sponge"
