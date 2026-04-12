@@ -242,13 +242,14 @@ public class CCEvents {
 //            ((ModifiableSpellbookItem) shiftClickedItem.getItem()).initializeSpellContainer(shiftClickedItem);
 //        }
         if (crafted.is(Items.AIR)) { //means we shift clicked
-			for (int i = lastOccupiedSlot(event.getEntity().getInventory()); i < event.getEntity().getInventory().items.size(); i++) {
-				ItemStack toInitialize = event.getEntity().getInventory().items.get(i);
-				ConstructsCasting.LOGGER.info("shift initializing {}, {}", i, toInitialize.getDisplayName().getString());
-				if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
-					((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
-				}
-			}
+//			for (int i = lastOccupiedSlot(event.getEntity().getInventory()); i < event.getEntity().getInventory().items.size(); i++) {
+//				ItemStack toInitialize = event.getEntity().getInventory().items.get(i);
+//				ConstructsCasting.LOGGER.info("shift initializing {}, {}", i, toInitialize.getDisplayName().getString());
+//				if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
+//					((ModifiableSpellbookItem) toInitialize.getItem()).initializeSpellContainer(toInitialize);
+//				}
+//			}
+			//for some godforsaken reason, this is called after the item leaves the slot but before it enters the new one, so it always reads the slot where it SHOULD be as empty
         } else {
 			ItemStack toInitialize = event.getCrafting();
 			if (toInitialize.is(CCItems.Tags.MOD_SPELLBOOKS)) {
@@ -262,7 +263,6 @@ public class CCEvents {
 				return i;
 			}
 		}
-
 		return -1;
 	}
 

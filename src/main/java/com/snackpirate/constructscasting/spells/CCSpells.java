@@ -6,6 +6,7 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.items.CCItems;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import net.minecraft.network.chat.Component;
@@ -20,6 +21,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 import static io.redspace.ironsspellbooks.api.registry.SpellRegistry.SPELL_REGISTRY_KEY;
 
