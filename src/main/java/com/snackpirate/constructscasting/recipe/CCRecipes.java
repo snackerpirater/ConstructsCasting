@@ -337,7 +337,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 			ModifierRemovalRecipeBuilder.removal()
 					.setTools(tools)
 					.slotName(CCModifiers.AFFINITY_SLOT)
-					.addInput(Items.AMETHYST_SHARD)
+					.addInput(ItemRegistry.SHRIVING_STONE.get())
 					.addInput(Items.WET_SPONGE)
 					.addLeftover(Items.SPONGE)
 					.modifierPredicate(ModifierPredicate.and(extractBlacklist, new SlotTypeModifierPredicate(CCModifiers.AFFINITY_SLOT)))
