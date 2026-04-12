@@ -136,11 +136,11 @@ public class CCItems {
 		output.accept(CCFluids.moltenMithril.getBucket());
 		output.accept(CCFluids.moltenPyrium.getBucket());
         output.accept(CCFluids.squidInk.getBucket());
-        output.accept(CCFluids.commonInk.getBucket());
-        output.accept(CCFluids.uncommonInk.getBucket());
-        output.accept(CCFluids.rareInk.getBucket());
-        output.accept(CCFluids.epicInk.getBucket());
-        output.accept(CCFluids.legendaryInk.getBucket());
+//        output.accept(CCFluids.commonInk.getBucket());
+//        output.accept(CCFluids.uncommonInk.getBucket());
+//        output.accept(CCFluids.rareInk.getBucket());
+//        output.accept(CCFluids.epicInk.getBucket());
+//        output.accept(CCFluids.legendaryInk.getBucket());
         output.accept(CCFluids.moltenArcaneSalvage.getBucket());
         output.accept(CCFluids.moltenCrystallizedCoral.getBucket());
         output.accept(CCFluids.abyssalEssence.getBucket());
