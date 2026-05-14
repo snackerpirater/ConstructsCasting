@@ -107,14 +107,23 @@ public class ConstructsCasting {
         gen.addProvider(server, mats);
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
+
+        CCMaterialTextures materialSprites = new CCMaterialTextures();
+        TinkerPartSpriteProvider partSprites = new TinkerPartSpriteProvider();
+
+        //For Tinkers' Tools
+        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), materialSprites));
+        //For CC Tools
+        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, partSprites, getOverride(), materialSprites, new TinkerMaterialSpriteProvider()));
+        gen.addProvider(server, new GeneratorPartTextureJsonGenerator(output, MOD_ID, partSprites));
+        gen.addProvider(server, new GeneratorPartTextureJsonGenerator(output, TConstruct.MOD_ID, partSprites));
+
         gen.addProvider(server, new CCTools.CCToolDefinitions(output, MOD_ID));
         gen.addProvider(server, new CCMaterials.MaterialStats(output, mats));
         gen.addProvider(server, new CCMaterials.CCMaterialRenderInfo(output, new CCMaterialTextures(), fileHelper));
         gen.addProvider(server, new CCModifiers(output));
         gen.addProvider(server, new CCMaterials.CCMaterialTraits(output, mats));
         gen.addProvider(server, new CCMaterials.Tags(output, MOD_ID, fileHelper));
-        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), new CCMaterialTextures()));
-        gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new CCToolSpriteProvider(MOD_ID), getOverride(), new CCMaterialTextures(), new TinkerMaterialSpriteProvider()));
         gen.addProvider(server, new CCSlotLayoutProvider(output));
         CCBlocks.Tags blockTags = new CCBlocks.Tags(output, provider, MOD_ID, fileHelper);
         gen.addProvider(server, blockTags);
