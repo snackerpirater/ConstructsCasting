@@ -109,7 +109,7 @@ public class ConstructsCasting {
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 
         CCMaterialTextures materialSprites = new CCMaterialTextures();
-        TinkerPartSpriteProvider partSprites = new TinkerPartSpriteProvider();
+        CCToolSpriteProvider partSprites = new CCToolSpriteProvider(MOD_ID);
 
         //For Tinkers' Tools
         gen.addProvider(server, new MaterialPartTextureGenerator(output, fileHelper, new TinkerPartSpriteProvider(), materialSprites));
