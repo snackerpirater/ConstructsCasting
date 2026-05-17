@@ -1,0 +1,117 @@
+{
+  "parts": [
+    {
+      "path": "constructs_casting:item/tool/parts/spellbook_plating",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/parts/spellbook_cover",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/parts/pages",
+      "stat_type": "constructs_casting:magic_cloth"
+    },
+    {
+      "path": "constructs_casting:item/tool/parts/wand_rod",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/parts/faceted_gem",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/plated_spellbook/plating",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/plated_spellbook/cover",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/plated_spellbook/pages",
+      "stat_type": "constructs_casting:magic_cloth"
+    },
+    {
+      "path": "constructs_casting:item/tool/travellers_spellbook/binding",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/travellers_spellbook/cover",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/travellers_spellbook/pages",
+      "stat_type": "constructs_casting:magic_cloth"
+    },
+    {
+      "path": "constructs_casting:item/tool/wand/crystal",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/wand/trim",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/wand/handle",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/blade",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/crystal",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/handle",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/grip",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/large/blade",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/large/crystal",
+      "stat_type": "constructs_casting:adornment"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/large/handle",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "constructs_casting:item/tool/battlestaff/large/grip",
+      "stat_type": "constructs_casting:magic_base"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/blade",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/guard",
+      "stat_type": "tconstruct:plating_leggings"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/handle",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/large/blade",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/large/guard",
+      "stat_type": "tconstruct:plating_leggings"
+    },
+    {
+      "path": "constructs_casting:item/tool/flamberge/large/handle",
+      "stat_type": "tconstruct:handle"
+    }
+  ],
+  "replace": false
+}
