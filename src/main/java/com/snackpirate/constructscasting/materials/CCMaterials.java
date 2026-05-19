@@ -32,7 +32,18 @@ import static net.minecraft.world.item.Tiers.NETHERITE;
 public class CCMaterials extends AbstractMaterialDataProvider {
 
     public static final List<MaterialVariantId> tinkerClothMaterials = List.of(MaterialIds.leather, MaterialIds.slimeskin, MaterialIds.ichorskin, MaterialIds.skySlimeskin, MaterialIds.enderSlimeskin, MaterialIds.roseGold, MaterialIds.paper, MaterialIds.leaves);
-    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(MaterialIds.wood, MaterialIds.nahuatl, MaterialIds.bone, MaterialIds.blazewood, MaterialIds.bamboo, MaterialIds.bone, MaterialIds.blazingBone, MaterialIds.necroticBone, MaterialIds.dragonScale);
+    public static final List<MaterialVariantId> tinkerMagicMaterials = List.of(
+			MaterialIds.wood,
+			MaterialIds.crimson,
+			MaterialIds.warped,
+			MaterialIds.nahuatl,
+			MaterialIds.bone,
+			MaterialIds.blazewood,
+			MaterialIds.bamboo,
+			MaterialIds.bone,
+			MaterialIds.blazingBone,
+			MaterialIds.necroticBone,
+			MaterialIds.dragonScale);
 	public static final List<MaterialVariantId> tinkerAdornMaterials = List.of(MaterialIds.glowstone, MaterialIds.amethyst, MaterialIds.quartz, MaterialIds.earthslime, MaterialIds.skyslime, MaterialIds.enderslime, MaterialIds.ichor);
     public static final MaterialId arcanium = createMaterial("arcanium"); //trait: arcane
 	public static final MaterialId exilite = createMaterial("exilite"); //trait: damage to magic users? pyromancers etc. also people who are casting spells
