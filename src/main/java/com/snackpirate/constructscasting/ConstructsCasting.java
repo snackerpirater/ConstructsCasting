@@ -38,6 +38,7 @@ import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import slimeknights.mantle.client.model.NBTKeyModel;
+import slimeknights.mantle.data.predicate.entity.LivingEntityPredicate;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.common.data.loot.BlockLootTableProvider;
@@ -162,6 +163,8 @@ public class ConstructsCasting {
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_on_hit"), ManaOnHitModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("self_damage_cast"), SelfDamageOnCastModule.LOADER);
+
+            LivingEntityPredicate.LOADER.register(ConstructsCasting.id("magic_user"), CCModifiers.magicUser.getLoader());
         }
     }
 }

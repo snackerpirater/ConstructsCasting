@@ -238,7 +238,7 @@
   "modifier.constructs_casting.antifrost.description": "Grants +3 damage per level to frozen targets.",
   "modifier.constructs_casting.antifrost.flavor": "Don't drink it!",
   "modifier.constructs_casting.antimagic": "Antimagic",
-  "modifier.constructs_casting.antimagic.damage_boost": "Antimagic Damage",
+  "modifier.constructs_casting.antimagic.attack_damage": "Antimagic Damage",
   "modifier.constructs_casting.antimagic.description": "Grants +2 damage against magic users.",
   "modifier.constructs_casting.antimagic.flavor": "Self-explanatory.",
   "modifier.constructs_casting.apoptotic": "Apoptotic",

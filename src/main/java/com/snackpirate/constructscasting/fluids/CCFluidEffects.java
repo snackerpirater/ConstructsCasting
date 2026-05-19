@@ -46,7 +46,7 @@ public class CCFluidEffects extends AbstractFluidEffectProvider {
 		addFluid(CCFluids.Tags.essenceOf("ice"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.iceEmpowerment.get(), 100, 1), TimeAction.SET);
 		addFluid(CCFluids.Tags.essenceOf("lightning"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.lightningEmpowerment.get(), 100, 1), TimeAction.SET);
 		addFluid(CCFluids.Tags.essenceOf("nature"), FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffects.natureEmpowerment.get(), 100, 1), TimeAction.SET);
-		addFluid(CCFluids.Tags.MOLTEN_ARCANE_SALVAGE, FluidValues.NUGGET).addEffect(FluidMobEffect.builder().effect(MobEffects.recoveryEmpowerment.get(), 100, 2), TimeAction.SET);
+		addFluid(CCFluids.moltenMithril, FluidValues.NUGGET).addEffect(FluidMobEffect.builder().effect(MobEffects.recoveryEmpowerment.get(), 100, 2), TimeAction.SET);
 		addFluid(CCFluids.potatoStew, FluidValues.SIP).addEntityEffect(new RestoreHungerFluidEffect(2, 0.48f, false, ItemOutput.fromItem(CCItems.potatoStewBowl.get())));
 		addFluid(CCFluids.poisonousPotatoStew, FluidValues.SIP).addEffect(FluidMobEffect.builder().effect(MobEffectRegistry.BLIGHT.get(), 100, 1), TimeAction.SET);
 

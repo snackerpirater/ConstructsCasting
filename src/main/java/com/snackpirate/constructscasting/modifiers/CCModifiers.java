@@ -5,7 +5,10 @@ import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.items.CCItems;
 import com.snackpirate.constructscasting.materials.CCToolStats;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
+import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -53,7 +56,6 @@ public class CCModifiers extends AbstractModifierProvider {
 
 	public static final StaticModifier<Modifier> CASTING = MODIFIERS.register("casting", CastingModifier::new);
 	public static final StaticModifier<Modifier> SPELLBLADE = MODIFIERS.register("spellblade", SpellbladeModifier::new);
-	public static final StaticModifier<Modifier> ANTIMAGIC = MODIFIERS.register("antimagic", AntimagicModifier::new);
 	public static final StaticModifier<Modifier> IMBUED = MODIFIERS.register("imbued", ImbuedModifier::new);
 	public static final StaticModifier<Modifier> ENCYCLOPEDIC = MODIFIERS.register("encyclopedic", EncyclopedicModifier::new);
 //	public static final StaticModifier<Modifier> ANTIFROST = MODIFIERS.register("antifrost", AntifrostModifier::new);
@@ -72,6 +74,7 @@ public class CCModifiers extends AbstractModifierProvider {
 	public static final ModifierId COMBUSTIVE = new ModifierId(ConstructsCasting.MOD_ID, "combustive"); //pyrium melee/ranged: hits have a chance to apply immolation stacks
 	public static final ModifierId HEATSHIELD = new ModifierId(ConstructsCasting.MOD_ID, "heatshield"); //pyrium armor: fire damage increases protection?
 
+	public static final ModifierId ANTIMAGIC = new ModifierId(ConstructsCasting.MOD_ID, "antimagic");
 	public static final ModifierId SORCEROUS = new ModifierId(ConstructsCasting.MOD_ID, "sorcerous"); //mithril melee/ranged: hits have a chance to return mana
 	public static final ModifierId MANA_PROTECTION = new ModifierId(ConstructsCasting.MOD_ID, "mana_protection"); //mithril armor: consumes mana on hit for percent protection
 
@@ -147,7 +150,9 @@ public class CCModifiers extends AbstractModifierProvider {
                 .addModule(AttributeModule.builder(AttributeRegistry.CASTING_MOVESPEED.get(), AttributeModifier.Operation.MULTIPLY_BASE)
 					.tooltipStyle(AttributeModule.TooltipStyle.ATTRIBUTE).amount(0.2f, 0.2f))
 				.build();
-
+		buildModifier(ANTIMAGIC)
+				.addModule(ConditionalMeleeDamageModule.builder().target(magicUser).eachLevel(2f))
+						.build();
 		buildModifier(SPELLBOUND)
                 .addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).uniqueFrom(SPELLBOUND).eachLevel(0.05f))
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).toolTag(CCItems.Tags.MAGIC_TOOL).eachLevel(0.05f)).build();
@@ -275,6 +280,13 @@ public class CCModifiers extends AbstractModifierProvider {
 	private static AttributeModule spellDispulsionModifier(ModifierId modifier, Attribute attribute) {
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).uniqueFrom(modifier).eachLevel(0.15f);
 	}
+	public static LivingEntityPredicate magicUser = LivingEntityPredicate.simple(
+			target -> MagicData.getPlayerMagicData(target).isCasting() ||
+					target instanceof AbstractSpellCastingMob ||
+					target instanceof IMagicSummon ||
+					target.getAttributeValue(AttributeRegistry.MAX_MANA.get()) > 100
+	);
+
 	@Override
 	public String getName() {
 		return "Construct's Casting Modifiers";

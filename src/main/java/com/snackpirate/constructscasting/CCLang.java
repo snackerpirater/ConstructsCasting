@@ -81,8 +81,8 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.ENCYCLOPEDIC.getId(), "Encyclopedic", "Well read", "Allows the Spellbook to function as an encyclopedia on right click.");
 
 		addModifier(CCModifiers.ARCANE, "Arcane" ,"Mana-licious!", "Grants +25 max mana.");
-		addModifier(CCModifiers.ANTIMAGIC.getId(), "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
-		add("modifier.constructs_casting.antimagic.damage_boost", "Antimagic Damage");
+		addModifier(CCModifiers.ANTIMAGIC, "Antimagic", "Self-explanatory.", "Grants +2 damage against magic users.");
+		add("modifier.constructs_casting.antimagic.attack_damage", "Antimagic Damage");
 		addModifier(CCModifiers.SPELL_PROTECTION, "Spell Protection", "Diabolical!", "Grants +10% resistance against spells. (Different from Magic Protection)");
 		add("modifier.constructs_casting.spell_protection.resistance", "Spell Resistance");
 		addModifier(CCModifiers.ANTIFROST, "Antifrost", "Don't drink it!", "Grants +3 damage per level to frozen targets.");
