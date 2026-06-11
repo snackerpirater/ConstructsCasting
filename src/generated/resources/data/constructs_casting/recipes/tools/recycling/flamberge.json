@@ -1,0 +1,14 @@
+{
+  "type": "tconstruct:part_builder_tool_recycling",
+  "parts": [
+    "tconstruct:broad_blade",
+    "tconstruct:repair_kit",
+    "tconstruct:tough_handle"
+  ],
+  "pattern": {
+    "item": "tconstruct:venom_bottle"
+  },
+  "tools": {
+    "item": "constructs_casting:flamberge"
+  }
+}

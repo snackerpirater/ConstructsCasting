@@ -65,7 +65,8 @@
     "combustive": "#da9809",
     "heatwave": "#da9809",
     "mana_protection": "#bdf3f3",
-    "sorcerous": "#bdf3f3"
+    "sorcerous": "#bdf3f3",
+    "venomagic": "#A2935E"
   },
   "material.constructs_casting": {
     "__tier_1__": null,

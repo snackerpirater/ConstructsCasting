@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "level": {
+    "min": 2
+  },
+  "modifier": "constructs_casting:swiftcasting",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/boots"
+  }
+}

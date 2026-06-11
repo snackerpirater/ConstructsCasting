@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting;
 
 
+import com.mojang.datafixers.kinds.Const;
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCItems;
@@ -11,6 +12,7 @@ import com.snackpirate.constructscasting.spells.CCEntities;
 import com.snackpirate.constructscasting.spells.slime.slimeball.SlimeballProjectileRenderer;
 import io.redspace.ironsspellbooks.api.events.SpellPreCastEvent;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.registries.FluidRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.ChatFormatting;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,10 +42,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerEffect;
 import slimeknights.tconstruct.fluids.util.ConstantFluidContainerWrapper;
+import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.shared.CommonsClientEvents;
 import slimeknights.tconstruct.shared.TinkerEffects;
 import slimeknights.tconstruct.tools.data.ModifierIds;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -107,6 +114,23 @@ public class CCEvents {
     static void soulboundSpellbooks(DropRulesEvent event) {
         event.addOverride((stack) -> (stack.is(CCItems.Tags.MOD_SPELLBOOKS) && ModifierUtil.getModifierLevel(stack, ModifierIds.soulbound) > 0), ICurio.DropRule.ALWAYS_KEEP);
     }
+	@SubscribeEvent
+	static void spellProjectileModifiers(EntityJoinLevelEvent event) {
+		if (!event.loadedFromDisk() && event.getEntity() instanceof AbstractMagicProjectile projectile) {
+			var owner = projectile.getOwner();
+			if (owner instanceof LivingEntity livingEntity) {
+				CuriosApi.getCuriosInventory(livingEntity).ifPresent(handler -> {
+					handler.findCurio("spellbook", 0).ifPresent(result -> {
+						if (result.stack().is(CCItems.Tags.MOD_SPELLBOOKS)) {
+							ConstructsCasting.LOGGER.info("hello");
+							ModifierNBT modifiers = ToolStack.from(result.stack()).getModifiers();
+							EntityModifierCapability.getCapability(projectile).addModifiers(modifiers);
+						}
+					});
+				});
+			}
+		}
+	}
 //	@SubscribeEvent
 //	static void soulboundSpellbookDeath(LivingDeathEvent event) {
 //		LivingEntity entity = event.getEntity();

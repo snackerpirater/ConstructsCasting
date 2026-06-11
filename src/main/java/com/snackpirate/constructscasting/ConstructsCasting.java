@@ -163,7 +163,7 @@ public class ConstructsCasting {
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_protection"), ManaProtectionModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("mana_on_hit"), ManaOnHitModule.LOADER);
             ModifierModule.LOADER.register(ConstructsCasting.id("self_damage_cast"), SelfDamageOnCastModule.LOADER);
-
+            ModifierModule.LOADER.register(id("venomagic"), VenomagicModule.LOADER);
             LivingEntityPredicate.LOADER.register(ConstructsCasting.id("magic_user"), CCModifiers.magicUser.getLoader());
         }
     }

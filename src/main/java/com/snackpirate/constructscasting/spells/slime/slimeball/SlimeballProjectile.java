@@ -2,9 +2,11 @@ package com.snackpirate.constructscasting.spells.slime.slimeball;
 
 import com.snackpirate.constructscasting.CCDamageTypes;
 import com.snackpirate.constructscasting.spells.CCEntities;
+import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
+import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -27,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class SlimeballProjectile extends AbstractMagicProjectile implements IEntityAdditionalSpawnData {
+public class SlimeballProjectile extends AbstractMagicProjectile implements IEntityAdditionalSpawnData, AntiMagicSusceptible {
 	private static final EntityDataAccessor<Integer> BOUNCES = SynchedEntityData.defineId(SlimeballProjectile.class, EntityDataSerializers.INT);
 
 	public SlimeballProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
@@ -38,6 +40,11 @@ public class SlimeballProjectile extends AbstractMagicProjectile implements IEnt
 		this(CCEntities.SLIMEBALL_PROJECTILE.get(), levelIn);
 		setBounces(spellLevel);
 		setOwner(shooter);
+	}
+
+	@Override
+	public void onAntiMagic(MagicData playerMagicData) {
+		super.onAntiMagic(playerMagicData);
 	}
 
 	@Override

@@ -28,7 +28,9 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.fluids.item.ContainerFoodItem;
+import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.recipe.FluidValues;
+import slimeknights.tconstruct.library.recipe.modifiers.ModifierRecipeLookup;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
@@ -36,6 +38,7 @@ import slimeknights.tconstruct.shared.TinkerFood;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
+import slimeknights.tconstruct.tools.item.ModifierCrystalItem;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -148,6 +151,12 @@ public class CCItems {
         output.accept(CCFluids.technomancyEssence.getBucket());
         output.accept(CCFluids.moltenPearl.getBucket());
         output.accept(CCFluids.aquaEssence.getBucket());
+
+		ModifierRecipeLookup.getRecipeModifierList().forEach(modifier -> {
+			if (!ModifierManager.isInTag(modifier.getId(), TinkerTags.Modifiers.EXTRACT_MODIFIER_BLACKLIST) && modifier.getId().getNamespace().equals(ConstructsCasting.MOD_ID)) {
+				output.accept(ModifierCrystalItem.withModifier(modifier.getId()));
+			}
+		});
 
     }
 

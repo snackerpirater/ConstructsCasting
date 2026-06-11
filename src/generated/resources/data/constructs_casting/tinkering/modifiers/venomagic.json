@@ -1,0 +1,12 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "constructs_casting:venomagic",
+      "bonus_percent": {
+        "each_level": 0.1
+      }
+    }
+  ],
+  "tooltip_display": "always"
+}

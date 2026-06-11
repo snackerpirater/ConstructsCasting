@@ -40,8 +40,8 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			MaterialIds.bone,
 			MaterialIds.blazewood,
 			MaterialIds.bamboo,
-			MaterialIds.bone,
 			MaterialIds.blazingBone,
+			MaterialIds.venombone,
 			MaterialIds.necroticBone,
 			MaterialIds.dragonScale);
 	public static final List<MaterialVariantId> tinkerAdornMaterials = List.of(MaterialIds.glowstone, MaterialIds.amethyst, MaterialIds.quartz, MaterialIds.earthslime, MaterialIds.skyslime, MaterialIds.enderslime, MaterialIds.ichor);
@@ -220,6 +220,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addMaterialStats(MaterialIds.chorus, new MagicBaseMaterialStats(120, 0.1f));
             addMaterialStats(MaterialIds.necroticBone, new MagicBaseMaterialStats(140, -0.05f));
             addMaterialStats(MaterialIds.blazingBone, new MagicBaseMaterialStats(200, 0f));
+			addMaterialStats(MaterialIds.venombone, new MagicBaseMaterialStats(160, -0.05f));
             addMaterialStats(MaterialIds.leather, new MagicClothMaterialStats(6, 0.1f));
 //            addMaterialStats(MaterialIds.ancientHide, new MagicClothMaterialStats(8, -0.05f));
             addMaterialStats(MaterialIds.roseGold, new MagicClothMaterialStats(8, -0.1f));
@@ -279,6 +280,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
             addTraits(MaterialIds.chorus, MagicBaseMaterialStats.ID, CCModifiers.ENDERBENDER);
             addTraits(MaterialIds.necroticBone, MagicBaseMaterialStats.ID, CCModifiers.APOPTOTIC);
             addTraits(MaterialIds.blazingBone, MagicBaseMaterialStats.ID, CCModifiers.CALORIFIC);
+			addTraits(MaterialIds.venombone, MagicBaseMaterialStats.ID, CCModifiers.venomagic);
 
 			addTraits(MaterialIds.amethyst, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.COOLDOWN_UPGRADE);
 			addTraits(MaterialIds.quartz, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.FIRE_UPGRADE, CCModifiers.ICE_DISPULSION);

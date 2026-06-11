@@ -133,6 +133,8 @@ public class CCModifiers extends AbstractModifierProvider {
 
 	public static final ModifierId REINSCRIBED = new ModifierId(ConstructsCasting.MOD_ID, "reinscribed");
 
+	public static final ModifierId venomagic = new ModifierId(ConstructsCasting.MOD_ID, "venomagic");
+
 	public CCModifiers(PackOutput generator) {
 		super(generator);
 	}
@@ -272,7 +274,11 @@ public class CCModifiers extends AbstractModifierProvider {
 				.addModule(new ManaOnHitModule(LevelingValue.flat(3), LevelingValue.eachLevel(0.25f)))
 				.addModule(new RarityModule(Rarity.RARE))
 				.build();
+		buildModifier(venomagic)
+				.addModule(new VenomagicModule(LevelingValue.eachLevel(0.1f)))
+				.build();
 	}
+
 	private static AttributeModule spellPowerModifier(ModifierId modifier, Attribute attribute) { //no spell power upgrades on offhand >:(
 		return AttributeModule.builder(attribute, AttributeModifier.Operation.MULTIPLY_BASE).slots(notOffhand).uniqueFrom(modifier).eachLevel(0.05f);
 	}

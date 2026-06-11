@@ -127,29 +127,30 @@ dependencies {
     // IRONS SPELLS N SPELLBOOKS **********************************************************************************
     compileOnly fg.deobf("io.redspace:irons_spellbooks:${irons_spells_version}:api")
     implementation fg.deobf("io.redspace:irons_spellbooks:${irons_spells_version}")
+    implementation fg.deobf("io.redspace:irons_lib:${irons_lib_version}")
+
+    // MIXINS *****************************************************************************************************
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     // GECKOLIB ***************************************************************************************************
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
 
-    // CAELUS *****************************************************************************************************
-    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${caelus_version}")
-
     // PLAYER ANIMATOR ********************************************************************************************
-    runtimeOnly fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
 
-    // CURIOS *****************************************************************************************************
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    // LIB *****************************************************************************************************
+    implementation fg.deobf("io.redspace:irons_lib:${irons_lib_version}")
 
     // JEI ********************************************************************************************************
+    compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
+    //runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599099")
 
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-//    runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
-    // COMPAT *****************************************************************************************************
-
-      runtimeOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7413465")
+    // CURIOS *****************************************************************************************************
+//    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+//      runtimeOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7413465")
 //    runtimeOnly fg.deobf("curse.maven:azurelib-817423:6849107")
 //    runtimeOnly fg.deobf("curse.maven:lionfish-api-1001614:5922047")
 //    runtimeOnly fg.deobf("curse.maven:lendercataclysm-551586:6849032")
@@ -197,5 +198,5 @@ tasks.withType(JavaCompile).configureEach {
 }
 mixin {
     add sourceSets.main, 'mixins.constructscasting.refmap.json'
-    config 'mixins.constructscasting.json'
+//    config 'mixins.constructscasting.json'
 }

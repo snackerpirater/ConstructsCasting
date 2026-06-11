@@ -264,6 +264,8 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.SLOT_IMPROVEMENT, "Slot Improvement", "65%% more spell per spell!", "Grants +1 Spell Slot. (Cannot exceed 15 total Spell Slots)");
     	addModifier(CCModifiers.FROSTBITE, "Frostbite", "Gives me the chills", "Causes targets to temporarily take 200% freezing damage. (Not ice magic damage)");
 		addModifier(CCModifiers.BLOODTHIRSTY, "Bloodthirsty", "Blood for the blood god", "Increases summon damage, but at what cost?");
+		addModifier(CCModifiers.venomagic, "Venomagic", "You know that you're toxic", "Increases spell damage against poisoned targets");
+		add("modifier.constructs_casting.venomagic.boost", "Venomagic Damage");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

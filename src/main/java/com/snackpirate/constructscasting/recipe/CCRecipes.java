@@ -62,6 +62,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.IncrementalModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.partbuilder.recycle.PartBuilderToolRecycleBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.shared.TinkerMaterials;
@@ -69,6 +70,7 @@ import slimeknights.tconstruct.shared.block.SlimeType;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
@@ -91,7 +93,9 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 	private static final String alloyFolder = "smeltery/alloys/";
 	private static final String materialFolder = "tools/materials/";
 	private static final String modifierFolder = "tools/modifiers/";
+	private static final String salvageFolder = "tools/modifiers/salvage/";
 	private static final String meltingFolder = "smeltery/melting/metal/";
+	private static final String recyclingFolder = "tools/recycling/";
     private static final String partsFolder = "tools/parts/";
 
 	@Override
@@ -237,6 +241,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
 				.addInput(ItemTags.create(IronsSpellbooks.id("inscribed_rune")))
 				.addInput(ItemTags.create(IronsSpellbooks.id("inscribed_rune")))
+				.saveSalvage(consumer, location(salvageFolder + "casting"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/casting"));
 		//swiftcasting
 		ModifierRecipeBuilder.modifier(CCModifiers.SWIFTCASTING)
@@ -247,6 +252,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.MITHRIL_WEAVE.get())
 				.addInput(ItemRegistry.DIVINE_SOULSHARD.get())
 				.addInput(Items.RABBIT_FOOT)
+				.saveSalvage(consumer, location(salvageFolder + "swiftcasting"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/swiftcasting_1"));
 		ModifierRecipeBuilder.modifier(CCModifiers.SWIFTCASTING)
 				.disallowCrystal()
@@ -257,6 +263,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(Items.FEATHER)
 				.addInput(Items.RABBIT_FOOT)
 				.addInput(Items.FEATHER)
+				.saveSalvage(consumer, location(salvageFolder + "swiftcasting_extra"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/swiftcasting"));
 		//spell prot
 		ItemCastingRecipeBuilder.tableRecipe(CCItems.exiliteReinforcement.get())
@@ -268,6 +275,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setInput(CCItems.exiliteReinforcement.get(), 1, 5)
 				.setSlots(SlotType.DEFENSE, 1)
 				.setTools(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.ARMOR), Ingredient.of(TinkerTags.Items.HELD)))
+				.saveSalvage(consumer, location(salvageFolder + "spell_protection"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "defense/spell_protection"));
 		//imbued
 		ModifierRecipeBuilder.modifier(CCModifiers.IMBUED)
@@ -279,8 +287,9 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.MITHRIL_INGOT.get())
 				.addInput(TinkerTags.Items.SWORD)
 				.addInput(ItemRegistry.MITHRIL_INGOT.get())
-				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
-				.addInput(ItemRegistry.MANA_UPGRADE_ORB.get())
+				.addInput(ItemRegistry.MANA_RUNE.get())
+				.addInput(ItemRegistry.MANA_RUNE.get())
+				.saveSalvage(consumer, location(salvageFolder + "imbued"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/imbued"));
         //spellblade
         ModifierRecipeBuilder.modifier(CCModifiers.SPELLBLADE)
@@ -292,6 +301,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .addInput(TinkerMaterials.steel.getIngotTag())
                 .addInput(ItemRegistry.MITHRIL_INGOT.get())
                 .addInput(TinkerMaterials.steel.getIngotTag())
+				.saveSalvage(consumer, location(salvageFolder + "spellblade"))
                 .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/spellblade"));
 		//encyclopedic
 		ModifierRecipeBuilder.modifier(CCModifiers.ENCYCLOPEDIC)
@@ -319,6 +329,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setSlots(SlotType.ABILITY, 1)
 				.setMaxLevel(1)
 				.setTools(TinkerTags.Items.LEGGINGS)
+				.saveSalvage(consumer, location(salvageFolder + "spellbook_strap"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/spellbook_strap"));
         //gilded but for affinity slots
 		ModifierRecipeBuilder.modifier(CCModifiers.IMPROVEABLE)
@@ -329,6 +340,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.addInput(ItemRegistry.ARCANE_INGOT.get())
 				.setTools(TinkerTags.Items.BONUS_SLOTS)
 				.setSlots(SlotType.ABILITY, 1)
+				.saveSalvage(consumer, location(salvageFolder + "improvable"))
 				.save(consumer, ConstructsCasting.id(modifierFolder + "ability/improveable"));
 		IJsonPredicate<ModifierId> extractBlacklist = ModifierPredicate.tag(TinkerTags.Modifiers.EXTRACT_MODIFIER_BLACKLIST).inverted();
 		for (boolean dagger : new boolean[]{false, true}) {
@@ -350,6 +362,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .setSlots(SlotType.ABILITY, 1)
                 .setTools(TinkerTags.Items.CHESTPLATES)
                 .setMaxLevel(1)
+				.saveSalvage(consumer, location(salvageFolder + "ringbearer"))
                 .save(consumer, ConstructsCasting.id(modifierFolder + "ability/ringbearer"));
 		ModifierRecipeBuilder.modifier(CCModifiers.REINSCRIBED)
 				.addInput(ItemRegistry.INK_COMMON.get())
@@ -507,6 +520,7 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
 				.setTools(TinkerTags.Items.HELD)
                 .setSlots(SlotType.UPGRADE, 1)
                 .setMaxLevel(3)
+				.saveSalvage(consumer, location(salvageFolder + "expedient"))
                 .save(consumer, ConstructsCasting.id(modifierFolder + "upgrade/expedient"));
 
         partRecipes(consumer, CCItems.spellbookPlating, CCItems.spellbookPlatingCast, 2, partsFolder, castingFolder);
@@ -550,6 +564,11 @@ public class CCRecipes extends RecipeProvider implements IConditionBuilder, IMat
                 .setMaxLevel(6)
                 .saveSalvage(consumer, location(modifierFolder + "salvage/slot_improvement"))
                 .save(consumer, location(modifierFolder + "slot_improvement"));
+		PartBuilderToolRecycleBuilder.tool(CCItems.flamberge)
+				.part(TinkerToolParts.broadBlade)
+				.part(TinkerToolParts.repairKit)
+				.part(TinkerToolParts.toughHandle)
+				.save(consumer, location(recyclingFolder + "flamberge"));
         }
 	public static void runeCastingRecipe(Consumer<FinishedRecipe> consumer, FluidObject<UnplaceableFluid> essence, Item result, String recipeId) {
 		 ItemCastingRecipeBuilder.tableRecipe(result).setCast(ItemRegistry.BLANK_RUNE.get(), true).setFluidAndTime(new FluidStack(essence.get(), 1000)).save(consumer, ConstructsCasting.id(castingFolder + recipeId));
