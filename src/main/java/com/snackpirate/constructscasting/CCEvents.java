@@ -122,7 +122,7 @@ public class CCEvents {
 				CuriosApi.getCuriosInventory(livingEntity).ifPresent(handler -> {
 					handler.findCurio("spellbook", 0).ifPresent(result -> {
 						if (result.stack().is(CCItems.Tags.MOD_SPELLBOOKS)) {
-							ConstructsCasting.LOGGER.info("hello");
+//							ConstructsCasting.LOGGER.info("hello");
 							ModifierNBT modifiers = ToolStack.from(result.stack()).getModifiers();
 							EntityModifierCapability.getCapability(projectile).addModifiers(modifiers);
 						}

@@ -1,0 +1,67 @@
+{
+  "name": "irons_spellbooks:chests/citadel/citadel_vault",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "tconstruct:add_tool_data",
+              "materials": [
+                {
+                  "type": "tconstruct:random",
+                  "material": {
+                    "type": "mantle:inverted",
+                    "inverted_type": "mantle:tag",
+                    "tag": "tconstruct:exclude_from_loot"
+                  },
+                  "tier": {
+                    "max": 4,
+                    "min": 3
+                  }
+                },
+                {
+                  "type": "tconstruct:random",
+                  "material": {
+                    "type": "mantle:inverted",
+                    "inverted_type": "mantle:tag",
+                    "tag": "tconstruct:exclude_from_loot"
+                  },
+                  "tier": {
+                    "max": 4,
+                    "min": 3
+                  }
+                },
+                {
+                  "type": "tconstruct:random",
+                  "material": {
+                    "type": "mantle:inverted",
+                    "inverted_type": "mantle:tag",
+                    "tag": "tconstruct:exclude_from_loot"
+                  },
+                  "tier": {
+                    "max": 4,
+                    "min": 3
+                  }
+                }
+              ]
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.1
+              },
+              "function": "minecraft:set_damage"
+            }
+          ],
+          "name": "constructs_casting:flamberge",
+          "weight": 3
+        }
+      ],
+      "name": "pool1"
+    }
+  ]
+}
