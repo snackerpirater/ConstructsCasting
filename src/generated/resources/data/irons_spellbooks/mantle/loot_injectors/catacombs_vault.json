@@ -22,6 +22,15 @@
                   "type": "tconstruct:ancient"
                 }
               ]
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.7,
+                "min": 0.3
+              },
+              "function": "minecraft:set_damage"
             }
           ],
           "name": "constructs_casting:battlestaff",

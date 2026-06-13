@@ -46,7 +46,7 @@ public class CCLootInjections extends AbstractLootTableInjectionProvider {
 				.addToPool("pool1", LootItem.lootTableItem(CCItems.battlestaff.get())
 						.setWeight(4)
 						.apply(AddToolDataFunction.builder().addMaterial(random).addMaterial(random).addMaterial(random).addMaterial(random))
-//						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.1f, 0.9f)))
+						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3f, 0.7f)))
 						.build());
 	}
 
