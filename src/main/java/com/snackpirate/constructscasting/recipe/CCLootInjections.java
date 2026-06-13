@@ -40,7 +40,13 @@ public class CCLootInjections extends AbstractLootTableInjectionProvider {
 				.addToPool("pool1", LootItem.lootTableItem(CCItems.flamberge.get())
 						.setWeight(3)
 						.apply(AddToolDataFunction.builder().addMaterial(randomHighTier).addMaterial(randomHighTier).addMaterial(randomHighTier))
-						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.1f, 0.9f)))
+//						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.1f, 0.9f)))
+						.build());
+		inject("catacombs_vault", IronsSpellbooks.id("chests/catacombs/dead_king_vault"))
+				.addToPool("pool1", LootItem.lootTableItem(CCItems.battlestaff.get())
+						.setWeight(4)
+						.apply(AddToolDataFunction.builder().addMaterial(random).addMaterial(random).addMaterial(random).addMaterial(random))
+//						.apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.1f, 0.9f)))
 						.build());
 	}
 

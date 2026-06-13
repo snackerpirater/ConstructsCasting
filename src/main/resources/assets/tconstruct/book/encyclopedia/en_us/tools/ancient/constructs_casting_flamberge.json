@@ -1,7 +1,7 @@
 {
   "tool": "constructs_casting:flamberge",
   "text": [
-    { "text": "The Flamberge is a weapon primarily focused on defense and mobility. Grants armor points when held and allows for a quick dash. Can occasionally be found in the hands of Ancient Knights, or the chests in an Ancient Battleground." }
+    { "text": "The Flamberge is a weapon primarily focused on defense and mobility. Grants armor points when held and allows for a quick dash. Can occasionally be found in the vaults of Citadels, or the chests in an Ancient Battleground." }
   ],
   "properties": [
     "+2.5 Attack Damage",

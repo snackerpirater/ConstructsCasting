@@ -236,14 +236,13 @@ public class CCLang extends LanguageProvider {
 		addFluid(CCFluids.aquaEssence, "Aqua Essence", "");
 		addFluid(CCFluids.soundEssence, "Sound Essence", "");
 
-	    add("item.tconstruct.creative_slot.affinity", "Creative Affinity Slot");
-        add("stat.tconstruct.slot.prefix.affinity", "Affinity Slots: ");
-        add("stat.tconstruct.slot.display.affinity", "affinity");
-		add("modifier.tconstruct.rebalanced.affinity", "Affinity");
-		add("recipe.tconstruct.remove_modifier.affinity", "Extract Affinity");
+	    add("item.tconstruct.creative_slot.affinity", "Creative Boon Slot");
+        add("stat.tconstruct.slot.prefix.affinity", "Boons: ");
+        add("stat.tconstruct.slot.display.affinity", "boon");
+		add("modifier.tconstruct.rebalanced.affinity", "Boon");
+		add("recipe.tconstruct.remove_modifier.affinity", "Extract Boon");
 
-
-		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Upgrades are good. But they can be better.", "Adds two bonus Affinity slots to the tool.");
+		addModifier(CCModifiers.IMPROVEABLE, "Improvable", "Beautiful things that I've got", "Adds two bonus Boon slots to the tool.");
         addModifier(CCModifiers.REGROWTH, "Regrowth", "The best brown thing!", "Increases Mana Regeneration by 10%.");
     	addModifier(CCModifiers.CONSERVING.getId(), "Conserving", "Great deals all day!", "Reduces the mana cost of casting spells by 10.");
         addModifier(CCModifiers.EXPEDIENT, "Expedient", "In a big-time rush?", "Reduces spell cast time by 10%.");
@@ -256,7 +255,8 @@ public class CCLang extends LanguageProvider {
         addModifier(CCModifiers.DRAGONSPELLS.getId(), "Dragonspells", "In their tongue he is Dovahtiinker, dragonsmith", "Increases Spell Power by 10% while mid-air.");
 		addModifier(CCModifiers.GASHING.getId(), "Gashing", "You haemophile", "Dealing damage with spells has a 50% chance to apply the Bleeding effect");
         addModifier(CCModifiers.PUNCTURING.getId(), "Puncturing", "Why is magic blocked by armor anyways?", "Spell damage cancels out some of the target's armor!");
-        addModifier(CCModifiers.ENDERBENDER.getId(), "Enderbender", "Hey, I've seen this one before!", "Teleporting via spell grants the Evasion effect");
+        add("modifier.constructs_casting.puncturing.attack_damage", "Puncturing Damage");
+		addModifier(CCModifiers.ENDERBENDER.getId(), "Enderbender", "Hey, I've seen this one before!", "Teleporting via spell grants the Evasion effect");
         addModifier(CCModifiers.APOPTOTIC.getId(), "Apoptotic", "This may be overpowered but who knows", "Dealing spell damage over a certain threshold heals you");
         addModifier(CCModifiers.CALORIFIC.getId(), "Calorific", "Hot ones, and by ones I mean spells", "Spells deal multiplied damage when you are on fire");
         add("modifier.constructs_casting.calorific.boost", "On-Fire Boost Max");

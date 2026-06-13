@@ -46,15 +46,6 @@
                   }
                 }
               ]
-            },
-            {
-              "add": false,
-              "damage": {
-                "type": "minecraft:uniform",
-                "max": 0.9,
-                "min": 0.1
-              },
-              "function": "minecraft:set_damage"
             }
           ],
           "name": "constructs_casting:flamberge",

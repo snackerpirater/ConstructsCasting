@@ -1,0 +1,34 @@
+{
+  "name": "irons_spellbooks:chests/catacombs/dead_king_vault",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "tconstruct:add_tool_data",
+              "materials": [
+                {
+                  "type": "tconstruct:ancient"
+                },
+                {
+                  "type": "tconstruct:ancient"
+                },
+                {
+                  "type": "tconstruct:ancient"
+                },
+                {
+                  "type": "tconstruct:ancient"
+                }
+              ]
+            }
+          ],
+          "name": "constructs_casting:battlestaff",
+          "weight": 4
+        }
+      ],
+      "name": "pool1"
+    }
+  ]
+}
