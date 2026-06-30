@@ -111,6 +111,9 @@ repositories {
         }
     }
     mavenCentral()
+    flatDir {
+        dir 'libs'
+    }
 }
 
 dependencies {
@@ -159,6 +162,7 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:cataclysm-spellbooks-1099461:6769871")
 //    runtimeOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:6901041")
 
+    implementation fg.deobf("knightminer.metalborn:metalborn:1.20.1-1.0.3")
 }
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [

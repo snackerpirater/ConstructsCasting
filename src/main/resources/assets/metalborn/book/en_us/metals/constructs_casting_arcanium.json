@@ -1,0 +1,9 @@
+{
+  "append": true,
+  "storing": [
+    "Mana reduction caps at 4 metalminds"
+  ],
+  "tapping": [
+    "Mana boost caps at 4 metalminds"
+  ]
+}

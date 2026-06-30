@@ -266,6 +266,16 @@ public class CCLang extends LanguageProvider {
 		addModifier(CCModifiers.BLOODTHIRSTY, "Bloodthirsty", "Blood for the blood god", "Increases summon damage, but at what cost?");
 		addModifier(CCModifiers.venomagic, "Venomagic", "You know that you're toxic", "Increases spell damage against poisoned targets");
 		add("modifier.constructs_casting.venomagic.boost", "Venomagic Damage");
+
+		add("metal_power.constructs_casting.arcanium", "Arcanium");
+		add("metal_power.constructs_casting.arcanium.stores", "Mana");
+		add("metal_power.constructs_casting.arcanium.ferring", "Mage");
+		add("metal_power.constructs_casting.arcanium.target", "Necromancer");
+
+		add("metal_power.constructs_casting.exilite", "Exilite");
+		add("metal_power.constructs_casting.exilite.stores", "Faith");
+		add("metal_power.constructs_casting.exilite.ferring", "Zealot");
+		add("metal_power.constructs_casting.exilite.target", "Priests");
 	}
 
 	public void addMaterial(MaterialId material, String name, String flavour, String desc) {

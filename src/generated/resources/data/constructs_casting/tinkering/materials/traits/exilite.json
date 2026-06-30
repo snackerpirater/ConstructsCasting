@@ -1,4 +1,10 @@
 {
+  "default": [
+    {
+      "level": 1,
+      "name": "constructs_casting:antimagic"
+    }
+  ],
   "perStat": {
     "constructs_casting:adornment": [
       {
@@ -10,12 +16,6 @@
       {
         "level": 1,
         "name": "constructs_casting:spell_protection"
-      }
-    ],
-    "tconstruct:melee_harvest": [
-      {
-        "level": 1,
-        "name": "constructs_casting:antimagic"
       }
     ]
   }

@@ -162,13 +162,13 @@ public class ModifiableSpellbookItem extends SpellBook implements IModifiableDis
         ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = new ImmutableMultimap.Builder<>();
         ToolStack tool = ToolStack.from(stack);
         int manaBonus = tool.getStats().getInt(CCToolStats.MAX_MANA);
-        attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier("tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
+        attributeBuilder.put(AttributeRegistry.MAX_MANA.get(), new AttributeModifier(UUID.fromString("968773ea-db58-4273-841c-72baf0d40b48"),"tool.constructs_casting.mana_bonus", manaBonus, AttributeModifier.Operation.ADDITION));
         float spBonus = ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.SPELL_POWER);
 //                tool.getStats().get(CCToolStats.SPELL_POWER);
-        attributeBuilder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier("tool.constructs_casting.spell_power_bonus", spBonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        attributeBuilder.put(AttributeRegistry.SPELL_POWER.get(), new AttributeModifier(UUID.fromString("f80e7b13-e379-4cf9-a5d3-683ebeadf491"), "tool.constructs_casting.spell_power_bonus", spBonus, AttributeModifier.Operation.MULTIPLY_BASE));
         float cdBonus = ConditionalStatModifierHook.getModifiedStat(tool, slotContext.entity(), CCToolStats.COOLDOWN_REDUCTION);
 //                tool.getStats().get(CCToolStats.COOLDOWN_REDUCTION);
-        attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier("tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
+        attributeBuilder.put(AttributeRegistry.COOLDOWN_REDUCTION.get(), new AttributeModifier(UUID.fromString("980903ea-9a95-4687-acbc-e9fc4666a7dd"), "tool.constructs_casting.cd_reduction", cdBonus, AttributeModifier.Operation.MULTIPLY_BASE));
 
         for (ModifierEntry entry : tool.getModifierList()) {
 			entry.getHook(ModifierHooks.ATTRIBUTES).addAttributes(tool, entry, EquipmentSlot.LEGS, (attr, mod) -> {

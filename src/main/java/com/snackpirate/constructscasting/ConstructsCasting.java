@@ -1,6 +1,7 @@
 package com.snackpirate.constructscasting;
 
 import com.mojang.logging.LogUtils;
+import com.snackpirate.constructscasting.compat.metalborn.MetalbornCompat;
 import com.snackpirate.constructscasting.fluids.CCFluidEffects;
 import com.snackpirate.constructscasting.fluids.CCFluids;
 import com.snackpirate.constructscasting.items.CCBlocks;
@@ -31,6 +32,7 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -84,6 +86,11 @@ public class ConstructsCasting {
         CCSpells.register(modEventBus);
         CREATIVE_TABS.register(modEventBus);
         modEventBus.register(new CCFluids());
+
+        if (ModList.get().isLoaded("metalborn")) {
+            MetalbornCompat.init();
+        }
+
     }
     public static ResourceLocation id(String name) {
         return Objects.requireNonNull(ResourceLocation.tryBuild(MOD_ID, name));

@@ -38,6 +38,7 @@ import slimeknights.tconstruct.library.modifiers.modules.behavior.AttributeModul
 import slimeknights.tconstruct.library.modifiers.modules.behavior.ConditionalStatModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.*;
 import slimeknights.tconstruct.library.modifiers.modules.combat.ConditionalMeleeDamageModule;
+import slimeknights.tconstruct.library.modifiers.modules.combat.ConditionalPowerModule;
 import slimeknights.tconstruct.library.modifiers.modules.combat.MobEffectModule;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
@@ -154,6 +155,7 @@ public class CCModifiers extends AbstractModifierProvider {
 				.build();
 		buildModifier(ANTIMAGIC)
 				.addModule(ConditionalMeleeDamageModule.builder().target(magicUser).eachLevel(2f))
+				.addModule(ConditionalPowerModule.builder().target(magicUser).eachLevel(0.75f))
 						.build();
 		buildModifier(SPELLBOUND)
                 .addModule(AttributeModule.builder(AttributeRegistry.SPELL_POWER.get(), AttributeModifier.Operation.MULTIPLY_BASE).tool(ToolStackPredicate.tag(CCItems.Tags.MAGIC_TOOL).inverted()).uniqueFrom(SPELLBOUND).eachLevel(0.05f))

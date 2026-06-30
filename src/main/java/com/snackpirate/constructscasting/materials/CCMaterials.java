@@ -261,7 +261,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 			addTraits(frozenBone, StatlessMaterialStats.ARROW_SHAFT.getIdentifier(), CCModifiers.FROSTBITE);
 			addTraits(MaterialIds.dragonScale, MagicBaseMaterialStats.ID, CCModifiers.DRAGONSPELLS);
 			addTraits(frostRod, HandleMaterialStats.ID, new ModifierEntry(CCModifiers.ICE_UPGRADE, 1));
-			addTraits(exilite, MaterialRegistry.MELEE_HARVEST, CCModifiers.ANTIMAGIC);
+			addDefaultTraits(exilite, CCModifiers.ANTIMAGIC);
 			addTraits(exilite, MaterialRegistry.ARMOR, CCModifiers.SPELL_PROTECTION);
             addTraits(CCMaterials.exilite, CCMaterialStats.Statless.ADORNMENT.getIdentifier(), CCModifiers.SPELL_DISPULSION);
 //

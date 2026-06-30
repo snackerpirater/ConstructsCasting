@@ -1,0 +1,33 @@
+{
+  "allow_ferring": true,
+  "capacity": 6000,
+  "feruchemy": [
+    {
+      "type": "metalborn:capped",
+      "capped": {
+        "type": "metalborn:attribute",
+        "attribute": "irons_spellbooks:max_mana",
+        "multiplier": 0.15,
+        "operation": "multiply_total"
+      },
+      "level": 4
+    },
+    {
+      "type": "metalborn:capped",
+      "capped": {
+        "type": "metalborn:attribute",
+        "attribute": "irons_spellbooks:mana_regen",
+        "multiplier": 0.25,
+        "operation": "multiply_base"
+      },
+      "level": 4
+    }
+  ],
+  "fluid": "constructs_casting:molten_arcanium",
+  "format": "ticks",
+  "hemalurgy_charge": 5,
+  "index": 21,
+  "ingot": "forge:ingots/arcane",
+  "nugget": "forge:nuggets/arcane",
+  "temperature": 800
+}

@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import java.util.List;
 
 public class CCMaterialStats {
-	public enum Statless implements IMaterialStats{
+	public enum Statless implements IMaterialStats {
 		ADORNMENT("adornment");
 //		SPELLBOOK_PLATING("spellbook_plating");
 

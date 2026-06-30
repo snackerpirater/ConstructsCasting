@@ -1,0 +1,25 @@
+{
+  "allow_ferring": true,
+  "capacity": 6000,
+  "feruchemy": [
+    {
+      "type": "metalborn:attribute",
+      "attribute": "irons_spellbooks:spell_power",
+      "multiplier": 0.05,
+      "operation": "multiply_base"
+    },
+    {
+      "type": "metalborn:attribute",
+      "attribute": "irons_spellbooks:spell_resist",
+      "multiplier": -0.1,
+      "operation": "multiply_base"
+    }
+  ],
+  "fluid": "constructs_casting:molten_exilite",
+  "format": "ticks",
+  "hemalurgy_charge": 1,
+  "index": 22,
+  "ingot": "forge:ingots/exilite",
+  "nugget": "forge:nuggets/exilite",
+  "temperature": 800
+}
