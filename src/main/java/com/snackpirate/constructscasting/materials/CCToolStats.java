@@ -17,9 +17,9 @@ public class CCToolStats {
 
     public static final FloatToolStat SPELL_SLOTS = ToolStats.register(new FloatToolStat(new ToolStatId(ConstructsCasting.MOD_ID, "spell_slots"), 0xFFd6be96, 0, 0, 15f, CCItems.Tags.MOD_SPELLBOOKS));
 
-    public static final BonusFloatToolStat SPELL_POWER = ToolStats.register(new BonusFloatToolStat(new ToolStatId(ConstructsCasting.MOD_ID, "spell_power"), 0xFF5555FF, 0, -2048f, 2048f, CCItems.Tags.MAGIC_TOOL));
+    public static final BonusFloatToolStat SPELL_POWER = ToolStats.registerConditional(new BonusFloatToolStat(new ToolStatId(ConstructsCasting.MOD_ID, "spell_power"), 0xFF5555FF, 0, -2048f, 2048f, CCItems.Tags.MAGIC_TOOL));
 
-    public static final BonusFloatToolStat COOLDOWN_REDUCTION = ToolStats.register(new BonusFloatToolStat(new ToolStatId(ConstructsCasting.MOD_ID, "cooldown_reduction"), 0xffe8bfcf, 0, -2048f, 2048f, CCItems.Tags.MAGIC_TOOL));
+    public static final BonusFloatToolStat COOLDOWN_REDUCTION = ToolStats.registerConditional(new BonusFloatToolStat(new ToolStatId(ConstructsCasting.MOD_ID, "cooldown_reduction"), 0xffe8bfcf, 0, -2048f, 2048f, CCItems.Tags.MAGIC_TOOL));
 
     //displays +/-XX%
     public static class BonusFloatToolStat extends FloatToolStat {

@@ -20,8 +20,8 @@ public class DragonspellsModifier extends Modifier implements ConditionalStatMod
     @Override
     public float modifyStat(IToolStackView tool, ModifierEntry modifier, LivingEntity living, FloatToolStat stat, float baseValue, float multiplier) {
         //null check is necessary do not delete
-        if (living != null && stat == CCToolStats.SPELL_POWER && !living.onGround()) {
-            baseValue+=0.25f*multiplier*modifier.getLevel();
+        if (living != null && stat == CCToolStats.SPELL_POWER) {
+            baseValue+=(0.075f*multiplier*modifier.getLevel()*(living.onGround() ? -1 : 1));
         }
         return baseValue;
     }

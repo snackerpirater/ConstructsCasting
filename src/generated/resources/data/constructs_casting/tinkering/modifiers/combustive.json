@@ -12,6 +12,5 @@
       "type": "tconstruct:rarity",
       "rarity": "irons_spellbooks_cinderous"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.phys.AABB;
 import slimeknights.mantle.fluid.transfer.AbstractFluidContainerTransferProvider;
 import slimeknights.mantle.fluid.transfer.FillFluidContainerTransfer;
 import slimeknights.mantle.recipe.helper.ItemOutput;
@@ -28,7 +29,6 @@ public class CCFluidTransfer extends AbstractFluidContainerTransferProvider {
 		addBottleFill("lightning", ItemRegistry.LIGHTNING_BOTTLE.get(), CCFluids.liquidLightning.get());
 		addBottleFill("ice_venom", ItemRegistry.ICE_VENOM_VIAL.get(), FluidRegistry.ICE_VENOM_FLUID.get());
 		addBottleFill("timeless_slurry", ItemRegistry.TIMELESS_SLURRY.get(), FluidRegistry.TIMELESS_SLURRY_FLUID.get());
-
 
 		addBottleFill("ink/common", ItemRegistry.INK_COMMON.get(), FluidRegistry.COMMON_INK.get());
 		addBottleFill("ink/uncommon", ItemRegistry.INK_UNCOMMON.get(), FluidRegistry.UNCOMMON_INK.get());

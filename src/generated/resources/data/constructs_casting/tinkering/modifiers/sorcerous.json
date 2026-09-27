@@ -9,11 +9,6 @@
       "mana_per_damage": {
         "flat": 3.0
       }
-    },
-    {
-      "type": "tconstruct:rarity",
-      "rarity": "rare"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

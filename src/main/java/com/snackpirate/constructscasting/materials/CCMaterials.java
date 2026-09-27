@@ -2,6 +2,7 @@ package com.snackpirate.constructscasting.materials;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.modifiers.CCModifiers;
+import io.redspace.ironsspellbooks.render.CinderousRarity;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -88,25 +89,25 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
-		addMaterial(frozenBone, 2, 12, true);
-        addMaterial(hogskin, 2, 13, true);
-		addMaterial(bloodyVellum, 3, 17, true);
-		addMaterial(divinePearl, 2, 14, true);
-		addMaterial(arcaneCloth, 2, 13, true);
-		addMaterial(arcanium, 3, 15, false);
-		addMaterial(exilite, 3, 16, false);
-		addMaterial(frostRod, 3, 14, true);
-		addMaterial(rainbowSlime, 3, 0, false);
+		material(frozenBone).tier(2).sort(12).craftable(true);
+		material(hogskin).tier(2).sort(13).craftable(true);
+		material(bloodyVellum).tier(3).sort(17).craftable(true);
+		material(divinePearl).tier(2).sort(14).craftable(true);
+		material(arcaneCloth).tier(2).sort(13).craftable(true);
+		material(arcanium).tier(3).sort(15).craftable(true);
+		material(exilite).tier(3).sort(16).craftable(false);
+		material(frostRod).tier(3).sort(14).craftable(true);
+		material(rainbowSlime).tier(3).sort(0).craftable(false);
 
 //		addMaterial(cosmichalcum, 4, 10, false);
 //		addMaterial(hogskin, 3, 0, true);
 
-		addMaterial(permafrost, 2, ORDER_REPAIR + 1, true);
-		addMaterial(emerald, 2, ORDER_REPAIR + 2, true);
-		addMaterial(echoShard, 4, 0, true);
+		material(permafrost).tier(2).sort(ORDER_REPAIR + 1).craftable(true);
+		material(emerald).tier(2).sort(ORDER_REPAIR + 2).craftable(false);
+		material(echoShard).tier(4).sort(0).craftable(true);
 
-		addMaterial(mithril, 4, ORDER_GENERAL + 7, false);
-		addMaterial(pyrium, 4, ORDER_GENERAL + 8, false);
+		material(mithril).tier(4).sort(ORDER_GENERAL + 7).craftable(false);
+		material(pyrium).tier(4).sort(ORDER_GENERAL + 8).craftable(false).rarity(CinderousRarity.CINDEROUS_RARITY);
 	}
 
 	@Override
@@ -206,7 +207,7 @@ public class CCMaterials extends AbstractMaterialDataProvider {
 					new MagicClothMaterialStats(10, 0.05f));
             addMaterialStats(hogskin, new MagicClothMaterialStats(8, 0));
 			addMaterialStats(bloodyVellum, new MagicClothMaterialStats(10, -0.15f));
-			addMaterialStats(MaterialIds.dragonScale, new MagicBaseMaterialStats(200, -0.1f));
+			addMaterialStats(MaterialIds.dragonScale, new MagicBaseMaterialStats(200, 0f));
 			addMaterialStats(rainbowSlime);
 
             addMaterialStats(MaterialIds.paper, new MagicClothMaterialStats(8, -0.15f));

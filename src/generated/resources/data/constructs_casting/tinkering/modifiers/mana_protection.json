@@ -9,11 +9,6 @@
       "max_damage_reduction": {
         "each_level": 0.04
       }
-    },
-    {
-      "type": "tconstruct:rarity",
-      "rarity": "rare"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

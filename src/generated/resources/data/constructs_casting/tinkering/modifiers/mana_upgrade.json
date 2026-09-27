@@ -29,6 +29,5 @@
         "tag": "constructs_casting:modifiable_magic/spellbook"
       }
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

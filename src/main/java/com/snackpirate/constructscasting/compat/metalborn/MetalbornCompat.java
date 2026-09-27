@@ -2,14 +2,11 @@ package com.snackpirate.constructscasting.compat.metalborn;
 
 import com.snackpirate.constructscasting.ConstructsCasting;
 import com.snackpirate.constructscasting.fluids.CCFluids;
-import com.snackpirate.constructscasting.materials.CCMaterials;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import knightminer.metalborn.metal.AbstractMetalPowerProvider;
-import knightminer.metalborn.metal.MetalFormat;
 import knightminer.metalborn.metal.MetalId;
 import knightminer.metalborn.metal.effects.general.AttributeMetalEffect;
 import knightminer.metalborn.metal.effects.nesting.CappedMetalEffect;
-import knightminer.metalborn.metal.effects.nesting.StoringMetalEffect;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

@@ -230,7 +230,8 @@ public class CCModifiers extends AbstractModifierProvider {
                         .variable(MULTIPLIER).multiply()
                         .constant(0).max()
                         .variable(VALUE).add()
-                        .build());
+                        .build())
+		;
         buildModifier(ICHORSPELLS)
                 .addModule(AttributeModule.builder(AttributeRegistry.MANA_REGEN, AttributeModifier.Operation.MULTIPLY_TOTAL).eachLevel(-0.3f))
                 .addModule(StatBoostModule.add(CCToolStats.SPELL_POWER).eachLevel(0.15f))
@@ -270,11 +271,11 @@ public class CCModifiers extends AbstractModifierProvider {
 				.build(); //manyullyn takes 5 hits to max out, so around 5 hits for an explosion would be nice
 		buildModifier(MANA_PROTECTION)
 				.addModule(new ManaProtectionModule(LevelingValue.flat(4), LevelingValue.eachLevel(0.04f)))
-				.addModule(new RarityModule(Rarity.RARE))
+//				.addModule(new RarityModule(Rarity.RARE))
 				.build();
 		buildModifier(SORCEROUS)
 				.addModule(new ManaOnHitModule(LevelingValue.flat(3), LevelingValue.eachLevel(0.25f)))
-				.addModule(new RarityModule(Rarity.RARE))
+//				.addModule(new RarityModule(Rarity.RARE))
 				.build();
 		buildModifier(venomagic)
 				.addModule(new VenomagicModule(LevelingValue.eachLevel(0.1f)))

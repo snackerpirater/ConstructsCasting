@@ -65,8 +65,8 @@
     {
       "type": "tconstruct:stat_types_name",
       "stat_types": [
-        "constructs_casting:adornment",
-        "tconstruct:head"
+        "tconstruct:head",
+        "constructs_casting:adornment"
       ]
     },
     {

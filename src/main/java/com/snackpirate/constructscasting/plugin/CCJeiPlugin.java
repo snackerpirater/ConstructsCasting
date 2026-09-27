@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.mantle.recipe.helper.FluidOutput;
+import slimeknights.tconstruct.library.recipe.melting.IDisplayableMeltingRecipe;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipe;
 import slimeknights.tconstruct.plugin.jei.TConstructJEIConstants;
 
@@ -36,11 +37,11 @@ public class CCJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(@NotNull IRecipeRegistration register) {
-		register.addRecipes(TConstructJEIConstants.MELTING, getScrollRecipes(register.getVanillaRecipeFactory()).filter(recipe -> !recipe.getInput().isEmpty()).toList());
-		register.addRecipes(TConstructJEIConstants.FOUNDRY, getScrollRecipes(register.getVanillaRecipeFactory()).filter(recipe -> !recipe.getInput().isEmpty()).toList());
+		register.addRecipes(TConstructJEIConstants.MELTING, getScrollRecipes(register.getVanillaRecipeFactory()).toList());
+		register.addRecipes(TConstructJEIConstants.FOUNDRY, getScrollRecipes(register.getVanillaRecipeFactory()).toList());
 	}
 
-	private static Stream<MeltingRecipe> getScrollRecipes(IVanillaRecipeFactory vanillaRecipeFactory) {
+	private static Stream<IDisplayableMeltingRecipe> getScrollRecipes(IVanillaRecipeFactory vanillaRecipeFactory) {
 		return Arrays.stream(SpellRarity.values()).flatMap(
 				rarity -> SchoolRegistry.REGISTRY.get().getValues().stream().map(schoolType -> recipeForRarityAndSchool(rarity, schoolType))); //whatthefuck
 //        return SpellRegistry.getEnabledSpells().stream().flatMap(spell -> IntStream.rangeClosed(spell.getMinLevel(), spell.getMaxLevel()).mapToObj(level -> recipeForSpellAndLevel(spell, level)));
@@ -50,7 +51,7 @@ public class CCJeiPlugin implements IModPlugin {
 		ISpellContainer.createScrollContainer(spell, spellLevel, scrollStack);
 		return scrollStack;
 	}
-	private static MeltingRecipe recipeForRarityAndSchool(SpellRarity spellRarity, SchoolType school) {
+	private static IDisplayableMeltingRecipe recipeForRarityAndSchool(SpellRarity spellRarity, SchoolType school) {
 		var scrollStack = new ItemStack(ItemRegistry.SCROLL.get());
 		Stream<ItemStack> scrolls = SpellRegistry.getEnabledSpells().stream().flatMap( //is iterated through for every rarity*school combo, consider making better? not sure if iterating through each spell * level would be better
 				spell -> IntStream.rangeClosed(spell.getMinLevel(), spell.getMaxLevel())

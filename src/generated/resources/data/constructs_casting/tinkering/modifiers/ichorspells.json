@@ -21,6 +21,5 @@
       "operation": "add",
       "stat": "constructs_casting:spell_power"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }

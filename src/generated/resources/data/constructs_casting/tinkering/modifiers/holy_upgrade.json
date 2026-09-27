@@ -15,6 +15,5 @@
       ],
       "unique": "constructs_casting.modifier.holy_upgrade"
     }
-  ],
-  "tooltip_display": "always"
+  ]
 }
